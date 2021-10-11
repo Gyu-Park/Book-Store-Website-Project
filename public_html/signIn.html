@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Boogle</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Book Store E-Commerce Web Site" />
+        <meta name="author" content="Gyuseok Park, Dimitrios Koloutsos, Raymond Lin" />
+        <link rel="stylesheet" href="./css/signIn.css" /> 
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" />
+    </head>
+    <body>
+        <header>
+            <nav class="navbar">
+                <div class="navbar__container">
+                    <a href="home.html" id="branding">Boogle</a>
+                    <div class="navbar__toggle" id="mobile-menu">
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                        <span class="bar"></span>
+                    </div>
+                        <ul class="navbar__menu">
+                            <li class="navbar__item"><a href="home.html">Home</a></li>
+                            <li class="navbar__item"><a href="aboutUs.html">About Us</a></li>
+                            <li class="navbar__item"><a href="books.html">Books</a></li>
+                            <li class="navbar__item"><a href="faq.html">FAQ</a></li>
+                            <li class="navbar__item"><a href="account.html">Account</a></li>
+                            <li class="navbar__item"><a href="shoppingCart.html"><i class="fas fa-shopping-cart"></i></a></li>
+                            <li class="navbar__item" id="current"><a href="signIn.html">Sign In</a></li>
+                            <li class="navbar__item"><a href="signUp.html">Sign Up</a></li>
+                        </ul>
+                </div>
+            </nav>
+        </header>
+        <div class="searchBarArea">
+            <input type="text" id="searchBar" placeholder="Search Books.." />
+            <div class="searchbtn">
+                <i class="fas fa-search"></i>
+            </div>
+        </div>
+        
+        <div class="centerBox">
+            <h1>Sign In</h1>
+            <form method="post">
+                <div class="txt_field">
+                    <input type="text" required>
+                    <span></span>
+                    <label>User ID</label>
+                </div>
+                <div class="txt_field">
+                    <input type="password" required>
+                    <span></span>
+                    <label>Password</label>
+                </div>
+                <div class="pass">Forgot Password?</div>
+                <input type="submit" value="Sign in">
+                <div class="signup_link">
+                    Not a member? <a href="#">Sign up</a>
+                </div>
+            </form>
+        </div>
+        
+        <footer>
+            <div class="container">
+                <nav>
+                    <ul class="footerNav">
+                        <li><a href="home.html">Home</a></li>|
+                        <li><a href="aboutUs.html">About Us</a></li>|
+                        <li><a href="books.html">Books</a></li>|
+                        <li><a href="faq.html">FAQ</a></li>|
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </nav>
+            </div>
+            <p>&copy; Boogle</p>
+        </footer>
+        
+        <script src="app.js"></script>
+    </body>
+</html>
