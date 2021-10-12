@@ -5,6 +5,7 @@
     width: 25%;
     border: 2px solid lightslategray;
     border-radius: 5px;
+    margin: auto;
 }
 
 .login-row {
