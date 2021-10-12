@@ -38,7 +38,9 @@ button.tablinks {
     color: #FFFAF3;
 }
 
-.tablinks:hover {}
+.tablinks:hover {
+    background-color: #778899;
+}
 
 .tabContent {
     padding: 10px 20px 15px 20px;
