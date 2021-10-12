@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="login.css">
+    <script src="login.js"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="user-loging-signup-tab-container">
+        <div class="login-row">
+            <div class="tabs">
+                <button class="tablinks" onClick="openForm(event, 'login')">Login</button>
+                <button class="tablinks" onClick="openForm(event, 'signUp')">Sign Up</button>
+            </div>
+        </div>
+
+        <div id="login" class="tabContent">
+            <form action="" method="POST">
+                <label for="login-userName">Username</label>
+                <input type="text" id="login-userName" placeholder="enter your username" required>
+
+                <label for="login-password">Password<span class="psw"><a href="#">Forgot Password?</a></span></label>
+                <input type="password" id="login-password" placeholder="enter your password" required>
+
+                <label>
+                    <input type="checkbox" checked="checked" name="loging-remeber"> Remember me
+                </label>
+                <button type="cancle">Cancle</button>
+                <button type="submit">Login</button>
+            </form>
+        </div>
+
+        <div id="signUp" class="tabContent">
+            <form action="" method="POST">
+                <div class="login-row">
+                    <div class="login-col-50">
+                        <label for="signup-fname">First Name</label>
+                        <input type="text" id="signup-fname" placeholder="John" required>
+                    </div>
+
+                    <div class="login-col-50" id="lname-custom-style-tag">
+                        <label for="signup-lname">Last Name</label>
+                        <input type="text" id="signup-lname" placeholder="Doe" required>
+                    </div>
+                </div>
+                <label for="signup-email">E-Mail</label>
+                <input type="text" id="signup-email" placeholder="johndoe@mail.com">
+
+                <label for="signup-password">Password</label>
+                <input type="password" id="signup-password" placeholder="enter password" required>
+
+                <label for="signup-repeat-password">Repeat Password</label>
+                <input type="password" id="signup-repeat-password" placeholder="repeat password" required>
+
+                <button type="cancle">Cancle</button>
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+
+</html>
