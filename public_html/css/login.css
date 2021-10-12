@@ -44,6 +44,11 @@ button.tablinks {
 
 .tabContent {
     padding: 10px 20px 15px 20px;
+    display: none;
+}
+
+#login {
+    display: flex;
 }
 
 
