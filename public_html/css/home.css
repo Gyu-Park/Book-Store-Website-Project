@@ -1,10 +1,13 @@
 body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
   padding: 0;
 }
 
 header {
-  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
 }
 
 nav {
@@ -99,9 +102,27 @@ header nav li a:hover:after,
   color: #778899;
 }
 
+/* center area */
+
+.centerArea {
+  background: url("../img/bookStore1.jpg") no-repeat center;
+  background-size: cover;
+  min-height: 700px;
+}
+
+.centerArea .boogleAndSearch-bar {
+  padding-top: 140px;
+}
+
+.centerArea #boogleText {
+  color: #fffaf3;
+  text-align: center;
+  font-size: 80px;
+  text-shadow: 10px 10px 10px #778899;
+}
+
 .search-bar {
   text-align: center;
-  margin-top: 1em;
 }
 
 .search-bar input[type="search" i] {
@@ -140,4 +161,66 @@ header nav li a:hover:after,
 .search-bar input:focus {
   outline: 0;
   width: 45%;
+}
+
+/* bestSellerArea */
+.bestSellerArea {
+  background: #fdfcfc;
+  padding-top: 10px;
+}
+
+.bestSellerArea h1 {
+  color: #3f2a15;
+  text-align: center;
+}
+
+.bestSeller__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  display: flex;
+  gap: 1px;
+}
+
+.bestSellerGrid {
+  margin: auto;
+  margin-bottom: 50px;
+  height: 410px;
+  width: 320px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 0.3s ease-in;
+}
+
+.bestSellerGrid:nth-child(1) {
+  background: url("../img/PracticalSQL.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.bestSellerGrid:nth-child(2) {
+  background: url("../img/InformationArchitecture.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.bestSellerGrid:nth-child(3) {
+  background: url("../img/JavaScript.JPG") no-repeat center;
+  background-size: cover;
+}
+
+.bestSellerGrid:nth-child(4) {
+  background: url("../img/WebPubHTML.JPG") no-repeat center;
+  background-size: cover;
+}
+
+.bestSellerGrid:nth-child(5) {
+  background: url("../img/DesigningWithJavaScript.jpg") no-repeat center;
+  background-size: cover;
+}
+
+.bestSellerGrid:hover {
+  cursor: pointer;
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
 }
