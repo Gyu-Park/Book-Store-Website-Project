@@ -30,12 +30,17 @@ nav {
   padding: 0;
 }
 
+.left {
+  max-height: 0px;
+}
+
 .left ul {
   float: left;
 }
 
 .right ul {
   text-align: right;
+  margin-top: 20px;
 }
 
 .logo {
@@ -102,12 +107,64 @@ header nav li a:hover:after,
   color: #778899;
 }
 
+.left input[type="search" i] {
+  width: 30%;
+  margin-left: 11%;
+  margin-top: 10px;
+}
+
+.left .search-barHide {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.left .search-barShow {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.left input,
+.left button {
+  border: 0;
+  border-radius: 0.4em;
+  color: #778899;
+  background-color: #fffaf3;
+  font-size: 1em;
+  appearance: none;
+  padding: 10px;
+}
+
+.left input,
+.left button,
+.left input:after,
+.left button:after,
+.left input:before,
+.left button:before {
+  transition: all 0.5s;
+}
+
+.left input:hover,
+.left button:hover {
+  background-color: #fff0db;
+}
+
+.left button:hover {
+  padding: 10px 15px;
+}
+
+.left input:focus {
+  margin-left: 9%;
+  outline: 0;
+  width: 35%;
+}
+
 /* center area */
 
 .centerArea {
-  background: url("../img/bookStore1.jpg") no-repeat center;
+  background: url("../img/bookStore3.jpg") no-repeat center;
   background-size: cover;
-  min-height: 700px;
+  min-height: 800px;
 }
 
 .centerArea .boogleAndSearch-bar {
