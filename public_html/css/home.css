@@ -2,6 +2,7 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, sans-serif;
   margin: 0;
   padding: 0;
+  background-color: #778899;
 }
 
 header {
@@ -162,9 +163,20 @@ header nav li a:hover:after,
 /* center area */
 
 .centerArea {
-  background: url("../img/bookStore3.jpg") no-repeat center;
-  background-size: cover;
+  /** background: url("../img/bookStore3.jpg") no-repeat center;
+  background-size: cover; **/
   min-height: 800px;
+}
+
+.centerArea .slideShow-img {
+  z-index: -1;
+  position: absolute;
+  top: auto;
+  left: 0;
+  width: 100%;
+  height: 800px;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
 }
 
 .centerArea .boogleAndSearch-bar {
@@ -224,10 +236,11 @@ header nav li a:hover:after,
 .bestSellerArea {
   background: #fdfcfc;
   padding-top: 10px;
+  padding-bottom: 50px;
 }
 
-.bestSellerArea h1 {
-  color: #3f2a15;
+.bestSellerArea h2 {
+  color: #000;
   text-align: center;
 }
 
@@ -241,7 +254,7 @@ header nav li a:hover:after,
 
 .bestSellerGrid {
   margin: auto;
-  margin-bottom: 50px;
+  margin-bottom: 0;
   height: 410px;
   width: 320px;
   border-radius: 15px;
@@ -251,32 +264,31 @@ header nav li a:hover:after,
   transition: 0.3s ease-in;
 }
 
-.bestSellerGrid:nth-child(1) {
-  background: url("../img/PracticalSQL.jpg") no-repeat center;
-  background-size: cover;
+.bestSellerGrid img {
+  border: solid #778899;
+  border-radius: 10px;
+  width: 250px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  transition: 0.3s ease-in;
 }
 
-.bestSellerGrid:nth-child(2) {
-  background: url("../img/InformationArchitecture.jpg") no-repeat center;
-  background-size: cover;
+.bestSellerGrid h3 {
+  text-align: center;
+  width: 320px;
+  height: 44px;
+  margin-top: 15px;
 }
 
-.bestSellerGrid:nth-child(3) {
-  background: url("../img/JavaScript.JPG") no-repeat center;
-  background-size: cover;
+.bestSellerGrid p {
+  text-align: center;
+  margin-top: -15px;
 }
 
-.bestSellerGrid:nth-child(4) {
-  background: url("../img/WebPubHTML.JPG") no-repeat center;
-  background-size: cover;
-}
-
-.bestSellerGrid:nth-child(5) {
-  background: url("../img/DesigningWithJavaScript.jpg") no-repeat center;
-  background-size: cover;
-}
-
-.bestSellerGrid:hover {
+.bestSellerGrid img:hover {
+  border: solid #ecd5b3;
   cursor: pointer;
   transform: scale(1.075);
   transition: 0.3s ease-in;
