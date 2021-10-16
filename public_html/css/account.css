@@ -15,6 +15,10 @@
     flex: 80%;
 }
 
+.account-col-60 {
+    flex: 60%;
+}
+
 .account-col-20 {
     flex: 20%;
 }
@@ -46,7 +50,15 @@ button.tablinks {
 
 .tabContent {
     padding: 10px 20px 15px 20px;
+    overflow: none;
     display: none;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#orders {
+    width: 75%;
 }
 
 #login-and-security {
@@ -62,16 +74,129 @@ form {
     justify-content: center;
 }
 
-.LaS-item {
-    display: inherit;
-    flex-wrap: wrap;
-    flex: 100%;
-    padding: 10px 20px 15px 20px;
-    border: 1px solid #778899;
-}
-
 label {
     width: 100%;
     display: block;
     font-size: 18px;
+    margin-bottom: 5px;
+}
+
+
+/*Login and Security Content Styles*/
+
+.LaS-item {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 100%;
+    padding: 10px 20px 15px 20px;
+    margin-bottom: 10px;
+    border: 2px solid #778899;
+    border-radius: 5px;
+}
+
+button[type=edit] {
+    background-color: #778899;
+    color: #FFFAF3;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+
+/*Orders Content Styles*/
+
+.order-item {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 100%;
+    padding: 10px 20px 15px 20px;
+    border: 2px solid #778899;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.order-product-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.order-product-img-container {
+    flex: auto;
+}
+
+.order-item-pricing {
+    padding: 10px;
+}
+
+.order-item-pricing p {
+    margin-top: 0%;
+}
+
+.order-product-title-container {
+    flex: 80%;
+    padding: 10px 20px 15px 20px;
+}
+
+img {
+    border: 1px solid #778899;
+    width: 120px;
+    height: 180px;
+}
+
+button[type=review],
+button[type=buy-again] {
+    background-color: #778899;
+    color: #FFFAF3;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+
+/*Wish List Content Styles*/
+
+.wishlist-item {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 100%;
+    padding: 10px 20px 15px 20px;
+    border: 2px solid #778899;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.wishlist-product-container {
+    display: flex;
+    flex-wrap: nowrap;
+}
+
+.wishlist-img-container {
+    flex: auto;
+}
+
+.wishlist-title-container {
+    flex: 80%;
+    padding: 10px 20px 15px 20px;
+}
+
+button[type=buy-now],
+button[type=add-to-cart],
+button[type=remove] {
+    background-color: #778899;
+    color: #FFFAF3;
+    margin-top: 10px;
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 5px;
+}
+
+span {
+    float: right;
+    color: black;
+    padding-right: 5px;
 }
