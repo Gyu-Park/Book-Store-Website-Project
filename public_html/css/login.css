@@ -95,6 +95,7 @@ button[type=cancle] {
     padding: 15px;
     width: 48%;
     border: none;
+    border-radius: 5px;
 }
 
 button[type=submit]:hover,
