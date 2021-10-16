@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/account.css">
     <script src="js/accounts.js"></script>
+    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
     <title>Document</title>
 </head>
@@ -83,6 +84,7 @@
             <form action="" method="get">
                 <div class="account-row">
 
+                    <!--Orders item Template-->
                     <div class="order-item">
                         <div class="account-row">
                             <div class="account-col-60">
@@ -114,7 +116,9 @@
                             </div>
                         </div>
                     </div>
+                    <!--End-->
 
+                    <!--Orders item Template-->
                     <div class="order-item">
                         <div class="account-row">
                             <div class="account-col-60">
@@ -146,7 +150,9 @@
                             </div>
                         </div>
                     </div>
+                    <!--End-->
 
+                    <!--Orders item Template-->
                     <div class="order-item">
                         <div class="account-row">
                             <div class="account-col-60">
@@ -178,19 +184,78 @@
                             </div>
                         </div>
                     </div>
+                    <!--End-->
 
                 </div>
             </form>
         </div>
 
         <div id="payment-options" class="tabContent">
+            <div class="account-row">
+                <h1>Wallet</h1>
+            </div>
+            <hr>
+            <div class="payment-tab-container">
+                <div class="account-col-20">
+                    <div class="payment-tabs">
+                        <button class="paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option 1</button>
+                        <button class="paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add Payment Option</button>
+                    </div>
+                </div>
+                <div class="account-col-80">
 
+                    <!--Payment Option Template-->
+                    <div id="payment-option-1" class="paymentTabContent">
+                        <p>option 1</p>
+                    </div>
+                    <!--End-->
+
+                    <div id="add-payment-option" class="paymentTabContent">
+                        <h3>Add Payment Option</h3>
+                        <form action="" method="post">
+                            <div class="new-payment-option-form-container">
+                                <label for="account-payment-option-name">Payment Option Name</label>
+                                <input type="text" id="account-payment-option-name">
+                                <label for="account-payment-fname">Accepted Cards</label>
+                                <div class="account-payment-cc-icon-container">
+                                    <i class="fa fa-cc-visa"></i>
+                                    <i class="fa fa-cc-amex"></i>
+                                    <i class="fa fa-cc-mastercard"></i>
+                                    <i class="fa fa-cc-discover"></i>
+                                    <i class="fab fa-apple-pay"></i>
+                                </div>
+                                <label for="account-payment-cc-name">Name on Card</label>
+                                <input type="text" id="account-payment-cc-name" placeholder="John Doe">
+                                <label for="account-payment-cc-num">Credit Card Number</label>
+                                <input type="text" id="account-payment-cc-num" placeholder="1111-2222-3333-4444">
+                                <label for="account-payment-cc-exp-month">Exp Month</label>
+                                <input type="text" id="account-payment-cc-exp-month" placeholder="November">
+
+                                <div class="account-row">
+                                    <div class="account-col-50">
+                                        <label for="account-payment-cc-exp-year">Exp Year</label>
+                                        <input type="text" id="account-payment-cc-exp-year" placeholder="2021">
+                                    </div>
+                                    <div class="account-col-50">
+                                        <label for="account-payment-cc-cvv">CVV</label>
+                                        <input type="text" id="account-payment-cc-cvv" placeholder="489">
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="submit" value="Add to Payment Options" class="payment-btn">
+                        </form>
+
+                    </div>
+
+                </div>
+            </div>
         </div>
 
         <div id="wishlist" class="tabContent">
             <form action="" method="get">
                 <div class="account-row">
 
+                    <!--Whishlist Item Template-->
                     <div class="wishlist-item">
                         <div class="account-row">
                             <div class="account-col-80">
@@ -217,6 +282,7 @@
                             </div>
                         </div>
                     </div>
+                    <!--End-->
 
                 </div>
             </form>

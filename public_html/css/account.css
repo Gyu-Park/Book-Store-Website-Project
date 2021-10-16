@@ -19,6 +19,10 @@
     flex: 60%;
 }
 
+.account-col-50 {
+    flex: 50%;
+}
+
 .account-col-20 {
     flex: 20%;
 }
@@ -141,7 +145,7 @@ button[type=edit] {
 
 img {
     border: 1px solid #778899;
-    width: 120px;
+    width: 140px;
     height: 180px;
 }
 
@@ -153,6 +157,83 @@ button[type=buy-again] {
     padding: 10px;
     width: 100%;
     border: none;
+    border-radius: 5px;
+}
+
+
+/*Payment Options Content Styles*/
+
+#add-payment-option h3 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.payment-tab-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.payment-tabs {
+    float: left;
+    border-right: 2px solid #778899;
+    height: 500px;
+}
+
+.payment-tabs button {
+    background-color: #778899;
+    color: #FFFAF3;
+    margin-top: 10px;
+    padding: 10px;
+    width: 95%;
+    height: auto;
+    border: none;
+    border-radius: 5px;
+}
+
+.paymentTabContent {
+    margin-right: 10px;
+    padding: 10px 20px 15px 20px;
+    overflow: none;
+    display: none;
+}
+
+#payment-option-1 {
+    display: flex;
+}
+
+.new-payment-option-form-container {
+    width: 60%;
+}
+
+.account-payment-cc-icon-container {
+    padding: 5px;
+    margin-left: 5px;
+    font-size: 30px;
+}
+
+.paymentTabContent label {
+    margin-bottom: 5px;
+    display: block;
+}
+
+input[type=text] {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: none;
+    outline: none;
+    border: 2px solid #778899;
+    border-radius: 5px;
+}
+
+.payment-btn {
+    background-color: #778899;
+    color: white;
+    padding: 8px;
+    border: none;
+    margin-left: 16px;
+    width: 63%;
+    font-size: 15px;
     border-radius: 5px;
 }
 
