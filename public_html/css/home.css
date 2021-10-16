@@ -27,21 +27,32 @@ nav {
 }
 
 .nav-row ul {
-  flex: 50%;
+  flex: 33%;
   padding: 0;
 }
 
 .left {
-  max-height: 0px;
+  width: 33%;
+  display: inline-block;
 }
 
 .left ul {
-  float: left;
+  text-align: left;
+}
+
+.center {
+  width: 33%;
+  margin: auto;
+  display: inline-block;
+}
+
+.right {
+  width: 33%;
+  display: inline-block;
 }
 
 .right ul {
   text-align: right;
-  margin-top: 20px;
 }
 
 .logo {
@@ -108,25 +119,25 @@ header nav li a:hover:after,
   color: #778899;
 }
 
-.left input[type="search" i] {
-  width: 30%;
-  margin-left: 11%;
-  margin-top: 10px;
-}
-
-.left .search-barHide {
+.center .search-bar {
+  text-align: center;
+  margin-top: 1em;
   max-height: 0;
   opacity: 0;
   pointer-events: none;
 }
 
-.left .search-barShow {
+.center .search-bar input[type="search" i] {
+  width: 85%;
+}
+
+.center .search-barShow {
   opacity: 1;
   pointer-events: initial;
 }
 
-.left input,
-.left button {
+.center .search-bar input,
+.center .search-bar button {
   border: 0;
   border-radius: 0.4em;
   color: #778899;
@@ -136,32 +147,30 @@ header nav li a:hover:after,
   padding: 10px;
 }
 
-.left input,
-.left button,
-.left input:after,
-.left button:after,
-.left input:before,
-.left button:before {
+.center .search-bar input,
+.center .search-bar button,
+.center .search-bar input:after,
+.center .search-bar button:after,
+.center .search-bar input:before,
+.center .search-bar button:before {
   transition: all 0.5s;
 }
 
-.left input:hover,
-.left button:hover {
+.center .search-bar input:hover,
+.center .search-bar button:hover {
   background-color: #fff0db;
 }
 
-.left button:hover {
+.center .search-bar button:hover {
   padding: 10px 15px;
 }
 
-.left input:focus {
-  margin-left: 9%;
+.center .search-bar input:focus {
   outline: 0;
-  width: 35%;
+  width: 90%;
 }
 
 /* center area */
-
 .centerArea {
   /** background: url("../img/bookStore3.jpg") no-repeat center;
   background-size: cover; **/
@@ -234,7 +243,7 @@ header nav li a:hover:after,
 
 /* bestSellerArea */
 .bestSellerArea {
-  background: #fdfcfc;
+  background: white;
   padding-top: 10px;
   padding-bottom: 50px;
 }
@@ -352,4 +361,142 @@ header nav li a:hover:after,
     grid-template-columns: 1fr;
     grid-template-rows: auto;
   }
+}
+
+/* footer */
+footer {
+  position: absolute;
+  width: 100%;
+  background-color: #778899;
+  bottom: auto;
+}
+
+.footer-container {
+  display: inline-block;
+  width: 100%;
+}
+
+.footer-row {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+/* Footer link styles */
+.footer-row h6 {
+  padding: 1em;
+}
+
+.footer-row h6 a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: #fffaf3;
+  font-weight: bold;
+}
+
+.footer-row h6 a,
+.footer-row h6 a:after,
+.footer-row h6 a:before {
+  transition: all 0.5s;
+}
+
+.footer-row h6 a:hover {
+  color: #ecd5b3;
+}
+
+/* hr style */
+.footer-container hr {
+  width: 95%;
+}
+
+/* Footer p style */
+.footer-row p {
+  text-align: center;
+  color: #fffaf3;
+  width: 80%;
+  margin: 1em auto;
+  padding: 1em 0;
+  line-height: 1.5em;
+}
+
+/* Footer newsletter styles */
+#newsletter {
+  justify-content: center;
+}
+
+#newsletter form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#newsletter p {
+  text-align: right;
+  margin: auto 0;
+  padding: 0 1em 0 0;
+  width: 20%;
+  font-weight: bold;
+}
+
+#newsletter input {
+  width: 25%;
+  background-color: #fffaf3;
+  color: #778899;
+  margin-right: 1em;
+}
+
+#newsletter button {
+  background-color: #ecd5b3;
+  color: #fffaf3;
+}
+
+#newsletter input,
+#newsletter button {
+  border: 0;
+  border-radius: 0.2em;
+  font-size: 1em;
+  appearance: none;
+  padding: 5px;
+}
+
+#newsletter input:focus {
+  outline-color: #ecd5b3;
+}
+
+/* Footer social media styles */
+.icons {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  margin: 2em auto;
+}
+
+.icons a {
+  color: #fffaf3;
+  font-size: 1em;
+}
+
+.icons a,
+.icons a:after,
+.icons a:before {
+  transition: all 0.5s;
+}
+
+.icons a:hover {
+  color: #ecd5b3;
+}
+
+/* Footer credits styles */
+.credits {
+  background-color: #516272;
+  padding: 1em 0;
+}
+
+.credits p {
+  text-align: center;
+  color: #fffaf3;
+  width: 80%;
+  margin: 0 auto;
 }

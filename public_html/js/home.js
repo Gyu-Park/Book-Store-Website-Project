@@ -1,7 +1,7 @@
 /** When a user scrolls down and center search bar disappears,
  *  Show a search bar on the nav bar **/
-const searchbarOnNav = document.querySelector("#search-barOnNav");
-const sectionOne = document.querySelector(".search-bar");
+const searchbarOnNav = document.querySelector(".center .search-bar");
+const sectionOne = document.querySelector(".centerArea .search-bar");
 
 const sectionOneOptions = {
     rootMargin: "-95px 0px 0px 0px"
