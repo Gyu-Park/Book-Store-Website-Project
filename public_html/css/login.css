@@ -5,6 +5,7 @@
     width: 25%;
     border: 2px solid lightslategray;
     border-radius: 5px;
+    margin: auto;
 }
 
 .login-row {
@@ -13,7 +14,7 @@
     margin: 0 -15;
 }
 
-.login-col-50 {
+.login-col-45 {
     flex: 45%;
 }
 
@@ -44,6 +45,11 @@ button.tablinks {
 
 .tabContent {
     padding: 10px 20px 15px 20px;
+    display: none;
+}
+
+#login {
+    display: flex;
 }
 
 
@@ -89,6 +95,7 @@ button[type=cancle] {
     padding: 15px;
     width: 48%;
     border: none;
+    border-radius: 5px;
 }
 
 button[type=submit]:hover,
