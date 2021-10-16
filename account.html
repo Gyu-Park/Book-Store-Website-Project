@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/account.css">
+
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="account-content-tab-container">
+        <div class="account-row">
+            <div class="tabs">
+                <button class="tablinks" onClick="openForm(event, 'login-and-security')">Login and Security</button>
+                <button class="tablinks" onClick="openForm(event, 'orders')">Orders</button>
+                <button class="tablinks" onClick="openForm(event, 'payment-options')">Payment Options</button>
+                <button class="tablinks" onClick="openForm(event, 'wishlist')">Wish List</button>
+            </div>
+        </div>
+
+        <div id="login-and-security" class="tabContent">
+            <form action="" method="dialog">
+                <div class="account-row">
+                    <div class="LaS-item">
+                        <div class="account-col-80">
+                            <label for="LaS-name-lbl">Name</label>
+                            <lable for="LaS-name-display"><b>$customer-name</b></lable>
+                        </div>
+                        <div class="account-col-20">
+                            <button type="edit" class="account-btn-edit">Edit</button>
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div id="orders" class="tabContent">
+
+        </div>
+
+        <div id="payment-options" class="tabContent">
+
+        </div>
+
+        <div id="wishlist" class="tabContent">
+
+        </div>
+    </div>
+</body>
+
+</html>
