@@ -8,7 +8,7 @@ footer {
   position: absolute;
   width: 100%;
   background-color: #778899;
-  bottom: 0;
+  bottom: auto;
 }
 
 .footer-container {
