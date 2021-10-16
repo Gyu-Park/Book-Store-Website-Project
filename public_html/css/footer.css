@@ -1,0 +1,142 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+footer {
+  position: absolute;
+  width: 100%;
+  background-color: #778899;
+  bottom: auto;
+}
+
+.footer-container {
+  display: inline-block;
+  width: 100%;
+}
+
+.footer-row {
+  display: flex;
+  width: 60%;
+  margin: auto;
+  justify-content: space-between;
+}
+
+/* Footer link styles */
+.footer-row h6 {
+  padding: 1em;
+}
+
+.footer-row h6 a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: #fffaf3;
+  font-weight: bold;
+}
+
+.footer-row h6 a,
+.footer-row h6 a:after,
+.footer-row h6 a:before {
+  transition: all 0.5s;
+}
+
+.footer-row h6 a:hover {
+  color: #ecd5b3;
+}
+
+/* hr style */
+.footer-container hr {
+  width: 95%;
+}
+
+/* Footer p style */
+.footer-row p {
+  text-align: center;
+  color: #fffaf3;
+  width: 80%;
+  margin: 1em auto;
+  padding: 1em 0;
+  line-height: 1.5em;
+}
+
+/* Footer newsletter styles */
+#newsletter {
+  justify-content: center;
+}
+
+#newsletter form {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+#newsletter p {
+  text-align: right;
+  margin: auto 0;
+  padding: 0 1em 0 0;
+  width: 20%;
+  font-weight: bold;
+}
+
+#newsletter input {
+  width: 25%;
+  background-color: #fffaf3;
+  color: #778899;
+  margin-right: 1em;
+}
+
+#newsletter button {
+  background-color: #ecd5b3;
+  color: #fffaf3;
+}
+
+#newsletter input,
+#newsletter button {
+  border: 0;
+  border-radius: 0.2em;
+  font-size: 1em;
+  appearance: none;
+  padding: 5px;
+}
+
+#newsletter input:focus {
+  outline-color: #ecd5b3;
+}
+
+/* Footer social media styles */
+.icons {
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  margin: 2em auto;
+}
+
+.icons a {
+  color: #fffaf3;
+  font-size: 1em;
+}
+
+.icons a,
+.icons a:after,
+.icons a:before {
+  transition: all 0.5s;
+}
+
+.icons a:hover {
+  color: #ecd5b3;
+}
+
+/* Footer credits styles */
+.credits {
+  background-color: #516272;
+  padding: 1em 0;
+}
+
+.credits p {
+  text-align: center;
+  color: #fffaf3;
+  width: 80%;
+  margin: 0 auto;
+}
