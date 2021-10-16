@@ -1,0 +1,295 @@
+body {
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #778899;
+}
+
+header {
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
+nav {
+  background-color: #778899;
+  padding: 1em 1.5em;
+}
+
+.container {
+  flex: 100%;
+}
+
+.nav-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -15;
+}
+
+.nav-row ul {
+  flex: 50%;
+  padding: 0;
+}
+
+.left {
+  max-height: 0px;
+}
+
+.left ul {
+  float: left;
+}
+
+.right ul {
+  text-align: right;
+  margin-top: 20px;
+}
+
+.logo {
+  font-size: 1.5em;
+}
+
+header nav li {
+  display: inline;
+  text-decoration: none;
+  margin: 0;
+  padding: 1em 1em;
+  font-size: 1em;
+}
+
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all 0.5s;
+}
+
+nav ul li a:hover {
+  color: #ecd5b3;
+}
+
+header nav li a {
+  color: #fffaf3;
+  text-decoration: none;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+  margin: 0 0 10px;
+  padding: 0 5px 10px;
+}
+
+header nav li a:after,
+#current a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: #ecd5b3;
+  height: 2px;
+}
+
+header nav li a:hover:after,
+#current a:after {
+  width: 100%;
+}
+
+#current a {
+  color: #ecd5b3;
+}
+
+.button {
+  background-color: #fffaf3;
+  margin-right: 1.5em;
+}
+
+.button a {
+  color: #778899;
+}
+
+.left input[type="search" i] {
+  width: 30%;
+  margin-left: 11%;
+  margin-top: 10px;
+}
+
+.left .search-barHide {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.left .search-barShow {
+  opacity: 1;
+  pointer-events: initial;
+}
+
+.left input,
+.left button {
+  border: 0;
+  border-radius: 0.4em;
+  color: #778899;
+  background-color: #fffaf3;
+  font-size: 1em;
+  appearance: none;
+  padding: 10px;
+}
+
+.left input,
+.left button,
+.left input:after,
+.left button:after,
+.left input:before,
+.left button:before {
+  transition: all 0.5s;
+}
+
+.left input:hover,
+.left button:hover {
+  background-color: #fff0db;
+}
+
+.left button:hover {
+  padding: 10px 15px;
+}
+
+.left input:focus {
+  margin-left: 9%;
+  outline: 0;
+  width: 35%;
+}
+
+/* center area */
+
+.centerArea {
+  /** background: url("../img/bookStore3.jpg") no-repeat center;
+  background-size: cover; **/
+  min-height: 800px;
+}
+
+.centerArea .slideShow-img {
+  z-index: -1;
+  position: absolute;
+  top: auto;
+  left: 0;
+  width: 100%;
+  height: 800px;
+  opacity: 0;
+  transition: opacity 3s ease-in-out;
+}
+
+.centerArea .boogleAndSearch-bar {
+  padding-top: 140px;
+}
+
+.centerArea #boogleText {
+  color: #fffaf3;
+  text-align: center;
+  font-size: 80px;
+  text-shadow: 10px 10px 10px #778899;
+}
+
+.search-bar {
+  text-align: center;
+}
+
+.search-bar input[type="search" i] {
+  width: 40%;
+}
+
+.search-bar input,
+.search-bar button {
+  border: 0;
+  border-radius: 0.4em;
+  color: #778899;
+  background-color: #fffaf3;
+  font-size: 1em;
+  appearance: none;
+  padding: 10px;
+}
+
+.search-bar input,
+.search-bar button,
+.search-bar input:after,
+.search-bar button:after,
+.search-bar input:before,
+.search-bar button:before {
+  transition: all 0.5s;
+}
+
+.search-bar input:hover,
+.search-bar button:hover {
+  background-color: #fff0db;
+}
+
+.search-bar button:hover {
+  padding: 10px 15px;
+}
+
+.search-bar input:focus {
+  outline: 0;
+  width: 45%;
+}
+
+/* bestSellerArea */
+.bestSellerArea {
+  background: #fdfcfc;
+  padding-top: 10px;
+  padding-bottom: 50px;
+}
+
+.bestSellerArea h2 {
+  color: #000;
+  text-align: center;
+}
+
+.bestSeller__wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
+  display: flex;
+  gap: 1px;
+}
+
+.bestSellerGrid {
+  margin: auto;
+  margin-bottom: 0;
+  height: 410px;
+  width: 320px;
+  border-radius: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 0.3s ease-in;
+}
+
+.bestSellerGrid img {
+  border: solid #778899;
+  border-radius: 10px;
+  width: 250px;
+  height: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0;
+  transition: 0.3s ease-in;
+}
+
+.bestSellerGrid h3 {
+  text-align: center;
+  width: 320px;
+  height: 44px;
+  margin-top: 15px;
+}
+
+.bestSellerGrid p {
+  text-align: center;
+  margin-top: -15px;
+}
+
+.bestSellerGrid img:hover {
+  border: solid #ecd5b3;
+  cursor: pointer;
+  transform: scale(1.075);
+  transition: 0.3s ease-in;
+}
