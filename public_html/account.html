@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/account.css">
+    <script src="js/accounts.js"></script>
 
     <title>Document</title>
 </head>
@@ -23,7 +24,7 @@
         </div>
 
         <div id="login-and-security" class="tabContent">
-            <form action="" method="dialog">
+            <form action="" method="get">
                 <div class="account-row">
                     <div class="LaS-item">
                         <div class="account-col-80">
@@ -33,7 +34,36 @@
                         <div class="account-col-20">
                             <button type="edit" class="account-btn-edit">Edit</button>
                         </div>
+                    </div>
 
+                    <div class="LaS-item">
+                        <div class="account-col-80">
+                            <label for="LaS-email-lbl">Email</label>
+                            <lable for="LaS-email-display"><b>$customer-email</b></lable>
+                        </div>
+                        <div class="account-col-20">
+                            <button type="edit" class="account-btn-edit">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="LaS-item">
+                        <div class="account-col-80">
+                            <label for="LaS-phone-lbl">Phone</label>
+                            <lable for="LaS-phone-display"><b>$customer-phone</b></lable>
+                        </div>
+                        <div class="account-col-20">
+                            <button type="edit" class="account-btn-edit">Edit</button>
+                        </div>
+                    </div>
+
+                    <div class="LaS-item">
+                        <div class="account-col-80">
+                            <label for="LaS-password-lbl">Password</label>
+                            <lable for="LaS-password-display"><b>$customer-password</b></lable>
+                        </div>
+                        <div class="account-col-20">
+                            <button type="edit" class="account-btn-edit">Edit</button>
+                        </div>
                     </div>
                 </div>
             </form>

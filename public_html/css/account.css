@@ -1,5 +1,77 @@
 /*Tab Styles*/
 
 .account-content-tab-container {
+    width: 70%;
     margin: auto;
+}
+
+.account-row {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -15;
+}
+
+.account-col-80 {
+    flex: 80%;
+}
+
+.account-col-20 {
+    flex: 20%;
+}
+
+.tabs {
+    overflow: hidden;
+    width: 100%;
+    border-bottom: 1px solid #778899;
+}
+
+.tablinks {
+    background-color: #778899;
+    float: left;
+    border: none;
+    width: 25%;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+}
+
+button.tablinks {
+    color: #FFFAF3;
+}
+
+.tablinks:hover {
+    background-color: lightgrey;
+}
+
+.tabContent {
+    padding: 10px 20px 15px 20px;
+    display: none;
+}
+
+#login-and-security {
+    display: flex;
+}
+
+
+/*Form Contents*/
+
+form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.LaS-item {
+    display: inherit;
+    flex-wrap: wrap;
+    flex: 100%;
+    padding: 10px 20px 15px 20px;
+    border: 1px solid #778899;
+}
+
+label {
+    width: 100%;
+    display: block;
+    font-size: 18px;
 }
