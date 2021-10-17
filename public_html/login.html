@@ -7,6 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/nav.css">
+
+
+    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
     <script src="js/login.js"></script>
 
 
@@ -14,6 +18,47 @@
 </head>
 
 <body>
+    <!--Navigation Header-->
+    <header>
+        <!-- add the "current" id to the active page -->
+        <nav>
+            <div class="nav-row">
+                <div class="container">
+
+                    <div class="left">
+                        <ul>
+                            <li class="logo"><a href="home.html"><i class="fas fa-book-reader"></i></a></li>
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="aboutUs.html">About Us</a></li>
+                            <li><a href="books.html">Books</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="center">
+                        <form action="" class="search-bar">
+                            <input type="search" name="search-bar" placeholder="Search...">
+                            <button type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                        </form>
+                    </div>
+
+                    <div class="right">
+                        <ul>
+                            <li class="button">
+                                <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+                            </li>
+                            <li id="current"><a href="signIn.html">Sign in</a></li>
+                            <li><a href="account.html">Account</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--Login/SignUp Body-->
     <div class="user-loging-signup-tab-container">
         <div class="login-row">
             <div class="tabs">
@@ -34,7 +79,7 @@
                     <input type="checkbox" checked="checked" name="loging-remeber"> Remember me
                 </label>
                 <button type="cancle">Cancle</button>
-                <button type="submit">Login</button>
+                <button type="form-submit">Login</button>
             </form>
         </div>
 
@@ -61,7 +106,7 @@
                 <input type="password" id="signup-repeat-password" placeholder="repeat password" required>
 
                 <button type="cancle">Cancle</button>
-                <button type="submit">Sign Up</button>
+                <button type="form-submit">Sign Up</button>
             </form>
         </div>
 

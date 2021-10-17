@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="css/activeCart.css">
+    <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
+
+    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+
+    <title>Document</title>
+</head>
+
+<body>
+    <!--Navigation Header-->
+    <header>
+        <!-- add the "current" id to the active page -->
+        <nav>
+            <div class="nav-row">
+                <div class="container">
+
+                    <div class="left">
+                        <ul>
+                            <li class="logo"><a href="home.html"><i class="fas fa-book-reader"></i></a></li>
+                            <li><a href="home.html">Home</a></li>
+                            <li><a href="aboutUs.html">About Us</a></li>
+                            <li><a href="books.html">Books</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="center">
+                        <form action="" class="search-bar">
+                            <input type="search" name="search-bar" placeholder="Search...">
+                            <button type="submit">
+                    <i class="fas fa-search"></i>
+                  </button>
+                        </form>
+                    </div>
+
+                    <div class="right">
+                        <ul>
+                            <li id="current" class="button">
+                                <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+                            </li>
+                            <li><a href="login.html">Sign in</a></li>
+                            <li><a href="account.html">Account</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!--Active Cart Body-->
+    <div class="active-cart-page-container">
+        <div class="active-cart-row">
+            <div class="active-cart-col-70">
+                <div class="active-cart-container">
+                    <form action="">
+
+                        <div class="active-cart-row">
+                            <div class="acticve-cart-header">
+                                <h2>Shopping Cart</h2>
+                            </div>
+                        </div>
+
+                        <div class="active-cart-row">
+                            <p>Price</p>
+                        </div>
+                        <hr>
+
+                        <div class="active-cart-row">
+                            <div class="active-items-list">
+                                <p>shopping cart is empty...</p>
+                            </div>
+                        </div>
+
+                        <hr>
+                        <div class="active-cart-row">
+                            <div class="active-cart-subtotal">
+                                <p>Subtotal <span class="cart-subtotal"><b> $item_subtotal</b></span></p>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+                <div class="wishlist-container">
+                    <form action="">
+
+                        <div class="wishlist-row">
+                            <div class="wishlist-header">
+                                <h2>Wish List</h2>
+                            </div>
+                        </div>
+                        <hr>
+                    </form>
+                </div>
+            </div>
+
+            <div class="active-cart-col-25">
+                <div class="subtotal-container">
+                    <h3>Subtotal <span class="cart-subtotal"><b> $item_subtotal</b></span></h3>
+                    <input type="button" value="Continue Shopping" class="subtotal-container-btn">
+                    <input type="button" value="Continue to Checkout" class="subtotal-container-btn">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--Footer-->
+    <footer>
+        <div class="footer-container">
+
+            <section>
+                <div class="footer-row">
+                    <h6>
+                        <a href="home.html">Home</a>
+                    </h6>
+                    <h6>
+                        <a href="aboutUs.html">About Us</a>
+                    </h6>
+                    <h6>
+                        <a href="books.html">Books</a>
+                    </h6>
+                    <h6>
+                        <a href="account.html">Account</a>
+                    </h6>
+                </div>
+            </section>
+
+            <hr>
+
+            <section>
+                <div class="footer-row">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta, aliquam sequi voluptate quas.</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="footer-row" id="newsletter">
+                    <form action="">
+                        <p>Join our newsletter</p>
+                        <input type="email" placeholder="johndoe@mail.com" />
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="icons">
+                <a href="">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+
+            <div class="credits">
+                <p>Boogle 2021: Software Engineering Methods</p>
+            </div>
+
+        </div>
+    </footer>
+</body>
+
+</html>

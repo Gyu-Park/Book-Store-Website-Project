@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/account.css">
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/footer.css">
 
     <script src="js/accounts.js"></script>
     <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
@@ -16,6 +17,7 @@
 </head>
 
 <body>
+    <!--Navigation Header-->
     <header>
         <!-- add the "current" id to the active page -->
         <nav>
@@ -46,7 +48,7 @@
                                 <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
                             </li>
                             <li><a href="login.html">Sign in</a></li>
-                            <li><a href="account.html">Account</a></li>
+                            <li id="current"><a href="account.html">Account</a></li>
                         </ul>
                     </div>
 
@@ -55,6 +57,7 @@
         </nav>
     </header>
 
+    <!--Account Body-->
     <div class="account-content-tab-container">
         <div class="account-row">
             <div class="tabs">
@@ -74,7 +77,7 @@
                             <lable for="LaS-name-display"><b>$customer-name</b></lable>
                         </div>
                         <div class="account-col-20">
-                            <button type="edit" class="account-btn-edit">Edit</button>
+                            <button type="form-edit" class="account-btn-edit">Edit</button>
                         </div>
                     </div>
 
@@ -84,7 +87,7 @@
                             <lable for="LaS-email-display"><b>$customer-email</b></lable>
                         </div>
                         <div class="account-col-20">
-                            <button type="edit" class="account-btn-edit">Edit</button>
+                            <button type="form-edit" class="account-btn-edit">Edit</button>
                         </div>
                     </div>
 
@@ -94,7 +97,7 @@
                             <lable for="LaS-phone-display"><b>$customer-phone</b></lable>
                         </div>
                         <div class="account-col-20">
-                            <button type="edit" class="account-btn-edit">Edit</button>
+                            <button type="form-edit" class="account-btn-edit">Edit</button>
                         </div>
                     </div>
 
@@ -104,7 +107,7 @@
                             <lable for="LaS-password-display"><b>$customer-password</b></lable>
                         </div>
                         <div class="account-col-20">
-                            <button type="edit" class="account-btn-edit">Edit</button>
+                            <button type="form-edit" class="account-btn-edit">Edit</button>
                         </div>
                     </div>
 
@@ -114,7 +117,7 @@
                             <lable for="LaS-address-display"><b>$customer-address</b></lable>
                         </div>
                         <div class="account-col-20">
-                            <button type="edit" class="account-btn-edit">Edit</button>
+                            <button type="form-edit" class="account-btn-edit">Edit</button>
                         </div>
                     </div>
                 </div>
@@ -152,8 +155,8 @@
                                 </div>
                             </div>
                             <div class="account-col-20">
-                                <button type="review">Write a Review</button>
-                                <button type="buy-again">Buy it Again</button>
+                                <button type="form-review">Write a Review</button>
+                                <button type="form-buy-again">Buy it Again</button>
                             </div>
                         </div>
                     </div>
@@ -186,8 +189,8 @@
                                 </div>
                             </div>
                             <div class="account-col-20">
-                                <button type="review">Write a Review</button>
-                                <button type="buy-again">Buy it Again</button>
+                                <button type="form-review">Write a Review</button>
+                                <button type="form-buy-again">Buy it Again</button>
                             </div>
                         </div>
                     </div>
@@ -220,8 +223,8 @@
                                 </div>
                             </div>
                             <div class="account-col-20">
-                                <button type="review">Write a Review</button>
-                                <button type="buy-again">Buy it Again</button>
+                                <button type="form-review">Write a Review</button>
+                                <button type="form-buy-again">Buy it Again</button>
                             </div>
                         </div>
                     </div>
@@ -239,8 +242,8 @@
             <div class="payment-tab-container">
                 <div class="account-col-20">
                     <div class="payment-tabs">
-                        <button class="paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option 1</button>
-                        <button class="paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add Payment Option</button>
+                        <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option 1</button>
+                        <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add Payment Option</button>
                     </div>
                 </div>
                 <div class="account-col-80">
@@ -317,9 +320,9 @@
                                     <span class="wishlist-item-price"> $65.65</span>
                                 </label>
                                 <hr>
-                                <button type="buy-now">Buy Now</button>
-                                <button type="add-to-cart">Add to Cart</button>
-                                <button type="remove">Remove</button>
+                                <button type="form-buy-now">Buy Now</button>
+                                <button type="form-add-to-cart">Add to Cart</button>
+                                <button type="form-remove">Remove</button>
                             </div>
                         </div>
                     </div>
@@ -329,6 +332,67 @@
             </form>
         </div>
     </div>
+
+    <!--Footer-->
+    <footer>
+        <div class="footer-container">
+
+            <section>
+                <div class="footer-row">
+                    <h6>
+                        <a href="home.html">Home</a>
+                    </h6>
+                    <h6>
+                        <a href="aboutUs.html">About Us</a>
+                    </h6>
+                    <h6>
+                        <a href="books.html">Books</a>
+                    </h6>
+                    <h6>
+                        <a href="account.html">Account</a>
+                    </h6>
+                </div>
+            </section>
+
+            <hr>
+
+            <section>
+                <div class="footer-row">
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta, aliquam sequi voluptate quas.</p>
+                </div>
+            </section>
+
+            <section>
+                <div class="footer-row" id="newsletter">
+                    <form action="">
+                        <p>Join our newsletter</p>
+                        <input type="email" placeholder="johndoe@mail.com" />
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </div>
+            </section>
+
+            <section class="icons">
+                <a href="">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+                    <i class="fab fa-github"></i>
+                </a>
+            </section>
+
+            <div class="credits">
+                <p>Boogle 2021: Software Engineering Methods</p>
+            </div>
+
+        </div>
+    </footer>
 </body>
 
 </html>

@@ -1,5 +1,8 @@
 .checkout-page-container {
+    margin: auto;
     margin-top: 10px;
+    margin-bottom: 20px;
+    width: 90%;
 }
 
 .checkout-row {
