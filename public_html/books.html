@@ -54,34 +54,34 @@
         </nav>
       </header>
 
-      <div class="books-content-container">
-        <form action="" method="get">
-          <div class="books-col-20">
-            <div class="tabs">
-              <button class="tablinks" onClick="openForm(event, 'html')">HTML Textbooks</button>
-              <button class="tablinks" onClick="openForm(event, 'sql')">SQL Textbooks</button>
-              <button class="tablinks" onClick="openForm(event, 'js')">JavaScript Textbooks</button>
+      <form action="" method="get"></form>
+        <div class="books-content-container">
+        
+          <div class="books-row">
+            <div class="books-col-20">
+              <div class="tabs">
+                <button class="tablinks" onClick="openForm(event, 'html')">HTML Textbooks</button>
+                <button class="tablinks" onClick="openForm(event, 'sql')">SQL Textbooks</button>
+                <button class="tablinks" onClick="openForm(event, 'js')">JavaScript Textbooks</button>
+              </div>
+            </div>
+
+            <div class="books-col-80">
+              <div id="html" class="tabContent">
+                <p>HTML</p>
+              </div>
+
+              <div id="sql" class="tabContent">
+                <p>SQL</p>
+              </div>
+
+              <div id="js" class="tabContent">
+                <p>JS</p>
+              </div>
+            </div>
           </div>
         </div>
-
-        <div class="books-col-80">
-
-          <div id="html" class="tabContent">
-            <p>HTML</p>
-          </div>
-
-          <div id="sql" class="tabContent">
-            <p>SQL</p>
-          </div>
-
-          <div id="js" class="tabContent">
-            <p>JS</p>
-          </div>
-
-        </div>
-
-        </form>
-      </div>
+      </form>
 
       <!--Footer-->
       <footer>
