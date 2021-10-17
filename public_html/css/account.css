@@ -3,6 +3,7 @@
 .account-content-tab-container {
     width: 70%;
     margin: auto;
+    margin-top: 10px;
 }
 
 .account-row {
