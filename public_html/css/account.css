@@ -99,7 +99,7 @@ label {
     border-radius: 5px;
 }
 
-button[type=edit] {
+button[type=form-edit] {
     background-color: #778899;
     color: #FFFAF3;
     margin-top: 10px;
@@ -150,8 +150,8 @@ img {
     height: 180px;
 }
 
-button[type=review],
-button[type=buy-again] {
+button[type=form-review],
+button[type=form-buy-again] {
     background-color: #778899;
     color: #FFFAF3;
     margin-top: 10px;
@@ -265,9 +265,9 @@ input[type=text] {
     padding: 10px 20px 15px 20px;
 }
 
-button[type=buy-now],
-button[type=add-to-cart],
-button[type=remove] {
+button[type=form-buy-now],
+button[type=form-add-to-cart],
+button[type=form-remove] {
     background-color: #778899;
     color: #FFFAF3;
     margin-top: 10px;
