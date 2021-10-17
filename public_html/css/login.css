@@ -12,6 +12,7 @@
 .login-row {
   display: flex;
   flex-wrap: wrap;
+  margin-bottom: 1em;
 }
 
 .login-col-45 {
@@ -53,12 +54,12 @@ button.tablinks {
 
 /*Form Contents*/
 
-form {
+.user-loging-signup-tab-container form {
   display: flex;
   flex-wrap: wrap;
 }
 
-label {
+.user-loging-signup-tab-container label {
   width: 100%;
   display: block;
   font-size: 18px;
@@ -74,6 +75,12 @@ input[type="password"] {
   border-bottom: 2px solid #778899;
 }
 
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #ecd5b3;
+  transition: 0.3s;
+}
+
 #signup-fname,
 #signup-lname {
   width: 85%;
@@ -84,21 +91,30 @@ input[type="password"] {
 }
 
 button[type="form-submit"],
-button[type="cancle"] {
+button[type="cancel"] {
   background-color: #778899;
   color: #fffaf3;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  margin-right: 5px;
+  font-weight: bold;
+  margin: 1em auto;
   padding: 15px;
   width: 48%;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 button[type="form-submit"]:hover,
-button[type="cancle"]:hover {
-  background-color: gray;
+button[type="cancel"]:hover {
+  background-color: #ecd5b3;
+  cursor: pointer;
+}
+
+button[type="form-submit"],
+button[type="cancel"],
+button[type="form-submit"]:after,
+button[type="cancel"]:after,
+button[type="form-submit"]:before,
+button[type="cancel"]:before {
+  transition: all 0.5s;
 }
 
 span.psw {
