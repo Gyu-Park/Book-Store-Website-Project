@@ -11,7 +11,7 @@
 
 
     <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
-    <script src="js/login.js"></script>
+    <script src="js/login.js" defer></script>
 
 
     <title>Login | Boogle.com</title>
@@ -38,8 +38,8 @@
                         <form action="" class="search-bar">
                             <input type="search" name="search-bar" placeholder="Search...">
                             <button type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
+                                <i class="fas fa-search"></i>
+                            </button>
                         </form>
                     </div>
 
@@ -62,7 +62,7 @@
     <div class="user-loging-signup-tab-container">
         <div class="login-row">
             <div class="tabs">
-                <button class="tablinks" onClick="openForm(event, 'login')">Login</button>
+                <button class="tablinks" id="tablinks-Login-Active" onClick="openForm(event, 'login')">Login</button>
                 <button class="tablinks" onClick="openForm(event, 'signUp')">Sign Up</button>
             </div>
         </div>
