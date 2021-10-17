@@ -124,7 +124,7 @@ header nav li a:hover:after,
 }
 
 .search-bar input[type="search" i] {
-  width: 85%;
+  width: 80%;
 }
 
 .search-bar input,
@@ -158,5 +158,16 @@ header nav li a:hover:after,
 
 .search-bar input:focus {
   outline: 0;
-  width: 90%;
+  width: 85%;
+}
+
+@media screen and (max-width: 1500px) {
+  .search-bar input[type="search" i] {
+    width: 80%;
+  }
+
+  .search-bar input:focus {
+    outline: 0;
+    width: 85%;
+  }
 }
