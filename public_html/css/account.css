@@ -96,6 +96,12 @@ button.tablinks {
   transition: 0.3s ease-out;
 }
 
+.account-content-tab-container hr {
+  background-color: #ecd5b3;
+  border-color: #ecd5b3;
+  border-style: ridge;
+}
+
 /*Form Contents*/
 
 .account-content-tab-container form {
@@ -198,7 +204,7 @@ button[type="form-buy-again"] {
 
 .payment-tabs {
   float: left;
-  border-right: 2px solid #778899;
+  border-right: 2px solid #ecd5b3;
   height: 500px;
 }
 
@@ -249,6 +255,11 @@ input[type="text"] {
   border-radius: 0.2em;
 }
 
+input[type="text"]:focus {
+  border: 2px solid #ecd5b3;
+  transition: 0.3s;
+}
+
 .payment-btn {
   background-color: #778899;
   color: white;
@@ -256,9 +267,20 @@ input[type="text"] {
   border: none;
   margin-left: 16px;
   width: 63%;
-  font-size: 15px;
-
+  font-size: 1em;
+  font-weight: bold;
   border-radius: 0.2em;
+  cursor: pointer;
+}
+
+.payment-btn:hover {
+  background-color: #ecd5b3;
+}
+
+.payment-btn,
+.payment-btn:after,
+.payment-btn:before {
+  transition: 0.3s;
 }
 
 /*Wish List Content Styles*/
