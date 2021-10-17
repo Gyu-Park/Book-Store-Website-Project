@@ -49,6 +49,9 @@ footer {
 /* hr style */
 .footer-container hr {
   width: 95%;
+  background-color: #ecd5b3;
+  border-color: #ecd5b3;
+  border-style: ridge;
 }
 
 /* Footer p style */
@@ -90,6 +93,7 @@ footer {
 #newsletter button {
   background-color: #ecd5b3;
   color: #fffaf3;
+  cursor: pointer;
 }
 
 #newsletter input,
