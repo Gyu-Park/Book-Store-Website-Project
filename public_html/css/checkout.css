@@ -1,3 +1,7 @@
+.checkout-page-container {
+    margin-top: 10px;
+}
+
 .checkout-row {
     display: flex;
     flex-wrap: wrap;
