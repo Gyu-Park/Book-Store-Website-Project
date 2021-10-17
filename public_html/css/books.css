@@ -1,0 +1,45 @@
+.books-content-container {
+  width: 95%;
+  margin: auto;
+  margin-top: 10px;
+  height: 100vh;
+}
+
+.books-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.books-col-80 {
+  flex: 80%;
+}
+
+.books-col-20 {
+  flex: 20%;
+}
+
+/*Tab Styles*/
+
+.tabs {
+  float: left;
+  overflow: hidden;
+  border-right: 2px solid #778899;
+  height: 500px;
+}
+
+.tabs button {
+  background-color: #778899;
+  color: #FFFAF3;
+  margin-top: 10px;
+  padding: 10px;
+  width: 95%;
+  height: auto;
+  border: none;
+  border-radius: 5px;
+}
+
+.tabContent {
+  margin-right: 10px;
+  padding: 10px 20px 15px 20px;
+  display: none;
+}
