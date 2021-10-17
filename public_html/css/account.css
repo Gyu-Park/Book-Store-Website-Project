@@ -10,7 +10,6 @@
 .account-row {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -15;
 }
 
 .account-col-80 {
@@ -32,8 +31,7 @@
 .tabs {
   overflow: hidden;
   width: 100%;
-  border-bottom: 1px solid #778899;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 .tablinks {
@@ -43,16 +41,17 @@
   width: 25%;
   outline: none;
   cursor: pointer;
-  padding: 14px 16px;
+  padding: 0.5em;
   transition: 0.3s;
 }
 
 button.tablinks {
   color: #fffaf3;
+  font-size: 1em;
 }
 
 .tablinks:hover {
-  background-color: lightgrey;
+  background-color: #516272;
 }
 
 .tabContent {
@@ -72,9 +71,34 @@ button.tablinks {
   display: flex;
 }
 
+.account-content-tab-container button {
+  font-weight: bold;
+  color: #fffaf3;
+}
+
+.tabContent button,
+.tabContent button:after,
+.tabContent button:before {
+  transition: 0.3s;
+}
+
+.tabContent button:hover {
+  background-color: #ecd5b3;
+}
+
+#tablinks-LoginSec-Active,
+#tablinks-Orders-Active,
+#tablinks-PaymentOpt-Active,
+#tablinks-WishList-Active {
+  color: #ecd5b3;
+  background-color: #516272;
+  font-weight: bold;
+  transition: 0.3s ease-out;
+}
+
 /*Form Contents*/
 
-form {
+.account-content-tab-container form {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -96,7 +120,7 @@ label {
   padding: 10px 20px 15px 20px;
   margin-bottom: 10px;
   border: 2px solid #778899;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 button[type="form-edit"] {
@@ -106,7 +130,7 @@ button[type="form-edit"] {
   padding: 10px;
   width: 100%;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 /*Orders Content Styles*/
@@ -117,7 +141,7 @@ button[type="form-edit"] {
   flex: 100%;
   padding: 10px 20px 15px 20px;
   border: 2px solid #778899;
-  border-radius: 5px;
+  border-radius: 0.2em;
   margin-bottom: 15px;
 }
 
@@ -157,7 +181,7 @@ button[type="form-buy-again"] {
   padding: 10px;
   width: 100%;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 /*Payment Options Content Styles*/
@@ -186,7 +210,7 @@ button[type="form-buy-again"] {
   width: 95%;
   height: auto;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 .paymentTabContent {
@@ -222,7 +246,7 @@ input[type="text"] {
   border: none;
   outline: none;
   border: 2px solid #778899;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 .payment-btn {
@@ -233,7 +257,8 @@ input[type="text"] {
   margin-left: 16px;
   width: 63%;
   font-size: 15px;
-  border-radius: 5px;
+
+  border-radius: 0.2em;
 }
 
 /*Wish List Content Styles*/
@@ -271,21 +296,11 @@ button[type="form-remove"] {
   padding: 10px;
   width: 100%;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 span {
   float: right;
   color: black;
   padding-right: 5px;
-}
-
-#tablinks-LoginSec-Active,
-#tablinks-Orders-Active,
-#tablinks-PaymentOpt-Active,
-#tablinks-WishList-Active {
-  color: #ecd5b3;
-  background-color: #516272;
-  font-weight: bold;
-  transition: 0.3s ease-out;
 }
