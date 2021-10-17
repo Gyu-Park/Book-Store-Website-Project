@@ -13,4 +13,16 @@ function openForm(evt, formName) {
 
     document.getElementById(formName).style.display = "block";
     evt.currentTarget.className += " active";
+
+    if (evt.currentTarget.id == "tablinks-Login") {
+        if (document.getElementById('tablinks-SignUp-Active')) {
+            document.getElementById('tablinks-SignUp-Active').id = 'tablinks-SignUp';
+        }
+        document.getElementById('tablinks-Login').id = 'tablinks-Login-Active';
+    } else if (evt.currentTarget.id == "tablinks-SignUp") {
+        if (document.getElementById('tablinks-Login-Active')) {
+            document.getElementById('tablinks-Login-Active').id = 'tablinks-Login';
+        }
+        document.getElementById('tablinks-SignUp').id = 'tablinks-SignUp-Active';
+    }
 }
