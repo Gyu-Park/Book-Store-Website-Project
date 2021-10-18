@@ -1,5 +1,5 @@
 .books-content-container {
-  width: 98%;
+  width: 90%;
   margin: auto;
   margin-top: 10px;
   height: 100vh;
@@ -19,10 +19,6 @@
 }
 
 /*Tab Styles*/
-form {
-  display: flex;
-  flex-wrap: wrap;
-}
 
 .tabs {
   float: left;
@@ -40,6 +36,7 @@ form {
   height: auto;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .tabContent {
@@ -50,4 +47,41 @@ form {
 
 #html {
   display: flex;
+}
+
+/*Template Styles*/
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.html-textbook-item {
+  border: 2px solid #778899;
+  border-radius: 5px;
+  margin: 10px;
+}
+
+.item-img {
+  margin: 10px;
+}
+
+img {
+  width: 280px;
+  height: 300px;
+  border-radius: 5px;
+}
+
+.item-details {
+  margin-left:10px;
+  margin-right:10px;
+}
+
+.item-details h4, p {
+  margin-bottom: 4px;
+  margin-top: 4px;
 }
