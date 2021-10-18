@@ -23,20 +23,32 @@
 .tabs {
   float: left;
   overflow: hidden;
-  border-right: 2px solid #778899;
+  border-right: 2px solid #ecd5b3;
   height: 95vh;
 }
 
 .tabs button {
   background-color: #778899;
-  color: #FFFAF3;
+  color: #fffaf3;
   margin-top: 10px;
-  padding: 10px;
+  padding: 1em;
   width: 95%;
   height: auto;
   border: none;
-  border-radius: 5px;
+  border-radius: 0.2em;
   cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.tabs button,
+.tabs button:after,
+.tabs button:before {
+  transition: 0.3s;
+}
+
+.tabs button:hover {
+  background-color: #ecd5b3;
 }
 
 .tabContent {
@@ -61,27 +73,45 @@
 }
 
 .html-textbook-item {
-  border: 2px solid #778899;
-  border-radius: 5px;
+  border: 2px solid #e8eef3;
+  background-color: #e8eef3;
+  border-radius: 0.2em;
   margin: 10px;
+}
+
+.html-textbook-item,
+.html-textbook-item:after,
+.html-textbook-item:before {
+  transition: 0.3s;
+}
+.html-textbook-item:hover {
+  background-color: #fff0db;
+  border-color: #fff0db;
+}
+
+.html-textbook-item hr {
+  background-color: #778899;
+  border-color: #778899;
+  border-style: ridge;
 }
 
 .item-img {
   margin: 10px;
 }
 
-img {
+.item-img img {
   width: 280px;
   height: 300px;
-  border-radius: 5px;
+  border-radius: 0.2em;
 }
 
 .item-details {
-  margin-left:10px;
-  margin-right:10px;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
-.item-details h4, p {
+.item-details h4,
+p {
   margin-bottom: 4px;
   margin-top: 4px;
 }
