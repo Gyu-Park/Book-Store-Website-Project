@@ -69,7 +69,6 @@ function fillInAddress() {
   // After filling the form with address components from the Autocomplete
   // prediction, set cursor focus on the second address line to encourage
   // entry of subpremise information such as apartment, unit, or floor number.
-  address2Field.focus();
 }
 
 
