@@ -1,5 +1,5 @@
 .product-content-container {
-    width: 80%;
+    width: 90%;
     margin: auto;
     margin-top: 15px;
     height: 100vh;
@@ -26,6 +26,17 @@
     flex: 30%;
 }
 
+/*Img properties*/
+.product-img-container {
+    display: flex;
+    margin: 0px;
+    justify-content: center;
+}
+
+img {
+    max-width: 95%;
+    height: auto;
+}
 
 /*Title and Description / Options*/
 
