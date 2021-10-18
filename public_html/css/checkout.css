@@ -92,3 +92,7 @@ span.cart-price {
 .pac-item:hover {
   background-color: #ecd5b3;
 }
+
+.pac-item-selected {
+  background-color: #ecd5b3;
+}
