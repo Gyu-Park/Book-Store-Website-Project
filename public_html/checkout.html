@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
     <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
     <link rel="stylesheet" href="css/checkout.css">
@@ -62,10 +62,11 @@
         <div class="checkout-row">
             <div class="checkout-col-70">
                 <div class="checkout-container">
-                    <form action="">
-
+    
+                    <form action="" method="post">
                         <div class="checkout-row">
                             <div class="checkout-col-50">
+                                <div class="checkout-input-container">
                                 <h3>Shipping Information</h3>
                                 <label for="full-name"><i class="fa fa-user"></i> Full Name</label>
                                 <input type="text" id="full-name" placeholder="John Doe">
@@ -77,7 +78,7 @@
                                 <input type="text" id="address" placeholder="1 Madeup Ln">
                                 <label for="City"><i class="fa fa-city"></i> City</label>
                                 <input type="text" id="city" placeholder="New York">
-
+    
                                 <div class="checkout-row">
                                     <div class="checkout-col-50">
                                         <label for="state">State</label>
@@ -88,8 +89,9 @@
                                         <input type="text" id="zip-code" placeholder="10001">
                                     </div>
                                 </div>
+                                </div>
                             </div>
-
+    
                             <div class="checkout-col-50">
                                 <h3>Payment Information</h3>
                                 <label for="fname">Accepted Cards</label>
@@ -106,7 +108,7 @@
                                 <input type="text" id="cc-num" placeholder="1111-2222-3333-4444">
                                 <label for="cc-exp-month">Exp Month</label>
                                 <input type="text" id="cc-exp-month" placeholder="November">
-
+    
                                 <div class="checkout-row">
                                     <div class="checkout-col-50">
                                         <label for="cc-exp-year">Exp Year</label>
@@ -124,7 +126,6 @@
                     </form>
                 </div>
             </div>
-
             <div class="checkout-col-30">
                 <div class="checkout-container">
                     <h4>Cart
