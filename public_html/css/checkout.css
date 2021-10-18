@@ -76,3 +76,19 @@ span.cart-price {
   border-color: #ecd5b3;
   transition: 0.3s;
 }
+
+/* Google Places API Autocomplete */
+.pac-icon {
+  display: none;
+}
+
+.pac-item {
+  padding: 6px;
+  font-size: 12px;
+  cursor: pointer;
+  border-color: lightslategray;
+}
+
+.pac-item:hover {
+  background-color: #ecd5b3;
+}
