@@ -74,6 +74,7 @@ button.tablinks {
 .account-content-tab-container button {
   font-weight: bold;
   color: #fffaf3;
+  cursor: pointer;
 }
 
 .tabContent button,
