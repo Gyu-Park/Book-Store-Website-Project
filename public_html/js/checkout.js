@@ -19,6 +19,14 @@ function initAutocomplete() {
   // When the user selects an address from the drop-down, populate the
   // address fields in the form.
   autocomplete.addListener("place_changed", fillInAddress);
+
+  var input = document.getElementById('address');
+  google.maps.event.addDomListener(input, 'keydown', function(event) { 
+    if (event.keyCode === 13) { 
+        event.preventDefault();
+        fillInAddress();
+    }
+  }); 
 }
 
 function fillInAddress() {
@@ -70,10 +78,3 @@ function fillInAddress() {
   // prediction, set cursor focus on the second address line to encourage
   // entry of subpremise information such as apartment, unit, or floor number.
 }
-
-
-/*
-var ac = new google.maps.places.Autocomplete(document.getElementById('address'), {
-    componentRestrictions: {'country': ['us']}
-});
-console.log(ac); */
