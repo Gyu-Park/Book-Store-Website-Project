@@ -40,7 +40,9 @@ img {
 
 /*Title and Description / Options*/
 
-.product-BO-price, .product-avalibility, .product-BO-shop-options  {
+.product-BO-price, 
+.product-avalibility, 
+.product-BO-shop-options  {
     margin: 5px 5px 0px 5px;
 }
 
