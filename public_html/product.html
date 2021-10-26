@@ -65,7 +65,7 @@
       <!--Img Container-->
       <div class="product-col-30">
         <div class="product-img-container">
-          <img src="img/PracticalSQL.jpg" alt="">
+          <img src="img/PracticalSQL.jpg" alt="" id="product-item-img">
         </div>
       </div>
 
@@ -76,9 +76,9 @@
           <div class="product-col-60">
             <div class="product-row">
               <div class="product-title-author-container">
-                <h2>The Practical SQL (Using Structured Query Language)</h2>
-                <p>Judith S. Bowman | Sandra L. Emerson | Marsy Darnovsky</p>
-                <p>Price: $450.00</p>
+                <h2 id="product-item-title">The Practical SQL (Using Structured Query Language)</h2>
+                <p id="product-item-authors">Judith S. Bowman | Sandra L. Emerson | Marsy Darnovsky</p>
+                <p id="product-item-price">Price: $450.00</p>
               </div>
             </div>
             <hr>
@@ -96,7 +96,8 @@
             <hr>
             <div class="product-row">
               <div class="product-description-container">
-                <p>&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
+                <p id="product-item-description">&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit, sed
                   do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing commodo
                   elit at imperdiet. Vestibulum lectus mauris ultrices
                   eros in cursus turpis. Lectus arcu bibendum at varius vel pharetra vel turpis nunc.
@@ -115,7 +116,7 @@
             <div class="product-buy-options">
               <div class="product-row">
                 <div class="product-BO-price">
-                  <p>Price: $450.00</p>
+                  <p id="product-item-price">Price: $450.00</p>
                 </div>
               </div>
               <hr>
@@ -127,7 +128,7 @@
               <hr>
               <div class="product-row">
                 <div class="product-BO-shop-options">
-                  <label for="item-qty">Qty: </label>
+                  <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
                   <input type="number" id="item-qty" value="1">
                   <button type="product-submit">Add to Cart</button>
                   <button type="product-submit">Buy Now</button>
@@ -180,7 +181,30 @@
         </div>
 
         <div class="review-modal-row">
-          <p>test</p>
+
+          <div class="review-modal-content">
+            <h3>Leave a Customer Review</h3>
+            <hr>
+            <div class="star-rating-container">
+              <i class="far fa-star" id="customerReviewS1"></i>
+              <i class="far fa-star" id="customerReviewS2"></i>
+              <i class="far fa-star" id="customerReviewS3"></i>
+              <i class="far fa-star" id="customerReviewS4"></i>
+              <i class="far fa-star" id="customerReviewS5"></i>
+            </div>
+            <hr>
+            <div class="customer-review-description">
+              <p>Review Title</p>
+              <input type="customer-review-title" name="" id="customer-review-title">
+              <p>Write a Description</p>
+              <textarea type="customer-review-description" name="" id="customer-review-description"></textarea>
+            </div>
+            <hr>
+            <div class="customer-review-submit">
+              <button type="customer-review-submit">Submit Review</button>
+            </div>
+
+          </div>
         </div>
 
       </form>
