@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
 
+  <script src="js/product.js" defer></script>
   <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
   <!--Title will be injected based on book title-->
@@ -133,6 +134,15 @@
                   <button type="product-submit">Add to Wish List</button>
                 </div>
               </div>
+              <hr>
+              <div class="product-row">
+                <div class="product-BO-shareItem">
+                  <p>Share Item</p>
+                  <a href=""><i class="fab fa-facebook-f"></i></a>
+                  <a href=""><i class="fab fa-twitter"></i></a>
+                  <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -147,6 +157,9 @@
       <div class="similar-item-container">
         <div class="product-row">
           <h2>Similar Items</h2>
+          <div class="similar-item-slideshow">
+
+          </div>
         </div>
         <hr>
 
@@ -154,6 +167,26 @@
     </div>
 
     <!--Reviews Conteiner-->
+    <!--Write a Review Modal From-->
+    <div id="product-review-modal-form" class="review-modal">
+
+      <form class="form-modal-review animate" action="" method="post">
+
+        <div class="review-modal-row">
+          <div class="modal-close">
+            <span onclick="document.getElementById('product-review-modal-form').style.display='none'" class="close"
+              title="Close Review Form">&times;</span>
+          </div>
+        </div>
+
+        <div class="review-modal-row">
+          <p>test</p>
+        </div>
+
+      </form>
+    </div>
+
+    <!--Reviews-->
     <div class="product-row">
       <div class="review-container">
         <div class="produuct-row">
@@ -163,7 +196,9 @@
             <i class="fas fa-star"></i>
             <i class="fas fa-star"></i>
             <i class="far fa-star"></i>
-            <span class="right-span"><button type="generate-review">Write A Review</button></span>
+            <span class="right-span"><button type="generate-review"
+                onClick="document.getElementById('product-review-modal-form').style.display='block'">
+                Write A Review</button></span>
           </h2>
         </div>
         <hr>
