@@ -14,3 +14,14 @@ function openForm(evt, formName) {
     document.getElementById(formName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+let allTabs = document.querySelectorAll(".tablinks");
+
+allTabs.forEach(function(tab) {
+
+    tab.addEventListener('click', () => {
+        allTabs.forEach(b => b.removeAttribute("id"));
+        tab.setAttribute('id', 'active');
+    });
+
+});

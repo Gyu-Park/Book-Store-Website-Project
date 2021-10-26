@@ -84,7 +84,7 @@ button.tablinks {
 }
 
 .tabContent button:hover {
-  background-color: #ecd5b3;
+  background-color: #b09979;
 }
 
 #tablinks-LoginSec-Active,
@@ -275,7 +275,7 @@ input[type="text"]:focus {
 }
 
 .payment-btn:hover {
-  background-color: #ecd5b3;
+  background-color: #b09979;
 }
 
 .payment-btn,

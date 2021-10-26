@@ -62,9 +62,14 @@ label {
 }
 
 .checkout-btn:hover {
-  background-color: #ecd5b3;
-  transition: 0.3s;
+  background-color: #b09979;
   cursor: pointer;
+}
+
+.checkout-btn,
+.checkout-btn:after,
+.checkout-btn:before {
+  transition: 0.5s;
 }
 
 span.cart-price {

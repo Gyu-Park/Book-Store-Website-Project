@@ -54,6 +54,18 @@ button.tablinks {
   display: flex;
 }
 
+#tablinks-Login-Active {
+  color: #ecd5b3;
+  background-color: #516272;
+  transition: 0.3s ease-out;
+}
+
+#tablinks-SignUp-Active {
+  color: #ecd5b3;
+  background-color: #516272;
+  transition: 0.3s ease-out;
+}
+
 /*Form Contents*/
 
 .user-loging-signup-tab-container form {
@@ -106,7 +118,7 @@ button[type="cancel"] {
 
 button[type="form-submit"]:hover,
 button[type="cancel"]:hover {
-  background-color: #ecd5b3;
+  background-color: #b09979;
   cursor: pointer;
 }
 
@@ -122,16 +134,4 @@ button[type="cancel"]:before {
 span.psw {
   float: right;
   font-size: 12px;
-}
-
-#tablinks-Login-Active {
-  color: #ecd5b3;
-  background-color: #516272;
-  transition: 0.3s ease-out;
-}
-
-#tablinks-SignUp-Active {
-  color: #ecd5b3;
-  background-color: #516272;
-  transition: 0.3s ease-out;
 }
