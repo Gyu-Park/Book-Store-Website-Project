@@ -2,70 +2,140 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/product.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/footer.css">
 
-    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
-    <!--Title will be injected based on book title-->
-    <title>The Practical SQL | Boogle.com</title>
+  <!--Title will be injected based on book title-->
+  <title>The Practical SQL | Boogle.com</title>
 </head>
 
 <body>
-    <!--Navigation Header-->
-    <header>
-        <!-- add the "current" id to the li element of the active page -->
-        <nav>
-            <div class="nav-row">
-                <div class="container">
 
-                    <div class="left">
-                        <ul>
-                            <li class="logo"><a href="home.html"><i class="fas fa-book-reader"></i></a></li>
-                            <li><a href="home.html">Home</a></li>
-                            <li><a href="aboutUs.html">About Us</a></li>
-                            <li><a href="books.html">Books</a></li>
-                        </ul>
-                    </div>
+  <!--Navigation Header-->
+  <header>
 
-                    <div class="center">
-                        <form action="" class="search-bar">
-                            <input type="search" name="search-bar" placeholder="Search...">
-                            <button type="submit">
-                    <i class="fas fa-search"></i>
-                  </button>
-                        </form>
-                    </div>
+    <div class="nav-container">
+      <div class="logo">
+        <a href="home.html"><i class="fas fa-book-reader"></i></a>
+      </div>
 
-                    <div class="right">
-                        <ul>
-                            <li class="button">
-                                <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
-                            </li>
-                            <li><a href="login.html">Sign in</a></li>
-                            <li><a href="account.html">Account</a></li>
-                        </ul>
-                    </div>
+      <!-- add the "current" id to the li element of the active page -->
+      <nav>
+        <div class="left">
+          <ul>
+            <li><a href="home.html">Home</a></li>
+            <li><a href="aboutUs.html">About Us</a></li>
+            <li><a href="books.html">Books</a></li>
+          </ul>
+        </div>
 
-                </div>
-            </div>
-        </nav>
-    </header>
+        <div class="center">
+          <form action="" class="search-bar">
+            <input type="search" name="search-bar" placeholder="Search...">
+            <button type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
 
-    <!--Product Body Content-->
-    <div class="product-content-container">
+        <div class="right">
+          <ul>
+            <li class="button">
+              <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+            </li>
+            <li><a href="login.html">Sign in</a></li>
+            <li><a href="account.html">Account</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <!--Product Body Content-->
+  <div class="product-content-container">
+    <div class="product-row">
+
+      <!--Img Container-->
+      <div class="product-col-30">
+        <div class="product-img-container">
+          <img src="img/PracticalSQL.jpg" alt="">
+        </div>
+      </div>
+
+      <div class="product-col-70">
         <div class="product-row">
 
-            <!--Img Container-->
-            <div class="product-col-30">
-                <div class="product-img-container">
-                    <img src="img/PracticalSQL.jpg" alt="">
-                </div>
+          <!--Title and Description / Options-->
+          <div class="product-col-60">
+            <div class="product-row">
+              <div class="product-title-author-container">
+                <h2>The Practical SQL (Using Structured Query Language)</h2>
+                <p>Judith S. Bowman | Sandra L. Emerson | Marsy Darnovsky</p>
+                <p>Price: $450.00</p>
+              </div>
             </div>
+            <hr>
+            <div class="checkout-row">
+              <div class="product-rating-container">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <a href="">Reviews</a>
+                <span class="right-span">Ratings | 245</span>
+              </div>
+            </div>
+            <hr>
+            <div class="product-row">
+              <div class="product-description-container">
+                <p>&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Adipiscing commodo elit at imperdiet. Vestibulum
+                  lectus mauris ultrices eros in cursus turpis. Lectus arcu bibendum at varius vel pharetra vel turpis
+                  nunc. Duis ut diam quam nulla porttitor massa id neque aliquam.</p>
+              </div>
+            </div>
+            <hr>
+            <div class="product-row">
+              <p>Product Options</p>
+            </div>
+
+          </div>
+
+          <!--Buy Option Menu-->
+          <div class="product-col-40">
+            <div class="product-buy-options">
+              <div class="product-row">
+                <div class="product-BO-price">
+                  <p>Price: $450.00</p>
+                </div>
+              </div>
+              <hr>
+              <div class="product-row">
+                <div id="item-Avaliable" class="product-avalibility">
+                  <p>In Stock</p>
+                </div>
+              </div>
+              <hr>
+              <div class="product-row">
+                <div class="product-BO-shop-options">
+                  <label for="item-qty">Qty: </label>
+                  <input type="number" id="item-qty" value="1">
+                  <button type="product-submit">Add to Cart</button>
+                  <button type="product-submit">Buy Now</button>
+                  <button type="product-submit">Add to Wish List</button>
+                </div>
+              </div>
+              
+            </div>
+          </div>
 
             <div class="product-col-70">
                 <div class="product-row">
@@ -163,6 +233,7 @@
 
             </div>
         </div>
+        <hr>
 
         <!--Reviews Conteiner-->
         <div class="product-row">
@@ -181,8 +252,8 @@
             </div>
         </div>
 
-    </div>
-
+      <hr>
+        
     <!--Footer-->
     <footer>
         <div class="footer-container">

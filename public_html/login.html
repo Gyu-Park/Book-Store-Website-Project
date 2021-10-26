@@ -21,42 +21,43 @@
 <body>
     <!--Navigation Header-->
     <header>
-        <!-- add the "current" id to the active page -->
-        <nav>
-            <div class="nav-row">
-                <div class="container">
 
-                    <div class="left">
-                        <ul>
-                            <li class="logo"><a href="home.html"><i class="fas fa-book-reader"></i></a></li>
-                            <li><a href="home.html">Home</a></li>
-                            <li><a href="aboutUs.html">About Us</a></li>
-                            <li><a href="books.html">Books</a></li>
-                        </ul>
-                    </div>
-
-                    <div class="center">
-                        <form action="" class="search-bar">
-                            <input type="search" name="search-bar" placeholder="Search...">
-                            <button type="submit">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-                    </div>
-
-                    <div class="right">
-                        <ul>
-                            <li class="button">
-                                <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
-                            </li>
-                            <li id="current"><a href="signIn.html">Sign in</a></li>
-                            <li><a href="account.html">Account</a></li>
-                        </ul>
-                    </div>
-
-                </div>
+        <div class="nav-container">
+            <div class="logo">
+                <a href="home.html"><i class="fas fa-book-reader"></i></a>
             </div>
-        </nav>
+
+            <!-- add the "current" id to the li element of the active page -->
+            <nav>
+                <div class="left">
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="aboutUs.html">About Us</a></li>
+                        <li><a href="books.html">Books</a></li>
+                    </ul>
+                </div>
+
+                <div class="center">
+                    <form action="" class="search-bar">
+                        <input type="search" name="search-bar" placeholder="Search...">
+                        <button type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
+                </div>
+
+                <div class="right">
+                    <ul>
+                        <li class="button">
+                            <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+                        </li>
+                        <li id="current"><a href="login.html">Sign in</a></li>
+                        <li><a href="account.html">Account</a></li>
+                    </ul>
+                </div>
+            </nav>
+
+        </div>
     </header>
 
     <!--Login/SignUp Body-->
