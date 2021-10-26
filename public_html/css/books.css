@@ -48,7 +48,13 @@
 }
 
 .tabs button:hover {
-  background-color: #ecd5b3;
+  background-color: #516272;
+}
+
+.tabs button#active {
+  color: #ecd5b3;
+  background-color: #516272;
+  transition: 0.3s ease-out;
 }
 
 .tabContent {
