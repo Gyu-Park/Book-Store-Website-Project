@@ -113,7 +113,6 @@ body {
   margin-bottom: 0;
   height: 410px;
   width: 320px;
-  border-radius: 15px;
   display: flex;
   flex-direction: column;
   transition: 0.3s ease-in;
@@ -121,7 +120,7 @@ body {
 
 .bestSellerGrid img {
   border: solid #778899;
-  border-radius: 10px;
+  border-radius: 0.2em;
   width: 250px;
   height: 300px;
   margin-left: auto;
