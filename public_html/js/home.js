@@ -25,7 +25,7 @@ sectionOneObserver.observe(sectionOne);
 
 /** Slide show **/
 const slidesShowImages = document.querySelectorAll(".slideShow-img");
-const nextImageDelay = 5000;
+const nextImageDelay = 15000;
 let currentImageCounter = 0;
 
 slidesShowImages[currentImageCounter].style.opacity = 1;
