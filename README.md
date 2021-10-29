@@ -1,4 +1,4 @@
-# Online Bookstore Project (Software Engineering Method)
+## Online Bookstore Project (Software Engineering Method)
 
 ## Group Members
 - Raymond Lin
