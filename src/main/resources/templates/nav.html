@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
   <meta charset="UTF-8">
@@ -22,9 +22,9 @@
       <nav>
         <div class="left">
           <ul>
-            <li><a href="home.html">Home</a></li>
-            <li><a href="aboutUs.html">About Us</a></li>
-            <li><a href="books.html">Books</a></li>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/aboutUs}">About Us</a></li>
+            <li><a th:href="@{/books}">Books</a></li>
           </ul>
         </div>
 
@@ -40,10 +40,10 @@
         <div class="right">
           <ul>
             <li class="button">
-              <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
+              <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
             </li>
-            <li><a href="login.html">Sign in</a></li>
-            <li><a href="account.html">Account</a></li>
+            <li><a th:href="@{/login}">Sign in</a></li>
+            <li><a th:href="@{/account}">Account</a></li>
           </ul>
         </div>
       </nav>
