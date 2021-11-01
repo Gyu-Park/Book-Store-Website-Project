@@ -21,9 +21,34 @@ public class Controllers {
 		return "home";
 	}
 	
+	@GetMapping("/aboutUs")
+	public String viewAboutUsPage(Model model) {
+		return "aboutUs";
+	}
+	
+	@GetMapping("/books")
+	public String viewBooksPage(Model model) {
+		return "books";
+	}
+	
+	@GetMapping("/cart")
+	public String viewCartPage(Model model) {
+		return "cart";
+	}
+	
+	@GetMapping("/product")
+	public String viewProductPage(Model model) {
+		return "product";
+	}
+	
 	@GetMapping("/account")
 	public String viewAccountPage(Model model) {
 		return "account";
+	}
+	
+	@GetMapping("/checkout")
+	public String viewCheckoutPage(Model model) {
+		return "checkout";
 	}
 	
 	@GetMapping("/login")

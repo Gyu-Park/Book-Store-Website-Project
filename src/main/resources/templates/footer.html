@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
   <meta charset="UTF-8" />
@@ -17,16 +17,16 @@
       <section>
         <div class="footer-row">
           <h6>
-            <a href="home.html">Home</a>
+            <a th:href="@{/home}">Home</a>
           </h6>
           <h6>
-            <a href="aboutUs.html">About Us</a>
+            <a th:href="@{/aboutUs}">About Us</a>
           </h6>
           <h6>
-            <a href="books.html">Books</a>
+            <a th:href="@{/books}">Books</a>
           </h6>
           <h6>
-            <a href="account.html">Account</a>
+            <a th:href="@{/account}">Account</a>
           </h6>
         </div>
       </section>
