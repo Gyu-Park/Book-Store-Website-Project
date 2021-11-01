@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en"
+	xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <meta charset="UTF-8">
@@ -31,7 +32,7 @@
             <nav>
                 <div class="left">
                     <ul>
-                        <li><a href="home.html">Home</a></li>
+                        <li><a th:href="@{/home}">Home</a></li>
                         <li><a href="aboutUs.html">About Us</a></li>
                         <li><a href="books.html">Books</a></li>
                     </ul>
@@ -51,7 +52,7 @@
                         <li class="button">
                             <a href="cart.html"><i class="fa fa-shopping-cart"></i> Cart</a>
                         </li>
-                        <li id="current"><a href="login.html">Sign in</a></li>
+                        <li id="current"><a th:href="@{/login}">Sign in</a></li>
                         <li><a href="account.html">Account</a></li>
                     </ul>
                 </div>
@@ -70,12 +71,12 @@
         </div>
 
         <div id="login" class="tabContent">
-            <form action="" method="POST">
+            <form th:action="@{/login}" method="post">
                 <label for="login-email">E-Mail</label>
-                <input type="text" id="login-emial" placeholder="Enter your email" required>
+                <input type="text" id="login-emial" name="email" placeholder="Enter your email" required>
 
                 <label for="login-password">Password<span class="psw"><a href="#">Forgot Password?</a></span></label>
-                <input type="password" id="login-password" placeholder="Enter your password" required>
+                <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
 
                 <label>
                     <input type="checkbox" checked="checked" name="loging-remeber"> Remember me
@@ -86,23 +87,22 @@
         </div>
 
         <div id="signUp" class="tabContent">
-            <form action="" method="POST">
+            <form th:action="@{/process_register}" method="post" th:object="${user}">
                 <div class="login-row">
                     <div class="login-col-45">
                         <label for="signup-fname">First Name</label>
-                        <input type="text" id="signup-fname" placeholder="John" required>
+                        <input type="text" id="signup-fname" placeholder="John" th:field="*{firstname}" required>
                     </div>
-
                     <div class="login-col-45" id="lname-custom-style-tag">
                         <label for="signup-lname">Last Name</label>
-                        <input type="text" id="signup-lname" placeholder="Doe" required>
+                        <input type="text" id="signup-lname" placeholder="Doe" th:field="*{lastname}" required>
                     </div>
                 </div>
                 <label for="signup-email">E-Mail</label>
-                <input type="text" id="signup-email" placeholder="johndoe@mail.com">
+                <input type="text" id="signup-email" placeholder="johndoe@mail.com" th:field="*{email}" required>
 
                 <label for="signup-password">Password</label>
-                <input type="password" id="signup-password" placeholder="Enter password" required>
+                <input type="password" id="signup-password" placeholder="Enter password" th:field="*{password}" required>
 
                 <label for="signup-repeat-password">Repeat Password</label>
                 <input type="password" id="signup-repeat-password" placeholder="Re-enter password" required>
