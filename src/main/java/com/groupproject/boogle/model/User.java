@@ -9,14 +9,17 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+/** @Entity and @Table annotations specify that this class is an entity 
+ * and the "users" table is used for mapping **/
 @Entity
 @Table(name = "users")
 public class User {
 	
-    @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
+    @Id // primary key setting
+    @GeneratedValue(strategy=GenerationType.IDENTITY) // auto increment setting
     private Long userid;
 	
+    // email column must not be null and same, and data type is varchar(45).
 	@Column(nullable = false, unique = true, length = 45)
 	private String email;
 	

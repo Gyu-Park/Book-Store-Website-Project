@@ -13,9 +13,11 @@ import com.groupproject.boogle.repository.UserRepository;
 @Controller
 public class Controllers {
 	
+	// @Autowired annotation allows us to instantiate a class without directly creating an object in other classes
 	@Autowired
 	private UserRepository repo;
 	
+	// @GetMapping is to map HTTP GET requests.
 	@GetMapping("/home")
 	public String viewHomePage() {
 		return "home";
@@ -53,10 +55,12 @@ public class Controllers {
 	
 	@GetMapping("/login")
 	public String viewLoginPage(Model model) {
-		model.addAttribute("user", new User());
+		model.addAttribute("user", new User()); // when we "get" the login page, the model adds user attribute for sign up.
 		return "login";
 	}
 	
+	/** @PostMapping handles POST type of request method. 
+	 * this annotation grabs "/process_register" request from the register form in login.html **/
 	@PostMapping("/process_register")
 	public String processRegistration(User user) {
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
