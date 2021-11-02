@@ -8,12 +8,12 @@
 ## Tech Stacks
 Frontend
 
-![Frontend](/public_html/img/Frontend.jpg)
+![Frontend](src/main/resources/static/img/Frontend.jpg)
 
 Backend
 
-![Backend](/public_html/img/Backend.jpg)
+![Backend](src/main/resources/static/img/Backend.jpg)
 
 Architecture
 
-![Architecture](/public_html/img/Architecture.jpg)
+![Architecture](src/main/resources/static/img/Architecture.jpg)
