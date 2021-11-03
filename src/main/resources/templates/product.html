@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="css/product.css">
+  <link rel="stylesheet" href="css/nav.css">
+  <link rel="stylesheet" href="css/footer.css">
+
+  <script src="js/product.js" defer></script>
+  <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+
+  <!--Title will be injected based on book title-->
+  <title>The Practical SQL | Boogle.com</title>
+</head>
+
+<body>
+  <!--Navigation Header-->
+  <header>
+
+    <div class="nav-container">
+      <div class="logo">
+        <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+      </div>
+
+      <!-- add the "current" id to the li element of the active page -->
+      <nav>
+        <div class="left">
+          <ul>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/aboutUs}">About Us</a></li>
+            <li><a th:href="@{/books}">Books</a></li>
+          </ul>
+        </div>
+
+        <div class="center">
+          <form action="" class="search-bar">
+            <input type="search" name="search-bar" placeholder="Search...">
+            <button type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="right">
+          <ul>
+            <li class="button">
+              <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
+            </li>
+            <li>
+			  <div sec:authorize="!isAuthenticated()" style="display: inline-block">
+	            <a th:href="@{/login}">Sign in</a>
+	          </div>
+	          <div sec:authorize="isAuthenticated()" style="display: inline-block">
+	            <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
+				  <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
+				</form>
+	          </div>
+			</li>
+            <li><a th:href="@{/account}">Account</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <!--Product Body Content-->
+  <div class="product-content-container">
+    <div class="product-row">
+
+      <!--Img Container-->
+      <div class="product-col-30">
+        <div class="product-img-container">
+          <img src="img/PracticalSQL.jpg" alt="" id="product-item-img">
+        </div>
+      </div>
+
+      <div class="product-col-70">
+        <div class="product-row">
+
+          <!--Title and Description / Options-->
+          <div class="product-col-60">
+            <div class="product-row">
+              <div class="product-title-author-container">
+                <h2 id="product-item-title">The Practical SQL (Using Structured Query Language)</h2>
+                <p id="product-item-authors">Judith S. Bowman | Sandra L. Emerson | Marsy Darnovsky</p>
+                <p id="product-item-price">Price: $450.00</p>
+              </div>
+            </div>
+            <hr>
+            <div class="checkout-row">
+              <div class="product-rating-container">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="far fa-star"></i>
+                <a href="">Reviews</a>
+                <span class="right-span">Ratings | 245</span>
+              </div>
+            </div>
+            <hr>
+            <div class="product-row">
+              <div class="product-description-container">
+                <p id="product-item-description">&nbsp;&nbsp;&nbsp;&nbsp;Lorem ipsum dolor sit amet, consectetur
+                  adipiscing elit, sed
+                  do eiusmod tempor incididunt ut labore et dolore magna aliqua. Adipiscing commodo
+                  elit at imperdiet. Vestibulum lectus mauris ultrices
+                  eros in cursus turpis. Lectus arcu bibendum at varius vel pharetra vel turpis nunc.
+                  Duis ut diam quam nulla porttitor massa id neque aliquam.</p>
+              </div>
+            </div>
+            <hr>
+            <div class="product-row">
+              <p>Product Options</p>
+            </div>
+
+          </div>
+
+          <!--Buy Option Menu-->
+          <div class="product-col-40">
+            <div class="product-buy-options">
+              <div class="product-row">
+                <div class="product-BO-price">
+                  <p id="product-item-price">Price: $450.00</p>
+                </div>
+              </div>
+              <hr>
+              <div class="product-row">
+                <div id="item-Avaliable" class="product-avalibility">
+                  <p>In Stock</p>
+                </div>
+              </div>
+              <hr>
+              <div class="product-row">
+                <div class="product-BO-shop-options">
+                  <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
+                  <input type="number" id="item-qty" value="1">
+                  <button type="product-submit">Add to Cart</button>
+                  <button type="product-submit">Buy Now</button>
+                  <button type="product-submit">Add to Wish List</button>
+                </div>
+              </div>
+              <hr>
+              <div class="product-row">
+                <div class="product-BO-shareItem">
+                  <p>Share Item</p>
+                  <a href=""><i class="fab fa-facebook-f"></i></a>
+                  <a href=""><i class="fab fa-twitter"></i></a>
+                  <a href=""><i class="fab fa-instagram"></i></a>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!--Similar Items Container-->
+    <div class="product-row">
+      <div class="similar-item-container">
+        <div class="product-row">
+          <h2>Similar Items</h2>
+          <div class="similar-item-slideshow">
+
+          </div>
+        </div>
+        <hr>
+
+      </div>
+    </div>
+
+    <!--Reviews Conteiner-->
+    <!--Write a Review Modal From-->
+    <div id="product-review-modal-form" class="review-modal">
+
+      <form class="form-modal-review animate" action="" method="post">
+
+        <div class="review-modal-row">
+          <div class="modal-close">
+            <span onclick="document.getElementById('product-review-modal-form').style.display='none'" class="close"
+              title="Close Review Form">&times;</span>
+          </div>
+        </div>
+
+        <div class="review-modal-row">
+
+          <div class="review-modal-content">
+            <h3>Leave a Customer Review</h3>
+            <hr>
+            <div class="star-rating-container">
+              <i class="far fa-star" id="customerReviewS1"></i>
+              <i class="far fa-star" id="customerReviewS2"></i>
+              <i class="far fa-star" id="customerReviewS3"></i>
+              <i class="far fa-star" id="customerReviewS4"></i>
+              <i class="far fa-star" id="customerReviewS5"></i>
+            </div>
+            <hr>
+            <div class="customer-review-description">
+              <p>Review Title</p>
+              <input type="customer-review-title" name="" id="customer-review-title">
+              <p>Write a Description</p>
+              <textarea type="customer-review-description" name="" id="customer-review-description"></textarea>
+            </div>
+            <hr>
+            <div class="customer-review-submit">
+              <button type="customer-review-submit">Submit Review</button>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+    </div>
+
+    <!--Reviews-->
+    <div class="product-row">
+      <div class="review-container">
+        <div class="produuct-row">
+          <h2>Reviews |
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <span class="right-span"><button type="generate-review"
+                onClick="document.getElementById('product-review-modal-form').style.display='block'">
+                Write A Review</button></span>
+          </h2>
+        </div>
+        <hr>
+      </div>
+    </div>
+
+  </div>
+
+  <!--Footer-->
+  <footer>
+    <div class="footer-container">
+
+      <section>
+        <div class="footer-row">
+          <h6>
+            <a th:href="@{/home}">Home</a>
+          </h6>
+          <h6>
+            <a th:href="@{/aboutUs}">About Us</a>
+          </h6>
+          <h6>
+            <a th:href="@{/books}">Books</a>
+          </h6>
+          <h6>
+            <a th:href="@{/account}">Account</a>
+          </h6>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <div class="footer-row">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat
+            voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta,
+            aliquam sequi voluptate quas.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="footer-row" id="newsletter">
+          <form action="">
+            <p>Join our newsletter</p>
+            <input type="email" placeholder="johndoe@mail.com" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="icons">
+        <a href="">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+          <i class="fab fa-github"></i>
+        </a>
+      </section>
+
+      <div class="credits">
+        <p>Boogle 2021: Software Engineering Methods</p>
+      </div>
+
+    </div>
+  </footer>
+</body>
+
+</html>
