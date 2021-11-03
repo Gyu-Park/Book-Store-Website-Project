@@ -16,6 +16,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 	@Autowired
 	private UserRepository repo;
 
+	// This method is used by the DaoAuthenticationProvider to load details about a user during authentication.
 	@Override
 	public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
 		User user = repo.findByEmail(email);
