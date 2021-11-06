@@ -34,11 +34,54 @@ public class CustomUserDetails implements UserDetails {
 	public String getUsername() {
 		return user.getEmail();
 	}
+	
+	public String getFullname() {
+		StringBuilder fullname = new StringBuilder(user.getFirstname());
+		fullname.append(" ");
+		fullname.append(user.getLastname());
+		
+		return fullname.toString();
+	}
+	
+	public String getPhone() {
+		StringBuilder phone = new StringBuilder(user.getUserDetailsTable().getPhone());
+		phone.insert(3, "-");
+		phone.insert(7, "-");
+		return phone.toString();
+	}
+	
+	public String getStreet() {
+		return user.getUserDetailsTable().getStreet();
+	}
+	
+	public String getCity() {
+		return user.getUserDetailsTable().getCity();
+	}
+	
+	public String getState() {
+		return user.getUserDetailsTable().getState();
+	}
+	
+	public String getZip() {
+		return user.getUserDetailsTable().getZip();
+	}
 
 	/** those four methods below are for user's authentication **/
 	@Override
 	public boolean isAccountNonExpired() {
 		return true;
+	}
+
+	@Override
+	public int hashCode() {
+		// TODO Auto-generated method stub
+		return super.hashCode();
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		// TODO Auto-generated method stub
+		return super.equals(obj);
 	}
 
 	@Override

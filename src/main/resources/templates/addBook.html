@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Add Book</title>
+<link rel="stylesheet" href="css/login.css">
+<script src="js/login.js" defer></script>
+</head>
+<body>
+
+<div class="user-loging-signup-tab-container">
+        <div class="login-row">
+            <div class="tabs">
+                <button class="tablinks" id="tablinks-Login-Active" onClick="openForm(event, 'login')">Add a Book</button>
+                <button class="tablinks" id="tablinks-SignUp" onClick="openForm(event, 'signUp')">Update a Book</button>
+            </div>
+        </div>
+
+		<div id="login" class="tabContent">
+	            <form th:action="@{/process_addBook}" method="post">
+	                <label for="login-email">Isbn-13 (ex: "987-1234567890")</label>
+	                <input type="text" id="login-emial" name="isbn13" placeholder="Enter 13 digits of isbn" required>
+	
+	                <label for="login-email">Isbn-10</label>
+	                <input type="text" id="login-emial" name="isbn10" placeholder="Enter 10 digits of isbn" required>
+	                
+	                <label for="login-email">Title</label>
+	                <input type="text" id="login-emial" name="title" placeholder="Enter the title of a book" required>
+	                
+	                <label for="login-email">Alias for search and book pages</label>
+	                <input type="text" id="login-emial" name="alias" placeholder="Enter the alias of a book" required>
+	                
+	                <label for="login-email">Author</label>
+	                <input type="text" id="login-emial" name="author" placeholder="Enter the author of a book" required>
+	                
+	                <label for="login-email">Author et alia for search and book pages</label>
+	                <input type="text" id="login-emial" name="author_et_alia" placeholder="Enter the author of a book" required>
+	                
+	                <label for="login-email">Publisher</label>
+	                <input type="text" id="login-emial" name="publisher" placeholder="Enter the publisher of a book" required>
+	                
+	                <label for="login-email">Publication Date (ex: "June 6, 1996")</label>
+	                <input type="text" id="login-emial" name="publication_year" placeholder="Enter the publication date of a book" required>
+	                
+	                <label for="login-email">Price (ex: "6.00")</label>
+	                <input type="text" id="login-emial" name="price" placeholder="Enter the price of a book" required>
+	                
+	                <label for="login-email">Number on Hand</label>
+	                <input type="text" id="login-emial" name="number_on_hand" placeholder="Enter the number of a book on hand" required>
+	                
+	                <label for="login-email">Image (url)</label>
+	                <input type="text" id="login-emial" name="image" placeholder="Enter the url of a book image" required>
+	                
+	                <label for="login-email">Category</label>
+	                <input type="text" id="login-emial" name="category" placeholder="Enter the category of a book" required>
+	
+	                <button type="submit">Add a book into the database</button>
+	            </form>
+	        </div>
+	        
+	        <div id="signUp" class="tabContent">
+	            <form th:action="@{/process_updateBook}" method="post">
+	                <div class="login-row">
+	                    <div class="login-col-45">
+	                        <label for="signup-fname">First Name</label>
+	                        <input type="text" id="signup-fname" placeholder="John" name="firstname" required>
+	                    </div>
+	                    <div class="login-col-45" id="lname-custom-style-tag">
+	                        <label for="signup-lname">Last Name</label>
+	                        <input type="text" id="signup-lname" placeholder="Doe" name="lastname" required>
+	                    </div>
+	                </div>
+	                <label for="signup-email">E-Mail</label>
+	                <input type="text" id="signup-email" placeholder="johndoe@mail.com" name="email" required>
+	
+	                <label for="signup-password">Password</label>
+	                <input type="password" id="signup-password" placeholder="Enter password" name="password" required>
+	
+	                <label for="signup-repeat-password">Repeat Password</label>
+	                <input type="password" id="signup-repeat-password" placeholder="Re-enter password" required>
+	
+	                <button type="form-submit">Sign Up</button>
+	                <button type="cancel">Cancel</button>
+		         </form>
+	        </div>
+
+</body>
+</html>
