@@ -1,0 +1,64 @@
+body {
+  background-color: white;
+}
+
+.about-container {
+  width: 100%;
+  display: block;
+  margin: 0;
+  padding: 0;
+}
+
+.about-row {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: auto;
+}
+
+/* About Us text styles */
+.about-row h1,
+.about-row h2 {
+  text-align: center;
+  font-size: 2.5em;
+  font-weight: lighter;
+}
+
+.about-row p {
+  font-size: 1.5em;
+  width: 75%;
+  margin: auto;
+  text-align: center;
+}
+
+/* Team styles */
+.team-container {
+  margin-bottom: 2em;
+}
+
+.team-container .about-row {
+  flex-direction: row;
+  width: 60%;
+  padding: 1em;
+}
+
+#first {
+  display: flex;
+  flex-direction: column;
+}
+
+#first .about-row {
+  width: 100%;
+}
+
+.team-container p {
+  font-size: 1.5em;
+  text-align: justify;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1em;
+}
+
+#reverse {
+  flex-direction: row-reverse;
+}

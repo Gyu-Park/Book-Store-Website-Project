@@ -1,0 +1,137 @@
+/*Tab Styles*/
+
+.user-loging-signup-tab-container {
+  flex: 25%;
+  width: 25%;
+  border: 2px solid lightslategray;
+  border-radius: 0.2em;
+  margin: auto;
+  margin-top: 15vh;
+  margin-bottom: 40vh;
+}
+
+.login-row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 1em;
+}
+
+.login-col-45 {
+  flex: 45%;
+}
+
+.tabs {
+  overflow: hidden;
+  width: 100%;
+}
+
+.tablinks {
+  background-color: #778899;
+  float: left;
+  border: none;
+  width: 50%;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  transition: 0.3s;
+  font-weight: bold;
+}
+
+button.tablinks {
+  color: #fffaf3;
+}
+
+.tablinks:hover {
+  background-color: #516272;
+}
+
+.tabContent {
+  padding: 10px 20px 15px 20px;
+  display: none;
+}
+
+#login {
+  display: flex;
+}
+
+#tablinks-Login-Active {
+  color: #ecd5b3;
+  background-color: #516272;
+  transition: 0.3s ease-out;
+}
+
+#tablinks-SignUp-Active {
+  color: #ecd5b3;
+  background-color: #516272;
+  transition: 0.3s ease-out;
+}
+
+/*Form Contents*/
+
+.user-loging-signup-tab-container form {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.user-loging-signup-tab-container label {
+  width: 100%;
+  display: block;
+  font-size: 18px;
+}
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 5px;
+  border: none;
+  outline: none;
+  border-bottom: 2px solid #778899;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-bottom: 2px solid #ecd5b3;
+  transition: 0.3s;
+}
+
+#signup-fname,
+#signup-lname {
+  width: 85%;
+}
+
+#lname-custom-style-tag {
+  margin-left: 15px;
+}
+
+button[type="form-submit"],
+button[type="cancel"] {
+  background-color: #778899;
+  color: #fffaf3;
+  font-weight: bold;
+  margin: 1em auto;
+  padding: 15px;
+  width: 48%;
+  border: none;
+  border-radius: 0.2em;
+}
+
+button[type="form-submit"]:hover,
+button[type="cancel"]:hover {
+  background-color: #b09979;
+  cursor: pointer;
+}
+
+button[type="form-submit"],
+button[type="cancel"],
+button[type="form-submit"]:after,
+button[type="cancel"]:after,
+button[type="form-submit"]:before,
+button[type="cancel"]:before {
+  transition: all 0.5s;
+}
+
+span.psw {
+  float: right;
+  font-size: 12px;
+}
