@@ -36,8 +36,8 @@ public class Book {
 	@Column(nullable = false, length = 20)
 	private String publication_year;
 	
-	@Column(nullable = false, length = 10)
-	private String price;
+	@Column(nullable = false)
+	private Double price;
 	
 	@Column(nullable = false)
 	private int number_on_hand;
@@ -112,11 +112,11 @@ public class Book {
 		this.publication_year = publication_year;
 	}
 
-	public String getPrice() {
+	public Double getPrice() {
 		return price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		this.price = price;
 	}
 
