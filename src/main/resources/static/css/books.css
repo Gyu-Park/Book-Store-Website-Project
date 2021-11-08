@@ -2,7 +2,6 @@
   width: 90%;
   margin: auto;
   margin-top: 10px;
-  height: 100vh;
 }
 
 .books-row {
@@ -93,6 +92,7 @@
 .html-textbook-item:hover {
   background-color: #fff0db;
   border-color: #fff0db;
+  box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
 }
 
 .html-textbook-item hr {
