@@ -2,11 +2,14 @@ package com.groupproject.boogle.model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
 /** @Entity and @Table annotations specify that this class is an entity 
@@ -32,6 +35,19 @@ public class User {
 	@Column(length = 20)
 	private String lastname;
 	
+	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
+    @PrimaryKeyJoinColumn
+    private UserInfo userInfo;
+	
+	/** getters and setters **/
+	public UserInfo getUserDetailsTable() {
+		return userInfo;
+	}
+
+	public void setUserDetailsTable(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+
 	public Long getUserid() {
 		return userid;
 	}
