@@ -118,6 +118,12 @@ label {
   margin-bottom: 5px;
 }
 
+.LaS-item,
+.order-item,
+.wishlist-item {
+  box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+}
+
 /*Login and Security Content Styles*/
 
 .LaS-item {
@@ -125,7 +131,7 @@ label {
   flex-wrap: wrap;
   flex: 100%;
   padding: 10px 20px 15px 20px;
-  margin-bottom: 10px;
+  margin-bottom: 1em;
   border: 2px solid #778899;
   border-radius: 0.2em;
 }
@@ -149,7 +155,7 @@ button[type="form-edit"] {
   padding: 10px 20px 15px 20px;
   border: 2px solid #778899;
   border-radius: 0.2em;
-  margin-bottom: 15px;
+  margin-bottom: 1.5em;
 }
 
 .order-product-container {
@@ -293,7 +299,7 @@ input[type="text"]:focus {
   padding: 10px 20px 15px 20px;
   border: 2px solid #778899;
   border-radius: 5px;
-  margin-bottom: 15px;
+  margin-bottom: 1.5em;
 }
 
 .wishlist-product-container {
