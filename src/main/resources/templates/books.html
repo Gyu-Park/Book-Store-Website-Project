@@ -82,7 +82,7 @@
           <div class="item-container">
 
             <!--Item Template-->
-            <a href="#" th:each="book : ${book}">
+            <a th:href="@{/product?isbn13=}+${book.isbn13}" th:each="book : ${book}">
               <div class="html-textbook-item">
                 <div class="checkout-row">
                   <div class="item-img">

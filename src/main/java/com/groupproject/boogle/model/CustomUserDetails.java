@@ -10,6 +10,7 @@ import org.springframework.security.core.userdetails.UserDetails;
  * need to use UserDetails object for loadUserByUsername 
  * method in the CustomUserDetailsService class, 
  * we need to customize the UserDetails **/
+@SuppressWarnings("serial")
 public class CustomUserDetails implements UserDetails {
 	
 	private User user;
