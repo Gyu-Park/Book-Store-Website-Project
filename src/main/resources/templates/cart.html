@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
@@ -50,15 +51,17 @@
                             <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
                         </li>
                         <li>
-							<div sec:authorize="!isAuthenticated()" style="display: inline-block">
-					          <a th:href="@{/login}">Sign in</a>
-					        </div>
-					        <div sec:authorize="isAuthenticated()" style="display: inline-block">
-					          <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
-							    <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
-							  </form>
-					        </div>
-						</li>
+                            <div sec:authorize="!isAuthenticated()" style="display: inline-block">
+                                <a th:href="@{/login}">Sign in</a>
+                            </div>
+                            <div sec:authorize="isAuthenticated()" style="display: inline-block">
+                                <form id="signout" th:action="@{/logout}" method="post"
+                                    style="width: 100px; height: 41">
+                                    <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign
+                                        Out</a>
+                                </form>
+                            </div>
+                        </li>
                         <li><a th:href="@{/account}">Account</a></li>
                     </ul>
                 </div>
@@ -79,19 +82,82 @@
                                 <h2>Shopping Cart</h2>
                             </div>
                         </div>
-
-                        <div class="active-cart-row">
-                            <p>Price</p>
-                        </div>
                         <hr>
 
                         <div class="active-cart-row">
                             <div class="active-items-list">
-                                <p>shopping cart is empty...</p>
+
+                                <!--Cart Item Template-->
+                                <div class="cart-item">
+                                    <div class="active-cart-row">
+                                        <div class="cart-col-60">
+                                            <div class="cart-product-container">
+                                                <div class="cart-item-img-container">
+                                                    <img src="img/PracticalSQL.jpg" alt="">
+                                                </div>
+                                                <div class="cart-item-title-container">
+                                                    <label>The Practical SQL</label>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                        enim ad
+                                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                        aliquip ex ea
+                                                        commodo consequat.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-col-20">
+                                            <label>Quantity</label>
+                                            <input type="number" id="item-qty" value="1" name="qty">
+                                            <button type="form-remove">Remove</button>
+                                        </div>
+                                        <div class="cart-col-20">
+                                            <label>Price</label>
+                                            <p>$45.66</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!--End-->
+                                <!--Cart Item Template-->
+                                <div class="cart-item">
+                                    <div class="active-cart-row">
+                                        <div class="cart-col-60">
+                                            <div class="cart-product-container">
+                                                <div class="cart-item-img-container">
+                                                    <img src="img/PracticalSQL.jpg" alt="">
+                                                </div>
+                                                <div class="cart-item-title-container">
+                                                    <label>The Practical SQL</label>
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                        eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+                                                        enim ad
+                                                        minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                        aliquip ex ea
+                                                        commodo consequat.
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cart-col-20">
+                                            <label>Quantity</label>
+                                            <input type="number" id="item-qty" value="1" name="qty">
+                                            <button type="form-remove">Remove</button>
+                                        </div>
+                                        <div class="cart-col-20">
+                                            <label>Price</label>
+                                            <p>$45.66</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <hr>
+                                <!--End-->
+
+
                             </div>
                         </div>
 
-                        <hr>
                         <div class="active-cart-row">
                             <div class="active-cart-subtotal">
                                 <p>Subtotal <span class="cart-subtotal"><b> $item_subtotal</b></span></p>
