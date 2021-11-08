@@ -1,0 +1,123 @@
+.books-content-container {
+  width: 90%;
+  margin: auto;
+  margin-top: 10px;
+  height: 100vh;
+}
+
+.books-row {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.books-col-80 {
+  flex: 80%;
+}
+
+.books-col-20 {
+  flex: 20%;
+}
+
+/*Tab Styles*/
+
+.tabs {
+  float: left;
+  overflow: hidden;
+  border-right: 2px solid #ecd5b3;
+  height: 95vh;
+}
+
+.tabs button {
+  background-color: #778899;
+  color: #fffaf3;
+  margin-top: 10px;
+  padding: 1em;
+  width: 95%;
+  height: auto;
+  border: none;
+  border-radius: 0.2em;
+  cursor: pointer;
+  font-size: 0.8em;
+  font-weight: bold;
+}
+
+.tabs button,
+.tabs button:after,
+.tabs button:before {
+  transition: 0.3s;
+}
+
+.tabs button:hover {
+  background-color: #516272;
+}
+
+.tabs button#active {
+  color: #ecd5b3;
+  background-color: #516272;
+  transition: 0.3s ease-out;
+}
+
+.tabContent {
+  margin-right: 10px;
+  padding: 10px 20px 15px 20px;
+  display: none;
+}
+
+#html {
+  display: flex;
+}
+
+/*Template Styles*/
+.item-container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-container a {
+  text-decoration: none;
+  color: black;
+}
+
+.html-textbook-item {
+  border: 2px solid #e8eef3;
+  background-color: #e8eef3;
+  border-radius: 0.2em;
+  margin: 10px;
+}
+
+.html-textbook-item,
+.html-textbook-item:after,
+.html-textbook-item:before {
+  transition: 0.3s;
+}
+.html-textbook-item:hover {
+  background-color: #fff0db;
+  border-color: #fff0db;
+}
+
+.html-textbook-item hr {
+  background-color: #778899;
+  border-color: #778899;
+  border-style: ridge;
+}
+
+.item-img {
+  margin: 10px;
+}
+
+.item-img img {
+  width: 280px;
+  height: 300px;
+  border-radius: 0.2em;
+}
+
+.item-details {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.item-details h4,
+p {
+  margin-bottom: 4px;
+  margin-top: 4px;
+}
