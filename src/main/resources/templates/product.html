@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
   <meta charset="UTF-8">
@@ -13,7 +14,7 @@
   <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
   <!--Title will be injected based on book title-->
-  <title>The Practical SQL | Boogle.com</title>
+  <title>${book.title} | Boogle.com</title>
 </head>
 
 <body>
@@ -50,15 +51,15 @@
               <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
             </li>
             <li>
-			  <div sec:authorize="!isAuthenticated()" style="display: inline-block">
-	            <a th:href="@{/login}">Sign in</a>
-	          </div>
-	          <div sec:authorize="isAuthenticated()" style="display: inline-block">
-	            <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
-				  <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
-				</form>
-	          </div>
-			</li>
+              <div sec:authorize="!isAuthenticated()" style="display: inline-block">
+                <a th:href="@{/login}">Sign in</a>
+              </div>
+              <div sec:authorize="isAuthenticated()" style="display: inline-block">
+                <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
+                  <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
+                </form>
+              </div>
+            </li>
             <li><a th:href="@{/account}">Account</a></li>
           </ul>
         </div>
@@ -135,18 +136,18 @@
                 </div>
               </div>
               <hr>
-	            <div class="product-row">
-	              <div class="product-BO-shop-options">
-	                <form th:action="@{/cart/addToCart}" method="post">
+              <div class="product-row">
+                <div class="product-BO-shop-options">
+                  <form th:action="@{/cart/addToCart}" method="post">
                     <input hidden="hidden" th:field="*{book.isbn13}" />
-	                  <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
-	                  <input type="number" id="item-qty" value="1" name="qty">
-	                  <button type="product-submit">Add to Cart</button>
-	                </form>
-	                <button type="product-submit">Buy Now</button>
-	                <button type="product-submit">Add to Wish List</button>
-	              </div>
-	            </div>
+                    <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
+                    <input type="number" id="item-qty" value="1" name="qty">
+                    <button type="product-submit">Add to Cart</button>
+                  </form>
+                  <button type="product-submit">Buy Now</button>
+                  <button type="product-submit">Add to Wish List</button>
+                </div>
+              </div>
               <hr>
               <div class="product-row">
                 <div class="product-BO-shareItem">
