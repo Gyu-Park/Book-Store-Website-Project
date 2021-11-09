@@ -2,6 +2,7 @@ package com.groupproject.boogle.controller;
 
 import java.util.UUID;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,8 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.groupproject.boogle.model.Book;
+import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.repository.UserRepository;
 import com.groupproject.boogle.service.ShoppingCartService;
 
@@ -25,7 +28,15 @@ public class CartController {
 	ShoppingCartService shoppingCartService;
 
 	@GetMapping("/cart")
-	public String viewCartPage(Model model) {
+	public String viewCartPage(HttpServletRequest request, Model model) {
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+		if (sessionToken == null) {
+			model.addAttribute("shoppingCart", new ShoppingCart());
+		} else {
+			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
+			model.addAttribute("shoppingCart", shoppingCart);
+		}
+		
 		return "cart";
 	}
 	
@@ -46,6 +57,13 @@ public class CartController {
 		}
 		
 		return "redirect:/product?isbn13="+book.getIsbn13();
+	}
+	
+	@PostMapping("/cart/updateShoppingCart")
+	public String updateCartItem(@RequestParam("item_id") Long id,
+								 @RequestParam("quantity") int quantity) {
 		
+		shoppingCartService.updateShoppingCartItem(id, quantity);
+		return "redirect:cart";
 	}
 }
