@@ -1,7 +1,5 @@
 package com.groupproject.boogle.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.Objects;
 import java.util.Set;

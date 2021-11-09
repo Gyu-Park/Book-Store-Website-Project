@@ -20,6 +20,4 @@ public class BookService implements IBookService {
 		return bookRepository.getById(isbn13);
 	}
 
-	
-
 }

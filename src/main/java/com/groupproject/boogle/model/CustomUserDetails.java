@@ -45,10 +45,7 @@ public class CustomUserDetails implements UserDetails {
 	}
 	
 	public String getPhone() {
-		StringBuilder phone = new StringBuilder(user.getUserDetailsTable().getPhone());
-		phone.insert(3, "-");
-		phone.insert(7, "-");
-		return phone.toString();
+		return user.getUserDetailsTable().getPhone();
 	}
 	
 	public String getStreet() {

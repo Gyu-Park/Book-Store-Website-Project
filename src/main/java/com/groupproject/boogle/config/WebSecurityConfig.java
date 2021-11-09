@@ -1,17 +1,17 @@
 package com.groupproject.boogle.config;
 
-import javax.sql.DataSource;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.firewall.HttpFirewall;
+import org.springframework.security.web.firewall.StrictHttpFirewall;
 
 import com.groupproject.boogle.service.CustomUserDetailsService;
 
@@ -19,8 +19,8 @@ import com.groupproject.boogle.service.CustomUserDetailsService;
 @EnableWebSecurity // with @configuration and this annotation, it will allow us to configure the web security settings
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	
-	@Autowired
-	private DataSource dataSource;
+	// @Autowired
+	// private DataSource dataSource;
 	
 	/** expose a custom UserDetailsService as a bean **/
 	@Bean
@@ -42,6 +42,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		authProvider.setPasswordEncoder(passwordEncoder());
 		
 		return authProvider;
+	}
+	
+	@Bean
+	public HttpFirewall allowUrlEncodedSlashHttpFirewall() {
+	    StrictHttpFirewall firewall = new StrictHttpFirewall();
+	    firewall.setAllowUrlEncodedDoubleSlash(true);
+	    return firewall;
 	}
 
 	/** get the user information from Authentication token and DaoAuthenticationProvider
@@ -69,6 +76,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.permitAll()
 				.logoutSuccessUrl("/login"); // when a user log out, show the login page
 	}
+
+	@Override
+	public void configure(WebSecurity web) throws Exception {
+		super.configure(web);
+		web.httpFirewall(allowUrlEncodedSlashHttpFirewall());
+	}
+	
+	
 	
 	
 }
