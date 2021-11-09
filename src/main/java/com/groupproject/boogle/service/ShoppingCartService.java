@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.groupproject.boogle.model.Book;
 import com.groupproject.boogle.model.CartItem;
 import com.groupproject.boogle.model.ShoppingCart;
+import com.groupproject.boogle.repository.CartItemRepository;
 import com.groupproject.boogle.repository.ShoppingCartRepository;
 
 @Service("shoppingCartService")
@@ -16,6 +17,9 @@ public class ShoppingCartService {
 	
 	@Autowired
 	private ShoppingCartRepository shoppingCartRepository;
+	
+	@Autowired
+	private CartItemRepository cartItemRepository;
 	
 	@Autowired
 	private BookService bookService;
@@ -56,6 +60,16 @@ public class ShoppingCartService {
 			return shoppingCartRepository.saveAndFlush(shoppingCart);
 		}
 		return this.addShoppingCart(isbn13, sessionToken, quantity);
+	}
+
+	public ShoppingCart getShoppingCartBySessionToken(String sessionToken) {
+		return shoppingCartRepository.findBySessionToken(sessionToken);
+	}
+
+	public void updateShoppingCartItem(Long id, int quantity) {
+		CartItem cartItem = cartItemRepository.findById(id).get();
+		cartItem.setQuantity(quantity);
+		cartItemRepository.saveAndFlush(cartItem);
 	}
 
 }
