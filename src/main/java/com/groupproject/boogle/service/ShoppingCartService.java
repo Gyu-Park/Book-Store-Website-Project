@@ -66,10 +66,25 @@ public class ShoppingCartService {
 		return shoppingCartRepository.findBySessionToken(sessionToken);
 	}
 
-	public void updateShoppingCartItem(Long id, int quantity) {
+	public CartItem updateShoppingCartItem(Long id, int quantity) {
 		CartItem cartItem = cartItemRepository.findById(id).get();
 		cartItem.setQuantity(quantity);
-		cartItemRepository.saveAndFlush(cartItem);
+		return cartItemRepository.saveAndFlush(cartItem);
+	}
+
+	public ShoppingCart removeCartIemFromShoppingCart(Long id, String sessionToken) {
+		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
+		Set<CartItem> items = shoppingCart.getItems();
+		CartItem cartItem = null;
+		for(CartItem item : items) {
+			if(item.getId()==id) {
+				cartItem = item;
+			}
+		}
+		items.remove(cartItem);
+		cartItemRepository.delete(cartItem);
+	    shoppingCart.setItems(items);
+	    return shoppingCartRepository.saveAndFlush(shoppingCart);
 	}
 
 }

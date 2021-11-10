@@ -60,7 +60,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-		http.authorizeRequests()
+		http.csrf().disable()
+			.authorizeRequests()
 			.antMatchers("/account").authenticated() // only authenticated() user can access to the account page
 			.anyRequest().permitAll()  // any request is accepted for all the pages except for the account page
 			.and()
