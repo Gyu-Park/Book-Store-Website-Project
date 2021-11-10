@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="/src/main/resources/static/css/searchResults.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/nav.css">
+    <link rel="stylesheet" href="/src/main/resources/static/css/footer.css">
+
+    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+
+    <title>Search Results | Boogle</title>
+</head>
+<body>
+  <!--Navigation Header-->
+  <header>
+
+    <div class="nav-container">
+      <div class="logo">
+        <a href="home.html"><i class="fas fa-book-reader"></i></a>
+      </div>
+
+      <!-- add the "current" id to the li element of the active page -->
+      <nav>
+        <div class="left">
+          <ul>
+            <li><a th:href="@{/home}">Home</a></li>
+            <li><a th:href="@{/aboutUs}">About Us</a></li>
+            <li><a th:href="@{/books}">Books</a></li>
+          </ul>
+        </div>
+
+        <div class="center">
+          <form action="" class="search-bar">
+            <input type="search" name="search-bar" placeholder="Search...">
+            <button type="submit">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </div>
+
+        <div class="right">
+          <ul>
+            <li class="button">
+              <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
+            </li>
+            <li><a th:href="@{/login}">Sign in</a></li>
+            <li><a th:href="@{/account}">Account</a></li>
+          </ul>
+        </div>
+      </nav>
+
+    </div>
+  </header>
+
+  <!--Search Reslts Body-->
+  <div class="searchResults-content-container">
+    <h3>Search resutls for... ()</h3>
+    <div class="searchResults-row">
+      <div class="item-container">
+
+        <!--Result Template-->
+        <a href="#">
+          <div class="seachResults-textbook-item">
+            <div class="searchResults-row">
+              <div class="item-img">
+                <img src="img/DesigningWithJavaScript.jpg" alt="">
+              </div>
+            </div>
+            <hr>
+            <div class="searchResults-row">
+              <div class="item-details">
+                <h4>Designing with JavaScript</h4>
+                <p>Nick Heinle</p>
+                <p>$20.00</p>
+              </div>
+            </div>
+          </div>
+        </a>
+        <!--End-->
+
+      </div>
+    </div>
+  </div>
+
+  <!--Footer-->
+  <footer>
+    <div class="footer-container">
+
+      <section>
+        <div class="footer-row">
+          <h6>
+            <a th:href="@{/home}">Home</a>
+          </h6>
+          <h6>
+            <a th:href="@{/aboutUs}">About Us</a>
+          </h6>
+          <h6>
+            <a th:href="@{/books}">Books</a>
+          </h6>
+          <h6>
+            <a th:href="@{/account}">Account</a>
+          </h6>
+        </div>
+      </section>
+
+      <hr>
+
+      <section>
+        <div class="footer-row">
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+            distinctio earum repellat quaerat voluptatibus placeat nam,
+            commodi optio pariatur est quia magnam eum harum corrupti
+            dicta, aliquam sequi voluptate quas.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="footer-row" id="newsletter">
+          <form action="">
+            <p>Join our newsletter</p>
+            <input type="email" placeholder="johndoe@mail.com" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="icons">
+        <a href="">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a href="">
+          <i class="fab fa-twitter"></i>
+        </a>
+        <a href="">
+          <i class="fab fa-instagram"></i>
+        </a>
+        <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+          <i class="fab fa-github"></i>
+        </a>
+      </section>
+
+      <div class="credits">
+        <p>Boogle 2021: Software Engineering Methods</p>
+      </div>
+
+    </div>
+  </footer>
+</body>
+</html>
