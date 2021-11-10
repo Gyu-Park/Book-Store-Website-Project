@@ -1,13 +1,13 @@
 package com.groupproject.boogle.model;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,8 +34,8 @@ public class ShoppingCart {
 	@Transient
 	private int itemsNumber;
 	
-	@OneToMany(cascade = CascadeType.ALL)
-	private Set<CartItem> items;
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	private Set<CartItem> items = new HashSet<CartItem>();
 	
 	private String sessionToken;
 	
@@ -61,7 +61,7 @@ public class ShoppingCart {
 	public Double getTotalPrice() {
 		Double sum = 0.0;
 		for(CartItem item : this.items) {
-			sum = sum + item.getBook().getPrice();
+			sum = sum + item.getBook().getPrice() * item.getQuantity();
 		}
 		
 		return sum;
