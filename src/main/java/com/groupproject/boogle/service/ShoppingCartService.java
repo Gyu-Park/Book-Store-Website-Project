@@ -72,7 +72,7 @@ public class ShoppingCartService {
 		return cartItemRepository.saveAndFlush(cartItem);
 	}
 
-	public ShoppingCart removeCartIemFromShoppingCart(Long id, String sessionToken) {
+	public ShoppingCart removeCartItemFromShoppingCart(Long id, String sessionToken) {
 		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
 		Set<CartItem> items = shoppingCart.getItems();
 		CartItem cartItem = null;

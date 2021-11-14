@@ -14,7 +14,7 @@
   <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
   <!--Title will be injected based on book title-->
-  <title>${book.title} | Boogle.com</title>
+  <title>[[${book.alias}]] | Boogle.com</title>
 </head>
 
 <body>
@@ -145,7 +145,11 @@
                     <button type="product-submit">Add to Cart</button>
                   </form>
                   <button type="product-submit">Buy Now</button>
-                  <button type="product-submit">Add to Wish List</button>
+                  <div sec:authorize="isAuthenticated()">
+                  	<a th:href="@{/addToWishList/{isbn13}(isbn13 = ${book.isbn13})}">
+	                  	<button type="product-submit">Add to Wish List</button>
+	                </a>
+                  </div>
                 </div>
               </div>
               <hr>
