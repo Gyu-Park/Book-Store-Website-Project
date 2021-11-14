@@ -321,43 +321,43 @@
         </div>
 
         <div id="wishlist" class="tabContent">
-            <form action="" method="get">
-                <div class="account-row">
+			<div class="account-row">
 
-                    <!--Whishlist Item Template-->
-                    <div class="wishlist-item">
-                        <div class="account-row">
-                            <div class="account-col-80">
-                                <div class="wishlist-product-container">
-                                    <div class="wishlist-img-container">
-                                        <img src="img/PracticalSQL.jpg" alt="">
-                                    </div>
-                                    <div class="wishlist-title-container">
-                                        <label>The Practical SQL</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <label for>Price
-                                    <span class="wishlist-item-price"> $65.65</span>
-                                </label>
-                                <hr>
-                                <button type="form-buy-now">Buy Now</button>
-                                <button type="form-add-to-cart">Add to Cart</button>
-                                <button type="form-remove">Remove</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End-->
+				<!--Whishlist Item Template-->
+				<div class="wishlist-item"
+					th:each="wishListItem : ${wishList.items}">
+					<div class="account-row">
+						<div class="account-col-80">
+							<div class="wishlist-product-container">
+								<div class="wishlist-img-container">
+									<img th:src="${wishListItem.book.image}" alt="">
+								</div>
+								<div class="wishlist-title-container">
+									<label>[[${wishListItem.book.alias}]]</label>
+									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+										sed do eiusmod tempor incididunt ut labore et dolore magna
+										aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+										ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+								</div>
+							</div>
+						</div>
+						<div class="account-col-20">
+							<label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
+							</label>
+							<hr>
+							<button type="form-buy-now">Buy Now</button>
+							<button type="form-add-to-cart">Add to Cart</button>
+							<a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
+								data-toggle="tooltip">
+								<button type="form-remove">Remove</button>
+							</a>
+						</div>
+					</div>
+				</div>
+				<!--End-->
 
-                </div>
-            </form>
-        </div>
+			</div>
+		</div>
     </div>
 
     <!--Footer-->

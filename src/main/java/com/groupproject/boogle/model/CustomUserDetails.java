@@ -15,6 +15,10 @@ public class CustomUserDetails implements UserDetails {
 	
 	private User user;
 	
+	public CustomUserDetails() {
+		
+	}
+	
 	public CustomUserDetails(User user) {
 		this.user = user;
 	}
@@ -24,6 +28,10 @@ public class CustomUserDetails implements UserDetails {
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public Long getUserid() {
+		return user.getUserid();
 	}
 
 	@Override
@@ -62,6 +70,14 @@ public class CustomUserDetails implements UserDetails {
 	
 	public String getZip() {
 		return user.getUserDetailsTable().getZip();
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	/** those four methods below are for user's authentication **/

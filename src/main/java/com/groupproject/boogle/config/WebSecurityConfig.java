@@ -8,11 +8,13 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
 
+import com.groupproject.boogle.model.CustomUserDetails;
 import com.groupproject.boogle.service.CustomUserDetailsService;
 
 @Configuration // this annotation indicates that this class is a configuration class.
@@ -49,6 +51,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	    StrictHttpFirewall firewall = new StrictHttpFirewall();
 	    firewall.setAllowUrlEncodedDoubleSlash(true);
 	    return firewall;
+	}
+	
+	@Bean
+	public UserDetails userDetails() {
+		return new CustomUserDetails();
 	}
 
 	/** get the user information from Authentication token and DaoAuthenticationProvider
