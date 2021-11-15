@@ -23,7 +23,7 @@ public class WishList {
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<WishListItem> items = new HashSet<WishListItem>();
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "userid", nullable = false, updatable = false)
     private User user;
 	

@@ -6,10 +6,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CustomUserDetails;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
+import com.groupproject.boogle.repository.CardRepository;
 import com.groupproject.boogle.service.WishListService;
 
 @Controller
@@ -17,6 +20,9 @@ public class AccountController {
 	
 	@Autowired
 	private WishListService wishListService;
+	
+	@Autowired
+	private CardRepository cardRepository;
 	
 	private CustomUserDetails customUserDetails;
 
@@ -26,6 +32,7 @@ public class AccountController {
 		User user = customUserDetails.getUser();
 		WishList wishList = wishListService.getWishListByUser(user);
 		model.addAttribute("wishList", wishList);
+		model.addAttribute("card", new Card());
 		return "account";
 	}
 	
@@ -42,6 +49,15 @@ public class AccountController {
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		wishListService.removeItemWishList(isbn13, user);
+		return "redirect:/account";
+	}
+	
+	@PostMapping("/account/addCard")
+	public String addCard(Card card) {
+		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = customUserDetails.getUser();
+		card.setUser(user);
+		cardRepository.save(card);
 		return "redirect:/account";
 	}
 	

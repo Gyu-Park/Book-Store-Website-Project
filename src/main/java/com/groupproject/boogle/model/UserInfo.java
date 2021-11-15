@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
@@ -33,7 +34,7 @@ public class UserInfo {
 	@Column(nullable = true, length = 45)
 	private String phone;
 	
-	@OneToOne
+	@OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "userid")
     private User user;

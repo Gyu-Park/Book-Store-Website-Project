@@ -301,10 +301,12 @@
                     </div>
                     <!--End-->
 
+					<!-- Add Payment Option Template -->
                     <div id="add-payment-option" class="paymentTabContent">
                         <h3>Add Payment Option</h3>
+                        <!-- Card Image -->
                         <div class="card-container">
-                            <div class="front">
+                            <div class="front" id="addCardFront">
                                 <div class="cardImage">
                                     <img src="img/chip.png" />
                                     <img src="img/visa.png" />
@@ -325,7 +327,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="back">
+                            <div class="back" id="addCardBack">
                                 <div class="stripe"></div>
                                 <div class="box">
                                     <span>cvv</span>
@@ -334,7 +336,8 @@
                                 </div>
                             </div>
                         </div>
-                        <form action="" method="post">
+                        <!-- Card Image End -->
+                        <form th:action="@{/account/addCard}" method="post">
                             <div class="new-payment-option-form-container">
                                 <label for="account-payment-option-name">Payment Option Name</label>
                                 <input type="text" id="account-payment-option-name">
@@ -347,20 +350,20 @@
                                     <i class="fab fa-apple-pay"></i>
                                 </div>
                                 <label for="account-payment-cc-name">Name on Card</label>
-                                <input type="text" id="account-payment-cc-name" placeholder="John Doe">
+                                <input type="text" id="account-payment-cc-name" name="cardHolderName" placeholder="John Doe">
                                 <label for="account-payment-cc-num">Credit Card Number</label>
-                                <input type="text" id="account-payment-cc-num" placeholder="1111-2222-3333-4444">
+                                <input type="text" id="account-payment-cc-num" name="cardNumber" placeholder="1111-2222-3333-4444">
                                 <label for="account-payment-cc-exp-month">Exp Month</label>
-                                <input type="text" id="account-payment-cc-exp-month" placeholder="November">
+                                <input type="text" id="account-payment-cc-exp-month" name="cardExpMonth" placeholder="November">
 
                                 <div class="account-row">
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-exp-year">Exp Year</label>
-                                        <input type="text" id="account-payment-cc-exp-year" placeholder="2021">
+                                        <input type="text" id="account-payment-cc-exp-year" name="cardExpYear" placeholder="2021">
                                     </div>
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-cvv">CVV</label>
-                                        <input type="text" id="account-payment-cc-cvv" placeholder="489">
+                                        <input type="text" id="account-payment-cc-cvv" name="cardCvv" placeholder="489">
                                     </div>
                                 </div>
                             </div>
@@ -368,7 +371,7 @@
                         </form>
 
                     </div>
-
+					<!-- End -->
                 </div>
             </div>
         </div>
