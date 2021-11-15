@@ -106,11 +106,11 @@ cvvTextField.addEventListener("focus", focusTrueFunction, true);
 cvvTextField.addEventListener("blur", blurFalseFunction, true);
 
 function focusTrueFunction() {
-    document.querySelector('.front').style.transform = 'perspective(1000px) rotateY(-180deg)';
-    document.querySelector('.back').style.transform = 'perspective(1000px) rotateY(0deg)';
+    document.querySelector('#addCardFront').style.transform = 'perspective(1000px) rotateY(-180deg)';
+    document.querySelector('#addCardBack').style.transform = 'perspective(1000px) rotateY(0deg)';
 }
 
 function blurFalseFunction() {
-    document.querySelector('.front').style.transform = '';
-    document.querySelector('.back').style.transform = '';
+    document.querySelector('#addCardFront').style.transform = '';
+    document.querySelector('#addCardBack').style.transform = '';
 }
