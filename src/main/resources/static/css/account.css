@@ -234,10 +234,14 @@ button[type="form-buy-again"] {
 }
 
 #payment-option-1 {
-  display: flex;
+  display: block;
 }
 
 /** card style **/
+
+#payment-option-1 .card-container {
+  margin-bottom: 50px;
+}
 
 .paymentTabContent .card-container {
   margin-bottom: -150px;

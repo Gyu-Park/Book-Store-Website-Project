@@ -77,22 +77,22 @@ function openPaymentForm(evt, formName) {
 
 /*Card Section*/
 document.querySelector('#account-payment-cc-num').oninput = () => {
-    document.querySelector('.card-number-box').innerText
+    document.querySelector('#cardNumber').innerText
         = document.querySelector('#account-payment-cc-num').value;
 }
 
 document.querySelector('#account-payment-cc-name').oninput = () => {
-    document.querySelector('.card-holder-name').innerText
+    document.querySelector('#holderName').innerText
         = document.querySelector('#account-payment-cc-name').value;
 }
 
 document.querySelector('#account-payment-cc-exp-month').oninput = () => {
-    document.querySelector('.exp-month').innerText
+    document.querySelector('#expMonth').innerText
         = document.querySelector('#account-payment-cc-exp-month').value;
 }
 
 document.querySelector('#account-payment-cc-exp-year').oninput = () => {
-    document.querySelector('.exp-year').innerText
+    document.querySelector('#expYear').innerText
         = document.querySelector('#account-payment-cc-exp-year').value;
 }
 
