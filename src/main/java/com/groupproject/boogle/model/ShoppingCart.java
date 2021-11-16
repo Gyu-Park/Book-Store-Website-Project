@@ -77,7 +77,7 @@ public class ShoppingCart {
 	public int getTotalItemsNumber() {
 		int numberOfItems = 0;
 		for(CartItem item : this.items) {
-			numberOfItems =+ item.getQuantity();
+			numberOfItems += item.getQuantity();
 		}
 		return numberOfItems;
 	}
