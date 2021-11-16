@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+  <script src="js/nav.js" defer></script>
   <link rel="stylesheet" href="css/aboutUs.css">
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
@@ -19,6 +21,10 @@
     <div class="nav-container">
       <div class="logo">
         <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+        <div class="nav-toggle" id="navToggle">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times nav-hidden"></i>
+        </div>
       </div>
 
       <!-- add the "current" id to the li element of the active page -->
@@ -46,15 +52,15 @@
               <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
             </li>
             <li>
-			  <div sec:authorize="!isAuthenticated()" style="display: inline-block">
-	            <a th:href="@{/login}">Sign in</a>
-	          </div>
-	          <div sec:authorize="isAuthenticated()" style="display: inline-block">
-	            <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
-				  <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
-				</form>
-	          </div>
-			</li>
+              <div sec:authorize="!isAuthenticated()" style="display: inline-block">
+                <a th:href="@{/login}">Sign in</a>
+              </div>
+              <div sec:authorize="isAuthenticated()" style="display: inline-block">
+                <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
+                  <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
+                </form>
+              </div>
+            </li>
             <li><a th:href="@{/account}">Account</a></li>
           </ul>
         </div>

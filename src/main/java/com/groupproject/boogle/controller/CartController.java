@@ -71,8 +71,7 @@ public class CartController {
 	@GetMapping("/cart/removeItem/{id}")
 	public String removeItem(@PathVariable("id") Long id, HttpServletRequest request) {
 		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
-		System.out.println("sessionToken: " + sessionToken);
-		shoppingCartService.removeCartIemFromShoppingCart(id, sessionToken);
+		shoppingCartService.removeCartItemFromShoppingCart(id, sessionToken);
 		return "redirect:/cart";
 	}
 }

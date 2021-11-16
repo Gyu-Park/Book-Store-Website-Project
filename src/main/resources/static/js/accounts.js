@@ -74,3 +74,43 @@ function openPaymentForm(evt, formName) {
     document.getElementById(formName).style.display = "block";
     evt.currentTarget.className += " active";
 }
+
+/*Card Section*/
+document.querySelector('#account-payment-cc-num').oninput = () => {
+    document.querySelector('#cardNumber').innerText
+        = document.querySelector('#account-payment-cc-num').value;
+}
+
+document.querySelector('#account-payment-cc-name').oninput = () => {
+    document.querySelector('#holderName').innerText
+        = document.querySelector('#account-payment-cc-name').value;
+}
+
+document.querySelector('#account-payment-cc-exp-month').oninput = () => {
+    document.querySelector('#expMonth').innerText
+        = document.querySelector('#account-payment-cc-exp-month').value;
+}
+
+document.querySelector('#account-payment-cc-exp-year').oninput = () => {
+    document.querySelector('#expYear').innerText
+        = document.querySelector('#account-payment-cc-exp-year').value;
+}
+
+document.querySelector('#account-payment-cc-cvv').oninput = () => {
+    document.querySelector('.cvv-box').innerText
+        = document.querySelector('#account-payment-cc-cvv').value;
+}
+
+var cvvTextField = document.getElementById("account-payment-cc-cvv");
+cvvTextField.addEventListener("focus", focusTrueFunction, true);
+cvvTextField.addEventListener("blur", blurFalseFunction, true);
+
+function focusTrueFunction() {
+    document.querySelector('#addCardFront').style.transform = 'perspective(1000px) rotateY(-180deg)';
+    document.querySelector('#addCardBack').style.transform = 'perspective(1000px) rotateY(0deg)';
+}
+
+function blurFalseFunction() {
+    document.querySelector('#addCardFront').style.transform = '';
+    document.querySelector('#addCardBack').style.transform = '';
+}

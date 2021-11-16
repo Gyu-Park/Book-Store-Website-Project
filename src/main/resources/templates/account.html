@@ -1,21 +1,21 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="css/account.css">
     <link rel="stylesheet" href="css/nav.css">
+    <link rel="stylesheet" href="css/account.css">
     <link rel="stylesheet" href="css/footer.css">
 
+    <script src="js/nav.js" defer></script>
     <script src="js/accounts.js" defer></script>
     <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
-    <title>Account | Boogle.com
-
-    </title>
+    <title>Account | Boogle.com</title>
 </head>
 
 <body>
@@ -25,6 +25,10 @@
         <div class="nav-container">
             <div class="logo">
                 <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times nav-hidden"></i>
+                </div>
             </div>
 
             <!-- add the "current" id to the li element of the active page -->
@@ -52,15 +56,17 @@
                             <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
                         </li>
                         <li>
-							<div sec:authorize="!isAuthenticated()" style="display: inline-block">
-					          <a th:href="@{/login}">Sign in</a>
-					        </div>
-					        <div sec:authorize="isAuthenticated()" style="display: inline-block">
-					          <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
-							    <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
-							  </form>
-					        </div>
-						</li>
+                            <div sec:authorize="!isAuthenticated()" style="display: inline-block">
+                                <a th:href="@{/login}">Sign in</a>
+                            </div>
+                            <div sec:authorize="isAuthenticated()" style="display: inline-block">
+                                <form id="signout" th:action="@{/logout}" method="post"
+                                    style="width: 100px; height: 41">
+                                    <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign
+                                        Out</a>
+                                </form>
+                            </div>
+                        </li>
                         <li id="current"><a th:href="@{/account}">Account</a></li>
                     </ul>
                 </div>
@@ -68,6 +74,7 @@
 
         </div>
     </header>
+
 
     <!--Account Body-->
     <div class="account-content-tab-container">
@@ -88,7 +95,8 @@
                     <div class="LaS-item">
                         <div class="account-col-80">
                             <label for="LaS-name-lbl">Name</label>
-                            <lable for="LaS-name-display"><b>[[${#request.userPrincipal.principal.fullname}]]</b></lable>
+                            <lable for="LaS-name-display"><b>[[${#request.userPrincipal.principal.fullname}]]</b>
+                            </lable>
                         </div>
                         <div class="account-col-20">
                             <button type="form-edit" class="account-btn-edit">Edit</button>
@@ -98,7 +106,8 @@
                     <div class="LaS-item">
                         <div class="account-col-80">
                             <label for="LaS-email-lbl">Email</label>
-                            <lable for="LaS-email-display"><b>[[${#request.userPrincipal.principal.username}]]</b></lable>
+                            <lable for="LaS-email-display"><b>[[${#request.userPrincipal.principal.username}]]</b>
+                            </lable>
                         </div>
                         <div class="account-col-20">
                             <button type="form-edit" class="account-btn-edit">Edit</button>
@@ -128,10 +137,14 @@
                     <div class="LaS-item">
                         <div class="account-col-80">
                             <label for="LaS-address-lbl">Address</label>
-                            <lable for="LaS-address-display" style="display: block"><b>Street: [[${#request.userPrincipal.principal.street}]]</b></lable>
-                            <lable for="LaS-address-display" style="display: block"><b>City: [[${#request.userPrincipal.principal.city}]]</b></lable>
-                            <lable for="LaS-address-display" style="display: block"><b>State: [[${#request.userPrincipal.principal.state}]]</b></lable>
-                            <lable for="LaS-address-display"><b>Zip: [[${#request.userPrincipal.principal.zip}]]</b></lable>
+                            <lable for="LaS-address-display" style="display: block"><b>Street:
+                                    [[${#request.userPrincipal.principal.street}]]</b></lable>
+                            <lable for="LaS-address-display" style="display: block"><b>City:
+                                    [[${#request.userPrincipal.principal.city}]]</b></lable>
+                            <lable for="LaS-address-display" style="display: block"><b>State:
+                                    [[${#request.userPrincipal.principal.state}]]</b></lable>
+                            <lable for="LaS-address-display"><b>Zip: [[${#request.userPrincipal.principal.zip}]]</b>
+                            </lable>
                         </div>
                         <div class="account-col-20">
                             <button type="form-edit" class="account-btn-edit">Edit</button>
@@ -265,26 +278,82 @@
             <div class="payment-tab-container">
                 <div class="account-col-20">
                     <div class="payment-tabs">
-                        <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option
-                            1</button>
+                    	<button class="form-paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option1</button>
                         <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add
                             Payment Option</button>
                     </div>
                 </div>
+                
                 <div class="account-col-80">
 
                     <!--Payment Option Template-->
                     <div id="payment-option-1" class="paymentTabContent">
-                        <p>option 1</p>
+                        <div class="card-container" th:each="card : ${card}">
+                            <div class="front">
+                                <div class="cardImage">
+                                    <img src="img/chip.png" />
+                                    <img src="img/visa.png" />
+                                </div>
+                                <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber, 15)}]]</div>
+                                <div class="flexbox">
+                                    <div class="box">
+                                        <div class="card-holder">Card Holder</div>
+                                        <div class="card-holder-name">[[${card.cardHolderName}]]</div>
+                                    </div>
+                                    <div class="box">
+                                        <span>Expiration Date</span>
+                                        <div class="expiration">
+                                            <span class="exp-year">[[${card.cardExpYear}]]</span>
+                                            <span>/</span>
+                                            <span class="exp-month">[[${card.cardExpMonth}]]</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!--End-->
 
+                    <!-- Add Payment Option Template -->
                     <div id="add-payment-option" class="paymentTabContent">
                         <h3>Add Payment Option</h3>
-                        <form action="" method="post">
+                        <!-- Card Image -->
+                        <div class="card-container">
+                            <div class="front" id="addCardFront">
+                                <div class="cardImage">
+                                    <img src="img/chip.png" />
+                                    <img src="img/visa.png" />
+                                </div>
+                                <div class="card-number-box" id="cardNumber">****-****-****-****</div>
+                                <div class="flexbox">
+                                    <div class="box">
+                                        <div class="card-holder">Card Holder</div>
+                                        <div class="card-holder-name" id="holderName">Full name</div>
+                                    </div>
+                                    <div class="box">
+                                        <span>Expiration Date</span>
+                                        <div class="expiration">
+                                            <span class="exp-year" id="expYear">yy</span>
+                                            <span>/</span>
+                                            <span class="exp-month" id="expMonth">mm</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="back" id="addCardBack">
+                                <div class="stripe"></div>
+                                <div class="box">
+                                    <span>cvv</span>
+                                    <div class="cvv-box"></div>
+                                    <img src="img/visa.png" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Card Image End -->
+                        <form th:action="@{/account/addCard}" method="post">
                             <div class="new-payment-option-form-container">
                                 <label for="account-payment-option-name">Payment Option Name</label>
-                                <input type="text" id="account-payment-option-name">
+                                <input type="text" id="account-payment-option-name" name="paymentOptionName">
                                 <label for="account-payment-fname">Accepted Cards</label>
                                 <div class="account-payment-cc-icon-container">
                                     <i class="fa fa-cc-visa"></i>
@@ -294,20 +363,22 @@
                                     <i class="fab fa-apple-pay"></i>
                                 </div>
                                 <label for="account-payment-cc-name">Name on Card</label>
-                                <input type="text" id="account-payment-cc-name" placeholder="John Doe">
+                                <input type="text" id="account-payment-cc-name" name="cardHolderName"
+                                    placeholder="John Doe">
                                 <label for="account-payment-cc-num">Credit Card Number</label>
-                                <input type="text" id="account-payment-cc-num" placeholder="1111-2222-3333-4444">
+                                <input type="text" id="account-payment-cc-num" name="cardNumber"
+                                    placeholder="1111-2222-3333-4444">
                                 <label for="account-payment-cc-exp-month">Exp Month</label>
-                                <input type="text" id="account-payment-cc-exp-month" placeholder="November">
+                                <input type="text" id="account-payment-cc-exp-month" name="cardExpMonth" placeholder="01">
 
                                 <div class="account-row">
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-exp-year">Exp Year</label>
-                                        <input type="text" id="account-payment-cc-exp-year" placeholder="2021">
+                                        <input type="text" id="account-payment-cc-exp-year" name="cardExpYear" placeholder="21">
                                     </div>
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-cvv">CVV</label>
-                                        <input type="text" id="account-payment-cc-cvv" placeholder="489">
+                                        <input type="text" id="account-payment-cc-cvv" name="cardCvv" placeholder="489">
                                     </div>
                                 </div>
                             </div>
@@ -315,48 +386,47 @@
                         </form>
 
                     </div>
-
+                    <!-- End -->
                 </div>
             </div>
         </div>
 
         <div id="wishlist" class="tabContent">
-            <form action="" method="get">
-                <div class="account-row">
+            <div class="account-row">
 
-                    <!--Whishlist Item Template-->
-                    <div class="wishlist-item">
-                        <div class="account-row">
-                            <div class="account-col-80">
-                                <div class="wishlist-product-container">
-                                    <div class="wishlist-img-container">
-                                        <img src="img/PracticalSQL.jpg" alt="">
-                                    </div>
-                                    <div class="wishlist-title-container">
-                                        <label>The Practical SQL</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
+                <!--Whishlist Item Template-->
+                <div class="wishlist-item" th:each="wishListItem : ${wishList.items}">
+                    <div class="account-row">
+                        <div class="account-col-80">
+                            <div class="wishlist-product-container">
+                                <div class="wishlist-img-container">
+                                    <img th:src="${wishListItem.book.image}" alt="">
+                                </div>
+                                <div class="wishlist-title-container">
+                                    <label>[[${wishListItem.book.alias}]]</label>
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                        sed do eiusmod tempor incididunt ut labore et dolore magna
+                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                                 </div>
                             </div>
-                            <div class="account-col-20">
-                                <label for>Price
-                                    <span class="wishlist-item-price"> $65.65</span>
-                                </label>
-                                <hr>
-                                <button type="form-buy-now">Buy Now</button>
-                                <button type="form-add-to-cart">Add to Cart</button>
+                        </div>
+                        <div class="account-col-20">
+                            <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
+                            </label>
+                            <hr>
+                            <button type="form-buy-now">Buy Now</button>
+                            <button type="form-add-to-cart">Add to Cart</button>
+                            <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
+                                data-toggle="tooltip">
                                 <button type="form-remove">Remove</button>
-                            </div>
+                            </a>
                         </div>
                     </div>
-                    <!--End-->
-
                 </div>
-            </form>
+                <!--End-->
+
+            </div>
         </div>
     </div>
 

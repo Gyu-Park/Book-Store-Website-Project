@@ -13,7 +13,7 @@ import com.groupproject.boogle.repository.BookRepository;
 public class AdminController {
 	
 	@Autowired
-	private BookRepository bookRepo;
+	private BookRepository bookRepository;
 	
 	@GetMapping("/addBook")
 	public String viewAddBookPage(Model model) {
@@ -23,7 +23,7 @@ public class AdminController {
 
 	@PostMapping("/process_addBook")
 	public String processAddBook(Book book) {
-		bookRepo.save(book);
+		bookRepository.save(book);
 		
 		return "addBook";
 	}
