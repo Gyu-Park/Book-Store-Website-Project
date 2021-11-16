@@ -34,6 +34,9 @@ public class ShoppingCart {
 	@Transient
 	private int itemsNumber;
 	
+	@Transient
+	private int totalItemsNumber;
+	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
 	private Set<CartItem> items = new HashSet<CartItem>();
 	
@@ -69,6 +72,14 @@ public class ShoppingCart {
 
 	public int getItemsNumber() {
 		return this.items.size();
+	}
+
+	public int getTotalItemsNumber() {
+		int numberOfItems = 0;
+		for(CartItem item : this.items) {
+			numberOfItems =+ item.getQuantity();
+		}
+		return numberOfItems;
 	}
 
 	public Set<CartItem> getItems() {
