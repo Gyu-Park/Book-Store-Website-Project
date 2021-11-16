@@ -1,5 +1,7 @@
 package com.groupproject.boogle.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +15,7 @@ import com.groupproject.boogle.model.CustomUserDetails;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
 import com.groupproject.boogle.repository.CardRepository;
+import com.groupproject.boogle.service.CardService;
 import com.groupproject.boogle.service.WishListService;
 
 @Controller
@@ -24,6 +27,9 @@ public class AccountController {
 	@Autowired
 	private CardRepository cardRepository;
 	
+	@Autowired
+	private CardService cardService;
+	
 	private CustomUserDetails customUserDetails;
 
 	@GetMapping("/account")
@@ -32,7 +38,8 @@ public class AccountController {
 		User user = customUserDetails.getUser();
 		WishList wishList = wishListService.getWishListByUser(user);
 		model.addAttribute("wishList", wishList);
-		model.addAttribute("card", new Card());
+		List<Card> card = cardService.findAllCardByUser(user);
+		model.addAttribute("card", card);
 		return "account";
 	}
 	

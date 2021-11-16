@@ -265,34 +265,34 @@
             <div class="payment-tab-container">
                 <div class="account-col-20">
                     <div class="payment-tabs">
-                        <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option
-                            1</button>
+                    	<button class="form-paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option1</button>
                         <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add
                             Payment Option</button>
                     </div>
                 </div>
+                
                 <div class="account-col-80">
 
                     <!--Payment Option Template-->
                     <div id="payment-option-1" class="paymentTabContent">
-                        <div class="card-container">
+                        <div class="card-container" th:each="card : ${card}">
                             <div class="front">
                                 <div class="cardImage">
                                     <img src="img/chip.png" />
                                     <img src="img/visa.png" />
                                 </div>
-                                <div class="card-number-box">################</div>
+                                <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber, 15)}]]</div>
                                 <div class="flexbox">
                                     <div class="box">
                                         <div class="card-holder">Card Holder</div>
-                                        <div class="card-holder-name">Full name</div>
+                                        <div class="card-holder-name">[[${card.cardHolderName}]]</div>
                                     </div>
                                     <div class="box">
                                         <span>Expiration Date</span>
                                         <div class="expiration">
-                                            <span class="exp-year">yy</span>
+                                            <span class="exp-year">[[${card.cardExpYear}]]</span>
                                             <span>/</span>
-                                            <span class="exp-month">mm</span>
+                                            <span class="exp-month">[[${card.cardExpMonth}]]</span>
                                         </div>
                                     </div>
                                 </div>
@@ -311,7 +311,7 @@
                                     <img src="img/chip.png" />
                                     <img src="img/visa.png" />
                                 </div>
-                                <div class="card-number-box" id="cardNumber">################</div>
+                                <div class="card-number-box" id="cardNumber">****-****-****-****</div>
                                 <div class="flexbox">
                                     <div class="box">
                                         <div class="card-holder">Card Holder</div>
@@ -340,7 +340,7 @@
                         <form th:action="@{/account/addCard}" method="post">
                             <div class="new-payment-option-form-container">
                                 <label for="account-payment-option-name">Payment Option Name</label>
-                                <input type="text" id="account-payment-option-name">
+                                <input type="text" id="account-payment-option-name" name="paymentOptionName">
                                 <label for="account-payment-fname">Accepted Cards</label>
                                 <div class="account-payment-cc-icon-container">
                                     <i class="fa fa-cc-visa"></i>
@@ -354,12 +354,12 @@
                                 <label for="account-payment-cc-num">Credit Card Number</label>
                                 <input type="text" id="account-payment-cc-num" name="cardNumber" placeholder="1111-2222-3333-4444">
                                 <label for="account-payment-cc-exp-month">Exp Month</label>
-                                <input type="text" id="account-payment-cc-exp-month" name="cardExpMonth" placeholder="November">
+                                <input type="text" id="account-payment-cc-exp-month" name="cardExpMonth" placeholder="01">
 
                                 <div class="account-row">
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-exp-year">Exp Year</label>
-                                        <input type="text" id="account-payment-cc-exp-year" name="cardExpYear" placeholder="2021">
+                                        <input type="text" id="account-payment-cc-exp-year" name="cardExpYear" placeholder="21">
                                     </div>
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-cvv">CVV</label>

@@ -22,6 +22,9 @@ public class Card {
 	@JoinColumn(name="userId", nullable = false, updatable = false)
 	private User user;
 	
+	@Column(length = 20)
+	private String paymentOptionName;
+	
 	@Column(length = 50)
 	private String cardHolderName;
 	
@@ -48,6 +51,14 @@ public class Card {
 
 	public void setUser(User user) {
 		this.user = user;
+	}
+
+	public String getPaymentOptionName() {
+		return paymentOptionName;
+	}
+
+	public void setPaymentOptionName(String paymentOptionName) {
+		this.paymentOptionName = paymentOptionName;
 	}
 
 	public String getCardHolderName() {
@@ -110,10 +121,9 @@ public class Card {
 
 	@Override
 	public String toString() {
-		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", cardHolderName=" + cardHolderName
-				+ ", cardNumber=" + cardNumber + ", cardExpMonth=" + cardExpMonth + ", cardExpYear=" + cardExpYear
-				+ ", cardCvv=" + cardCvv + "]";
+		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", paymentOptionName="
+				+ paymentOptionName + ", cardHolderName=" + cardHolderName + ", cardNumber=" + cardNumber
+				+ ", cardExpMonth=" + cardExpMonth + ", cardExpYear=" + cardExpYear + ", cardCvv=" + cardCvv + "]";
 	}
-	
 	
 }

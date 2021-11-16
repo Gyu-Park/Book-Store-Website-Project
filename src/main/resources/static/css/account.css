@@ -252,23 +252,32 @@ button[type="form-buy-again"] {
   max-width: 398px;
 }
 
-.card-container .front {
+.card-container:nth-child(odd) .front {
   position: absolute;
   height: 100%;
   width: 100%;
   top: 0;
   left: 0;
   background: #778899; /* fallback for old browsers */
-  background: -webkit-linear-gradient(
-    to right,
-    #2c3e50,
-    #778899
-  ); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(
-    to right,
-    #2c3e50,
-    #778899
-  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(to right,#2c3e50,#778899); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right,#2c3e50,#778899); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  border-radius: 5px;
+  backface-visibility: hidden;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  transform: perspective(1000px) rotateY(0deg);
+  transition: transform 0.4s ease-out;
+}
+
+.card-container:nth-child(even) .front {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: #3E5151;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #778899, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #778899, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 5px;
   backface-visibility: hidden;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
