@@ -55,7 +55,15 @@
                 <div class="right">
                     <ul>
                         <li class="button">
-                            <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
+                            <a th:href="@{/cart}">
+                                <i class="fa fa-shopping-cart"></i> Cart
+                                <div class="cart-num">
+                                    <p>
+                                        <span th:if="${shoppingCart.getTotalItemsNumber == 0}"></span>
+                                        <span th:unless="${shoppingCart.getItemsNumber == 0}"></span>
+                                    </p>
+                                </div>
+                            </a>
                         </li>
                         <li id="current">
                             <div sec:authorize="!isAuthenticated()" style="display: inline-block">
