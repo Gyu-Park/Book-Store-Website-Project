@@ -10,6 +10,7 @@
   <link rel="stylesheet" href="css/nav.css">
   <link rel="stylesheet" href="css/footer.css">
 
+  <script src="js/nav.js" defer></script>
   <script src="js/product.js" defer></script>
   <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
@@ -24,6 +25,10 @@
     <div class="nav-container">
       <div class="logo">
         <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+        <div class="nav-toggle" id="navToggle">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times nav-hidden"></i>
+        </div>
       </div>
 
       <!-- add the "current" id to the li element of the active page -->
@@ -32,7 +37,7 @@
           <ul>
             <li><a th:href="@{/home}">Home</a></li>
             <li><a th:href="@{/aboutUs}">About Us</a></li>
-            <li><a th:href="@{/books}">Books</a></li>
+            <li id="current"><a th:href="@{/books}">Books</a></li>
           </ul>
         </div>
 
@@ -67,6 +72,7 @@
 
     </div>
   </header>
+
 
   <!--Product Body Content-->
   <div class="product-content-container">
@@ -146,9 +152,9 @@
                   </form>
                   <button type="product-submit">Buy Now</button>
                   <div sec:authorize="isAuthenticated()">
-                  	<a th:href="@{/addToWishList/{isbn13}(isbn13 = ${book.isbn13})}">
-	                  	<button type="product-submit">Add to Wish List</button>
-	                </a>
+                    <a th:href="@{/addToWishList/{isbn13}(isbn13 = ${book.isbn13})}">
+                      <button type="product-submit">Add to Wish List</button>
+                    </a>
                   </div>
                 </div>
               </div>

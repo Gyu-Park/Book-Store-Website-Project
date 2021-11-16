@@ -88,7 +88,8 @@ nav ul li a:before {
 }
 
 nav ul li a:hover,
-.logo a:hover {
+.logo a:hover,
+.nav-toggle:hover {
   color: #ecd5b3;
 }
 
@@ -106,7 +107,7 @@ header nav li a:after,
 .logo a:after,
 #current a:after {
   position: absolute;
-  bottom: 0;
+  bottom: 5px;
   left: 0;
   right: 0;
   margin: auto;
@@ -197,4 +198,104 @@ li.button {
 .search-bar input:focus {
   outline: 0;
   width: 85%;
+}
+
+/* Mobile Toggle Styles */
+.nav-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  display: none;
+  cursor: pointer;
+  color: #fffaf3;
+}
+
+.nav-toggle,
+.nav-toggle:after,
+.nav-toggle:before {
+  transition: 0.5s;
+}
+
+.nav-open {
+  flex-basis: 50vh;
+}
+
+.nav-hidden,
+.fas.nav-hidden {
+  display: none;
+}
+
+/* Mobile Styles */
+@media all and (max-width: 1180px) {
+  header nav li {
+    font-size: 1.2vw;
+  }
+
+  .logo {
+    font-size: 2vw;
+  }
+
+  .search-bar input,
+  .search-bar button {
+    font-size: 1.2vw;
+  }
+}
+
+@media all and (max-width: 750px) {
+  /* Container Styles */
+  .nav-container {
+    flex-direction: column;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: center;
+    flex-basis: 0;
+    width: 100%;
+    overflow: hidden;
+    transition: 250ms flex-basis ease-in-out;
+  }
+
+  /* List Styles */
+  .left ul,
+  .right ul {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .left,
+  .center,
+  .right {
+    flex: 0;
+  }
+
+  nav ul li,
+  li.button {
+    font-size: 1em;
+    display: block;
+    margin: 0 auto;
+  }
+
+  .search-bar input,
+  .search-bar button {
+    font-size: 1em;
+  }
+
+  .center {
+    order: 3;
+    flex: 90%;
+    width: 100%;
+    padding-top: 1em;
+  }
+
+  .logo {
+    font-size: 1.5em;
+    margin: 0.5rem 0;
+  }
+
+  /* Nav Toggle Styles */
+  .nav-toggle {
+    display: block;
+  }
 }
