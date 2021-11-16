@@ -20,7 +20,6 @@ public class LoginAndRegistrationController {
 	// @GetMapping is to map HTTP GET requests.
 	@GetMapping("/login")
 	public String viewLoginPage(Model model) {
-		model.addAttribute("user", new User()); // when we "get" the login page, the model adds user attribute for sign up.
 		return "login";
 	}
 	

@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import com.groupproject.boogle.aesEncryption.AES;
+
 @Entity(name="payment_option")
 public class Card {
 	
@@ -22,10 +24,12 @@ public class Card {
 	@JoinColumn(name="userId", nullable = false, updatable = false)
 	private User user;
 	
+	@Column(length = 20)
+	private String paymentOptionName;
+	
 	@Column(length = 50)
 	private String cardHolderName;
 	
-	@Column(length = 20)
 	private String cardNumber;
 	
 	private Byte cardExpMonth;
@@ -50,6 +54,14 @@ public class Card {
 		this.user = user;
 	}
 
+	public String getPaymentOptionName() {
+		return paymentOptionName;
+	}
+
+	public void setPaymentOptionName(String paymentOptionName) {
+		this.paymentOptionName = paymentOptionName;
+	}
+
 	public String getCardHolderName() {
 		return cardHolderName;
 	}
@@ -59,11 +71,12 @@ public class Card {
 	}
 
 	public String getCardNumber() {
-		return cardNumber;
+		return AES.decrypt(this.cardNumber, AES.secretKeyBoogle);
 	}
 
 	public void setCardNumber(String cardNumber) {
-		this.cardNumber = cardNumber;
+	    String encryptedCardNumber = AES.encrypt(cardNumber, AES.secretKeyBoogle);
+		this.cardNumber = encryptedCardNumber;
 	}
 
 	public Byte getCardExpMonth() {
@@ -110,10 +123,9 @@ public class Card {
 
 	@Override
 	public String toString() {
-		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", cardHolderName=" + cardHolderName
-				+ ", cardNumber=" + cardNumber + ", cardExpMonth=" + cardExpMonth + ", cardExpYear=" + cardExpYear
-				+ ", cardCvv=" + cardCvv + "]";
+		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", paymentOptionName="
+				+ paymentOptionName + ", cardHolderName=" + cardHolderName + ", cardNumber=" + cardNumber
+				+ ", cardExpMonth=" + cardExpMonth + ", cardExpYear=" + cardExpYear + ", cardCvv=" + cardCvv + "]";
 	}
-	
 	
 }
