@@ -2,6 +2,8 @@ package com.groupproject.boogle.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -12,10 +14,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CustomUserDetails;
+import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
 import com.groupproject.boogle.repository.CardRepository;
 import com.groupproject.boogle.service.CardService;
+import com.groupproject.boogle.service.ShoppingCartService;
 import com.groupproject.boogle.service.WishListService;
 
 @Controller
@@ -30,16 +34,28 @@ public class AccountController {
 	@Autowired
 	private CardService cardService;
 	
+	@Autowired
+	ShoppingCartService shoppingCartService;
+	
 	private CustomUserDetails customUserDetails;
 
 	@GetMapping("/account")
-	public String viewAccountPage(Model model) {
+	public String viewAccountPage(HttpServletRequest request, Model model) {
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		WishList wishList = wishListService.getWishListByUser(user);
 		model.addAttribute("wishList", wishList);
 		List<Card> card = cardService.findAllCardByUser(user);
 		model.addAttribute("card", card);
+		
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+		if (sessionToken == null) {
+			model.addAttribute("shoppingCart", new ShoppingCart());
+		} else {
+			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
+			model.addAttribute("shoppingCart", shoppingCart);
+		}
+		
 		return "account";
 	}
 	
