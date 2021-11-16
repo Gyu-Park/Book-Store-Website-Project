@@ -278,39 +278,44 @@
             <div class="payment-tab-container">
                 <div class="account-col-20">
                     <div class="payment-tabs">
-                    	<button class="form-paymentTablinks" onClick="openPaymentForm(event, 'payment-option-1')">Option1</button>
-                        <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add
-                            Payment Option</button>
+                    	<div id="payment-option-button-container" th:each="card, cardStat : ${card}">
+                    		<button class="form-paymentTablinks" th:onClick="openPaymentForm(event, 'payment-option-[[${cardStat.count}]]')">[[${card.paymentOptionName}]]</button>
+                        </div>
+                        <div id="add-payment-option-button-container">
+	                        <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add
+	                            Payment Option</button>
+	                    </div>
                     </div>
                 </div>
                 
                 <div class="account-col-80">
-
                     <!--Payment Option Template-->
-                    <div id="payment-option-1" class="paymentTabContent">
-                        <div class="card-container" th:each="card : ${card}">
-                            <div class="front">
-                                <div class="cardImage">
-                                    <img src="img/chip.png" />
-                                    <img src="img/visa.png" />
-                                </div>
-                                <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber, 15)}]]</div>
-                                <div class="flexbox">
-                                    <div class="box">
-                                        <div class="card-holder">Card Holder</div>
-                                        <div class="card-holder-name">[[${card.cardHolderName}]]</div>
-                                    </div>
-                                    <div class="box">
-                                        <span>Expiration Date</span>
-                                        <div class="expiration">
-                                            <span class="exp-year">[[${card.cardExpYear}]]</span>
-                                            <span>/</span>
-                                            <span class="exp-month">[[${card.cardExpMonth}]]</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div th:each="card, cardStat : ${card}">
+	                    <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
+	                        <div class="card-container">
+	                            <div class="front">
+	                                <div class="cardImage">
+	                                    <img src="img/chip.png" />
+	                                    <img src="img/visa.png" />
+	                                </div>
+	                                <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber, 15)}]]</div>
+	                                <div class="flexbox">
+	                                    <div class="box">
+	                                        <div class="card-holder">Card Holder</div>
+	                                        <div class="card-holder-name">[[${card.cardHolderName}]]</div>
+	                                    </div>
+	                                    <div class="box">
+	                                        <span>Expiration Date</span>
+	                                        <div class="expiration">
+	                                            <span class="exp-year">[[${card.cardExpYear}]]</span>
+	                                            <span>/</span>
+	                                            <span class="exp-month">[[${card.cardExpMonth}]]</span>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+                    	</div>
                     </div>
                     <!--End-->
 
