@@ -395,8 +395,8 @@
             <div class="account-row">
 
                 <!--Whishlist Item Template-->
-                <div class="wishlist-item" th:each="wishListItem : ${wishList.items}">
-                    <div class="account-row">
+                <div class="wishlist-item" th:if= "${wishList}">
+                    <div class="account-row" th:each="wishListItem : ${wishList.items}">
                         <div class="account-col-80">
                             <div class="wishlist-product-container">
                                 <div class="wishlist-img-container">
