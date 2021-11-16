@@ -53,7 +53,15 @@
                 <div class="right">
                     <ul>
                         <li class="button">
-                            <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
+                            <a th:href="@{/cart}">
+                                <i class="fa fa-shopping-cart"></i> Cart
+                                <div class="cart-num">
+                                    <p>
+                                        <span th:if="${shoppingCart.getTotalItemsNumber == 0}"></span>
+                                        <span th:unless="${shoppingCart.getItemsNumber == 0}"></span>
+                                    </p>
+                                </div>
+                            </a>
                         </li>
                         <li>
                             <div sec:authorize="!isAuthenticated()" style="display: inline-block">
@@ -278,44 +286,47 @@
             <div class="payment-tab-container">
                 <div class="account-col-20">
                     <div class="payment-tabs">
-                    	<div id="payment-option-button-container" th:each="card, cardStat : ${card}">
-                    		<button class="form-paymentTablinks" th:onClick="openPaymentForm(event, 'payment-option-[[${cardStat.count}]]')">[[${card.paymentOptionName}]]</button>
+                        <div id="payment-option-button-container" th:each="card, cardStat : ${card}">
+                            <button class="form-paymentTablinks"
+                                th:onClick="openPaymentForm(event, 'payment-option-[[${cardStat.count}]]')">[[${card.paymentOptionName}]]</button>
                         </div>
                         <div id="add-payment-option-button-container">
-	                        <button class="form-paymentTablinks" onClick="openPaymentForm(event, 'add-payment-option')">Add
-	                            Payment Option</button>
-	                    </div>
+                            <button class="form-paymentTablinks"
+                                onClick="openPaymentForm(event, 'add-payment-option')">Add
+                                Payment Option</button>
+                        </div>
                     </div>
                 </div>
-                
+
                 <div class="account-col-80">
                     <!--Payment Option Template-->
                     <div th:each="card, cardStat : ${card}">
-	                    <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
-	                        <div class="card-container">
-	                            <div class="front">
-	                                <div class="cardImage">
-	                                    <img src="img/chip.png" />
-	                                    <img src="img/visa.png" />
-	                                </div>
-	                                <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber, 15)}]]</div>
-	                                <div class="flexbox">
-	                                    <div class="box">
-	                                        <div class="card-holder">Card Holder</div>
-	                                        <div class="card-holder-name">[[${card.cardHolderName}]]</div>
-	                                    </div>
-	                                    <div class="box">
-	                                        <span>Expiration Date</span>
-	                                        <div class="expiration">
-	                                            <span class="exp-year">[[${card.cardExpYear}]]</span>
-	                                            <span>/</span>
-	                                            <span class="exp-month">[[${card.cardExpMonth}]]</span>
-	                                        </div>
-	                                    </div>
-	                                </div>
-	                            </div>
-	                        </div>
-                    	</div>
+                        <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
+                            <div class="card-container">
+                                <div class="front">
+                                    <div class="cardImage">
+                                        <img src="img/chip.png" />
+                                        <img src="img/visa.png" />
+                                    </div>
+                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
+                                        15)}]]</div>
+                                    <div class="flexbox">
+                                        <div class="box">
+                                            <div class="card-holder">Card Holder</div>
+                                            <div class="card-holder-name">[[${card.cardHolderName}]]</div>
+                                        </div>
+                                        <div class="box">
+                                            <span>Expiration Date</span>
+                                            <div class="expiration">
+                                                <span class="exp-year">[[${card.cardExpYear}]]</span>
+                                                <span>/</span>
+                                                <span class="exp-month">[[${card.cardExpMonth}]]</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!--End-->
 
@@ -374,12 +385,14 @@
                                 <input type="text" id="account-payment-cc-num" name="cardNumber"
                                     placeholder="1111-2222-3333-4444">
                                 <label for="account-payment-cc-exp-month">Exp Month</label>
-                                <input type="text" id="account-payment-cc-exp-month" name="cardExpMonth" placeholder="01">
+                                <input type="text" id="account-payment-cc-exp-month" name="cardExpMonth"
+                                    placeholder="01">
 
                                 <div class="account-row">
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-exp-year">Exp Year</label>
-                                        <input type="text" id="account-payment-cc-exp-year" name="cardExpYear" placeholder="21">
+                                        <input type="text" id="account-payment-cc-exp-year" name="cardExpYear"
+                                            placeholder="21">
                                     </div>
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-cvv">CVV</label>
@@ -400,7 +413,7 @@
             <div class="account-row">
 
                 <!--Whishlist Item Template-->
-                <div class="wishlist-item" th:if= "${wishList}">
+                <div class="wishlist-item" th:if="${wishList}">
                     <div class="account-row" th:each="wishListItem : ${wishList.items}">
                         <div class="account-col-80">
                             <div class="wishlist-product-container">
