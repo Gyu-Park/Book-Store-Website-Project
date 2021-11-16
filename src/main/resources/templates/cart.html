@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/footer.css">
 
+    <script src="js/nav.js" defer></script>
     <script src="js/cart.js"></script>
     <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
@@ -24,6 +25,10 @@
         <div class="nav-container">
             <div class="logo">
                 <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+                <div class="nav-toggle" id="navToggle">
+                    <i class="fas fa-bars"></i>
+                    <i class="fas fa-times nav-hidden"></i>
+                </div>
             </div>
 
             <!-- add the "current" id to the li element of the active page -->
@@ -47,7 +52,7 @@
 
                 <div class="right">
                     <ul>
-                        <li class="button" id="current">
+                        <li id="current" class="button">
                             <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
                         </li>
                         <li>
@@ -70,72 +75,74 @@
         </div>
     </header>
 
+
     <!--Active Cart Body-->
     <div class="active-cart-page-container">
         <div class="active-cart-row">
             <div class="active-cart-col-70">
                 <div class="active-cart-container">
 
-					<div class="active-cart-row">
-						<div class="acticve-cart-header">
-							<h2>Shopping Cart</h2>
-						</div>
-					</div>
-					<hr>
+                    <div class="active-cart-row">
+                        <div class="acticve-cart-header">
+                            <h2>Shopping Cart</h2>
+                        </div>
+                    </div>
+                    <hr>
 
-					<div class="active-cart-row">
-						<div class="active-items-list">
+                    <div class="active-cart-row">
+                        <div class="active-items-list">
 
-							<!--Cart Item Template-->
-							<div class="cart-item" th:each="cartItem : ${shoppingCart.items}">
-								<div class="active-cart-row">
-									<div class="cart-col-60">
-										<div class="cart-product-container">
-											<div class="cart-item-img-container">
-												<img th:src="${cartItem.book.image}" alt="">
-											</div>
-											<div class="cart-item-title-container">
-												<label>[[${cartItem.book.title}]]</label>
-												<p>Lorem ipsum dolor sit amet, consectetur adipiscing
-													elit, sed do eiusmod tempor incididunt ut labore et dolore
-													magna aliqua. Ut enim ad minim veniam, quis nostrud
-													exercitation ullamco laboris nisi ut aliquip ex ea commodo
-													consequat.</p>
-											</div>
-										</div>
-									</div>
-									<div class="cart-col-20">
-										<form th:action="@{/cart/updateShoppingCart}" method="post">
-											<input type="hidden" th:value="${cartItem.id}" name="item_id" />
-											<label>Quantity</label> <input type="number" id="item-qty"
-												name="quantity" th:value="${cartItem.quantity}"
-												th:attr="max=${cartItem.book.number_on_hand}" />
-											<button type="submit">Update qty</button>
-										</form>
-										<a th:href="@{/cart/removeItem/{id}(id = ${cartItem.id})}" data-toggle="tooltip">
-											<button type="form-remove">Remove</button>
-										</a>
-									</div>
-									<div class="cart-col-20">
-										<label>Price</label>
-										<p>[[${cartItem.book.price}]]</p>
-									</div>
-								</div>
-							</div>
-							<hr>
-							<!--End-->
+                            <!--Cart Item Template-->
+                            <div class="cart-item" th:each="cartItem : ${shoppingCart.items}">
+                                <div class="active-cart-row">
+                                    <div class="cart-col-60">
+                                        <div class="cart-product-container">
+                                            <div class="cart-item-img-container">
+                                                <img th:src="${cartItem.book.image}" alt="">
+                                            </div>
+                                            <div class="cart-item-title-container">
+                                                <label>[[${cartItem.book.title}]]</label>
+                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing
+                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore
+                                                    magna aliqua. Ut enim ad minim veniam, quis nostrud
+                                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                                                    consequat.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="cart-col-20">
+                                        <form th:action="@{/cart/updateShoppingCart}" method="post">
+                                            <input type="hidden" th:value="${cartItem.id}" name="item_id" />
+                                            <label>Quantity</label> <input type="number" id="item-qty" name="quantity"
+                                                th:value="${cartItem.quantity}"
+                                                th:attr="max=${cartItem.book.number_on_hand}" />
+                                            <button type="submit">Update qty</button>
+                                        </form>
+                                        <a th:href="@{/cart/removeItem/{id}(id = ${cartItem.id})}"
+                                            data-toggle="tooltip">
+                                            <button type="form-remove">Remove</button>
+                                        </a>
+                                    </div>
+                                    <div class="cart-col-20">
+                                        <label>Price</label>
+                                        <p>[[${cartItem.book.price}]]</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr>
+                            <!--End-->
 
-						</div>
-					</div>
+                        </div>
+                    </div>
 
-					<div class="active-cart-row">
-						<div class="active-cart-subtotal">
-							<p>
-								Subtotal:<span class="cart-subtotal"><b>$[[${shoppingCart.totalPrice}]]</b></span>
-							</p>
-						</div>
-					</div>
-				</div>
+                    <div class="active-cart-row">
+                        <div class="active-cart-subtotal">
+                            <p>
+                                Subtotal:<span class="cart-subtotal"><b>$[[${shoppingCart.totalPrice}]]</b></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="wishlist-container">
                     <form action="">

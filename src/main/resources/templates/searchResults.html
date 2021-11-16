@@ -1,25 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet" href="/css/searchResults.css">
-    <link rel="stylesheet" href="/css/nav.css">
-    <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/searchResults.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/footer.css">
 
-    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+  <script src="js/nav.js" defer></script>
+  <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
-    <title>Search Results | Boogle</title>
+  <title>Search Results | Boogle</title>
 </head>
+
 <body>
   <!--Navigation Header-->
   <header>
 
     <div class="nav-container">
       <div class="logo">
-        <a href="home.html"><i class="fas fa-book-reader"></i></a>
+        <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+        <div class="nav-toggle" id="navToggle">
+          <i class="fas fa-bars"></i>
+          <i class="fas fa-times nav-hidden"></i>
+        </div>
       </div>
 
       <!-- add the "current" id to the li element of the active page -->
@@ -28,7 +35,7 @@
           <ul>
             <li><a th:href="@{/home}">Home</a></li>
             <li><a th:href="@{/aboutUs}">About Us</a></li>
-            <li><a th:href="@{/books}">Books</a></li>
+            <li id="current"><a th:href="@{/books}">Books</a></li>
           </ul>
         </div>
 
@@ -46,7 +53,16 @@
             <li class="button">
               <a th:href="@{/cart}"><i class="fa fa-shopping-cart"></i> Cart</a>
             </li>
-            <li><a th:href="@{/login}">Sign in</a></li>
+            <li>
+              <div sec:authorize="!isAuthenticated()" style="display: inline-block">
+                <a th:href="@{/login}">Sign in</a>
+              </div>
+              <div sec:authorize="isAuthenticated()" style="display: inline-block">
+                <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
+                  <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
+                </form>
+              </div>
+            </li>
             <li><a th:href="@{/account}">Account</a></li>
           </ul>
         </div>
@@ -54,6 +70,7 @@
 
     </div>
   </header>
+
 
   <!--Search Reslts Body-->
   <div class="searchResults-content-container">
@@ -149,4 +166,5 @@
     </div>
   </footer>
 </body>
+
 </html>
