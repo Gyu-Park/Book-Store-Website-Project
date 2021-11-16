@@ -121,3 +121,7 @@ p {
   margin-bottom: 4px;
   margin-top: 4px;
 }
+
+.item-details p {
+  font-size: 15px;
+}
