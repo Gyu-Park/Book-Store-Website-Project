@@ -303,10 +303,28 @@
                                 <div class="front">
                                     <div class="cardImage">
                                         <img src="img/chip.png" />
-                                        <img src="img/visa.png" />
+                                        <!-- American Express Identification Numbers -->
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} == '34' 
+                                        	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'" src="img/american-express.png" />
+                                        <!-- Visa Identification Numbers -->
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'" src="img/visa.png" />
+                                        <!-- Mastercard Identification Numbers -->
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
+                                        	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'" src="img/mastercard.png" />
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
+                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'" src="img/mastercard.png" />
+                                        <!-- Discover Identification Numbers -->
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'" src="img/discover.png" />
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
+                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'" src="img/discover.png" />
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
+                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'" src="img/discover.png" />
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
+                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'" src="img/discover.png" />
+                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
+                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'" src="img/discover.png" />
                                     </div>
-                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
-                                        15)}]]</div>
+                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber, 12)}]]</div>
                                     <div class="flexbox">
                                         <div class="box">
                                             <div class="card-holder">Card Holder</div>

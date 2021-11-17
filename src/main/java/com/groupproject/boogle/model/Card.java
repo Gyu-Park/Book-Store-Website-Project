@@ -75,7 +75,7 @@ public class Card {
 	}
 
 	public void setCardNumber(String cardNumber) {
-		String encryptedCardNumber = AES.encrypt(cardNumber, AES.secretKeyBoogle);
+		String encryptedCardNumber = AES.encrypt(cardNumber.replaceAll("\\D", ""), AES.secretKeyBoogle);
 		this.cardNumber = encryptedCardNumber;
 	}
 
