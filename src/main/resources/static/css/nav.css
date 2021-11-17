@@ -107,7 +107,7 @@ header nav li a:after,
 .logo a:after,
 #current a:after {
   position: absolute;
-  bottom: 5px;
+  bottom: 3px;
   left: 0;
   right: 0;
   margin: auto;
@@ -140,7 +140,7 @@ header nav li a:hover:after,
 /* Cart Button Styles */
 li.button {
   background-color: #fffaf3;
-  margin-right: 1.5em;
+  margin-right: 1em;
   border-radius: 0.2em;
   padding: 0.75em;
 }
@@ -154,6 +154,32 @@ li.button {
 }
 
 .button a:after {
+  background: #b09979;
+}
+
+.cart-num {
+  border-radius: 50%;
+  min-width: 25px;
+  width: auto;
+  height: 25px;
+  background: #778899;
+  color: #fffaf3;
+  text-align: center;
+  line-height: 25px;
+  display: inline-block;
+  transition: 0.5s background ease-in-out;
+}
+
+.button a:hover .cart-num {
+  background: #b09979;
+}
+
+.cart-num p {
+  display: inline;
+  font-size: 1em;
+}
+
+#current.button .cart-num {
   background: #b09979;
 }
 
