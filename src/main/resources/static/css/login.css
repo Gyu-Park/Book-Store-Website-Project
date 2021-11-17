@@ -9,6 +9,7 @@
   margin-top: 15vh;
   margin-bottom: 40vh;
   box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
+  min-height: 100vh;
 }
 
 .login-row {

@@ -4,6 +4,7 @@
   width: 80%;
   margin: auto;
   margin-top: 10px;
+  min-height: 100vh;
 }
 
 .account-row {
@@ -259,8 +260,16 @@ button[type="form-buy-again"] {
   top: 0;
   left: 0;
   background: #778899; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right,#2c3e50,#778899); /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right,#2c3e50,#778899); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: -webkit-linear-gradient(
+    to right,
+    #2c3e50,
+    #778899
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #2c3e50,
+    #778899
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 5px;
   backface-visibility: hidden;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
@@ -275,9 +284,17 @@ button[type="form-buy-again"] {
   width: 100%;
   top: 0;
   left: 0;
-  background: #3E5151;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #778899, #2c3e50);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #778899, #2c3e50); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  background: #3e5151; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #778899,
+    #2c3e50
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #778899,
+    #2c3e50
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 5px;
   backface-visibility: hidden;
   box-shadow: 0 15px 25px rgba(0, 0, 0, 0.2);
