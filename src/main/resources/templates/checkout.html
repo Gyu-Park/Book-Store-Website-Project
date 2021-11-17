@@ -155,13 +155,15 @@
                 <div class="checkout-container">
                     <h4>Cart
                         <span class="cart-price">
-                            <i class="fa fa-shopping-cart"></i><b> x</b>
+                            <i class="fa fa-shopping-cart"></i><b>[[${shoppingCart.getTotalItemsNumber}]]</b>
                         </span>
                     </h4>
                     <hr class="cart-division">
                     <!--In cart item template to be crated in JS file when item is added to cart-->
                     <P><a href="#"> item </a><span class="cart-price">$item_price</span></P>
                     <hr class="cart-division">
+                    <p>Subtotal <span class="cart-price"><b>$item_subtotal</b></span></p>
+                    <p>Shipping <span class="cart-price"><b>$item_shipping</b></span></p>
                     <p>Total <span class="cart-price"><b>$item_total</b></span></p>
                 </div>
             </div>
