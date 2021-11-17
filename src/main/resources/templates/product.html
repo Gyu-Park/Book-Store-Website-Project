@@ -56,10 +56,8 @@
               <a th:href="@{/cart}">
                 <i class="fa fa-shopping-cart"></i> Cart
                 <div class="cart-num">
-                  <p>
-                    <span th:if="${shoppingCart.getTotalItemsNumber == 0}">[[${shoppingCart.getTotalItemsNumber}]]</span>
-                    <span th:unless="${shoppingCart.getTotalItemsNumber == 0}">[[${shoppingCart.getTotalItemsNumber}]]</span>
-                  </p>
+                  <p th:if="${shoppingCart.getTotalItemsNumber == 0}">[[${shoppingCart.getTotalItemsNumber}]]</p>
+                  <p th:unless="${shoppingCart.getTotalItemsNumber == 0}">[[${shoppingCart.getTotalItemsNumber}]]</p>
                 </div>
               </a>
             </li>
