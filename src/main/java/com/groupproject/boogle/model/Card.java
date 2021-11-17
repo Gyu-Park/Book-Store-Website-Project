@@ -13,30 +13,30 @@ import javax.persistence.ManyToOne;
 
 import com.groupproject.boogle.aesEncryption.AES;
 
-@Entity(name="payment_option")
+@Entity(name = "payment_option")
 public class Card {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long paymentOptionId;
-	
+
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name="userId", nullable = false, updatable = false)
+	@JoinColumn(name = "userId", nullable = false, updatable = false)
 	private User user;
-	
+
 	@Column(length = 20)
 	private String paymentOptionName;
-	
+
 	@Column(length = 50)
 	private String cardHolderName;
-	
+
 	private String cardNumber;
-	
+
 	private Byte cardExpMonth;
-	
+
 	private Byte cardExpYear;
-	
-	private Short cardCvv;
+
+	private String cardCvv;
 
 	public Long getPaymentOptionId() {
 		return paymentOptionId;
@@ -75,7 +75,7 @@ public class Card {
 	}
 
 	public void setCardNumber(String cardNumber) {
-	    String encryptedCardNumber = AES.encrypt(cardNumber, AES.secretKeyBoogle);
+		String encryptedCardNumber = AES.encrypt(cardNumber, AES.secretKeyBoogle);
 		this.cardNumber = encryptedCardNumber;
 	}
 
@@ -95,12 +95,13 @@ public class Card {
 		this.cardExpYear = cardExpYear;
 	}
 
-	public Short getCardCvv() {
-		return cardCvv;
+	public String getCardCvv() {
+		return AES.decrypt(this.cardCvv, AES.secretKeyBoogle);
 	}
 
-	public void setCardCvv(Short cardCvv) {
-		this.cardCvv = cardCvv;
+	public void setCardCvv(String cardCvv) {
+		String encryptedCVV = AES.encrypt(cardCvv, AES.secretKeyBoogle);
+		this.cardCvv = encryptedCVV;
 	}
 
 	@Override
@@ -123,9 +124,9 @@ public class Card {
 
 	@Override
 	public String toString() {
-		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", paymentOptionName="
-				+ paymentOptionName + ", cardHolderName=" + cardHolderName + ", cardNumber=" + cardNumber
-				+ ", cardExpMonth=" + cardExpMonth + ", cardExpYear=" + cardExpYear + ", cardCvv=" + cardCvv + "]";
+		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", paymentOptionName=" + paymentOptionName
+				+ ", cardHolderName=" + cardHolderName + ", cardNumber=" + cardNumber + ", cardExpMonth=" + cardExpMonth
+				+ ", cardExpYear=" + cardExpYear + ", cardCvv=" + cardCvv + "]";
 	}
-	
+
 }
