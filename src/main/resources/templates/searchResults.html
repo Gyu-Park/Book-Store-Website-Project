@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 
 <head>
   <meta charset="UTF-8">
@@ -55,8 +55,7 @@
               <a th:href="@{/cart}">
                 <i class="fa fa-shopping-cart"></i> Cart
                 <div class="cart-num">
-                  <p th:if="${shoppingCart.getTotalItemsNumber == 0}"></p>
-                  <p th:unless="${shoppingCart.getTotalItemsNumber == 0}">[[${shoppingCart.getTotalItemsNumber}]]</p>
+                  <p>[[${shoppingCart.getTotalItemsNumber}]]</p>
                 </div>
               </a>
             </li>
