@@ -1,23 +1,31 @@
 package com.groupproject.boogle.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import com.groupproject.boogle.model.Book;
 import com.groupproject.boogle.model.ShoppingCart;
+import com.groupproject.boogle.service.BookService;
 import com.groupproject.boogle.service.ShoppingCartService;
 
 @Controller
-public class SearchResultController {
+public class SearchController {
 	
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
-	@GetMapping("/searchResults")
-	public String viewSearchResultsPage(HttpServletRequest request, Model model) {
+	@Autowired
+	private BookService bookService; 
+	
+	@GetMapping("/search")
+	public String viewSearchResultsPage(@Param("keyword") String keyword, HttpServletRequest request, Model model) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if (sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());
@@ -25,6 +33,10 @@ public class SearchResultController {
 			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
 			model.addAttribute("shoppingCart", shoppingCart);
 		}
+		
+		List<Book> searchResult = bookService.search(keyword);
+		model.addAttribute("keyword", keyword);
+		model.addAttribute("book", searchResult);
 		
 		return "searchResults";
 	}

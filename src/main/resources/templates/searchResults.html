@@ -7,9 +7,9 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <link rel="stylesheet" href="/src/main/resources/static/css/searchResults.css">
-  <link rel="stylesheet" href="/src/main/resources/static/css/nav.css">
-  <link rel="stylesheet" href="/src/main/resources/static/css/footer.css">
+  <link rel="stylesheet" href="/css/searchResults.css">
+  <link rel="stylesheet" href="/css/nav.css">
+  <link rel="stylesheet" href="/css/footer.css">
 
   <script src="js/nav.js" defer></script>
   <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
@@ -41,8 +41,8 @@
         </div>
 
         <div class="center">
-          <form action="" class="search-bar">
-            <input type="search" name="search-bar" placeholder="Search...">
+          <form th:action="@{/search}" method="get" class="search-bar">
+            <input type="search" name="keyword" placeholder="Search...">
             <button type="submit">
               <i class="fas fa-search"></i>
             </button>
@@ -80,26 +80,25 @@
 
   <!--Search Reslts Body-->
   <div class="searchResults-content-container">
-    <h3>Search resutls for... (
-      <!--user seatchbar input-->)
+    <h3>Search resutls for... ([[${keyword}]])
     </h3>
     <div class="searchResults-row">
       <div class="item-container">
 
         <!--Result Template-->
-        <a href="#">
+        <a th:href="@{/product?isbn13=}+${book.isbn13}" th:each="book : ${book}">
           <div class="seachResults-textbook-item">
             <div class="searchResults-row">
               <div class="item-img">
-                <img src="img/DesigningWithJavaScript.jpg" alt="">
+                <img th:src="${book.image}" alt="">
               </div>
             </div>
             <hr>
             <div class="searchResults-row">
               <div class="item-details">
-                <h4>Designing with JavaScript</h4>
-                <p>Nick Heinle</p>
-                <p>$20.00</p>
+                <h4><span th:text="${book.alias}"></span></h4>
+                <p>by <span th:text="${book.author_et_alia}"></span></p>
+                <p>$<span th:text="${book.price}"></span></p>
               </div>
             </div>
           </div>
