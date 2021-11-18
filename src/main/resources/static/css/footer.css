@@ -26,6 +26,7 @@ footer {
 /* Footer link styles */
 .footer-row h6 {
   padding: 1em;
+  text-align: center;
 }
 
 .footer-row h6 a {
@@ -60,7 +61,7 @@ footer {
   color: #fffaf3;
   width: 80%;
   margin: 1em auto;
-  padding: 1em 0;
+  padding-top: 1em;
   line-height: 1.5em;
 }
 
@@ -73,6 +74,7 @@ footer {
   display: flex;
   justify-content: center;
   width: 100%;
+  flex-wrap: wrap;
 }
 
 #newsletter p {
@@ -143,4 +145,31 @@ footer {
   color: #fffaf3;
   width: 80%;
   margin: 0 auto;
+}
+
+@media all and (max-width: 750px) {
+  .footer-row {
+    width: 90%;
+  }
+
+  /* Social Media Styles */
+  .icons {
+    width: 50%;
+  }
+
+  .icons a {
+    font-size: 2em;
+  }
+
+  /* Newsletter Styles */
+  #newsletter form p {
+    width: 100%;
+    align-self: flex-start;
+    padding: 1em 0;
+    text-align: center;
+  }
+
+  #newsletter input {
+    width: 40%;
+  }
 }
