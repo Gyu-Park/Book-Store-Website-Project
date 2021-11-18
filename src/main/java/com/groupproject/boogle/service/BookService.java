@@ -19,5 +19,9 @@ public class BookService implements IBookService {
 	public Book findByIsbn13(String isbn13) {
 		return bookRepository.getById(isbn13);
 	}
+	
+	public List<Book> search(String keyword) {
+		return bookRepository.search(keyword);
+	}
 
 }

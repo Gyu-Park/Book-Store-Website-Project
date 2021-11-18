@@ -35,8 +35,8 @@
         </div>
 
         <div class="center">
-          <form action="" class="search-bar">
-            <input type="search" name="search-bar" placeholder="Search...">
+          <form th:action="@{/search}" method="get" class="search-bar">
+            <input type="search" name="keyword" placeholder="Search...">
             <button type="submit">
               <i class="fas fa-search"></i>
             </button>

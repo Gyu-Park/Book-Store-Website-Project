@@ -37,8 +37,8 @@
         </div>
 
         <div class="center">
-          <form action="" class="search-bar">
-            <input type="search" name="search-bar" placeholder="Search...">
+          <form th:action="@{/search}" method="get" class="search-bar">
+            <input type="search" name="keyword" placeholder="Search...">
             <button type="submit">
               <i class="fas fa-search"></i>
             </button>
@@ -83,8 +83,8 @@
     <img src="img/bookStore6.jpg" class="slideShow-img">
     <div class="boogleAndSearch-bar">
       <h1 id="boogleText">Boogle</h1>
-      <form action="" class="centerSearch-bar">
-        <input type="search" name="search-bar" placeholder="Search...">
+      <form th:action="@{search}" method="get" class="centerSearch-bar">
+        <input type="search" name="keyword" placeholder="Search...">
         <button type="submit">
           <i class="fas fa-search"></i>
         </button>
