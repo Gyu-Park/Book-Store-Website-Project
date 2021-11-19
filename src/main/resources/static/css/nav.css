@@ -147,6 +147,7 @@ li.button {
 
 .button a {
   color: #778899;
+  padding-right: 0;
 }
 
 .button a:hover {
@@ -244,6 +245,7 @@ li.button {
 
 .nav-open {
   flex-basis: 50vh;
+  overflow: scroll;
 }
 
 .nav-hidden,
@@ -252,7 +254,7 @@ li.button {
 }
 
 /* Mobile Styles */
-@media all and (max-width: 1180px) {
+@media all and (max-width: 1250px) {
   header nav li {
     font-size: 1.2vw;
   }
@@ -267,7 +269,7 @@ li.button {
   }
 }
 
-@media all and (max-width: 750px) {
+@media all and (max-width: 900px) {
   /* Container Styles */
   .nav-container {
     flex-direction: column;

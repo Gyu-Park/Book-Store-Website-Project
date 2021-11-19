@@ -1,9 +1,6 @@
 /*Tab Styles*/
-
 .user-loging-signup-tab-container {
-  flex: 25%;
-  width: 25%;
-  border: 2px solid lightslategray;
+  width: 400px;
   border-radius: 0.2em;
   margin: auto;
   margin-top: 15vh;
@@ -24,6 +21,7 @@
 .tabs {
   overflow: hidden;
   width: 100%;
+  border-radius: 0.2em 0.2em 0 0;
 }
 
 .tablinks {
@@ -135,4 +133,10 @@ button[type="cancel"]:before {
 span.psw {
   float: right;
   font-size: 12px;
+}
+
+@media all and (max-width: 750px) {
+  .user-loging-signup-tab-container {
+    width: 300px;
+  }
 }
