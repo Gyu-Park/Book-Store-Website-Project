@@ -147,7 +147,8 @@ footer {
   margin: 0 auto;
 }
 
-@media all and (max-width: 750px) {
+/* Mobile Styles */
+@media all and (max-width: 950px) {
   .footer-row {
     width: 90%;
   }
@@ -158,7 +159,7 @@ footer {
   }
 
   .icons a {
-    font-size: 2em;
+    font-size: 1.5em;
   }
 
   /* Newsletter Styles */
