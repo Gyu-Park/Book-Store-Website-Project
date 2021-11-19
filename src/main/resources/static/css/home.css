@@ -19,8 +19,6 @@ body {
 
 /* center area */
 .centerArea {
-  /** background: url("../img/bookStore3.jpg") no-repeat center;
-  background-size: cover; **/
   min-height: 100vh;
 }
 
@@ -41,10 +39,34 @@ body {
 }
 
 .centerArea #boogleText {
-  color: #fffaf3;
+  font-family: "Source Code Pro", monospace;
+  color: #ecd5b3;
   text-align: center;
   font-size: 80px;
-  text-shadow: 10px 10px 10px #778899;
+  letter-spacing: 0.2em;
+  /* text-shadow: 10px 10px 10px #778899; */
+}
+
+#blink {
+  animation: blinkingText 1.2s infinite;
+}
+
+@keyframes blinkingText {
+  0% {
+    opacity: 100%;
+  }
+  49% {
+    opacity: 100%;
+  }
+  60% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 100%;
+  }
 }
 
 .centerSearch-bar {

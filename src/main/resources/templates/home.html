@@ -6,6 +6,11 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+
   <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="css/home.css">
   <link rel="stylesheet" href="css/nav.css">
@@ -82,7 +87,7 @@
     <img src="img/bookStore5.jpg" class="slideShow-img">
     <img src="img/bookStore6.jpg" class="slideShow-img">
     <div class="boogleAndSearch-bar">
-      <h1 id="boogleText">Boogle</h1>
+      <h1 id="boogleText">Boogle<span id="blink">_</span></h1>
       <form th:action="@{search}" method="get" class="centerSearch-bar">
         <input type="search" name="keyword" placeholder="Search...">
         <button type="submit">
