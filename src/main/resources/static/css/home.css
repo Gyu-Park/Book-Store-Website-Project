@@ -42,7 +42,7 @@ body {
   font-family: "Source Code Pro", monospace;
   color: #ecd5b3;
   text-align: center;
-  font-size: 80px;
+  font-size: 5em;
   letter-spacing: 0.2em;
   /* text-shadow: 10px 10px 10px #778899; */
 }
@@ -226,6 +226,10 @@ body {
 }
 
 @media screen and (max-width: 640px) {
+  .centerArea #boogleText {
+    font-size: 3em;
+  }
+
   .bestSeller__wrapper {
     grid-template-columns: 1fr;
     grid-template-rows: auto;
