@@ -43,11 +43,11 @@
 
                 <div class="center">
                     <form th:action="@{/search}" method="get" class="search-bar">
-			          <input type="search" name="keyword" placeholder="Search...">
-			          <button type="submit">
-			            <i class="fas fa-search"></i>
-			          </button>
-			        </form>
+                        <input type="search" name="keyword" placeholder="Search...">
+                        <button type="submit">
+                            <i class="fas fa-search"></i>
+                        </button>
+                    </form>
                 </div>
 
                 <div class="right">
@@ -155,14 +155,38 @@
                 <div class="checkout-container">
                     <h4>Cart
                         <span class="cart-price">
-                            <i class="fa fa-shopping-cart"></i><b>[[${shoppingCart.getTotalItemsNumber}]]</b>
+                            <i class="fa fa-shopping-cart"></i><b>&nbsp;[[${shoppingCart.getTotalItemsNumber}]]</b>
                         </span>
                     </h4>
                     <hr class="cart-division">
-                    <!--In cart item template to be crated in JS file when item is added to cart-->
-                    <P><a href="#"> item </a><span class="cart-price">$item_price</span></P>
+                    <div class="checkout-receipt-item-container">
+                        <!--In cart item template to be crated in JS file when item is added to cart-->
+                        <!--Checkout Receipt Item Template-->
+                        <div class="checkout-row">
+                            <div class="single-receipt-item" th:each="cartItem : ${shoppingCart.items}">
+                                <div class="receipt-col-20">
+                                    <div class="receipt-item-img">
+                                        <img th:src="${cartItem.book.image}" alt="">
+                                    </div>
+                                </div>
+
+                                <div class="receipt-col-60">
+                                    <div class="receipt-item-title">
+                                        <a href="#"> [[${cartItem.book.title}]] </a>
+                                    </div>
+                                </div>
+
+                                <div class="receipt-col-20">
+                                    <div class="receipt-item-price">
+                                        <span class="cart-price"><b>$[[${cartItem.book.price}]]</b></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--End-->
+                    </div>
                     <hr class="cart-division">
-                    <p>Subtotal <span class="cart-price"><b>$item_subtotal</b></span></p>
+                    <p>Subtotal <span class="cart-price"><b>$[[${shoppingCart.totalPrice}]]</b></span></p>
                     <p>Shipping <span class="cart-price"><b>$item_shipping</b></span></p>
                     <p>Total <span class="cart-price"><b>$item_total</b></span></p>
                 </div>

@@ -82,6 +82,43 @@ span.cart-price {
   transition: 0.3s;
 }
 
+/*Receipt Container*/
+.receipt-col-60 {
+  flex: 60%;
+}
+
+.receipt-col-20 {
+  flex: 20%;
+}
+
+.checkout-receipt-item-container {
+  display: block;
+  width: 100%;
+}
+
+.single-receipt-item {
+  display: flex;
+  flex-wrap: wrap;
+  min-width: 100%;
+  margin-top: 0.3em;
+}
+
+.receipt-item-img {
+  display: flex;
+  justify-content: center;
+}
+
+.receipt-item-title a {
+  color: black;
+  text-decoration: none;
+}
+
+img {
+  border: 1px solid #778899;
+  width: 60px;
+  height: 75px;
+}
+
 /* Google Places API Autocomplete */
 .pac-icon {
   display: none;
