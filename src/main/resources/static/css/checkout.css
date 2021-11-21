@@ -29,6 +29,7 @@
   padding: 5px 10px 15px 10px;
   border: 2px solid lightslategray;
   border-radius: 5px;
+  box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
 }
 
 input[type="text"] {
@@ -49,6 +50,11 @@ label {
   padding: 5px;
   margin-left: 5px;
   font-size: 30px;
+}
+
+#cc-cvv,
+#cc-exp-year {
+  width: 60%;
 }
 
 .checkout-btn {
