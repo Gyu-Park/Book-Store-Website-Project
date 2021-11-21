@@ -4,24 +4,28 @@ const searchbarOnNav = document.querySelector(".center .search-bar");
 const sectionOne = document.querySelector(".centerArea .centerSearch-bar");
 
 const sectionOneOptions = {
-    rootMargin: "-95px 0px 0px 0px"
+  rootMargin: "-95px 0px 0px 0px",
 };
 
-const sectionOneObserver = new IntersectionObserver(function(
-    entries, 
-    sectionOneObserver
+const sectionOneObserver = new IntersectionObserver(function (
+  entries,
+  sectionOneObserver
 ) {
-    entries.forEach(entry => {
-        if(!entry.isIntersecting) {
-            searchbarOnNav.classList.add("search-barShow");
-        } else {
-            searchbarOnNav.classList.remove("search-barShow");
-        }
-    })
-}, sectionOneOptions);
+  if (screen.width > 900) {
+    entries.forEach((entry) => {
+      if (!entry.isIntersecting) {
+        searchbarOnNav.classList.add("search-barShow");
+      } else {
+        searchbarOnNav.classList.remove("search-barShow");
+      }
+    });
+  } else {
+    searchbarOnNav.classList.add("search-barShow");
+  }
+},
+sectionOneOptions);
 
 sectionOneObserver.observe(sectionOne);
-
 
 /** Slide show **/
 const slidesShowImages = document.querySelectorAll(".slideShow-img");
@@ -33,7 +37,7 @@ slidesShowImages[currentImageCounter].style.opacity = 1;
 setInterval(nextImage, nextImageDelay);
 
 function nextImage() {
-    slidesShowImages[currentImageCounter].style.opacity = 0;
-    currentImageCounter = (currentImageCounter + 1) % slidesShowImages.length;
-    slidesShowImages[currentImageCounter].style.opacity = 1;
+  slidesShowImages[currentImageCounter].style.opacity = 0;
+  currentImageCounter = (currentImageCounter + 1) % slidesShowImages.length;
+  slidesShowImages[currentImageCounter].style.opacity = 1;
 }
