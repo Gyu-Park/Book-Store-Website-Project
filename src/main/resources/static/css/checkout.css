@@ -20,8 +20,16 @@
   flex: 50%;
 }
 
+.checkout-col-45 {
+  flex: 45%;
+}
+
 .checkout-col-30 {
   flex: 30%;
+}
+
+.checkout-col-10 {
+  flex: 10%;
 }
 
 .checkout-container {
