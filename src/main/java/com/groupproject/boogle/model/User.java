@@ -83,6 +83,10 @@ public class User {
 	public void setLastname(String lastname) {
 		this.lastname = lastname;
 	}
+	
+	public String getFullname() {
+		return firstname + " " + lastname;
+	}
 
 	@Override
 	public int hashCode() {

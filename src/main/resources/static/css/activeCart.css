@@ -121,6 +121,17 @@ span.cart-subtotal {
   padding: 10px 20px 15px 20px;
 }
 
+button[type="form-update"] {
+  background-color: #778899;
+  color: #fffaf3;
+  margin-top: 10px;
+  padding: 10px;
+  width: 80%;
+  border: none;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
 button[type="form-remove"] {
   background-color: #778899;
   color: #fffaf3;
@@ -129,6 +140,7 @@ button[type="form-remove"] {
   width: 80%;
   border: none;
   border-radius: 0.2em;
+  cursor: pointer;
 }
 
 img {

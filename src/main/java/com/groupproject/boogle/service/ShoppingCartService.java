@@ -77,7 +77,7 @@ public class ShoppingCartService {
 		Set<CartItem> items = shoppingCart.getItems();
 		CartItem cartItem = null;
 		for(CartItem item : items) {
-			if(item.getId()==id) {
+			if(item.getId().equals(id)) {
 				cartItem = item;
 			}
 		}
