@@ -140,8 +140,8 @@ header nav li a:hover:after,
 /* Cart Button Styles */
 li.button {
   background-color: #fffaf3;
-  margin-right: 1em;
   border-radius: 0.2em;
+  margin-right: 1em;
   padding: 0.75em;
 }
 
@@ -256,7 +256,7 @@ li.button {
 /* Mobile Styles */
 @media all and (max-width: 1250px) {
   header nav li {
-    font-size: 1.2vw;
+    font-size: 1vw;
   }
 
   .logo {
@@ -265,7 +265,7 @@ li.button {
 
   .search-bar input,
   .search-bar button {
-    font-size: 1.2vw;
+    font-size: 1vw;
   }
 }
 
