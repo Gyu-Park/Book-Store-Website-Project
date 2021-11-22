@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +19,9 @@ import com.groupproject.boogle.service.ShoppingCartService;
 @Controller
 public class SearchController {
 	
+	@Value("${version}")
+	private String version;
+	
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
@@ -26,6 +30,7 @@ public class SearchController {
 	
 	@GetMapping("/search")
 	public String viewSearchResultsPage(@Param("keyword") String keyword, HttpServletRequest request, Model model) {
+		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if (sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());

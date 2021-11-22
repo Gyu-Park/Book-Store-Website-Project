@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ import com.groupproject.boogle.service.ShoppingCartService;
 @Controller
 public class CartController {
 	
+	@Value("${version}")
+	private String version;
+	
 	@Autowired
 	UserRepository userRepository;
 	
@@ -37,6 +41,8 @@ public class CartController {
 			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
 			model.addAttribute("shoppingCart", shoppingCart);
 		}
+		
+		model.addAttribute("version", version);
 		
 		return "cart";
 	}
