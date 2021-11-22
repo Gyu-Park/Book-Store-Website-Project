@@ -36,6 +36,7 @@ public class HomeController {
 	
 	@GetMapping("/home")
 	public String viewHomePage(HttpServletRequest request, Model model) {
+		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if (sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());
