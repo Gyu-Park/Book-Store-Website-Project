@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,9 @@ import com.groupproject.boogle.service.WishListService;
 
 @Controller
 public class AccountController {
+	
+	@Value("${version}")
+	private String version;
 	
 	@Autowired
 	private WishListService wishListService;
@@ -47,6 +51,7 @@ public class AccountController {
 		model.addAttribute("wishList", wishList);
 		List<Card> card = cardService.findAllCardByUser(user);
 		model.addAttribute("card", card);
+		model.addAttribute("version", version);
 		
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if (sessionToken == null) {

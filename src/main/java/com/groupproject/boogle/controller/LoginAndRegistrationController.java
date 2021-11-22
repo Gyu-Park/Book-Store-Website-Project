@@ -3,6 +3,7 @@ package com.groupproject.boogle.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,6 +18,9 @@ import com.groupproject.boogle.service.ShoppingCartService;
 @Controller
 public class LoginAndRegistrationController {
 	
+	@Value("${version}")
+	private String version;
+	
 	// @Autowired annotation allows us to instantiate a class without directly creating an object in other classes
 	@Autowired
 	private UserRepository userRepo;
@@ -27,6 +31,7 @@ public class LoginAndRegistrationController {
 	// @GetMapping is to map HTTP GET requests.
 	@GetMapping("/login")
 	public String viewLoginPage(HttpServletRequest request, Model model) {
+		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if (sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());
