@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
@@ -22,6 +23,9 @@ import com.groupproject.boogle.service.ShoppingCartService;
 
 @Controller
 public class CheckoutController {
+	
+	@Value("${version}")
+	private String version;
 
 	@Autowired
 	private ShoppingCartService shoppingCartService;
@@ -34,6 +38,7 @@ public class CheckoutController {
 	
 	@GetMapping("/checkout")
 	public String viewCheckoutPage(HttpServletRequest request, Model model) {
+		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if (sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());
