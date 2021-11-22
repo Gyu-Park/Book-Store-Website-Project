@@ -93,24 +93,30 @@
                                 <div class="checkout-input-container">
                                     <h3>Shipping Information</h3>
                                     <label for="full-name"><i class="fa fa-user"></i> Full Name</label>
-                                    <input type="text" th:value="${user?.getFullname}" id="full-name" placeholder="John Doe">
+                                    <input type="text" th:value="${user?.getFullname}" id="full-name"
+                                        placeholder="John Doe">
                                     <label for="email"><i class="fa fa-envelope"></i> E-Mail</label>
-                                    <input type="text" th:value="${user?.getEmail}" id="email" placeholder="johndoe@mail.com">
+                                    <input type="text" th:value="${user?.getEmail}" id="email"
+                                        placeholder="johndoe@mail.com">
                                     <label for="phone"><i class="fa fa-mobile"></i> Phone Number</label>
-                                    <input type="text" th:value="${userInfo?.getPhone}" id="phone" placeholder="111-222-3333">
+                                    <input type="text" th:value="${userInfo?.getPhone}" id="phone"
+                                        placeholder="111-222-3333">
                                     <label for="address"><i class="fa fa-address-card-o"></i> Address</label>
-                                    <input type="text" th:value="${userInfo?.getStreet}" id="address" placeholder="1 Madeup Ln">
+                                    <input type="text" th:value="${userInfo?.getStreet}" id="address"
+                                        placeholder="1 Madeup Ln">
                                     <label for="City"><i class="fa fa-city"></i> City</label>
                                     <input type="text" th:value="${userInfo?.getCity}" id="city" placeholder="New York">
 
                                     <div class="checkout-row">
                                         <div class="checkout-col-45">
                                             <label for="state">State</label>
-                                            <input type="text" th:value="${userInfo?.getState}" id="state" placeholder="NY">
+                                            <input type="text" th:value="${userInfo?.getState}" id="state"
+                                                placeholder="NY">
                                         </div>
                                         <div class="checkout-col-45">
                                             <label for="zip-code">Zip Code</label>
-                                            <input type="text" th:value="${userInfo?.getZip}" id="zip-code" placeholder="10001">
+                                            <input type="text" th:value="${userInfo?.getZip}" id="zip-code"
+                                                placeholder="10001">
                                         </div>
                                         <div class="checkout-col-10">
                                         </div>
@@ -129,16 +135,20 @@
                                     <i class="fab fa-apple-pay"></i>
                                 </div>
                                 <label for="cc-name">Name on Card</label>
-                                <input type="text" th:value="${card?.getCardHolderName}" id="cc-name" placeholder="John Doe">
+                                <input type="text" th:value="${card?.getCardHolderName}" id="cc-name"
+                                    placeholder="John Doe">
                                 <label for="cc-num">Credit Card Number</label>
-                                <input type="text" th:value="${card?.getCardNumber}" id="cc-num" placeholder="1111-2222-3333-4444">
+                                <input type="text" th:value="${card?.getCardNumber}" id="cc-num"
+                                    placeholder="1111-2222-3333-4444">
                                 <label for="cc-exp-month">Exp Month</label>
-                                <input type="text" th:value="${card?.getCardExpMonth}" id="cc-exp-month" placeholder="November">
+                                <input type="text" th:value="${card?.getCardExpMonth}" id="cc-exp-month"
+                                    placeholder="November">
 
                                 <div class="checkout-row">
                                     <div class="checkout-col-50">
                                         <label for="cc-exp-year">Exp Year</label>
-                                        <input type="text" th:value="${card?.getCardExpYear}" id="cc-exp-year" placeholder="2021">
+                                        <input type="text" th:value="${card?.getCardExpYear}" id="cc-exp-year"
+                                            placeholder="2021">
                                     </div>
                                     <div class="checkout-col-50">
                                         <label for="cc-cvv">CVV</label>
@@ -253,7 +263,7 @@
             </section>
 
             <div class="credits">
-                <p>Boogle 2021: Software Engineering Methods</p>
+                <p>Boogle 2021: Software Engineering Methods | [[${version}]]</p>
             </div>
 
         </div>
