@@ -86,5 +86,16 @@ public class ShoppingCartService {
 	    shoppingCart.setItems(items);
 	    return shoppingCartRepository.saveAndFlush(shoppingCart);
 	}
+	
+	public ShoppingCart removeAllCartItemFromShoppingCart(String sessionToken) {
+		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
+		Set<CartItem> items = shoppingCart.getItems();
+		for(CartItem item : items) {
+			items.remove(item);
+			cartItemRepository.delete(item);
+		}
+	    shoppingCart.setItems(items);
+	    return shoppingCartRepository.saveAndFlush(shoppingCart);
+	}
 
 }

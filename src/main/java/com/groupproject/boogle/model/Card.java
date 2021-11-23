@@ -21,7 +21,7 @@ public class Card {
 	private Long paymentOptionId;
 
 	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "userId", nullable = false, updatable = false)
+	@JoinColumn(name = "userId", updatable = false)
 	private User user;
 
 	@Column(length = 20)
