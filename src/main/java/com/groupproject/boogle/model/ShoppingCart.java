@@ -1,9 +1,9 @@
 package com.groupproject.boogle.model;
 
+import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -38,7 +38,7 @@ public class ShoppingCart {
 	private int totalItemsNumber;
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	private Set<CartItem> items = new HashSet<CartItem>();
+	private List<CartItem> items = new ArrayList<>();
 	
 	private String sessionToken;
 	
@@ -76,17 +76,19 @@ public class ShoppingCart {
 
 	public int getTotalItemsNumber() {
 		int numberOfItems = 0;
-		for(CartItem item : this.items) {
-			numberOfItems += item.getQuantity();
+		if (this.items != null) {
+			for(CartItem item : this.items) {
+				numberOfItems += item.getQuantity();
+			}
 		}
 		return numberOfItems;
 	}
 
-	public Set<CartItem> getItems() {
+	public List<CartItem> getItems() {
 		return items;
 	}
 
-	public void setItems(Set<CartItem> items) {
+	public void setItems(List<CartItem> items) {
 		this.items = items;
 	}
 
@@ -100,7 +102,7 @@ public class ShoppingCart {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(date, id, items, itemsNumber, sessionToken, totalPrice);
+		return Objects.hash(date, id, items, itemsNumber, sessionToken, totalItemsNumber, totalPrice);
 	}
 
 	@Override
@@ -114,9 +116,7 @@ public class ShoppingCart {
 		ShoppingCart other = (ShoppingCart) obj;
 		return Objects.equals(date, other.date) && Objects.equals(id, other.id) && Objects.equals(items, other.items)
 				&& itemsNumber == other.itemsNumber && Objects.equals(sessionToken, other.sessionToken)
-				&& Objects.equals(totalPrice, other.totalPrice);
+				&& totalItemsNumber == other.totalItemsNumber && Objects.equals(totalPrice, other.totalPrice);
 	}
-	
-	
 
 }

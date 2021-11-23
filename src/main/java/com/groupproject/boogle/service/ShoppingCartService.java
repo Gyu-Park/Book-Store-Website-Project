@@ -1,7 +1,7 @@
 package com.groupproject.boogle.service;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,7 +24,7 @@ public class ShoppingCartService {
 	@Autowired
 	private BookService bookService;
 	
-	public ShoppingCart addShoppingCart(String isbn13, String sessionToken, int quantity) {
+	public ShoppingCart addShoppingCart(String isbn13, String sessionToken, int quantity) throws NullPointerException {
 		ShoppingCart shoppingCart = new ShoppingCart();
 		CartItem cartItem = new CartItem();
 		cartItem.setQuantity(quantity);
@@ -41,7 +41,7 @@ public class ShoppingCartService {
 		Book book = bookService.findByIsbn13(isbn13);
 		Boolean productDoesExistInTheCart = false;
 		if (shoppingCart != null) {
-			Set<CartItem> items = shoppingCart.getItems();
+			List<CartItem> items = shoppingCart.getItems();
 			for (CartItem item : items) {
 				if(item.getBook().equals(book)) {
 					productDoesExistInTheCart = true;
@@ -74,7 +74,7 @@ public class ShoppingCartService {
 
 	public ShoppingCart removeCartItemFromShoppingCart(Long id, String sessionToken) {
 		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
-		Set<CartItem> items = shoppingCart.getItems();
+		List<CartItem> items = shoppingCart.getItems();
 		CartItem cartItem = null;
 		for(CartItem item : items) {
 			if(item.getId().equals(id)) {
@@ -87,14 +87,13 @@ public class ShoppingCartService {
 	    return shoppingCartRepository.saveAndFlush(shoppingCart);
 	}
 	
-	public ShoppingCart removeAllCartItemFromShoppingCart(String sessionToken) {
-		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
-		Set<CartItem> items = shoppingCart.getItems();
+	public ShoppingCart removeAllCartItemFromShoppingCart(ShoppingCart shoppingCart) {
+		List<CartItem> items = shoppingCart.getItems();
 		for(CartItem item : items) {
-			items.remove(item);
 			cartItemRepository.delete(item);
 		}
-	    shoppingCart.setItems(items);
+		items.removeAll(items);
+		shoppingCart.setItems(items);
 	    return shoppingCartRepository.saveAndFlush(shoppingCart);
 	}
 

@@ -1,11 +1,11 @@
 package com.groupproject.boogle.controller;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
-import java.util.Set;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -28,6 +28,7 @@ import com.groupproject.boogle.repository.CardRepository;
 import com.groupproject.boogle.repository.OrderItemRepository;
 import com.groupproject.boogle.repository.UserRepository;
 import com.groupproject.boogle.service.CardService;
+import com.groupproject.boogle.service.EmailService;
 import com.groupproject.boogle.service.GuestService;
 import com.groupproject.boogle.service.OrderService;
 import com.groupproject.boogle.service.ShoppingCartService;
@@ -59,6 +60,9 @@ public class CheckoutController {
 	@Autowired
 	private OrderItemRepository orderItemRepository;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	@GetMapping("/checkout")
 	public String viewCheckoutPage(HttpServletRequest request, Model model) {
 		model.addAttribute("version", version);
@@ -69,7 +73,7 @@ public class CheckoutController {
 		}
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
 		model.addAttribute("shoppingCart", shoppingCart);
-		Set<CartItem> cartItemList = shoppingCart.getItems();
+		List<CartItem> cartItemList = shoppingCart.getItems();
 		
 		if(cartItemList.size() == 0) {
 			return "forward:/cart";
@@ -99,7 +103,7 @@ public class CheckoutController {
 	}
 	
 	@PostMapping("placeAnOrder")
-	public String placeAnOrder(HttpServletRequest request, HttpSession session, Model model, 
+	public String placeAnOrder(HttpServletRequest request, Model model, 
 			Card card, ShippingAddress shippingAddress, Guest guest) {
 		
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
@@ -110,7 +114,7 @@ public class CheckoutController {
 		Order order = new Order();
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user;
+		User user = null;
 		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			order.setUser(user);
@@ -125,23 +129,39 @@ public class CheckoutController {
 			guestService.addGuestintoDatabase(guest);
 			order.setGuest(guest);
 		}
+		
+		order.setOrderTotal(new BigDecimal(shoppingCart.getTotalPrice())); // actually subtotal.
+		List<CartItem> items = shoppingCart.getItems();
+		List<OrderItem> orderItems = new ArrayList<>();
+		OrderItem orderItem = new OrderItem();
+		try {
+			for(CartItem cartItem : items) {
+				orderItem.setBook(cartItem.getBook());
+				orderItem.setOrder(order);
+				orderItem.setQuantity(cartItem.getQuantity());
+				cartItem.getBook().setNumber_on_hand(cartItem.getBook().getNumber_on_hand() - cartItem.getQuantity());
+				orderItemRepository.save(orderItem);
+				orderItems.add(orderItem);
+				orderItem = new OrderItem();
+			}
+			
+			shoppingCartService.removeAllCartItemFromShoppingCart(shoppingCart);
+		} catch (Exception e) {
+			
+		}
+		order.setOrderItemList(orderItems);
 		order.setOrderDate(Calendar.getInstance().getTime());
 		order.setOrderStatus("created");
 		order.setShippingAddress(shippingAddress);
 		// order.setOrderTotal();
 		orderService.createOrder(order);
 		
-		Set<CartItem> items = shoppingCart.getItems();
-		OrderItem orderItem = new OrderItem();
-		for(CartItem cartItem : items) {
-			orderItem.setBook(cartItem.getBook());
-			orderItem.setOrder(order);
-			orderItem.setQuantity(cartItem.getQuantity());
-			cartItem.getBook().setNumber_on_hand(cartItem.getBook().getNumber_on_hand() - cartItem.getQuantity());
-			orderItemRepository.save(orderItem);
+		if (!auth.getName().equals("anonymousUser")) {
+			emailService.constructOrderConfirmationEmailForUser(user, order);
+		} else {
+			emailService.constructOrderConfirmationEmailForGuest(guest, order);
 		}
 		
-		shoppingCartService.removeAllCartItemFromShoppingCart(sessionToken);
 		model.addAttribute("shoppingCart", shoppingCart);
 		
 		return "home";
