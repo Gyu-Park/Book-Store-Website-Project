@@ -7,6 +7,7 @@ import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,7 +35,7 @@ public class Order {
 	
 	private BigDecimal orderTotal;
 	
-	@OneToMany(mappedBy = "order", cascade=CascadeType.ALL )
+	@OneToMany(mappedBy = "order", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
 	private List<OrderItem> orderItemList;
 	
 	@ManyToOne
@@ -96,7 +97,7 @@ public class Order {
 		return orderItemList;
 	}
 
-	public void setCartItemList(List<OrderItem> orderItemList) {
+	public void setOrderItemList(List<OrderItem> orderItemList) {
 		this.orderItemList = orderItemList;
 	}
 

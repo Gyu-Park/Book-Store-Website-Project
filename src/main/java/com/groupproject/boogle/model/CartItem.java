@@ -62,7 +62,7 @@ public class CartItem {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(id);
+		return Objects.hash(book, date, id, quantity);
 	}
 
 	@Override
@@ -74,7 +74,8 @@ public class CartItem {
 		if (getClass() != obj.getClass())
 			return false;
 		CartItem other = (CartItem) obj;
-		return Objects.equals(id, other.id);
+		return Objects.equals(book, other.book) && Objects.equals(date, other.date) && Objects.equals(id, other.id)
+				&& quantity == other.quantity;
 	}
 
 	@Override

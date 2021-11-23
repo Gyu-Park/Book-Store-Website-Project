@@ -46,7 +46,16 @@ public class LoginAndRegistrationController {
 	// @PostMapping handles POST type of request method. 
 	// this annotation grabs "/process_register" request from the register form in login.html
 	@PostMapping("/process_register")
-	public String processRegistration(User user) {
+	public String processRegistration(HttpServletRequest request, Model model, User user) {
+		model.addAttribute("version", version);
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+		if (sessionToken == null) {
+			model.addAttribute("shoppingCart", new ShoppingCart());
+		} else {
+			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
+			model.addAttribute("shoppingCart", shoppingCart);
+		}
+		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());
 		user.setPassword(encodedPassword);

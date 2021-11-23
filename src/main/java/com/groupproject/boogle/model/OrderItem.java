@@ -2,6 +2,7 @@ package com.groupproject.boogle.model;
 
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -21,7 +22,7 @@ public class OrderItem {
 	@ManyToOne(fetch = FetchType.EAGER)
 	private Book book;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name="order_id")
 	private Order order;
 
