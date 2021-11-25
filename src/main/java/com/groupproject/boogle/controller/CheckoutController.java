@@ -27,7 +27,6 @@ import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.repository.CardRepository;
 import com.groupproject.boogle.repository.OrderItemRepository;
 import com.groupproject.boogle.repository.UserRepository;
-import com.groupproject.boogle.service.CardService;
 import com.groupproject.boogle.service.EmailService;
 import com.groupproject.boogle.service.GuestService;
 import com.groupproject.boogle.service.OrderService;
@@ -55,9 +54,6 @@ public class CheckoutController {
 	private GuestService guestService;
 	
 	@Autowired
-	private CardService cardService;
-	
-	@Autowired
 	private OrderItemRepository orderItemRepository;
 	
 	@Autowired
@@ -67,10 +63,6 @@ public class CheckoutController {
 	public String viewCheckoutPage(HttpServletRequest request, Model model) {
 		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-			return "forward:/cart";
-		}
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
 		model.addAttribute("shoppingCart", shoppingCart);
 		List<CartItem> cartItemList = shoppingCart.getItems();
@@ -87,15 +79,15 @@ public class CheckoutController {
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user;
-		if (auth.isAuthenticated()) {
+		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			model.addAttribute("user", user);
+			model.addAttribute("userInfo", user.getUserDetailsTable());
 			try {
 				List<Card> card = cardRepository.findAllCardByUser(user);
-				model.addAttribute("userInfo", user.getUserDetailsTable());
 				model.addAttribute("card", card.get(0));
-			} catch (Exception e) {
-				
+			} catch (NullPointerException e) {
+				// if there's no card, do nothing.
 			}
 		}
 		
@@ -118,16 +110,13 @@ public class CheckoutController {
 		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			order.setUser(user);
-			try {
-				order.setCard(cardService.findAllCardByUser(user).get(0));
-			} catch (Exception e) {
-				System.out.println(e.getMessage());
-			}
-			// need to think about how to handle guest's card 
+			card.setUser(user);
+			order.setCard(card);
 		} else {
 			guest.setFullName(shippingAddress.getShippingAddressReceiver());
 			guestService.addGuestintoDatabase(guest);
 			order.setGuest(guest);
+			// need to think about how to handle guest's card 
 		}
 		
 		order.setOrderTotal(new BigDecimal(shoppingCart.getTotalPrice())); // actually subtotal.
@@ -147,7 +136,7 @@ public class CheckoutController {
 			
 			shoppingCartService.removeAllCartItemFromShoppingCart(shoppingCart);
 		} catch (Exception e) {
-			
+			System.out.println(e.getMessage());
 		}
 		order.setOrderItemList(orderItems);
 		order.setOrderDate(Calendar.getInstance().getTime());

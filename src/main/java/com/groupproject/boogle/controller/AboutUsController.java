@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.service.ShoppingCartService;
 
 @Controller
@@ -23,13 +22,7 @@ public class AboutUsController {
 	@GetMapping("/aboutUs")
 	public String viewAboutUsPage(HttpServletRequest request, Model model) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
-		
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		model.addAttribute("version", version);
 		
 		return "aboutUs";

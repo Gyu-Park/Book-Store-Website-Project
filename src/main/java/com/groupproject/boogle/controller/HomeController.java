@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.service.ShoppingCartService;
 
 @Controller
@@ -24,12 +23,7 @@ public class HomeController {
 	public String viewDefaultPage(HttpServletRequest request, Model model) {
 		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		
 		return "home";
 	}
@@ -38,12 +32,7 @@ public class HomeController {
 	public String viewHomePage(HttpServletRequest request, Model model) {
 		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		
 		return "home";
 	}

@@ -21,7 +21,7 @@ public class Category {
 	
 	private String categoryName;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 			name = "categories_books",
 			joinColumns = @JoinColumn(name = "category_id"),

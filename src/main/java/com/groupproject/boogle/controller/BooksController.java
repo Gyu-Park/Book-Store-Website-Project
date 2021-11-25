@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
-import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.service.BookService;
 import com.groupproject.boogle.service.CategoryService;
 import com.groupproject.boogle.service.ShoppingCartService;
@@ -34,12 +33,7 @@ public class BooksController {
 		model.addAttribute("book", bookService.getAllBook());
 		model.addAttribute("category", categoryService.findAll());
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		
 		return "books";
 	}

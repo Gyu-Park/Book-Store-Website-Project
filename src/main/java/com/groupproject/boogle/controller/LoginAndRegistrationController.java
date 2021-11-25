@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.repository.UserRepository;
 import com.groupproject.boogle.service.ShoppingCartService;
@@ -33,12 +32,7 @@ public class LoginAndRegistrationController {
 	public String viewLoginPage(HttpServletRequest request, Model model) {
 		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		
 		return "login";
 	}
@@ -49,12 +43,7 @@ public class LoginAndRegistrationController {
 	public String processRegistration(HttpServletRequest request, Model model, User user) {
 		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		
 		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 		String encodedPassword = encoder.encode(user.getPassword());

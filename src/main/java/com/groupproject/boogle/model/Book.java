@@ -50,7 +50,7 @@ public class Book {
 	@Column(nullable = false, length = 225)
 	private String image;
 	
-	@ManyToMany(fetch=FetchType.EAGER)
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 			name = "categories_books",
 			joinColumns = @JoinColumn(name = "books_isbn13"),

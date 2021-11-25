@@ -19,7 +19,7 @@ public class OrderItem {
 	private Long id;
 	private int quantity;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Book book;
 	
 	@ManyToOne(cascade = CascadeType.ALL)

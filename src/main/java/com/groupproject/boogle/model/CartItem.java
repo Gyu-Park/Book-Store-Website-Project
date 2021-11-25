@@ -25,7 +25,7 @@ public class CartItem {
 	@Temporal(TemporalType.DATE)
 	private Date date;
 	
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(fetch = FetchType.LAZY)
 	private Book book;
 
 	public Long getId() {
