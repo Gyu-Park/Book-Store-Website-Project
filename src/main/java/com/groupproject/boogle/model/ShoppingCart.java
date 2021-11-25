@@ -37,7 +37,7 @@ public class ShoppingCart {
 	@Transient
 	private int totalItemsNumber;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<CartItem> items = new ArrayList<>();
 	
 	private String sessionToken;

@@ -15,7 +15,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CustomUserDetails;
-import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
 import com.groupproject.boogle.repository.CardRepository;
@@ -45,21 +44,18 @@ public class AccountController {
 
 	@GetMapping("/account")
 	public String viewAccountPage(HttpServletRequest request, Model model) {
-		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-		User user = customUserDetails.getUser();
-		WishList wishList = wishListService.getWishListByUser(user);
-		model.addAttribute("wishList", wishList);
-		List<Card> card = cardService.findAllCardByUser(user);
-		model.addAttribute("card", card);
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		model.addAttribute("version", version);
 		
-		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
+		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = customUserDetails.getUser();
+		
+		WishList wishList = wishListService.getWishListByUser(user);
+		model.addAttribute("wishList", wishList);
+		
+		List<Card> card = cardService.findAllCardByUser(user);
+		model.addAttribute("card", card);
 		
 		return "account";
 	}

@@ -12,7 +12,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 import com.groupproject.boogle.model.Book;
-import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.service.BookService;
 import com.groupproject.boogle.service.ShoppingCartService;
 
@@ -32,12 +31,7 @@ public class SearchController {
 	public String viewSearchResultsPage(@Param("keyword") String keyword, HttpServletRequest request, Model model) {
 		model.addAttribute("version", version);
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
+		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		
 		List<Book> searchResult = bookService.search(keyword);
 		model.addAttribute("keyword", keyword);

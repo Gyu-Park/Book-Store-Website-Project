@@ -35,11 +35,11 @@ public class Order {
 	
 	private BigDecimal orderTotal;
 	
-	@OneToMany(mappedBy = "order", cascade=CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(mappedBy = "order", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<OrderItem> orderItemList;
 	
 	@ManyToOne
-	@JoinColumn(name = "userId")
+	@JoinColumn(name = "userid")
 	private User user;
 	
 	@OneToOne(cascade = CascadeType.ALL)

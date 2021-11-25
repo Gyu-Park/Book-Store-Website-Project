@@ -35,13 +35,8 @@ public class CartController {
 	@GetMapping("/cart")
 	public String viewCartPage(HttpServletRequest request, Model model) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		if (sessionToken == null) {
-			model.addAttribute("shoppingCart", new ShoppingCart());
-		} else {
-			ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
-			model.addAttribute("shoppingCart", shoppingCart);
-		}
-		
+		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
+		model.addAttribute("shoppingCart", shoppingCart);
 		model.addAttribute("version", version);
 		
 		return "cart";

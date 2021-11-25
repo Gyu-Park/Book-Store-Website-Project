@@ -63,7 +63,11 @@ public class ShoppingCartService {
 	}
 
 	public ShoppingCart getShoppingCartBySessionToken(String sessionToken) {
-		return shoppingCartRepository.findBySessionToken(sessionToken);
+		if (sessionToken.equals(null)) {
+			return new ShoppingCart();
+		} else {
+			return shoppingCartRepository.findBySessionToken(sessionToken);
+		}
 	}
 
 	public CartItem updateShoppingCartItem(Long id, int quantity) {
