@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.service.BookService;
+import com.groupproject.boogle.service.CategoryService;
 import com.groupproject.boogle.service.ShoppingCartService;
 
 @Controller
@@ -24,10 +25,14 @@ public class BooksController {
 	@Autowired
 	private ShoppingCartService shoppingCartService;
 	
+	@Autowired
+	private CategoryService categoryService;
+	
 	@GetMapping("/books")
 	public String viewBooksPage(HttpServletRequest request, Model model) {
 		model.addAttribute("version", version);
 		model.addAttribute("book", bookService.getAllBook());
+		model.addAttribute("category", categoryService.findAll());
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		if (sessionToken == null) {
 			model.addAttribute("shoppingCart", new ShoppingCart());
