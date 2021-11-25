@@ -12,7 +12,7 @@ import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.repository.CartItemRepository;
 import com.groupproject.boogle.repository.ShoppingCartRepository;
 
-@Service("shoppingCartService")
+@Service("ShoppingCartService")
 public class ShoppingCartService {
 	
 	@Autowired

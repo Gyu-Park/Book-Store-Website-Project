@@ -1,10 +1,15 @@
 package com.groupproject.boogle.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -45,8 +50,12 @@ public class Book {
 	@Column(nullable = false, length = 225)
 	private String image;
 	
-	@Column(nullable = false, length = 20)
-	private String category;
+	@ManyToMany(fetch=FetchType.EAGER)
+	@JoinTable(
+			name = "categories_books",
+			joinColumns = @JoinColumn(name = "books_isbn13"),
+			inverseJoinColumns = @JoinColumn(name = "category_id"))
+	private List<Category> category;
 
 	public String getIsbn13() {
 		return isbn13;
@@ -136,11 +145,11 @@ public class Book {
 		this.image = image;
 	}
 
-	public String getCategory() {
+	public List<Category> getCategory() {
 		return category;
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(List<Category> category) {
 		this.category = category;
 	}
 

@@ -5,7 +5,7 @@ import org.springframework.stereotype.Repository;
 
 import com.groupproject.boogle.model.ShoppingCart;
 
-@Repository("shoppingCartRepository")
+@Repository
 public interface ShoppingCartRepository extends JpaRepository<ShoppingCart, Long> {
 	ShoppingCart findBySessionToken(String sessionToken);
 }

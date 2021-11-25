@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.groupproject.boogle.model.Book;
 import com.groupproject.boogle.repository.BookRepository;
 
-@Service
+@Service("BookService")
 public class BookService implements IBookService {
 	
 	@Autowired

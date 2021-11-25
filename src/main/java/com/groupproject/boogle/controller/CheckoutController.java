@@ -121,9 +121,9 @@ public class CheckoutController {
 			try {
 				order.setCard(cardService.findAllCardByUser(user).get(0));
 			} catch (Exception e) {
-				//do nothing
+				System.out.println(e.getMessage());
 			}
-			// think about how to handle guest's card 
+			// need to think about how to handle guest's card 
 		} else {
 			guest.setFullName(shippingAddress.getShippingAddressReceiver());
 			guestService.addGuestintoDatabase(guest);
