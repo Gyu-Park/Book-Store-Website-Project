@@ -63,7 +63,7 @@ public class ShoppingCartService {
 	}
 
 	public ShoppingCart getShoppingCartBySessionToken(String sessionToken) {
-		if (sessionToken.equals(null)) {
+		if (sessionToken == null) {
 			return new ShoppingCart();
 		} else {
 			return shoppingCartRepository.findBySessionToken(sessionToken);
