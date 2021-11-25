@@ -23,16 +23,16 @@ public class User {
     private Long userid;
 	
     // email column must not be null and same, and data type is varchar(45).
-	@Column(nullable = false, unique = true, length = 45)
+	@Column(nullable = false)
 	private String email;
 	
-	@Column(nullable = false, length = 64)
+	@Column(nullable = false)
 	private String password;
 	
-	@Column(length = 20)
+	@Column
 	private String firstname;
 	
-	@Column(length = 20)
+	@Column
 	private String lastname;
 	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
