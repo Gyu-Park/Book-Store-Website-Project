@@ -204,3 +204,7 @@ form label {
   color: #e74c3c;
   visibility: visible;
 }
+
+#email-form-control {
+	margin-top: -0.8rem;
+}
