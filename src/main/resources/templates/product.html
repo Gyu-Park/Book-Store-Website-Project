@@ -188,7 +188,7 @@
         <div class="product-row">
           <h2>Similar Items</h2>
           <div class="similar-item-slideshow">
-
+			<img th:each="similarItems,stat : ${similarItems}" th:src="${similarItems.image}" th:unless="${stat.index > 4}" >
           </div>
         </div>
         <hr>
