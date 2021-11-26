@@ -49,6 +49,10 @@ public class CartController {
 							@ModelAttribute("book") Book book,
 							@ModelAttribute("qty") int qty) {
 		
+		if(qty <= 0) {
+			return "redirect:/product?isbn13="+book.getIsbn13();
+		}
+		
 		String sessionToken = (String) session.getAttribute("sessionToken");
 		if(sessionToken == null) {
 			sessionToken = UUID.randomUUID().toString();
