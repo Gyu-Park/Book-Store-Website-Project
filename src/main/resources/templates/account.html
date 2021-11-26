@@ -164,110 +164,43 @@
                 <div class="account-row">
 
                     <!--Orders item Template-->
-                    <div class="order-item">
-                        <div class="account-row">
-                            <div class="account-col-60">
-                                <div class="order-product-container">
-                                    <div class="order-product-img-container">
-                                        <img src="img/JavaScript.JPG" alt="">
-                                    </div>
-                                    <div class="order-product-title-container">
-                                        <label>Java Script</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <div class="order-item-pricing">
-                                    <label>Price</label>
-                                    <p>$45.50</p>
-                                    <label>Order Placed</label>
-                                    <p>09/30/21</p>
-                                    <label>Order Delivered</label>
-                                    <p>10/20/21</p>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <button type="form-review">Write a Review</button>
-                                <button type="form-buy-again">Buy it Again</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End-->
-
-                    <!--Orders item Template-->
-                    <div class="order-item">
-                        <div class="account-row">
-                            <div class="account-col-60">
-                                <div class="order-product-container">
-                                    <div class="order-product-img-container">
-                                        <img src="img//InformationArchitecture.gif" alt="">
-                                    </div>
-                                    <div class="order-product-title-container">
-                                        <label>Information Architecture</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <div class="order-item-pricing">
-                                    <label>Price</label>
-                                    <p>$45.50</p>
-                                    <label>Order Placed</label>
-                                    <p>09/30/21</p>
-                                    <label>Order Delivered</label>
-                                    <p>10/20/21</p>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <button type="form-review">Write a Review</button>
-                                <button type="form-buy-again">Buy it Again</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End-->
-
-                    <!--Orders item Template-->
-                    <div class="order-item">
-                        <div class="account-row">
-                            <div class="account-col-60">
-                                <div class="order-product-container">
-                                    <div class="order-product-img-container">
-                                        <img src="img/WebPubHTML.JPG" alt="">
-                                    </div>
-                                    <div class="order-product-title-container">
-                                        <label>HTML</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <div class="order-item-pricing">
-                                    <label>Price</label>
-                                    <p>$45.50</p>
-                                    <label>Order Placed</label>
-                                    <p>09/30/21</p>
-                                    <label>Order Delivered</label>
-                                    <p>10/20/21</p>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <button type="form-review">Write a Review</button>
-                                <button type="form-buy-again">Buy it Again</button>
-                            </div>
-                        </div>
+                    <div th:if="${orderList}">
+	                    <div class="order-item" th:each="orderList : ${orderList}">
+	                        <div class="account-row">
+	                        	<span class="order-number">Order Number # [[${orderList.orderId}]]</span>
+	                        	<div class="account-col-wrapper">
+		                            <div class="account-col-60">
+		                                <div class="order-product-container" th:each="orderItemList : ${orderList.orderItemList}">
+		                                    <div class="order-product-img-container">
+		                                        <img th:src="${orderItemList.book.image}" alt="">
+		                                    </div>
+		                                    <div class="order-product-title-container">
+		                                        <label>[[${orderItemList.book.alias}]]</label>
+		                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+		                                            commodo consequat.
+		                                        </p>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="account-col-20">
+		                                <div class="order-item-pricing">
+		                                    <label>Total</label>
+		                                    <p>$[[${orderList.orderTotal}]]</p>
+		                                    <label>Order Placed</label>
+		                                    <p>[[${orderList.orderDate}]]</p>
+		                                    <label>Order Delivered</label>
+		                                    <p>[[${orderList.shippingDate}]]</p>
+		                                </div>
+		                            </div>
+		                            <div class="account-col-20">
+		                                <button type="form-review">Write a Review</button>
+		                                <button type="form-buy-again">Buy it Again</button>
+		                            </div>
+		                        </div>
+	                        </div>
+	                    </div>
                     </div>
                     <!--End-->
 
@@ -438,34 +371,36 @@
             <div class="account-row">
 
                 <!--Whishlist Item Template-->
-                <div class="wishlist-item" th:if="${wishList}">
-                    <div class="account-row" th:each="wishListItem : ${wishList.items}">
-                        <div class="account-col-80">
-                            <div class="wishlist-product-container">
-                                <div class="wishlist-img-container">
-                                    <img th:src="${wishListItem.book.image}" alt="">
-                                </div>
-                                <div class="wishlist-title-container">
-                                    <label>[[${wishListItem.book.alias}]]</label>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="account-col-20">
-                            <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
-                            </label>
-                            <hr>
-                            <button type="form-buy-now">Buy Now</button>
-                            <button type="form-add-to-cart">Add to Cart</button>
-                            <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
-                                data-toggle="tooltip">
-                                <button type="form-remove">Remove</button>
-                            </a>
-                        </div>
-                    </div>
+                <div th:if="${wishList}">
+	                <div class="wishlist-item" th:each="wishListItem : ${wishList.items}">
+	                    <div class="account-row">
+	                        <div class="account-col-80">
+	                            <div class="wishlist-product-container">
+	                                <div class="wishlist-img-container">
+	                                    <img th:src="${wishListItem.book.image}" alt="">
+	                                </div>
+	                                <div class="wishlist-title-container">
+	                                    <label>[[${wishListItem.book.alias}]]</label>
+	                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+	                                        sed do eiusmod tempor incididunt ut labore et dolore magna
+	                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+	                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="account-col-20">
+	                            <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
+	                            </label>
+	                            <hr>
+	                            <button type="form-buy-now">Buy Now</button>
+	                            <button type="form-add-to-cart">Add to Cart</button>
+	                            <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
+	                                data-toggle="tooltip">
+	                                <button type="form-remove">Remove</button>
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div>
                 </div>
                 <!--End-->
 

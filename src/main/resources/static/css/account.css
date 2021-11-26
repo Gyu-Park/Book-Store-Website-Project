@@ -150,13 +150,32 @@ button[type="form-edit"] {
 /*Orders Content Styles*/
 
 .order-item {
+  /*
   display: flex;
   flex-wrap: wrap;
   flex: 100%;
   padding: 10px 20px 15px 20px;
+  */
   border: 2px solid #778899;
   border-radius: 0.2em;
-  margin-bottom: 1.5em;
+  margin-bottom: 3em;
+  margin-top: 1.5em;
+}
+
+.order-number {
+  padding: 10px;
+  width: 100%;
+  height: 20px;
+  background: #778899;
+  color: #fff;
+  font-weight: bold;
+}
+
+.account-col-wrapper {
+  padding: 10px 20px 15px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 100%;
 }
 
 .order-product-container {
