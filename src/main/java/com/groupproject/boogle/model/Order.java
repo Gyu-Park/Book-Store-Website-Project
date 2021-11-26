@@ -39,7 +39,7 @@ public class Order {
 	private List<OrderItem> orderItemList;
 	
 	@ManyToOne
-	@JoinColumn(name = "userid")
+	@JoinColumn(name = "user_id")
 	private User user;
 	
 	@OneToOne(cascade = CascadeType.ALL)
@@ -50,7 +50,7 @@ public class Order {
 	private ShippingAddress shippingAddress;
 	
 	@OneToOne
-	@JoinColumn(name = "guestId")
+	@JoinColumn(name = "guest_id")
 	private Guest guest;
 
 	public Long getOrderId() {

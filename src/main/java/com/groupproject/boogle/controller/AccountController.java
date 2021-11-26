@@ -15,10 +15,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CustomUserDetails;
+import com.groupproject.boogle.model.Order;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
 import com.groupproject.boogle.repository.CardRepository;
 import com.groupproject.boogle.service.CardService;
+import com.groupproject.boogle.service.OrderService;
 import com.groupproject.boogle.service.ShoppingCartService;
 import com.groupproject.boogle.service.WishListService;
 
@@ -38,7 +40,10 @@ public class AccountController {
 	private CardService cardService;
 	
 	@Autowired
-	ShoppingCartService shoppingCartService;
+	private ShoppingCartService shoppingCartService;
+	
+	@Autowired
+	private OrderService orderService;
 	
 	private CustomUserDetails customUserDetails;
 
@@ -48,14 +53,21 @@ public class AccountController {
 		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		model.addAttribute("version", version);
 		
+		// for login and security tab
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		
-		WishList wishList = wishListService.getWishListByUser(user);
-		model.addAttribute("wishList", wishList);
+		// for order tab
+		List<Order> orderList = orderService.findAllOrdersByUser(user);
+		model.addAttribute("orderList", orderList);
 		
+		// for Payment Option tab
 		List<Card> card = cardService.findAllCardByUser(user);
 		model.addAttribute("card", card);
+		
+		// for WishList tab
+		WishList wishList = wishListService.getWishListByUser(user);
+		model.addAttribute("wishList", wishList);
 		
 		return "account";
 	}
