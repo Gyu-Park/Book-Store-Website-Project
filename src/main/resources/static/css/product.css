@@ -46,6 +46,7 @@ img {
 .product-avalibility,
 .product-BO-shop-options {
   margin: 5px 5px 0px 5px;
+  width: 100%;
 }
 
 .product-title-author-container h2,
@@ -106,6 +107,7 @@ button[type="product-submit"] {
   border-radius: 0.2em;
   cursor: pointer;
 }
+
 /*Similar Items Container*/
 .similar-item-container {
   margin-top: 20px;
@@ -130,7 +132,6 @@ button[type="product-submit"] {
   display: inline-block;
   vertical-align: top; 
   width: 190px;
-  min-height: 80%;
   margin: 10px 20px 0px;
   text-align: center;
 }
