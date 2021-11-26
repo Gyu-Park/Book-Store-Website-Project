@@ -122,6 +122,11 @@ button[type="product-submit"] {
   margin-bottom: 5px;
 }
 
+.similar-item-slideshow img {
+	width: 150px;
+	height: 200px;
+}
+
 /*Review Container*/
 .review-container {
   margin-top: 20px;
