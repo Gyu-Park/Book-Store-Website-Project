@@ -1,5 +1,6 @@
 package com.groupproject.boogle.controller;
 
+import java.util.Iterator;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -40,7 +41,24 @@ public class ProductController {
 		Book book = bookService.findByIsbn13(isbn13);
 		model.addAttribute("book", book);
 		List<Category> category = book.getCategory();
-		model.addAttribute("similarItems", category.get(0).getBook());
+		List<Book> similarItems = category.get(0).getBook();
+		
+		// remove the same book in the smilarItems Book List.
+		short count = 0;
+		for (Iterator<Book> iterator = similarItems.iterator(); iterator.hasNext();) {
+			Book similarItem = iterator.next();
+			if (similarItem.getIsbn13().equals(book.getIsbn13())) {
+				iterator.remove();
+				break;
+			}
+			count++;
+			if (count == 5) {
+				break;
+			}
+		}
+		
+		
+		model.addAttribute("similarItems", similarItems);
 		return "product";
 	}
 	

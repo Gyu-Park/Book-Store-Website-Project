@@ -35,7 +35,7 @@
 
 img {
   max-width: 95%;
-  height: auto;
+  max-height: 500px;
   border-radius: 0.2em;
   box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
 }
@@ -118,13 +118,35 @@ button[type="product-submit"] {
 }
 
 .similar-item-container h2 {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
 }
 
-.similar-item-slideshow img {
-	width: 150px;
-	height: 200px;
+.similar-item-slideshow {
+  padding: 10px;
+}
+
+.similar-item-slideshow .similar-item-each-book {
+  display: inline-block;
+  vertical-align: top; 
+  width: 190px;
+  min-height: 80%;
+  margin: 10px 20px 0px;
+  text-align: center;
+}
+
+.similar-item-slideshow .similar-item-each-book a {
+  text-decoration: none;
+}
+
+.similar-item-slideshow .similar-item-each-book img {
+  width: 190px;
+  height: 250px;
+}
+
+.similar-item-slideshow .similar-item-each-book p {
+  margin-top: 15px;
+  font-weight: bold;
 }
 
 /*Review Container*/
