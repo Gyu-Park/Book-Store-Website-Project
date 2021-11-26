@@ -185,10 +185,16 @@
     <!--Similar Items Container-->
     <div class="product-row">
       <div class="similar-item-container">
+        <h2>Similar Items</h2>
+        <hr>
         <div class="product-row">
-          <h2>Similar Items</h2>
           <div class="similar-item-slideshow">
-			<img th:each="similarItems,stat : ${similarItems}" th:src="${similarItems.image}" th:unless="${stat.index > 4}" >
+            <div class="similar-item-each-book" th:each="similarItems,stat : ${similarItems}" th:unless="${stat.index > 4}">
+              <a th:href="@{/product?isbn13=}+${similarItems.isbn13}">
+			    <img th:src="${similarItems.image}">
+			  </a>
+			  <p>[[${similarItems.alias}]]</p>
+			</div>
           </div>
         </div>
         <hr>
