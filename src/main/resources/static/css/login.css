@@ -11,7 +11,7 @@
 .login-row {
   display: flex;
   flex-wrap: wrap;
-  margin-bottom: 1em;
+  margin-bottom: 0.5em;
 }
 
 .login-col-45 {
@@ -80,8 +80,8 @@ button.tablinks {
 
 input[type="text"],
 input[type="password"] {
-  width: 100%;
-  margin-bottom: 20px;
+  width: 95%;
+  margin-bottom: 5px;
   padding: 5px;
   border: none;
   outline: none;
@@ -94,6 +94,20 @@ input[type="password"]:focus {
   transition: 0.3s;
 }
 
+#loginFailure {
+	visibility: visible;
+	color: #e74c3c;
+	font-size: 11px;
+	margin-top: -10px;
+	margin-bottom: 5px;
+}
+
+#login-emial,
+#login-password {
+  margin-bottom: 15px;
+  margin-top: 1px;
+}
+
 #signup-fname,
 #signup-lname {
   width: 85%;
@@ -104,6 +118,7 @@ input[type="password"]:focus {
 }
 
 button[type="form-submit"],
+button[type="signup-submit"],
 button[type="cancel"] {
   background-color: #778899;
   color: #fffaf3;
@@ -116,16 +131,20 @@ button[type="cancel"] {
 }
 
 button[type="form-submit"]:hover,
+button[type="signup-submit"]:hover,
 button[type="cancel"]:hover {
   background-color: #b09979;
   cursor: pointer;
 }
 
 button[type="form-submit"],
+button[type="signup-submit"],
 button[type="cancel"],
 button[type="form-submit"]:after,
+button[type="signup-submit"]:after,
 button[type="cancel"]:after,
 button[type="form-submit"]:before,
+button[type="signup-submit"]:before,
 button[type="cancel"]:before {
   transition: all 0.5s;
 }
@@ -139,4 +158,49 @@ span.psw {
   .user-loging-signup-tab-container {
     width: 300px;
   }
+}
+
+/* form validation */
+form label {
+  margin-top: 5px;
+}
+
+.form-control {
+  width: 100%;
+}
+
+.tabContent form i {
+  position: absolute;
+  margin-left: -15px;
+  visibility: hidden;
+}
+
+.tabContent form small {
+  visibility: hidden;
+  font-size: 10px;
+}
+
+.form-control.success input {
+  border-bottom: 2px solid #ecd5b3;
+  transition: 0.3s;
+}
+
+.form-control.error input {
+  border-bottom: 2px solid #e74c3c;
+  transition: 0.3s;
+}
+
+.form-control.success i.fa-check-circle {
+  color: #ecd5b3;
+  visibility: visible;
+}
+
+.form-control.error i.fa-exclamation-circle {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control.error small {
+  color: #e74c3c;
+  visibility: visible;
 }

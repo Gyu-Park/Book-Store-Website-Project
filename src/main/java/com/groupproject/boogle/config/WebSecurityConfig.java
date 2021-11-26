@@ -11,9 +11,11 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.security.web.firewall.HttpFirewall;
 import org.springframework.security.web.firewall.StrictHttpFirewall;
 
+import com.groupproject.boogle.handler.MyAuthenticationFailureHandler;
 import com.groupproject.boogle.model.CustomUserDetails;
 import com.groupproject.boogle.service.CustomUserDetailsService;
 
@@ -57,6 +59,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	public UserDetails userDetails() {
 		return new CustomUserDetails();
 	}
+	
+	@Bean
+	public AuthenticationFailureHandler getAuthenticationFailureHandler() {
+	    return new MyAuthenticationFailureHandler();
+	}
 
 	/** get the user information from Authentication token and DaoAuthenticationProvider
 	 * and then, it determines whether the informations are matched or not **/
@@ -77,7 +84,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.usernameParameter("email") // email as a parameter to log in
 				.passwordParameter("password")  // password parameter to log in
 				.defaultSuccessUrl("/home")  // when a login is successful, show the home page
-				.failureUrl("/login")  // when a login is failed, show the login page
+				.failureHandler(getAuthenticationFailureHandler())
 				.permitAll()
 			.and()
 			.logout()

@@ -99,6 +99,7 @@
 
                 <label for="login-password">Password<span class="psw"><a href="#">Forgot Password?</a></span></label>
                 <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                <small id="loginFailure" th:if="${param.error}" th:text="'Wrong username or password'"></small>
 
                 <label>
                     <input type="checkbox" checked="checked" name="loging-remeber"> Remember me
@@ -109,27 +110,50 @@
         </div>
 
         <div id="signUp" class="tabContent">
-            <form th:action="@{/process_register}" method="post" th:object="${user}">
+            <form th:action="@{/process_register}" method="post" th:object="${user}" id="form">
                 <div class="login-row">
                     <div class="login-col-45">
-                        <label for="signup-fname">First Name</label>
-                        <input type="text" id="signup-fname" placeholder="John" name="firstname" required>
+                        <div class="form-control">
+                            <label for="signup-fname">First Name</label>
+                            <input type="text" id="signup-fname" placeholder="John" name="firstname">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
                     </div>
                     <div class="login-col-45" id="lname-custom-style-tag">
-                        <label for="signup-lname">Last Name</label>
-                        <input type="text" id="signup-lname" placeholder="Doe" name="lastname" required>
+                        <div class="form-control">
+                            <label for="signup-lname">Last Name</label>
+                            <input type="text" id="signup-lname" placeholder="Doe" name="lastname">
+                            <i class="fas fa-check-circle"></i>
+                            <i class="fas fa-exclamation-circle"></i>
+                            <small>Error message</small>
+                        </div>
                     </div>
                 </div>
-                <label for="signup-email">E-Mail</label>
-                <input type="text" id="signup-email" placeholder="johndoe@mail.com" name="email" required>
+                <div class="form-control">
+                    <label for="signup-email">E-Mail</label>
+                    <input type="text" id="signup-email" placeholder="johndoe@mail.com" name="email">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="signup-password">Password</label>
+                    <input type="password" id="signup-password" placeholder="Enter password" name="password">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
+                <div class="form-control">
+                    <label for="signup-repeat-password">Repeat Password</label>
+                    <input type="password" id="signup-repeat-password" placeholder="Re-enter password">
+                    <i class="fas fa-check-circle"></i>
+                    <i class="fas fa-exclamation-circle"></i>
+                    <small>Error message</small>
+                </div>
 
-                <label for="signup-password">Password</label>
-                <input type="password" id="signup-password" placeholder="Enter password" name="password" required>
-
-                <label for="signup-repeat-password">Repeat Password</label>
-                <input type="password" id="signup-repeat-password" placeholder="Re-enter password" required>
-
-                <button type="form-submit">Sign Up</button>
+                <button type="signup-submit" onclick="return checkInputs()">Sign Up</button>
                 <button type="cancel">Cancel</button>
             </form>
         </div>
