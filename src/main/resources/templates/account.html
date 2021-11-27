@@ -231,63 +231,70 @@
 
                 <div class="account-col-80">
                     <!--Payment Option Template-->
-                    <div th:each="card, cardStat : ${card}">
-                        <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
-                            <div class="card-container">
-                                <div class="front">
-                                    <div class="cardImage">
-                                        <img src="img/chip.png" />
-                                        <!-- American Express Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} == '34' 
-                                        	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'"
-                                            src="img/american-express.png" />
-                                        <!-- Visa Identification Numbers -->
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
-                                            src="img/visa.png" />
-                                        <!-- Mastercard Identification Numbers -->
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'"
-                                            src="img/mastercard.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'"
-                                            src="img/mastercard.png" />
-                                        <!-- Discover Identification Numbers -->
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'"
-                                            src="img/discover.png" />
-                                        <img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
-                                    </div>
-                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
-                                        12)}]]</div>
-                                    <div class="flexbox">
-                                        <div class="box">
-                                            <div class="card-holder">Card Holder</div>
-                                            <div class="card-holder-name">[[${card.cardHolderName}]]</div>
-                                        </div>
-                                        <div class="box">
-                                            <span>Expiration Date</span>
-                                            <div class="expiration">
-                                                <span class="exp-year">[[${card.cardExpYear}]]</span>
-                                                <span>/</span>
-                                                <span class="exp-month">[[${card.cardExpMonth}]]</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="template-card">
+	                    <div th:each="card, cardStat : ${card}">
+	                        <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
+	                            <div class="card-container">
+	                                <div class="front">
+	                                    <div class="cardImage">
+	                                        <img src="img/chip.png" />
+	                                        <!-- American Express Identification Numbers -->
+	                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} == '34' 
+	                                        	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'"
+	                                            src="img/american-express.png" />
+	                                        <!-- Visa Identification Numbers -->
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
+	                                            src="img/visa.png" />
+	                                        <!-- Mastercard Identification Numbers -->
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'"
+	                                            src="img/mastercard.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'"
+	                                            src="img/mastercard.png" />
+	                                        <!-- Discover Identification Numbers -->
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'"
+	                                            src="img/discover.png" />
+	                                        <img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
+	                                    </div>
+	                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
+	                                        12)}]]</div>
+	                                    <div class="flexbox">
+	                                        <div class="box">
+	                                            <div class="card-holder">Card Holder</div>
+	                                            <div class="card-holder-name">[[${card.cardHolderName}]]</div>
+	                                        </div>
+	                                        <div class="box">
+	                                            <span>Expiration Date</span>
+	                                            <div class="expiration">
+	                                                <span class="exp-year">[[${card.cardExpYear}]]</span>
+	                                                <span>/</span>
+	                                                <span class="exp-month">[[${card.cardExpMonth}]]</span>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                        </div>
+	                    </div>
+	                    <div class="buttons-for-edit-card">
+		                    <button class="form-paymentTablinks">Set Default</button>
+		                    <button class="form-paymentTablinks">Edit</button>
+		                    <button class="form-paymentTablinks">Remove</button>
+	                    </div>
+	                </div>
                     <!--End-->
 
                     <!-- Add Payment Option Template -->
