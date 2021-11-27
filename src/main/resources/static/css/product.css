@@ -124,30 +124,75 @@ button[type="product-submit"] {
   margin-bottom: 15px;
 }
 
-.similar-item-slideshow {
-  padding: 10px;
+/* Similar Items Coursel and Item Card Styles */
+.carousel-container {
+  width: 100%;
+  min-height: 270px;
+  position: relative;
 }
 
-.similar-item-slideshow .similar-item-each-book {
-  display: inline-block;
-  vertical-align: top; 
-  width: 190px;
-  margin: 10px 20px 0px;
-  text-align: center;
+.carousel-inner {
+  overflow: hidden;
 }
 
-.similar-item-slideshow .similar-item-each-book a {
+.carousel-container .carousel-track {
+  display: flex;
+  transition: 0.4s;
+}
+
+.carousel-container .carousel-card {
+  width: 19%;
+  min-width: 200px;
+  flex-shrink: 0;
+  min-height: 270px;
+  margin: 0px 5px 0px 5px;
+}
+
+.carousel-card:hover {
+  
+}
+
+.carousel-nav button {
+  width: 50px;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  border: none;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.carousel-nav button:hover {
+  background-color: linear-gradient(to right, white , #fffaf3);
+  opacity: 50%;
+  color: black;
+  font-size: 23px;
+}
+
+.carousel-nav .prev {
+  left: 5px;
+}
+
+.carousel-nav .next {
+  right: -1px;
+}
+
+.carousel-card a {
   text-decoration: none;
+  color: black;
 }
 
-.similar-item-slideshow .similar-item-each-book img {
-  width: 190px;
-  height: 250px;
+.carousel-img {
+  width: 85%;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.similar-item-slideshow .similar-item-each-book p {
-  margin-top: 15px;
-  font-weight: bold;
+.carousel-txt {
+  text-align: center;
 }
 
 /*Review Container*/
