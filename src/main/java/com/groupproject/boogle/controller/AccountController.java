@@ -45,7 +45,7 @@ public class AccountController {
 	@Autowired
 	private OrderService orderService;
 	
-	private CustomUserDetails customUserDetails;
+	CustomUserDetails customUserDetails;
 
 	@GetMapping("/account")
 	public String viewAccountPage(HttpServletRequest request, Model model) {
