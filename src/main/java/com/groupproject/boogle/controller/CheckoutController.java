@@ -24,9 +24,9 @@ import com.groupproject.boogle.model.OrderItem;
 import com.groupproject.boogle.model.ShippingAddress;
 import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.model.User;
-import com.groupproject.boogle.repository.CardRepository;
 import com.groupproject.boogle.repository.OrderItemRepository;
 import com.groupproject.boogle.repository.UserRepository;
+import com.groupproject.boogle.service.CardService;
 import com.groupproject.boogle.service.EmailService;
 import com.groupproject.boogle.service.GuestService;
 import com.groupproject.boogle.service.OrderService;
@@ -45,7 +45,7 @@ public class CheckoutController {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private CardRepository cardRepository;
+	private CardService cardService;
 	
 	@Autowired
 	private OrderService orderService;
@@ -84,8 +84,8 @@ public class CheckoutController {
 			model.addAttribute("user", user);
 			model.addAttribute("userInfo", user.getUserDetailsTable());
 			try {
-				List<Card> card = cardRepository.findAllCardByUser(user);
-				model.addAttribute("card", card.get(0));
+				Card card = cardService.findDefaultCard(user);
+				model.addAttribute("card", card);
 			} catch (NullPointerException e) {
 				// if there's no card, do nothing.
 			}
@@ -110,8 +110,8 @@ public class CheckoutController {
 		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			order.setUser(user);
-			card.setUser(user);
-			order.setCard(card);
+			Card orderCard = cardService.findCardByCardNumber(card.getCardNumberWithoutDecryption());
+			order.setCard(orderCard);
 		} else {
 			guest.setFullName(shippingAddress.getShippingAddressReceiver());
 			guestService.addGuestintoDatabase(guest);

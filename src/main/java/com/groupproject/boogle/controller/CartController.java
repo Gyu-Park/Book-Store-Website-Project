@@ -52,7 +52,11 @@ public class CartController {
 		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			WishList wishlist = wishlistService.getWishListByUser(user);
-			model.addAttribute("wishlist", wishlist.getItems());
+			try {
+				model.addAttribute("wishlist", wishlist.getItems());
+			} catch (NullPointerException e) {
+				// do nothing
+			}
 		}
 		
 		return "cart";

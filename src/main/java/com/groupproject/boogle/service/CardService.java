@@ -18,5 +18,13 @@ public class CardService {
 	public List<Card> findAllCardByUser(User user) { 
 		return cardRepository.findAllCardByUser(user);
 	}
+	
+	public Card findCardByCardNumber(String cardNumber) {
+		return cardRepository.findCardByCardNumber(cardNumber);
+	}
+	
+	public Card findDefaultCard(User user) {
+		return cardRepository.findCardByUserAndDefaultCard(user, true);
+	}
 
 }
