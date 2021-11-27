@@ -188,13 +188,29 @@
         <h2>Similar Items</h2>
         <hr>
         <div class="product-row">
-          <div class="similar-item-slideshow">
-            <div class="similar-item-each-book" th:each="similarItems,stat : ${similarItems}" th:unless="${stat.index > 4}">
-              <a th:href="@{/product?isbn13=}+${similarItems.isbn13}">
-			    <img th:src="${similarItems.image}">
-			  </a>
-			  <p>[[${similarItems.alias}]]</p>
-			</div>
+          <!--Item Courousel and Template-->
+          <div class="carousel-container">
+            <div class="carousel-inner">
+              <div class="carousel-track">
+
+                <!--Item Card Template-->
+                <div class="carousel-card" th:each="similarItems,stat : ${similarItems}">
+                  <a th:href="@{/product?isbn13=}+${similarItems.isbn13}">
+                    <div class="product-row">
+                      <img class="carousel-img" th:src="${similarItems.image}">
+                    </div>
+                    <div class="product-row">
+                      <h3 class="carousel-txt" th:text="${similarItems.alias}">/h3>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+              <div class="carousel-nav">
+                <button class="prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="next"><i class="fas fa-chevron-right"></i></button>
+              </div>
+            </div>
           </div>
         </div>
         <hr>
