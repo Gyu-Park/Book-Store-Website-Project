@@ -14,6 +14,7 @@
 
 .active-cart-col-70 {
   flex: 70%;
+  max-width: 70%;
 }
 
 .active-cart-col-60 {
@@ -37,8 +38,7 @@
 }
 
 .active-cart-container,
-.subtotal-container,
-.wishlist-container {
+.subtotal-container {
   margin-bottom: 15px;
   padding: 5px 20px 15px 20px;
   border: 2px solid lightslategray;
@@ -147,4 +147,81 @@ img {
   border: 1px solid #778899;
   width: 100px;
   height: 140px;
+}
+
+/* WishList Items Coursel and Item Card Styles */
+.wishlist-container {
+  max-width: 100%;
+  border: 2px solid lightslategray;
+  border-radius: 0.2em;
+  margin-bottom: 15px;
+  padding: 5px 20px 15px 20px;
+}
+
+.carousel-container {
+  min-width: 95%;
+  max-width: 96%;
+  min-height: 270px;
+  position: relative;
+}
+
+.carousel-inner {
+  overflow: hidden;
+}
+
+.carousel-container .carousel-track {
+  display: flex;
+  transition: 0.4s;
+}
+
+.carousel-container .carousel-card {
+  width: 15%;
+  min-width: 200px;
+  flex-shrink: 0;
+  min-height: 270px;
+  margin: 0px 5px 0px 5px;
+}
+
+
+.carousel-nav button {
+  width: 50px;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  border: none;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.carousel-nav button:hover {
+  background-color: linear-gradient(to right, white , #fffaf3);
+  opacity: 50%;
+  color: black;
+  font-size: 23px;
+}
+
+.carousel-nav .prev {
+  left: 5px;
+}
+
+.carousel-nav .next {
+  right: -1px;
+}
+
+.carousel-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.carousel-img {
+  width: 85%;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-txt {
+  text-align: center;
 }

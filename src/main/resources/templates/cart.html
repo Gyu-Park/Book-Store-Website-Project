@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/footer.css">
 
     <script src="js/nav.js" defer></script>
-    <script src="js/cart.js"></script>
+    <script src="js/cart.js" defer></script>
     <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
 
     <title>Cart | Boogle.com</title>
@@ -149,17 +149,41 @@
                     </div>
                 </div>
 
-                <div class="wishlist-container">
-                    <form action="">
-
-                        <div class="wishlist-row">
+                    <div class="wishlist-container">
                             <div class="wishlist-header">
                                 <h2>Wish List</h2>
                             </div>
+                        <hr>
+
+                        <div class="wishlist-row">
+                            <!--Item Courousel and Template-->
+                            <div class="carousel-container">
+                            <div class="carousel-inner">
+                                <div class="carousel-track">
+                
+                                <!--Item Card Template-->
+                                <div class="carousel-card" th:if="${wishlist}" th:each="wishlist : ${wishlist}">
+                                    <a th:href="@{/product?isbn13=}+${wishlist.book.isbn13}">
+                                    <div class="wishlsit-row">
+                                        <img class="carousel-img" th:src="${wishlist.book.image}">
+                                    </div>
+                                    <div class="wishlist-row">
+                                        <h3 class="carousel-txt" th:text="${wishlist.book.alias}">/h3>
+                                    </div>
+                                    </a>
+                                </div>
+                
+                                </div>
+                                <div class="carousel-nav">
+                                <button type="prev" class="prev"><i class="fas fa-chevron-left"></i></button>
+                                <button type="next" class="next"><i class="fas fa-chevron-right"></i></button>
+                                </div>
+                            </div>
+                            </div>
                         </div>
                         <hr>
-                    </form>
-                </div>
+                    </div>
+
             </div>
 
             <div class="active-cart-col-25">

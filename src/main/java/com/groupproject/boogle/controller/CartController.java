@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,9 +18,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.groupproject.boogle.model.Book;
+import com.groupproject.boogle.model.CustomUserDetails;
 import com.groupproject.boogle.model.ShoppingCart;
+import com.groupproject.boogle.model.User;
+import com.groupproject.boogle.model.WishList;
 import com.groupproject.boogle.repository.UserRepository;
 import com.groupproject.boogle.service.ShoppingCartService;
+import com.groupproject.boogle.service.WishListService;
 
 @Controller
 public class CartController {
@@ -32,12 +38,25 @@ public class CartController {
 	@Autowired
 	ShoppingCartService shoppingCartService;
 
+	@Autowired
+	WishListService wishlistService;
+
+	private CustomUserDetails customUserDetails;
+
 	@GetMapping("/cart")
 	public String viewCartPage(HttpServletRequest request, Model model) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
 		model.addAttribute("shoppingCart", shoppingCart);
 		model.addAttribute("version", version);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user;
+		if (!auth.getName().equals("anonymousUser")) {
+			user = userRepository.findByEmail(auth.getName());
+			WishList wishlist = wishlistService.getWishListByUser(user);
+			model.addAttribute("wishlist", wishlist.getItems());
+		}
 		
 		return "cart";
 	}
