@@ -14,5 +14,9 @@ public interface BookRepository extends JpaRepository<Book, String> {
 	@Query(value = "SELECT * FROM books WHERE MATCH(title, alias) AGAINST(?1)", 
 			nativeQuery = true)
 	public List<Book> search(String keyword);
+	
+	@Query(value = "SELECT * FROM books WHERE number_on_hand > 0 ORDER BY sales DESC LIMIT 5", 
+			nativeQuery = true)
+	public List<Book> findBestSellers();
 
 }

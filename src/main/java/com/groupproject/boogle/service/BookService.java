@@ -23,5 +23,9 @@ public class BookService implements IBookService {
 	public List<Book> search(String keyword) {
 		return bookRepository.search(keyword);
 	}
+	
+	public List<Book> getBestSellers() {
+		return bookRepository.findBestSellers();
+	}
 
 }

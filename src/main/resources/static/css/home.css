@@ -140,6 +140,7 @@ body {
   display: flex;
   flex-direction: column;
   transition: 0.3s ease-in;
+  text-decoration: none;
 }
 
 .bestSellerGrid img {
@@ -158,11 +159,14 @@ body {
   width: 320px;
   height: 44px;
   margin-top: 15px;
+  color: black;
 }
 
 .bestSellerGrid p {
   text-align: center;
   margin-top: -15px;
+  text-decoration: none;
+  color: black;
 }
 
 .bestSellerGrid img:hover {
