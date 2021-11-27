@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.groupproject.boogle.model.Book;
 import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CartItem;
 import com.groupproject.boogle.model.Guest;
@@ -26,6 +27,7 @@ import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.repository.OrderItemRepository;
 import com.groupproject.boogle.repository.UserRepository;
+import com.groupproject.boogle.service.BookService;
 import com.groupproject.boogle.service.CardService;
 import com.groupproject.boogle.service.EmailService;
 import com.groupproject.boogle.service.GuestService;
@@ -58,6 +60,9 @@ public class CheckoutController {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	private BookService bookService;
 	
 	@GetMapping("/checkout")
 	public String viewCheckoutPage(HttpServletRequest request, Model model) {
@@ -129,6 +134,7 @@ public class CheckoutController {
 				orderItem.setOrder(order);
 				orderItem.setQuantity(cartItem.getQuantity());
 				cartItem.getBook().setNumber_on_hand(cartItem.getBook().getNumber_on_hand() - cartItem.getQuantity());
+				cartItem.getBook().setSales(cartItem.getBook().getSales() + cartItem.getQuantity());
 				orderItemRepository.save(orderItem);
 				orderItems.add(orderItem);
 				orderItem = new OrderItem();
@@ -152,6 +158,8 @@ public class CheckoutController {
 		}
 		
 		model.addAttribute("shoppingCart", shoppingCart);
+		List<Book> bestSellers = bookService.getBestSellers();
+		model.addAttribute("bestSellers", bestSellers);
 		
 		return "home";
 	}
