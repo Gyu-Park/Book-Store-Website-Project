@@ -100,11 +100,12 @@
   <div class="bestSellerArea">
     <h2>Best Sellers in Boogle</h2>
     <div class="bestSeller__wrapper">
-      <a class="bestSellerGrid">
-        <img src="img/PracticalSQL.jpg">
-        <h3>#1 Practical SQL</h3>
-        <p>by Judith S. Bowman, et al.</p>
+      <a class="bestSellerGrid" th:href="@{/product?isbn13=}+${bestSellers.isbn13}" th:each="bestSellers,stat : ${bestSellers}">
+        <img th:src="${bestSellers.image}">
+        <h3>#[[${stat.count}]] [[${bestSellers.alias}]]</h3>
+        <p>by [[${bestSellers.author_et_alia}]]</p>
       </a>
+      <!--
       <a class="bestSellerGrid">
         <img src="img/InformationArchitecture.jpg">
         <h3>#2 Information Architecture</h3>
@@ -125,6 +126,7 @@
         <h3>#5 Designing With JavaScript</h3>
         <p>by Nick Heinle</p>
       </a>
+       -->
     </div>
   </div>
 

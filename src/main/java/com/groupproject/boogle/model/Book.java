@@ -50,6 +50,9 @@ public class Book {
 	@Column(nullable = false, length = 225)
 	private String image;
 	
+	@Column(nullable = false)
+	private Long sales;
+	
 	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(
 			name = "categories_books",
@@ -145,6 +148,14 @@ public class Book {
 		this.image = image;
 	}
 
+	public Long getSales() {
+		return sales;
+	}
+
+	public void setSales(Long sales) {
+		this.sales = sales;
+	}
+
 	public List<Category> getCategory() {
 		return category;
 	}
@@ -156,7 +167,7 @@ public class Book {
 	@Override
 	public int hashCode() {
 		return Objects.hash(alias, author, author_et_alia, category, image, isbn10, isbn13, number_on_hand, price,
-				publication_year, publisher, title);
+				publication_year, publisher, sales, title);
 	}
 
 	@Override
@@ -173,7 +184,8 @@ public class Book {
 				&& Objects.equals(image, other.image) && Objects.equals(isbn10, other.isbn10)
 				&& Objects.equals(isbn13, other.isbn13) && number_on_hand == other.number_on_hand
 				&& Objects.equals(price, other.price) && Objects.equals(publication_year, other.publication_year)
-				&& Objects.equals(publisher, other.publisher) && Objects.equals(title, other.title);
+				&& Objects.equals(publisher, other.publisher) && Objects.equals(sales, other.sales)
+				&& Objects.equals(title, other.title);
 	}
 
 	@Override
@@ -181,7 +193,7 @@ public class Book {
 		return "Book [isbn13=" + isbn13 + ", isbn10=" + isbn10 + ", title=" + title + ", alias=" + alias + ", author="
 				+ author + ", author_et_alia=" + author_et_alia + ", publisher=" + publisher + ", publication_year="
 				+ publication_year + ", price=" + price + ", number_on_hand=" + number_on_hand + ", image=" + image
-				+ ", category=" + category + "]";
+				+ ", sales=" + sales + ", category=" + category + "]";
 	}
 	
 }
