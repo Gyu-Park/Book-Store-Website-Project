@@ -248,7 +248,12 @@ button[type="form-buy-again"] {
 
 .buttons-for-edit-card {
 	text-align: center;
-	margin-left: 30px;
+}
+
+.buttons-for-edit-card form {
+	display: inline;
+	margin-left: 5px;
+	margin-right: 5px;
 }
 
 .buttons-for-edit-card button {
@@ -256,7 +261,7 @@ button[type="form-buy-again"] {
   color: #fffaf3;
   margin-top: 10px;
   padding: 10px;
-  width: 150px;
+  width: 140px;
   height: auto;
   border: none;
   border-radius: 0.2em;
@@ -272,7 +277,7 @@ button[type="form-buy-again"] {
 
 .paymentTabContent {
   min-height: 240px;
-  margin-right: 10px;
+  margin-right: 60px;
   padding: 10px 20px 15px 20px;
   overflow: none;
   display: none;
@@ -289,12 +294,13 @@ button[type="form-buy-again"] {
 }
 
 .paymentTabContent .card-container {
-  margin-bottom: -150px;
+  margin-bottom: 50px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   height: 190px;
   max-width: 398px;
+  right: 20px;
 }
 
 .card-container:nth-child(odd) .front {
@@ -462,7 +468,7 @@ button[type="form-buy-again"] {
 /****************/
 
 .paymentTabContent form {
-  padding-top: 210px;
+  padding-top: 10px;
 }
 
 .new-payment-option-form-container {
