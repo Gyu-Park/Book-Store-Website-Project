@@ -246,6 +246,14 @@ button[type="form-buy-again"] {
   border-radius: 0.2em;
 }
 
+.payment-tabs #bookmark {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  border-style: none;
+  margin-top: 6px;
+}
+
 .paymentTabContent {
   margin-right: 10px;
   padding: 10px 20px 15px 20px;
@@ -333,6 +341,17 @@ button[type="form-buy-again"] {
   height: 50px;
   width: 90px;
   border-style: none;
+}
+
+.card-container .front .cardImage #bookmark {
+  height: 30px;
+  width: 30px;
+  margin-top: -90px;
+  position: absolute;
+}
+
+.card-container .front .cardImage #issuer {
+	margin-right: -250px;
 }
 
 .front .card-number-box {

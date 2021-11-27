@@ -35,8 +35,10 @@ public class Card {
 	private Byte cardExpMonth;
 
 	private Byte cardExpYear;
-
+	
 	private String cardCvv;
+	
+	private boolean defaultCard;
 
 	public Long getPaymentOptionId() {
 		return paymentOptionId;
@@ -104,9 +106,18 @@ public class Card {
 		this.cardCvv = encryptedCVV;
 	}
 
+	public boolean isDefaultCard() {
+		return defaultCard;
+	}
+
+	public void setDefaultCard(boolean defaultCard) {
+		this.defaultCard = defaultCard;
+	}
+
 	@Override
 	public int hashCode() {
-		return Objects.hash(cardNumber, paymentOptionId, user);
+		return Objects.hash(cardCvv, cardExpMonth, cardExpYear, cardHolderName, cardNumber, defaultCard,
+				paymentOptionId, paymentOptionName, user);
 	}
 
 	@Override
@@ -118,15 +129,19 @@ public class Card {
 		if (getClass() != obj.getClass())
 			return false;
 		Card other = (Card) obj;
-		return Objects.equals(cardNumber, other.cardNumber) && Objects.equals(paymentOptionId, other.paymentOptionId)
-				&& Objects.equals(user, other.user);
+		return Objects.equals(cardCvv, other.cardCvv) && Objects.equals(cardExpMonth, other.cardExpMonth)
+				&& Objects.equals(cardExpYear, other.cardExpYear)
+				&& Objects.equals(cardHolderName, other.cardHolderName) && Objects.equals(cardNumber, other.cardNumber)
+				&& defaultCard == other.defaultCard && Objects.equals(paymentOptionId, other.paymentOptionId)
+				&& Objects.equals(paymentOptionName, other.paymentOptionName) && Objects.equals(user, other.user);
 	}
 
 	@Override
 	public String toString() {
-		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", paymentOptionName=" + paymentOptionName
-				+ ", cardHolderName=" + cardHolderName + ", cardNumber=" + cardNumber + ", cardExpMonth=" + cardExpMonth
-				+ ", cardExpYear=" + cardExpYear + ", cardCvv=" + cardCvv + "]";
+		return "Card [paymentOptionId=" + paymentOptionId + ", user=" + user + ", paymentOptionName="
+				+ paymentOptionName + ", cardHolderName=" + cardHolderName + ", cardNumber=" + cardNumber
+				+ ", cardExpMonth=" + cardExpMonth + ", cardExpYear=" + cardExpYear + ", cardCvv=" + cardCvv
+				+ ", defaultCard=" + defaultCard + "]";
 	}
 
 }
