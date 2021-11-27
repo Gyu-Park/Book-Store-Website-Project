@@ -217,6 +217,7 @@
                 <div class="account-col-20">
                     <div class="payment-tabs">
                         <div id="payment-option-button-container" th:each="card, cardStat : ${card}">
+                        	<img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
                             <button class="form-paymentTablinks"
                                 th:onClick="openPaymentForm(event, 'payment-option-[[${cardStat.count}]]')">[[${card.paymentOptionName}]]</button>
                         </div>
@@ -241,30 +242,31 @@
                                         	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'"
                                             src="img/american-express.png" />
                                         <!-- Visa Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
                                             src="img/visa.png" />
                                         <!-- Mastercard Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
                                         	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'"
                                             src="img/mastercard.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
                                         	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'"
                                             src="img/mastercard.png" />
                                         <!-- Discover Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
                                             src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
                                         	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'"
                                             src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
                                         	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'"
                                             src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
                                         	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'"
                                             src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
+                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
                                         	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'"
                                             src="img/discover.png" />
+                                        <img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
                                     </div>
                                     <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
                                         12)}]]</div>
