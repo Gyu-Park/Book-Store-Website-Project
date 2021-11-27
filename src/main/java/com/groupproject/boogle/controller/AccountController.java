@@ -63,6 +63,13 @@ public class AccountController {
 		
 		// for Payment Option tab
 		List<Card> card = cardService.findAllCardByUser(user);
+		for (Card card1 : card) {
+			if(card1.isDefaultCard()) {
+				card.remove(card1);
+				card.add(0, card1);
+				break;
+			}
+		}
 		model.addAttribute("card", card);
 		
 		// for WishList tab

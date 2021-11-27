@@ -75,6 +75,10 @@ public class Card {
 	public String getCardNumber() {
 		return AES.decrypt(this.cardNumber, AES.secretKeyBoogle);
 	}
+	
+	public String getCardNumberWithoutDecryption() {
+		return cardNumber;
+	}
 
 	public void setCardNumber(String cardNumber) {
 		String encryptedCardNumber = AES.encrypt(cardNumber.replaceAll("\\D", ""), AES.secretKeyBoogle);

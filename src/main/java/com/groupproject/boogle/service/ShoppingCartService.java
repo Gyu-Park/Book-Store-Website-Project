@@ -43,7 +43,7 @@ public class ShoppingCartService {
 		if (shoppingCart != null) {
 			List<CartItem> items = shoppingCart.getItems();
 			for (CartItem item : items) {
-				if(item.getBook().equals(book)) {
+				if(item.getBook().getAlias().equals(book.getAlias())) {
 					productDoesExistInTheCart = true;
 					item.setQuantity(item.getQuantity() + quantity);
 					shoppingCart.setItems(items);
