@@ -18,7 +18,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.groupproject.boogle.model.Book;
-import com.groupproject.boogle.model.CustomUserDetails;
 import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
@@ -40,8 +39,6 @@ public class CartController {
 
 	@Autowired
 	WishListService wishlistService;
-
-	private CustomUserDetails customUserDetails;
 
 	@GetMapping("/cart")
 	public String viewCartPage(HttpServletRequest request, Model model) {

@@ -287,12 +287,20 @@
 	                                    </div>
 	                                </div>
 	                            </div>
+	                            <div class="buttons-for-edit-card">
+			                    	<form th:action="@{/account/setDefaultCard}" th:method="post">
+			                    		<input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
+				                    	<button type="submit" class="form-paymentTablinks">Set Default</button>
+				                    </form>
+				                    <form>
+				                    	<button type="submit" class="form-paymentTablinks">Edit</button>
+				                    </form>
+				                    <form th:action="@{/account/removeCard}" th:method="post">
+				                    	<input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
+				                    	<button type="submit" class="form-paymentTablinks">Remove</button>
+				                    </form>
+			                    </div>
 	                        </div>
-	                    </div>
-	                    <div class="buttons-for-edit-card">
-		                    <button class="form-paymentTablinks">Set Default</button>
-		                    <button class="form-paymentTablinks">Edit</button>
-		                    <button class="form-paymentTablinks">Remove</button>
 	                    </div>
 	                </div>
                     <!--End-->

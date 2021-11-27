@@ -97,4 +97,38 @@ public class AccountController {
 		return "redirect:/account";
 	}
 	
+	@PostMapping("/account/setDefaultCard")
+	public String setDefaultCard(Card defaultCard) {
+		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = customUserDetails.getUser();
+		List<Card> cardList = cardService.findAllCardByUser(user);
+		for (Card card : cardList) {
+			if (card.getPaymentOptionId().equals(defaultCard.getPaymentOptionId())) {
+				card.setDefaultCard(true);
+			} else {
+				card.setDefaultCard(false);
+			}
+		}
+		cardRepository.saveAll(cardList);
+		return "redirect:/account";
+	}
+	
+	@PostMapping("/account/removeCard")
+	public String removeCard(Card defaultCard) {
+		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		User user = customUserDetails.getUser();
+		List<Card> cardList = cardService.findAllCardByUser(user);
+		Card removeCard = null;
+		System.out.println("----------------------------------------" + cardList.size());
+		for (Card card : cardList) {
+			if (card.getPaymentOptionId().equals(defaultCard.getPaymentOptionId())) {
+				removeCard = card;
+				System.out.println("------------------------in loop if");
+				break;
+			}
+		}
+		cardRepository.delete(removeCard);
+		return "redirect:/account";
+	}
+	
 }
