@@ -217,6 +217,26 @@ button[type="form-buy-again"] {
   border-radius: 0.2em;
 }
 
+.empty-orderlist {
+	display: grid;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	height: 300px;
+	width: 1000px;
+}
+
+.empty-orderlist img {
+	margin: auto;
+	border: none;
+	max-height: 140px;
+}
+
+.empty-orderlist span {
+	margin: auto;
+	font-weight: bold;
+	font-size: 20px;
+}
+
 /*Payment Options Content Styles*/
 
 #add-payment-option h3 {
@@ -566,4 +586,25 @@ span {
   float: right;
   color: black;
   padding-right: 5px;
+}
+
+.empty-wishlist {
+	display: grid;
+	margin-top: 130px;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+.empty-wishlist img {
+	margin: auto;
+	margin-bottom: 70px;
+	border: none;
+	max-height: 140px;
+	width: 180px;
+}
+
+.empty-wishlist span {
+	margin: auto;
+	font-weight: bold;
+	font-size: 20px;
 }

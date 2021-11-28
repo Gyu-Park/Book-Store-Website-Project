@@ -161,8 +161,11 @@
 
         <div id="orders" class="tabContent">
             <form action="" method="get">
+            	<div class="empty-orderlist" th:if="${orderList.empty}">
+            		<img src="img/empty.png" >
+            		<span th:text="'You have not placed any orders yet.'"></span>
+            	</div>
                 <div class="account-row">
-
                     <!--Orders item Template-->
                     <div th:if="${orderList}">
 	                    <div class="order-item" th:each="orderList : ${orderList}">
@@ -385,6 +388,10 @@
         </div>
 
         <div id="wishlist" class="tabContent">
+        	<div class="empty-wishlist" th:if="${wishList.items.empty}">
+            	<img src="img/empty-wishlist.png" >
+            	<span th:text="'Your wish list is empty.'"></span>
+            </div>
             <div class="account-row">
 
                 <!--Whishlist Item Template-->

@@ -98,6 +98,10 @@
                         <div class="active-items-list">
 
                             <!--Cart Item Template-->
+                            <div class="empty-cart" th:if="${shoppingCart.items.empty}">
+                            	<img src="img/empty-cart.png" >
+                            	<span th:text="'Your shopping cart is empty.'"></span>
+                            </div>
                             <div class="cart-item" th:each="cartItem : ${shoppingCart.items}">
                                 <div class="active-cart-row">
                                     <div class="cart-col-60">
@@ -149,7 +153,7 @@
                     </div>
                 </div>
 
-                    <div class="wishlist-container">
+                    <div class="wishlist-container" sec:authorize="isAuthenticated()">
                             <div class="wishlist-header">
                                 <h2>Wish List</h2>
                             </div>

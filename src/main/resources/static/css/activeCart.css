@@ -149,6 +149,26 @@ img {
   height: 140px;
 }
 
+.empty-cart {
+	display: grid;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.empty-cart img {
+	margin: auto;
+	margin-bottom: 50px;
+	border: none;
+	max-height: 100px;
+}
+
+.empty-cart span {
+	margin: auto;
+	font-weight: bold;
+	font-size: 20px;
+}
+
 /* WishList Items Coursel and Item Card Styles */
 .wishlist-container {
   max-width: 100%;
