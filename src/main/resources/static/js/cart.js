@@ -2,12 +2,17 @@
 const prev = document.querySelector('.prev');
 const next = document.querySelector('.next');
 const track = document.querySelector('.carousel-track');
-const carouselContainer = document.querySelector('.carousel-container').offsetWidth;
+const carouselContainer = document.querySelector('.carousel-container');
 
-next.addEventListener('click', () => {
-	track.style.transform = `translateX(-${carouselContainer}px)`;
-})
+if (next != null) {
+	next.addEventListener('click', () => {
+		var carouselContainerVar = carouselContainer.offsetWidth;
+		track.style.transform = `translateX(-${carouselContainerVar}px)`;
+	})
+}
 
-prev.addEventListener('click', () => {
-	track.style.transform = `translateX(-${0}px)`;
-})
+if (prev != null) {
+	prev.addEventListener('click', () => {
+		track.style.transform = `translateX(-${0}px)`;
+	})
+}
