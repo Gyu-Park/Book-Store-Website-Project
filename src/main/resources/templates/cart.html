@@ -154,14 +154,17 @@
                 </div>
 
                     <div class="wishlist-container" sec:authorize="isAuthenticated()">
-                            <div class="wishlist-header">
-                                <h2>Wish List</h2>
-                            </div>
+                        <div class="wishlist-header">
+                            <h2>Wish List</h2>
+                        </div>
                         <hr>
-
                         <div class="wishlist-row">
+                        	<div class="empty-wishlist" th:if="${wishlist.empty}">
+				            	<img src="img/empty-wishlist.png" >
+				            	<span th:text="'Your wish list is empty.'"></span>
+				            </div>
                             <!--Item Courousel and Template-->
-                            <div class="carousel-container">
+                            <div class="carousel-container" th:unless="${wishlist.empty}">
                             <div class="carousel-inner">
                                 <div class="carousel-track">
                 
