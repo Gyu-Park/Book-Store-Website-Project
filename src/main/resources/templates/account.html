@@ -85,16 +85,18 @@
     <div class="account-content-tab-container">
         <div class="account-row">
             <div class="tabs">
-                <button class="tablinks" id="tablinks-LoginSec-Active"
+                <button th:class="${activeTab} ? 'tablinks' : 'tablinks active'" th:id="${activeTab} ? '' : 'active'"
                     onClick="openForm(event, 'login-and-security')">Login and Security</button>
-                <button class="tablinks" id="tablinks-Orders" onClick="openForm(event, 'orders')">Orders</button>
-                <button class="tablinks" id="tablinks-PaymentOpt" onClick="openForm(event, 'payment-options')">Payment
-                    Options</button>
-                <button class="tablinks" id="tablinks-WishList" onClick="openForm(event, 'wishlist')">Wish List</button>
+                <button th:class="${activeTab == 2} ? 'tablinks active' : 'tablinks'" th:id="${activeTab == 2} ? 'active'" 
+                	onClick="openForm(event, 'orders')">Orders</button>
+                <button th:class="${activeTab == 3} ? 'tablinks active' : 'tablinks'" th:id="${activeTab == 3} ? 'active'" 
+                	onClick="openForm(event, 'payment-options')">Payment Options</button>
+                <button th:class="${activeTab == 4} ? 'tablinks active' : 'tablinks'" th:id="${activeTab == 4} ? 'active'" 
+                	onClick="openForm(event, 'wishlist')">Wish List</button>
             </div>
         </div>
 
-        <div id="login-and-security" class="tabContent">
+        <div id="login-and-security" class="tabContent" th:style="${activeTab} ? 'display: none;' : 'display: block;'" >
             <form action="" method="get">
                 <div class="account-row">
                     <div class="LaS-item">
@@ -159,7 +161,7 @@
             </form>
         </div>
 
-        <div id="orders" class="tabContent">
+        <div id="orders" class="tabContent" th:style="${activeTab == 2} ? 'display: block;' : 'display: none;'" >
             <form action="" method="get">
             	<div class="empty-orderlist" th:if="${orderList.empty}">
             		<img src="img/empty.png" >
@@ -211,7 +213,7 @@
             </form>
         </div>
 
-        <div id="payment-options" class="tabContent">
+        <div id="payment-options" class="tabContent" th:style="${activeTab == 3} ? 'display: block;' : 'display: none;'" >
             <div class="account-row">
                 <h1>Wallet</h1>
             </div>
@@ -387,7 +389,7 @@
             </div>
         </div>
 
-        <div id="wishlist" class="tabContent">
+        <div id="wishlist" class="tabContent" th:style="${activeTab == 4} ? 'display: block;' : 'display: none;'" >
         	<div class="empty-wishlist" th:if="${wishList.items.empty}">
             	<img src="img/empty-wishlist.png" >
             	<span th:text="'Your wish list is empty.'"></span>

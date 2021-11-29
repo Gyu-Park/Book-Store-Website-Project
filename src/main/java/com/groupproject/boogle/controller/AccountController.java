@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CustomUserDetails;
@@ -48,7 +49,7 @@ public class AccountController {
 	CustomUserDetails customUserDetails;
 
 	@GetMapping("/account")
-	public String viewAccountPage(HttpServletRequest request, Model model) {
+	public String viewAccountPage(HttpServletRequest request, Model model, RedirectAttributes redirectAttributes) {
 		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
 		model.addAttribute("shoppingCart", shoppingCartService.getShoppingCartBySessionToken(sessionToken));
 		model.addAttribute("version", version);
@@ -88,24 +89,30 @@ public class AccountController {
 	}
 	
 	@GetMapping("/removeWishListItem/{isbn13}")
-	public String removeItemFromWishList(@PathVariable("isbn13") String isbn13) {
+	public String removeItemFromWishList(@PathVariable("isbn13") String isbn13, RedirectAttributes redirectAttributes) {
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		wishListService.removeItemWishList(isbn13, user);
+		
+		redirectAttributes.addFlashAttribute("activeTab", 4);
+		
 		return "redirect:/account";
 	}
 	
 	@PostMapping("/account/addCard")
-	public String addCard(Card card) {
+	public String addCard(Card card, RedirectAttributes redirectAttributes) {
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		card.setUser(user);
 		cardRepository.save(card);
+		
+		redirectAttributes.addFlashAttribute("activeTab", 3);
+		
 		return "redirect:/account";
 	}
 	
 	@PostMapping("/account/setDefaultCard")
-	public String setDefaultCard(Card defaultCard) {
+	public String setDefaultCard(Card defaultCard, RedirectAttributes redirectAttributes) {
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		List<Card> cardList = cardService.findAllCardByUser(user);
@@ -117,24 +124,28 @@ public class AccountController {
 			}
 		}
 		cardRepository.saveAll(cardList);
+		
+		redirectAttributes.addFlashAttribute("activeTab", 3);
+		
 		return "redirect:/account";
 	}
 	
 	@PostMapping("/account/removeCard")
-	public String removeCard(Card defaultCard) {
+	public String removeCard(Card defaultCard, RedirectAttributes redirectAttributes) {
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		List<Card> cardList = cardService.findAllCardByUser(user);
 		Card removeCard = null;
-		System.out.println("----------------------------------------" + cardList.size());
 		for (Card card : cardList) {
 			if (card.getPaymentOptionId().equals(defaultCard.getPaymentOptionId())) {
 				removeCard = card;
-				System.out.println("------------------------in loop if");
 				break;
 			}
 		}
 		cardRepository.delete(removeCard);
+		
+		redirectAttributes.addFlashAttribute("activeTab", 3);
+		
 		return "redirect:/account";
 	}
 	
