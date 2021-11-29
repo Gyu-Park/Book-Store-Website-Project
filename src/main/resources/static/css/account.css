@@ -87,10 +87,7 @@ button.tablinks {
   background-color: #b09979;
 }
 
-#tablinks-LoginSec-Active,
-#tablinks-Orders-Active,
-#tablinks-PaymentOpt-Active,
-#tablinks-WishList-Active {
+#active {
   color: #ecd5b3;
   background-color: #516272;
   font-weight: bold;
