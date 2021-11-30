@@ -35,14 +35,6 @@ const email = document.getElementById('signup-email');
 const password = document.getElementById('signup-password');
 const password2 = document.getElementById('signup-repeat-password');
 
-/*
-form.addEventListener('submit', (e) => {
-	e.preventDefault();
-	
-	checkInputs();
-});
-*/
-
 function checkInputs() {
 	// remove whitespaces
 	const firstnameValue = firstname.value.trim();

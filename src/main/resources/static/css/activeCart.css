@@ -54,13 +54,12 @@
   width: 100%;
   border-radius: 0.2em;
   cursor: pointer;
+  color: #fffaf3;
+  font-weight: bold;
 }
 
-.subtotal-container-btn a {
-  color: #fffaf3;
+.subtotal-container a {
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1em;
 }
 
 .subtotal-container-btn,
@@ -70,6 +69,16 @@
 }
 
 .subtotal-container-btn:hover {
+  background-color: #b09979;
+}
+
+.cart-col-20 button,
+.cart-col-20 button:after,
+.cart-col-20 button:before {
+  transition: all 0.5s;
+}
+
+.cart-col-20 button:hover {
   background-color: #b09979;
 }
 
@@ -141,6 +150,10 @@ button[type="form-remove"] {
   border: none;
   border-radius: 0.2em;
   cursor: pointer;
+}
+
+#item-qty {
+	width: 76%;
 }
 
 img {
