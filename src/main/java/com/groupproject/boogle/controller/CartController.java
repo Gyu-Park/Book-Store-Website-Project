@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.groupproject.boogle.model.Book;
 import com.groupproject.boogle.model.ShoppingCart;
@@ -67,7 +68,9 @@ public class CartController {
 	public String addToCart(HttpSession session,
 							Model model,
 							@ModelAttribute("book") Book book,
-							@ModelAttribute("qty") int qty) {
+							@ModelAttribute("qty") int qty,
+							@ModelAttribute("sentFromAccountWishList") boolean sentFromAccountWishList,
+							RedirectAttributes redirectAttributes) {
 		
 		if(qty <= 0) {
 			return "redirect:/product?isbn13="+book.getIsbn13();
@@ -80,6 +83,11 @@ public class CartController {
 			shoppingCartService.addShoppingCart(book.getIsbn13(), sessionToken, qty);
 		} else {
 			shoppingCartService.addToExistingShoppingCart(book.getIsbn13(), sessionToken, qty);
+		}
+		
+		if(sentFromAccountWishList) {
+			redirectAttributes.addFlashAttribute("activeTab", 4);
+			return "redirect:/account";
 		}
 		
 		return "redirect:/product?isbn13="+book.getIsbn13();
