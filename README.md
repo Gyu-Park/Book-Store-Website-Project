@@ -14,6 +14,10 @@ Backend
 
 ![Backend](src/main/resources/static/img/Backend.jpg)
 
-Architecture
+## Architecture
 
 ![Architecture](src/main/resources/static/img/Architecture.jpg)
+
+## Database ERD
+
+![Database](src/main/resources/static/img/Boogle_database_design.jpg)

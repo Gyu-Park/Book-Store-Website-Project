@@ -85,16 +85,18 @@
     <div class="account-content-tab-container">
         <div class="account-row">
             <div class="tabs">
-                <button class="tablinks" id="tablinks-LoginSec-Active"
+                <button th:class="${activeTab} ? 'tablinks' : 'tablinks active'" th:id="${activeTab} ? '' : 'active'"
                     onClick="openForm(event, 'login-and-security')">Login and Security</button>
-                <button class="tablinks" id="tablinks-Orders" onClick="openForm(event, 'orders')">Orders</button>
-                <button class="tablinks" id="tablinks-PaymentOpt" onClick="openForm(event, 'payment-options')">Payment
-                    Options</button>
-                <button class="tablinks" id="tablinks-WishList" onClick="openForm(event, 'wishlist')">Wish List</button>
+                <button th:class="${activeTab == 2} ? 'tablinks active' : 'tablinks'" th:id="${activeTab == 2} ? 'active'" 
+                	onClick="openForm(event, 'orders')">Orders</button>
+                <button th:class="${activeTab == 3} ? 'tablinks active' : 'tablinks'" th:id="${activeTab == 3} ? 'active'" 
+                	onClick="openForm(event, 'payment-options')">Payment Options</button>
+                <button th:class="${activeTab == 4} ? 'tablinks active' : 'tablinks'" th:id="${activeTab == 4} ? 'active'" 
+                	onClick="openForm(event, 'wishlist')">Wish List</button>
             </div>
         </div>
 
-        <div id="login-and-security" class="tabContent">
+        <div id="login-and-security" class="tabContent" th:style="${activeTab} ? 'display: none;' : 'display: block;'" >
             <form action="" method="get">
                 <div class="account-row">
                     <div class="LaS-item">
@@ -159,115 +161,51 @@
             </form>
         </div>
 
-        <div id="orders" class="tabContent">
+        <div id="orders" class="tabContent" th:style="${activeTab == 2} ? 'display: block;' : 'display: none;'" >
             <form action="" method="get">
+            	<div class="empty-orderlist" th:if="${orderList.empty}">
+            		<img src="img/empty.png" >
+            		<span th:text="'You have not placed any orders yet.'"></span>
+            	</div>
                 <div class="account-row">
-
                     <!--Orders item Template-->
-                    <div class="order-item">
-                        <div class="account-row">
-                            <div class="account-col-60">
-                                <div class="order-product-container">
-                                    <div class="order-product-img-container">
-                                        <img src="img/JavaScript.JPG" alt="">
-                                    </div>
-                                    <div class="order-product-title-container">
-                                        <label>Java Script</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <div class="order-item-pricing">
-                                    <label>Price</label>
-                                    <p>$45.50</p>
-                                    <label>Order Placed</label>
-                                    <p>09/30/21</p>
-                                    <label>Order Delivered</label>
-                                    <p>10/20/21</p>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <button type="form-review">Write a Review</button>
-                                <button type="form-buy-again">Buy it Again</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End-->
-
-                    <!--Orders item Template-->
-                    <div class="order-item">
-                        <div class="account-row">
-                            <div class="account-col-60">
-                                <div class="order-product-container">
-                                    <div class="order-product-img-container">
-                                        <img src="img//InformationArchitecture.gif" alt="">
-                                    </div>
-                                    <div class="order-product-title-container">
-                                        <label>Information Architecture</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <div class="order-item-pricing">
-                                    <label>Price</label>
-                                    <p>$45.50</p>
-                                    <label>Order Placed</label>
-                                    <p>09/30/21</p>
-                                    <label>Order Delivered</label>
-                                    <p>10/20/21</p>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <button type="form-review">Write a Review</button>
-                                <button type="form-buy-again">Buy it Again</button>
-                            </div>
-                        </div>
-                    </div>
-                    <!--End-->
-
-                    <!--Orders item Template-->
-                    <div class="order-item">
-                        <div class="account-row">
-                            <div class="account-col-60">
-                                <div class="order-product-container">
-                                    <div class="order-product-img-container">
-                                        <img src="img/WebPubHTML.JPG" alt="">
-                                    </div>
-                                    <div class="order-product-title-container">
-                                        <label>HTML</label>
-                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-                                            commodo consequat.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <div class="order-item-pricing">
-                                    <label>Price</label>
-                                    <p>$45.50</p>
-                                    <label>Order Placed</label>
-                                    <p>09/30/21</p>
-                                    <label>Order Delivered</label>
-                                    <p>10/20/21</p>
-                                </div>
-                            </div>
-                            <div class="account-col-20">
-                                <button type="form-review">Write a Review</button>
-                                <button type="form-buy-again">Buy it Again</button>
-                            </div>
-                        </div>
+                    <div th:if="${orderList}">
+	                    <div class="order-item" th:each="orderList : ${orderList}">
+	                        <div class="account-row">
+	                        	<span class="order-number">Order Number # [[${orderList.orderId}]]</span>
+	                        	<div class="account-col-wrapper">
+		                            <div class="account-col-60">
+		                                <div class="order-product-container" th:each="orderItemList : ${orderList.orderItemList}">
+		                                    <div class="order-product-img-container">
+		                                        <img th:src="${orderItemList.book.image}" alt="">
+		                                    </div>
+		                                    <div class="order-product-title-container">
+		                                        <label>[[${orderItemList.book.alias}]]</label>
+		                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+		                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+		                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+		                                            commodo consequat.
+		                                        </p>
+		                                    </div>
+		                                </div>
+		                            </div>
+		                            <div class="account-col-20">
+		                                <div class="order-item-pricing">
+		                                    <label>Total</label>
+		                                    <p>$[[${orderList.orderTotal}]]</p>
+		                                    <label>Order Placed</label>
+		                                    <p>[[${orderList.orderDate}]]</p>
+		                                    <label>Order Delivered</label>
+		                                    <p>[[${orderList.shippingDate}]]</p>
+		                                </div>
+		                            </div>
+		                            <div class="account-col-20">
+		                                <button type="form-review">Write a Review</button>
+		                                <button type="form-buy-again">Buy it Again</button>
+		                            </div>
+		                        </div>
+	                        </div>
+	                    </div>
                     </div>
                     <!--End-->
 
@@ -275,7 +213,7 @@
             </form>
         </div>
 
-        <div id="payment-options" class="tabContent">
+        <div id="payment-options" class="tabContent" th:style="${activeTab == 3} ? 'display: block;' : 'display: none;'" >
             <div class="account-row">
                 <h1>Wallet</h1>
             </div>
@@ -284,6 +222,7 @@
                 <div class="account-col-20">
                     <div class="payment-tabs">
                         <div id="payment-option-button-container" th:each="card, cardStat : ${card}">
+                        	<img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
                             <button class="form-paymentTablinks"
                                 th:onClick="openPaymentForm(event, 'payment-option-[[${cardStat.count}]]')">[[${card.paymentOptionName}]]</button>
                         </div>
@@ -297,62 +236,78 @@
 
                 <div class="account-col-80">
                     <!--Payment Option Template-->
-                    <div th:each="card, cardStat : ${card}">
-                        <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
-                            <div class="card-container">
-                                <div class="front">
-                                    <div class="cardImage">
-                                        <img src="img/chip.png" />
-                                        <!-- American Express Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} == '34' 
-                                        	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'"
-                                            src="img/american-express.png" />
-                                        <!-- Visa Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
-                                            src="img/visa.png" />
-                                        <!-- Mastercard Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'"
-                                            src="img/mastercard.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'"
-                                            src="img/mastercard.png" />
-                                        <!-- Discover Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
-                                            src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'"
-                                            src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'"
-                                            src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'"
-                                            src="img/discover.png" />
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'"
-                                            src="img/discover.png" />
-                                    </div>
-                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
-                                        12)}]]</div>
-                                    <div class="flexbox">
-                                        <div class="box">
-                                            <div class="card-holder">Card Holder</div>
-                                            <div class="card-holder-name">[[${card.cardHolderName}]]</div>
-                                        </div>
-                                        <div class="box">
-                                            <span>Expiration Date</span>
-                                            <div class="expiration">
-                                                <span class="exp-year">[[${card.cardExpYear}]]</span>
-                                                <span>/</span>
-                                                <span class="exp-month">[[${card.cardExpMonth}]]</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <div class="template-card">
+	                    <div th:each="card, cardStat : ${card}">
+	                        <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
+	                            <div class="card-container">
+	                                <div class="front">
+	                                    <div class="cardImage">
+	                                        <img src="img/chip.png" />
+	                                        <!-- American Express Identification Numbers -->
+	                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} == '34' 
+	                                        	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'"
+	                                            src="img/american-express.png" />
+	                                        <!-- Visa Identification Numbers -->
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
+	                                            src="img/visa.png" />
+	                                        <!-- Mastercard Identification Numbers -->
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'"
+	                                            src="img/mastercard.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'"
+	                                            src="img/mastercard.png" />
+	                                        <!-- Discover Identification Numbers -->
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'"
+	                                            src="img/discover.png" />
+	                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'"
+	                                            src="img/discover.png" />
+	                                        <img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
+	                                    </div>
+	                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
+	                                        12)}]]</div>
+	                                    <div class="flexbox">
+	                                        <div class="box">
+	                                            <div class="card-holder">Card Holder</div>
+	                                            <div class="card-holder-name">[[${card.cardHolderName}]]</div>
+	                                        </div>
+	                                        <div class="box">
+	                                            <span>Expiration Date</span>
+	                                            <div class="expiration">
+	                                                <span class="exp-year">[[${card.cardExpYear}]]</span>
+	                                                <span>/</span>
+	                                                <span class="exp-month">[[${card.cardExpMonth}]]</span>
+	                                            </div>
+	                                        </div>
+	                                    </div>
+	                                </div>
+	                            </div>
+	                            <div class="buttons-for-edit-card">
+			                    	<form th:action="@{/account/setDefaultCard}" th:method="post">
+			                    		<input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
+				                    	<button type="submit" class="form-paymentTablinks">Set Default</button>
+				                    </form>
+				                    <form>
+				                    	<button type="submit" class="form-paymentTablinks">Edit</button>
+				                    </form>
+				                    <form th:action="@{/account/removeCard}" th:method="post">
+				                    	<input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
+				                    	<button type="submit" class="form-paymentTablinks">Remove</button>
+				                    </form>
+			                    </div>
+	                        </div>
+	                    </div>
+	                </div>
                     <!--End-->
 
                     <!-- Add Payment Option Template -->
@@ -408,20 +363,20 @@
                                     placeholder="John Doe">
                                 <label for="account-payment-cc-num">Credit Card Number</label>
                                 <input type="text" id="account-payment-cc-num" name="cardNumber"
-                                    placeholder="1111-2222-3333-4444">
+                                    placeholder="1111-2222-3333-4444" maxlength="19">
                                 <label for="account-payment-cc-exp-month">Exp Month</label>
                                 <input type="text" id="account-payment-cc-exp-month" name="cardExpMonth"
-                                    placeholder="01">
+                                    placeholder="01" maxlength="2">
 
                                 <div class="account-row">
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-exp-year">Exp Year</label>
                                         <input type="text" id="account-payment-cc-exp-year" name="cardExpYear"
-                                            placeholder="21">
+                                            placeholder="21" maxlength="2">
                                     </div>
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-cvv">CVV</label>
-                                        <input type="text" id="account-payment-cc-cvv" name="cardCvv" placeholder="489">
+                                        <input type="text" id="account-payment-cc-cvv" name="cardCvv" placeholder="489" maxlength="3">
                                     </div>
                                 </div>
                             </div>
@@ -434,38 +389,49 @@
             </div>
         </div>
 
-        <div id="wishlist" class="tabContent">
+        <div id="wishlist" class="tabContent" th:style="${activeTab == 4} ? 'display: block;' : 'display: none;'" >
+        	<div class="empty-wishlist" th:if="${wishList.items.empty}">
+            	<img src="img/empty-wishlist.png" >
+            	<span th:text="'Your wish list is empty.'"></span>
+            </div>
             <div class="account-row">
 
                 <!--Whishlist Item Template-->
-                <div class="wishlist-item" th:if="${wishList}">
-                    <div class="account-row" th:each="wishListItem : ${wishList.items}">
-                        <div class="account-col-80">
-                            <div class="wishlist-product-container">
-                                <div class="wishlist-img-container">
-                                    <img th:src="${wishListItem.book.image}" alt="">
-                                </div>
-                                <div class="wishlist-title-container">
-                                    <label>[[${wishListItem.book.alias}]]</label>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                                        sed do eiusmod tempor incididunt ut labore et dolore magna
-                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="account-col-20">
-                            <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
-                            </label>
-                            <hr>
-                            <button type="form-buy-now">Buy Now</button>
-                            <button type="form-add-to-cart">Add to Cart</button>
-                            <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
-                                data-toggle="tooltip">
-                                <button type="form-remove">Remove</button>
-                            </a>
-                        </div>
-                    </div>
+                <div th:if="${wishList}">
+	                <div class="wishlist-item" th:each="wishListItem : ${wishList.items}">
+	                    <div class="account-row">
+	                        <div class="account-col-80">
+	                            <div class="wishlist-product-container">
+	                                <div class="wishlist-img-container">
+	                                    <img th:src="${wishListItem.book.image}" alt="">
+	                                </div>
+	                                <div class="wishlist-title-container">
+	                                    <label>[[${wishListItem.book.alias}]]</label>
+	                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+	                                        sed do eiusmod tempor incididunt ut labore et dolore magna
+	                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+	                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	                                </div>
+	                            </div>
+	                        </div>
+	                        <div class="account-col-20">
+	                            <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
+	                            </label>
+	                            <hr>
+	                            <button type="form-buy-now">Buy Now</button>
+	                            <form th:action="@{/cart/addToCart}" th:object="${wishListItem.book}" method="post">
+	                            	<input type="hidden" th:value="${wishListItem.book.isbn13}" name="isbn13" />
+				                    <input type="hidden" value="1" name="qty">
+				                    <input type="hidden" value="true" name="sentFromAccountWishList">
+				                    <button type="form-add-to-cart">Add to Cart</button>
+				                </form>
+	                            <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
+	                                data-toggle="tooltip">
+	                                <button type="form-remove">Remove</button>
+	                            </a>
+	                        </div>
+	                    </div>
+	                </div>
                 </div>
                 <!--End-->
 

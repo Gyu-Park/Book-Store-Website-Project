@@ -83,14 +83,21 @@
     <div class="books-row">
       <div class="books-col-20">
         <div class="tabs">
-          <button class="tablinks" id="active" onClick="openForm(event, 'html')">All Textbooks</button>
-          <button class="tablinks" onClick="openForm(event, 'sql')">SQL Textbooks</button>
-          <button class="tablinks" onClick="openForm(event, 'js')">JavaScript Textbooks</button>
+          <button class="tablinks" id="active" onClick="openForm(event, 'all')">All Textbooks</button>
+          <button class="tablinks" onClick="openForm(event, 'Database')">Database</button>
+          <button class="tablinks" onClick="openForm(event, 'Web Design')">Web Design</button>
+          <button class="tablinks" onClick="openForm(event, 'E-Commerce')">E-Commerce</button>
+          <button class="tablinks" onClick="openForm(event, 'SQL')">SQL</button>
+          <button class="tablinks" onClick="openForm(event, 'Photoshop')">Photoshop</button>
+          <button class="tablinks" onClick="openForm(event, 'JavaScript')">JavaScript</button>
+          <button class="tablinks" onClick="openForm(event, 'Windows')">Windows</button>
+          <button class="tablinks" onClick="openForm(event, 'Visual Basic')">Visual Basic</button>
+          <button class="tablinks" onClick="openForm(event, 'HTML')">HTML</button>
         </div>
       </div>
 
       <div class="books-col-80">
-        <div id="html" class="tabContent">
+        <div id="all" class="tabContent">
           <div class="item-container">
 
             <!--Item Template-->
@@ -116,126 +123,24 @@
           </div>
         </div>
 
-        <div id="sql" class="tabContent">
+        <div th:each="category : ${category}" th:id="${category.categoryName}" class="tabContent">
           <div class="item-container">
 
             <!--Item Template-->
 
-            <a href="/product">
+            <a th:href="@{/product?isbn13=}+${book.isbn13}" th:each="book : ${category.book}">
               <div class="html-textbook-item">
                 <div class="checkout-row">
                   <div class="item-img">
-                    <img src="img/PracticalSQL.jpg" alt="">
+                    <img th:src="${book.image}">
                   </div>
                 </div>
                 <hr>
                 <div class="checkout-row">
                   <div class="item-details">
-                    <h4>The Practical SQL</h4>
-                    <p>Judith S. Bowman</p>
-                    <p>$450.00</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <!-- End-->
-
-          </div>
-        </div>
-
-        <div id="js" class="tabContent">
-          <div class="item-container">
-
-            <!--Item Template-->
-            <a href="#">
-              <div class="html-textbook-item">
-                <div class="checkout-row">
-                  <div class="item-img">
-                    <img src="img/DesigningWithJavaScript.jpg" alt="">
-                  </div>
-                </div>
-                <hr>
-                <div class="checkout-row">
-                  <div class="item-details">
-                    <h4>Designing with JavaScript</h4>
-                    <p>Nick Heinle</p>
-                    <p>$20.00</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <!-- End-->
-            <!--Item Template-->
-            <a href="#">
-              <div class="html-textbook-item">
-                <div class="checkout-row">
-                  <div class="item-img">
-                    <img src="img/DesigningWithJavaScript.jpg" alt="">
-                  </div>
-                </div>
-                <hr>
-                <div class="checkout-row">
-                  <div class="item-details">
-                    <h4>Designing with JavaScript</h4>
-                    <p>Nick Heinle</p>
-                    <p>$20.00</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <!-- End-->
-            <!--Item Template-->
-            <a href="#">
-              <div class="html-textbook-item">
-                <div class="checkout-row">
-                  <div class="item-img">
-                    <img src="img/DesigningWithJavaScript.jpg" alt="">
-                  </div>
-                </div>
-                <hr>
-                <div class="checkout-row">
-                  <div class="item-details">
-                    <h4>Designing with JavaScript</h4>
-                    <p>Nick Heinle</p>
-                    <p>$20.00</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <!-- End-->
-            <!--Item Template-->
-            <a href="#">
-              <div class="html-textbook-item">
-                <div class="checkout-row">
-                  <div class="item-img">
-                    <img src="img/DesigningWithJavaScript.jpg" alt="">
-                  </div>
-                </div>
-                <hr>
-                <div class="checkout-row">
-                  <div class="item-details">
-                    <h4>Designing with JavaScript</h4>
-                    <p>Nick Heinle</p>
-                    <p>$20.00</p>
-                  </div>
-                </div>
-              </div>
-            </a>
-            <!-- End-->
-            <!--Item Template-->
-            <a href="#">
-              <div class="html-textbook-item">
-                <div class="checkout-row">
-                  <div class="item-img">
-                    <img src="img/DesigningWithJavaScript.jpg" alt="">
-                  </div>
-                </div>
-                <hr>
-                <div class="checkout-row">
-                  <div class="item-details">
-                    <h4>Designing with JavaScript</h4>
-                    <p>Nick Heinle</p>
-                    <p>$20.00</p>
+                    <h4><span th:text="${book.alias}"></span></h4>
+                    <p>by <span th:text="${book.author_et_alia}"></span></p>
+                    <p>$<span th:text="${book.price}"></span></p>
                   </div>
                 </div>
               </div>

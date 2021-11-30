@@ -1,4 +1,15 @@
 /*Main Tab Pane*/
+
+let allTabs = document.querySelectorAll(".tablinks");
+allTabs.forEach(function(tab) {
+
+    tab.addEventListener('click', () => {
+        allTabs.forEach(b => b.removeAttribute("id"));
+        tab.setAttribute('id', 'active');
+    });
+
+});
+
 function openForm(evt, formName) {
     var i, tabContent, tablinks;
 
@@ -14,47 +25,6 @@ function openForm(evt, formName) {
 
     document.getElementById(formName).style.display = "block";
     evt.currentTarget.className += " active";
-
-    if (evt.currentTarget.id == "tablinks-LoginSec") {
-        if (document.getElementById('tablinks-Orders-Active')) {
-            document.getElementById('tablinks-Orders-Active').id = 'tablinks-Orders';
-        } else if (document.getElementById('tablinks-PaymentOpt-Active')) {
-            document.getElementById('tablinks-PaymentOpt-Active').id = 'tablinks-PaymentOpt';
-        } else if (document.getElementById('tablinks-WishList-Active')) {
-            document.getElementById('tablinks-WishList-Active').id = 'tablinks-WishList';
-        }
-        document.getElementById('tablinks-LoginSec').id = 'tablinks-LoginSec-Active';
-
-    } else if (evt.currentTarget.id == "tablinks-Orders") {
-        if (document.getElementById('tablinks-LoginSec-Active')) {
-            document.getElementById('tablinks-LoginSec-Active').id = 'tablinks-LoginSec';
-        } else if (document.getElementById('tablinks-PaymentOpt-Active')) {
-            document.getElementById('tablinks-PaymentOpt-Active').id = 'tablinks-PaymentOpt';
-        } else if (document.getElementById('tablinks-WishList-Active')) {
-            document.getElementById('tablinks-WishList-Active').id = 'tablinks-WishList';
-        }
-        document.getElementById('tablinks-Orders').id = 'tablinks-Orders-Active';
-
-    } else if (evt.currentTarget.id == "tablinks-PaymentOpt") {
-        if (document.getElementById('tablinks-LoginSec-Active')) {
-            document.getElementById('tablinks-LoginSec-Active').id = 'tablinks-LoginSec';
-        } else if (document.getElementById('tablinks-Orders-Active')) {
-            document.getElementById('tablinks-Orders-Active').id = 'tablinks-Orders';
-        } else if (document.getElementById('tablinks-WishList-Active')) {
-            document.getElementById('tablinks-WishList-Active').id = 'tablinks-WishList';
-        }
-        document.getElementById('tablinks-PaymentOpt').id = 'tablinks-PaymentOpt-Active';
-
-    } else if (evt.currentTarget.id == "tablinks-WishList") {
-        if (document.getElementById('tablinks-LoginSec-Active')) {
-            document.getElementById('tablinks-LoginSec-Active').id = 'tablinks-LoginSec';
-        } else if (document.getElementById('tablinks-Orders-Active')) {
-            document.getElementById('tablinks-Orders-Active').id = 'tablinks-Orders';
-        } else if (document.getElementById('tablinks-PaymentOpt-Active')) {
-            document.getElementById('tablinks-PaymentOpt-Active').id = 'tablinks-PaymentOpt';
-        }
-        document.getElementById('tablinks-WishList').id = 'tablinks-WishList-Active';
-    }
 }
 
 /*Payment Tab Pane*/

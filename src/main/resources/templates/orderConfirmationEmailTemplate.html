@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+    
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    
+    <style>
+		.topBox,
+		.bottomBox {
+			width: 100%;
+			height: 60px;
+			border: solid #D5D9D9 1px;
+			background-color: lightslategray;
+			color: white;
+		}
+		
+		.topBox .innerTopBox,
+		.bottomBox .innerBottomBox {
+			padding: 15px;
+			display: flex;
+			
+		}
+		
+		.col-left {
+			display: flex;
+			width: 70%;
+		}
+		
+		.col-left-1 {
+			width: 25%;
+		}
+		
+		.col-left-2 {
+			width: 17%;
+		}
+		
+		.col-left-3 {
+			width: 10%;
+		}
+		
+		.col-right {
+			width: 30%;
+		}
+		
+		.col-right-1 {
+			float: right;
+			margin-right: 10%;
+		}
+		
+		.receiver {
+		    border-bottom: 1px dotted black;
+		}
+		
+		.orderBox,
+		.totalBox,
+		.infoBox {
+			width: 100%;
+			height: auto;
+			border: solid #D5D9D9 1px;
+		}
+		
+		.orderBox .innerOrderBox {
+			display: grid;
+		}
+		
+		.itemGridRow {
+			margin: 10px;
+			height: auto;
+			width: 100%;
+			display: flex;
+			flex: 100%;
+		}
+		
+		.itemGridRow span {
+			margin-top: auto;
+			margin-bottom: auto;
+		}
+		
+		.itemGridColumn {
+			grid-column: 1;
+		}
+		
+		img {
+			width: 130px;
+			height: 170px;
+		}
+		
+		.bookTitle {
+			margin-left: 100px;
+			margin-right: 100px;
+			width: 600px;
+		}
+		
+		.qty,
+		.price {
+			margin: auto;
+		}
+		
+		.innerTotalBox {
+			display: grid;
+			text-align: right;
+			margin-right: 5%;
+		}
+		
+		.innerTotalBox span {
+			margin: 5px;
+		}
+		
+		.innerInfoBox {
+			display: flex;
+		}
+		
+		.innerBottomBox .col-left-1,
+		.innerBottomBox .col-left-2 {
+			width: 50%;
+		}
+		
+		.innerInfoBox .shippingAddress,
+		.innerInfoBox .paymentInfo {
+			padding: 10px;
+			width: 33%;
+		}
+		
+	</style>
+</head>
+<body>
+	
+	<p>
+		Dear <span th:text="${user.firstname}"></span>,
+	</p>
+	<br />
+	<p>
+		Thank you for shopping from Boogle.
+	</p>
+	<p>
+		We hope you had a good time with our service!
+	</p>
+	<p>
+		Your order number is: <strong>#<span th:text="${order.orderId}"></span></strong>.
+	</p>
+	<h2>
+		Order Summary
+	</h2>
+	<hr />
+	
+	<div class="topBox">
+		<div class="innerTopBox">
+			<div class="col-left">
+				<div class="col-left-1">
+					<div class="row-1">
+						<span>Order Placed</span>
+					</div>
+					<div class="row-2">
+						<span>11/12/2021</span>
+					</div>
+				</div>
+				<div class="col-left-2">
+					<div class="row-1">
+						<span>Ship To</span>
+					</div>
+					<div class="row-2">
+						<span class="receiver" th:text="${order.shippingAddress.shippingAddressReceiver}"> </span>
+					</div>
+				</div>
+			</div>
+			<div class="col-right">
+			</div>
+		</div>
+	</div>
+	
+	<div class="orderBox">
+		<div class="innerOrderBox">
+			<div class="itemGridRow" th:each="orderItem : ${order.orderItemList}">
+				<img th:src="${orderItem.book.image}" >
+				<span class="bookTitle">[[${orderItem.book.title}]]</span>
+				<span class="qty">qty: [[${orderItem.quantity}]]</span>
+				<span class="price">$[[${orderItem.book.price}]]</span>
+			</div>
+		</div>
+	</div>
+	
+	<div class="totalBox">
+		<div class="innerTotalBox">
+				<span>Subtotal: </span>
+				<span>Tax: </span>
+				<span>Total: $[[${#numbers.formatDecimal(order.orderTotal, 0, 'COMMA', 2, 'POINT')}]]</span>
+		</div>
+	</div>
+	
+	<div class="bottomBox">
+		<div class="innerBottomBox">
+			<div class="col-left">
+				<div class="col-left-1">
+					<div class="row-1">
+						<span>Shipping Address</span>
+					</div>
+				</div>
+				<div class="col-left-2">
+					<div class="row-1">
+						<span>Payment Info</span>
+					</div>
+				</div>
+			</div>
+			<div class="col-right">
+			</div>
+		</div>
+	</div>
+	
+	<div class="infoBox">
+		<div class="innerInfoBox">
+			<div class="shippingAddress">
+				<span>Street: [[${order.shippingAddress.shippingAddressStreet}]]</span><br />
+				<span>City: [[${order.shippingAddress.shippingAddressCity}]]</span><br />
+				<span>State: [[${order.shippingAddress.shippingAddressState}]]</span><br />
+				<span>Zip: [[${order.shippingAddress.shippingAddressZip}]]</span><br />
+			</div>
+			<div class="paymentInfo">
+				<span>Card Holder: [[${order.card.cardHolderName}]]</span><br />
+				<span>Card Number: [[${order.card.cardNumber}]]</span><br />
+				<span>Exp Date: [[${order.card.cardExpMonth}]] / [[${order.card.cardExpYear}]]</span><br />
+			</div>
+		</div>
+	</div>
+	
+	<br />
+	<br />
+	<p>Best,</p>
+	<br />
+	<p>Boogle 2021 | Software Engineering Method</p>
+</body>
+</html>

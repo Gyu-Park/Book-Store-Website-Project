@@ -143,17 +143,19 @@
               <hr>
               <div class="product-row">
                 <div id="item-Avaliable" class="product-avalibility">
-                  <p>In Stock</p>
+                  <p th:if="${book.number_on_hand &gt; 0}">In Stock</p>
+                  <p th:unless="${book.number_on_hand &gt; 0}" style="color:red">Sold Out</p>
                 </div>
               </div>
               <hr>
               <div class="product-row">
                 <div class="product-BO-shop-options">
                   <form th:action="@{/cart/addToCart}" method="post">
-                    <input hidden="hidden" th:field="*{book.isbn13}" />
+                    <input type="hidden" th:field="*{book.isbn13}" />
+                    <input type="hidden" value="false" name="sentFromAccountWishList">
                     <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
-                    <input type="number" id="item-qty" value="1" name="qty">
-                    <button type="product-submit">Add to Cart</button>
+                    <input type="number" id="item-qty" value="1" name="qty" th:attr="max=${book.number_on_hand}" th:disabled="${book.number_on_hand <= 0}" required>
+                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}">Add to Cart</button>
                   </form>
                   <button type="product-submit">Buy Now</button>
                   <div sec:authorize="isAuthenticated()">
@@ -184,10 +186,32 @@
     <!--Similar Items Container-->
     <div class="product-row">
       <div class="similar-item-container">
+        <h2>Similar Items</h2>
+        <hr>
         <div class="product-row">
-          <h2>Similar Items</h2>
-          <div class="similar-item-slideshow">
+          <!--Item Courousel and Template-->
+          <div class="carousel-container">
+            <div class="carousel-inner">
+              <div class="carousel-track">
 
+                <!--Item Card Template-->
+                <div class="carousel-card" th:each="similarItems,stat : ${similarItems}">
+                  <a th:href="@{/product?isbn13=}+${similarItems.isbn13}">
+                    <div class="product-row">
+                      <img class="carousel-img" th:src="${similarItems.image}">
+                    </div>
+                    <div class="product-row">
+                      <h3 class="carousel-txt" th:text="${similarItems.alias}">/h3>
+                    </div>
+                  </a>
+                </div>
+
+              </div>
+              <div class="carousel-nav">
+                <button class="prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="next"><i class="fas fa-chevron-right"></i></button>
+              </div>
+            </div>
           </div>
         </div>
         <hr>

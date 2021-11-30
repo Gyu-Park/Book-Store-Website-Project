@@ -35,7 +35,7 @@
 
 img {
   max-width: 95%;
-  height: auto;
+  max-height: 500px;
   border-radius: 0.2em;
   box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
 }
@@ -46,6 +46,7 @@ img {
 .product-avalibility,
 .product-BO-shop-options {
   margin: 5px 5px 0px 5px;
+  width: 100%;
 }
 
 .product-title-author-container h2,
@@ -106,6 +107,7 @@ button[type="product-submit"] {
   border-radius: 0.2em;
   cursor: pointer;
 }
+
 /*Similar Items Container*/
 .similar-item-container {
   margin-top: 20px;
@@ -118,8 +120,79 @@ button[type="product-submit"] {
 }
 
 .similar-item-container h2 {
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* Similar Items Coursel and Item Card Styles */
+.carousel-container {
+  width: 100%;
+  min-height: 270px;
+  position: relative;
+}
+
+.carousel-inner {
+  overflow: hidden;
+}
+
+.carousel-container .carousel-track {
+  display: flex;
+  transition: 0.4s;
+}
+
+.carousel-container .carousel-card {
+  width: 19%;
+  min-width: 200px;
+  flex-shrink: 0;
+  min-height: 270px;
+  margin: 0px 5px 0px 5px;
+}
+
+.carousel-card:hover {
+  
+}
+
+.carousel-nav button {
+  width: 50px;
+  height: 100%;
+  background: transparent;
+  position: absolute;
+  border: none;
+  font-size: 20px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.carousel-nav button:hover {
+  background-color: linear-gradient(to right, white , #fffaf3);
+  opacity: 50%;
+  color: black;
+  font-size: 23px;
+}
+
+.carousel-nav .prev {
+  left: 5px;
+}
+
+.carousel-nav .next {
+  right: -1px;
+}
+
+.carousel-card a {
+  text-decoration: none;
+  color: black;
+}
+
+.carousel-img {
+  width: 85%;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.carousel-txt {
+  text-align: center;
 }
 
 /*Review Container*/

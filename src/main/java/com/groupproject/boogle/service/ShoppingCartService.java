@@ -1,7 +1,7 @@
 package com.groupproject.boogle.service;
 
 import java.util.Date;
-import java.util.Set;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.repository.CartItemRepository;
 import com.groupproject.boogle.repository.ShoppingCartRepository;
 
-@Service("shoppingCartService")
+@Service("ShoppingCartService")
 public class ShoppingCartService {
 	
 	@Autowired
@@ -24,7 +24,7 @@ public class ShoppingCartService {
 	@Autowired
 	private BookService bookService;
 	
-	public ShoppingCart addShoppingCart(String isbn13, String sessionToken, int quantity) {
+	public ShoppingCart addShoppingCart(String isbn13, String sessionToken, int quantity) throws NullPointerException {
 		ShoppingCart shoppingCart = new ShoppingCart();
 		CartItem cartItem = new CartItem();
 		cartItem.setQuantity(quantity);
@@ -41,9 +41,9 @@ public class ShoppingCartService {
 		Book book = bookService.findByIsbn13(isbn13);
 		Boolean productDoesExistInTheCart = false;
 		if (shoppingCart != null) {
-			Set<CartItem> items = shoppingCart.getItems();
+			List<CartItem> items = shoppingCart.getItems();
 			for (CartItem item : items) {
-				if(item.getBook().equals(book)) {
+				if(item.getBook().getAlias().equals(book.getAlias())) {
 					productDoesExistInTheCart = true;
 					item.setQuantity(item.getQuantity() + quantity);
 					shoppingCart.setItems(items);
@@ -63,7 +63,11 @@ public class ShoppingCartService {
 	}
 
 	public ShoppingCart getShoppingCartBySessionToken(String sessionToken) {
-		return shoppingCartRepository.findBySessionToken(sessionToken);
+		if (sessionToken == null) {
+			return new ShoppingCart();
+		} else {
+			return shoppingCartRepository.findBySessionToken(sessionToken);
+		}
 	}
 
 	public CartItem updateShoppingCartItem(Long id, int quantity) {
@@ -74,7 +78,7 @@ public class ShoppingCartService {
 
 	public ShoppingCart removeCartItemFromShoppingCart(Long id, String sessionToken) {
 		ShoppingCart shoppingCart = shoppingCartRepository.findBySessionToken(sessionToken);
-		Set<CartItem> items = shoppingCart.getItems();
+		List<CartItem> items = shoppingCart.getItems();
 		CartItem cartItem = null;
 		for(CartItem item : items) {
 			if(item.getId().equals(id)) {
@@ -84,6 +88,16 @@ public class ShoppingCartService {
 		items.remove(cartItem);
 		cartItemRepository.delete(cartItem);
 	    shoppingCart.setItems(items);
+	    return shoppingCartRepository.saveAndFlush(shoppingCart);
+	}
+	
+	public ShoppingCart removeAllCartItemFromShoppingCart(ShoppingCart shoppingCart) {
+		List<CartItem> items = shoppingCart.getItems();
+		for(CartItem item : items) {
+			cartItemRepository.delete(item);
+		}
+		items.removeAll(items);
+		shoppingCart.setItems(items);
 	    return shoppingCartRepository.saveAndFlush(shoppingCart);
 	}
 

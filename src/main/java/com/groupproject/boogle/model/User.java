@@ -1,13 +1,16 @@
 package com.groupproject.boogle.model;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
@@ -23,21 +26,24 @@ public class User {
     private Long userid;
 	
     // email column must not be null and same, and data type is varchar(45).
-	@Column(nullable = false, unique = true, length = 45)
+	@Column(nullable = false)
 	private String email;
 	
-	@Column(nullable = false, length = 64)
+	@Column(nullable = false)
 	private String password;
 	
-	@Column(length = 20)
+	@Column
 	private String firstname;
 	
-	@Column(length = 20)
+	@Column
 	private String lastname;
 	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private UserInfo userInfo;
+	
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Card> cards;
 	
 	/** getters and setters **/
 	public UserInfo getUserDetailsTable() {
@@ -86,6 +92,22 @@ public class User {
 	
 	public String getFullname() {
 		return firstname + " " + lastname;
+	}
+
+	public UserInfo getUserInfo() {
+		return userInfo;
+	}
+
+	public void setUserInfo(UserInfo userInfo) {
+		this.userInfo = userInfo;
+	}
+
+	public List<Card> getCards() {
+		return cards;
+	}
+
+	public void setCards(List<Card> cards) {
+		this.cards = cards;
 	}
 
 	@Override

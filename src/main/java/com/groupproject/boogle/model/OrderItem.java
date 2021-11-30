@@ -1,32 +1,30 @@
 package com.groupproject.boogle.model;
 
-import java.util.Date;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
-@Entity
-@Table(name = "cart_item")
-public class CartItem {
+@Entity(name = "order_item")
+public class OrderItem {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	private int quantity;
 	
-	@Temporal(TemporalType.DATE)
-	private Date date;
-	
 	@ManyToOne(fetch = FetchType.LAZY)
 	private Book book;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="order_id")
+	private Order order;
 
 	public Long getId() {
 		return id;
@@ -52,17 +50,17 @@ public class CartItem {
 		this.book = book;
 	}
 
-	public Date getDate() {
-		return date;
+	public Order getOrder() {
+		return order;
 	}
 
-	public void setDate(Date date) {
-		this.date = date;
+	public void setOrder(Order order) {
+		this.order = order;
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(book, date, id, quantity);
+		return Objects.hash(book, id, order, quantity);
 	}
 
 	@Override
@@ -73,13 +71,14 @@ public class CartItem {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CartItem other = (CartItem) obj;
-		return Objects.equals(book, other.book) && Objects.equals(date, other.date) && Objects.equals(id, other.id)
+		OrderItem other = (OrderItem) obj;
+		return Objects.equals(book, other.book) && Objects.equals(id, other.id) && Objects.equals(order, other.order)
 				&& quantity == other.quantity;
 	}
 
 	@Override
 	public String toString() {
-		return "CartItem [id=" + id + ", quantity=" + quantity + ", book=" + book + "]";
+		return "OrderItem [id=" + id + ", quantity=" + quantity + ", book=" + book + ", order=" + order + "]";
 	}
+
 }

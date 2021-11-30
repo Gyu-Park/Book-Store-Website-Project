@@ -87,10 +87,7 @@ button.tablinks {
   background-color: #b09979;
 }
 
-#tablinks-LoginSec-Active,
-#tablinks-Orders-Active,
-#tablinks-PaymentOpt-Active,
-#tablinks-WishList-Active {
+#active {
   color: #ecd5b3;
   background-color: #516272;
   font-weight: bold;
@@ -150,13 +147,32 @@ button[type="form-edit"] {
 /*Orders Content Styles*/
 
 .order-item {
+  /*
   display: flex;
   flex-wrap: wrap;
   flex: 100%;
   padding: 10px 20px 15px 20px;
+  */
   border: 2px solid #778899;
   border-radius: 0.2em;
-  margin-bottom: 1.5em;
+  margin-bottom: 3em;
+  margin-top: 1.5em;
+}
+
+.order-number {
+  padding: 10px;
+  width: 100%;
+  height: 20px;
+  background: #778899;
+  color: #fff;
+  font-weight: bold;
+}
+
+.account-col-wrapper {
+  padding: 10px 20px 15px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 100%;
 }
 
 .order-product-container {
@@ -198,6 +214,26 @@ button[type="form-buy-again"] {
   border-radius: 0.2em;
 }
 
+.empty-orderlist {
+	display: grid;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	height: 300px;
+	width: 1000px;
+}
+
+.empty-orderlist img {
+	margin: auto;
+	border: none;
+	max-height: 140px;
+}
+
+.empty-orderlist span {
+	margin: auto;
+	font-weight: bold;
+	font-size: 20px;
+}
+
 /*Payment Options Content Styles*/
 
 #add-payment-option h3 {
@@ -227,8 +263,38 @@ button[type="form-buy-again"] {
   border-radius: 0.2em;
 }
 
+.buttons-for-edit-card {
+	text-align: center;
+}
+
+.buttons-for-edit-card form {
+	display: inline;
+	margin-left: 5px;
+	margin-right: 5px;
+}
+
+.buttons-for-edit-card button {
+  background-color: #778899;
+  color: #fffaf3;
+  margin-top: 10px;
+  padding: 10px;
+  width: 140px;
+  height: auto;
+  border: none;
+  border-radius: 0.2em;
+}
+
+.payment-tabs #bookmark {
+  position: absolute;
+  height: 30px;
+  width: 30px;
+  border-style: none;
+  margin-top: 6px;
+}
+
 .paymentTabContent {
-  margin-right: 10px;
+  min-height: 240px;
+  margin-right: 60px;
   padding: 10px 20px 15px 20px;
   overflow: none;
   display: none;
@@ -245,12 +311,13 @@ button[type="form-buy-again"] {
 }
 
 .paymentTabContent .card-container {
-  margin-bottom: -150px;
+  margin-bottom: 50px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   height: 190px;
   max-width: 398px;
+  right: 20px;
 }
 
 .card-container:nth-child(odd) .front {
@@ -314,6 +381,13 @@ button[type="form-buy-again"] {
   height: 50px;
   width: 90px;
   border-style: none;
+}
+
+.card-container .front .cardImage #bookmark {
+  height: 30px;
+  width: 30px;
+  margin-top: -90px;
+  position: absolute;
 }
 
 .front .card-number-box {
@@ -411,7 +485,7 @@ button[type="form-buy-again"] {
 /****************/
 
 .paymentTabContent form {
-  padding-top: 210px;
+  padding-top: 10px;
 }
 
 .new-payment-option-form-container {
@@ -509,4 +583,25 @@ span {
   float: right;
   color: black;
   padding-right: 5px;
+}
+
+.empty-wishlist {
+	display: grid;
+	margin-top: 130px;
+	margin-bottom: 100px;
+	text-align: center;
+}
+
+.empty-wishlist img {
+	margin: auto;
+	margin-bottom: 70px;
+	border: none;
+	max-height: 140px;
+	width: 180px;
+}
+
+.empty-wishlist span {
+	margin: auto;
+	font-weight: bold;
+	font-size: 20px;
 }

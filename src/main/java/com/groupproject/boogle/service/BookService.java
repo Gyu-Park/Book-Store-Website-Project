@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import com.groupproject.boogle.model.Book;
 import com.groupproject.boogle.repository.BookRepository;
 
-@Service
+@Service("BookService")
 public class BookService implements IBookService {
 	
 	@Autowired
@@ -22,6 +22,10 @@ public class BookService implements IBookService {
 	
 	public List<Book> search(String keyword) {
 		return bookRepository.search(keyword);
+	}
+	
+	public List<Book> getBestSellers() {
+		return bookRepository.findBestSellers();
 	}
 
 }
