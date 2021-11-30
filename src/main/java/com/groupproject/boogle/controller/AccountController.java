@@ -6,10 +6,13 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -20,6 +23,7 @@ import com.groupproject.boogle.model.Order;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
 import com.groupproject.boogle.repository.CardRepository;
+import com.groupproject.boogle.repository.UserRepository;
 import com.groupproject.boogle.service.CardService;
 import com.groupproject.boogle.service.OrderService;
 import com.groupproject.boogle.service.ShoppingCartService;
@@ -45,6 +49,9 @@ public class AccountController {
 	
 	@Autowired
 	private OrderService orderService;
+	
+	@Autowired
+	private UserRepository userRepository;
 	
 	CustomUserDetails customUserDetails;
 
@@ -80,6 +87,35 @@ public class AccountController {
 		return "account";
 	}
 	
+	/* Login and Security Tab Section */
+	
+	@PostMapping("/account/changePhoneNumber")
+	public String updatePhone(@AuthenticationPrincipal CustomUserDetails customUserDetails, 
+							  @ModelAttribute("phone") String phone, 
+							  RedirectAttributes redirectAttributes) {
+		
+		customUserDetails.getUser().getUserInfo().setPhone(phone);
+		userRepository.saveAndFlush(customUserDetails.getUser());
+		
+		return "redirect:/account";
+	}
+	
+	@PostMapping("/account/changePassword")
+	public String updatePassword(@AuthenticationPrincipal CustomUserDetails customUserDetails, 
+							  @ModelAttribute("password") String password, 
+							  RedirectAttributes redirectAttributes) {
+		
+		BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+		String encodedPassword = encoder.encode(password);
+		customUserDetails.getUser().setPassword(encodedPassword);
+		userRepository.saveAndFlush(customUserDetails.getUser());
+		
+		return "redirect:/account";
+	}
+	
+	
+	/* Wish List Tab Section */
+	
 	@GetMapping("/addToWishList/{isbn13}")
 	public String addToWishList(@PathVariable("isbn13") String isbn13) {
 		customUserDetails = (CustomUserDetails)SecurityContextHolder.getContext().getAuthentication().getPrincipal();
@@ -98,6 +134,8 @@ public class AccountController {
 		
 		return "redirect:/account";
 	}
+	
+	/* Card Tab Section */
 	
 	@PostMapping("/account/addCard")
 	public String addCard(Card card, RedirectAttributes redirectAttributes) {
