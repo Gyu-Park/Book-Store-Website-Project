@@ -151,7 +151,8 @@
               <div class="product-row">
                 <div class="product-BO-shop-options">
                   <form th:action="@{/cart/addToCart}" method="post">
-                    <input hidden="hidden" th:field="*{book.isbn13}" />
+                    <input type="hidden" th:field="*{book.isbn13}" />
+                    <input type="hidden" value="false" name="sentFromAccountWishList">
                     <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
                     <input type="number" id="item-qty" value="1" name="qty" th:attr="max=${book.number_on_hand}" th:disabled="${book.number_on_hand <= 0}" required>
                     <button type="product-submit" th:disabled="${book.number_on_hand <= 0}">Add to Cart</button>
