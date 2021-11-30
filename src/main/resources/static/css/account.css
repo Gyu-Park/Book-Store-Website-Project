@@ -144,6 +144,88 @@ button[type="form-edit"] {
   border-radius: 0.2em;
 }
 
+.account-content-tab-container .edit-form {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 100%;
+}
+
+.edit-form #edit-phone,
+.edit-form .edit-password,
+.edit-form .edit-repeat-password {
+	margin-top: 10px;
+	margin-bottom: 0;
+	width: 90%;
+	padding-right: 0px;
+}
+
+.edit-form .edit-repeat-password {
+	margin-top: 0;
+}
+
+.edit-form #edit-phone-button,
+.edit-form #edit-password-button {
+	padding: 10px;
+}
+
+.form-control-hide,
+.hide {
+  display:none;
+}
+.form-control-show,
+.show {
+  display:block;
+}
+
+/*Login Security Password Validation Styles*/
+.LaS-item form i {
+  position: absolute;
+  margin-left: -25px;
+  margin-top: 19px;
+  visibility: hidden;
+}
+
+#edit-repeat-password i {
+  margin-top: 10px;
+}
+
+.LaS-item form small {
+  visibility: hidden;
+  font-size: 10px;
+}
+
+.form-control-show.success input,
+.form-control-hide.success input {
+  border: 2px solid #ecd5b3;
+  transition: 0.3s;
+}
+
+.form-control-show.error input,
+.form-control-hide.error input,
+.form-control-show.error input:focus,
+.form-control-hide.error input:focus {
+  border: 2px solid #e74c3c;
+  transition: 0.3s;
+}
+
+.form-control-show.success i.fa-check-circle,
+.form-control-hide.success i.fa-check-circle {
+  color: #ecd5b3;
+  visibility: visible;
+}
+
+.form-control-show.error i.fa-exclamation-circle,
+.form-control-hide.error i.fa-exclamation-circle {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control-show.error small,
+.form-control-hide.error small {
+  color: #e74c3c;
+  visibility: visible;
+}
+
 /*Orders Content Styles*/
 
 .order-item {
@@ -503,7 +585,8 @@ button[type="form-buy-again"] {
   display: block;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
   margin-bottom: 10px;
   padding: 8px;
@@ -513,7 +596,8 @@ input[type="text"] {
   border-radius: 0.2em;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   border: 2px solid #ecd5b3;
   transition: 0.3s;
 }
