@@ -85,122 +85,252 @@
     <div class="account-content-tab-container">
         <div class="account-row">
             <div class="tabs">
-                <button class="tablinks" id="tablinks-LoginSec-Active"
+                <button th:class="${activeTab} ? 'tablinks' : 'tablinks active'" th:id="${activeTab} ? '' : 'active'"
                     onClick="openForm(event, 'login-and-security')">Login and Security</button>
-                <button class="tablinks" id="tablinks-Orders" onClick="openForm(event, 'orders')">Orders</button>
-                <button class="tablinks" id="tablinks-PaymentOpt" onClick="openForm(event, 'payment-options')">Payment
+                <button th:class="${activeTab == 2} ? 'tablinks active' : 'tablinks'"
+                    th:id="${activeTab == 2} ? 'active'" onClick="openForm(event, 'orders')">Orders</button>
+                <button th:class="${activeTab == 3} ? 'tablinks active' : 'tablinks'"
+                    th:id="${activeTab == 3} ? 'active'" onClick="openForm(event, 'payment-options')">Payment
                     Options</button>
-                <button class="tablinks" id="tablinks-WishList" onClick="openForm(event, 'wishlist')">Wish List</button>
+                <button th:class="${activeTab == 4} ? 'tablinks active' : 'tablinks'"
+                    th:id="${activeTab == 4} ? 'active'" onClick="openForm(event, 'wishlist')">Wish List</button>
             </div>
         </div>
 
-        <div id="login-and-security" class="tabContent">
-            <form action="" method="get">
-                <div class="account-row">
-                    <div class="LaS-item">
-                        <div class="account-col-80">
-                            <label for="LaS-name-lbl">Name</label>
-                            <lable for="LaS-name-display"><b>[[${#request.userPrincipal.principal.fullname}]]</b>
-                            </lable>
-                        </div>
-                        <div class="account-col-20">
-                            <button type="form-edit" class="account-btn-edit">Edit</button>
-                        </div>
+        <!-- Login and Security -->
+        <div id="login-and-security" class="tabContent" th:style="${activeTab} ? 'display: none;' : 'display: block;'">
+            <div class="account-row">
+
+                <!-- Name Item -->
+                <div class="LaS-item">
+                    <!-- Name Display -->
+                    <div class="account-col-80">
+                        <label for="LaS-name-lbl">Name</label>
+                        <lable for="LaS-name-display"><b>[[${#request.userPrincipal.principal.fullname}]]</b>
+                        </lable>
+                    </div>
+                    <div class="account-col-20">
+                        <button type="form-edit" class="account-btn-edit" id="name-edit-btn"
+                            onclick="onNameEditButtonClick()">Edit</button>
                     </div>
 
-                    <div class="LaS-item">
+                    <!-- Edit Name Form -->
+                    <form class="edit-form" th:action="@{/account/changeName}" method="POST">
                         <div class="account-col-80">
-                            <label for="LaS-email-lbl">Email</label>
-                            <lable for="LaS-email-display"><b>[[${#request.userPrincipal.principal.username}]]</b>
-                            </lable>
+                            <div class="form-control-hide" id="edit-name-first">
+                                <p class="hide" id="edit-name-label">Enter the new Name</p>
+                                <input class="edit-name-first" type="text" name="firstName" placeholder="John" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                            <div class="form-control-hide" id="edit-name-last">
+                                <input class="edit-name-last" type="text" name="lastName" placeholder="Doe" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
                         </div>
                         <div class="account-col-20">
-                            <button type="form-edit" class="account-btn-edit">Edit</button>
+                            <button class="hide" id="edit-name-button" type="form-edit"
+                                onclick="return checkNameInputs()">Save</button>
                         </div>
-                    </div>
-
-                    <div class="LaS-item">
-                        <div class="account-col-80">
-                            <label for="LaS-phone-lbl">Phone</label>
-                            <lable for="LaS-phone-display"><b>[[${#request.userPrincipal.principal.phone}]]</b></lable>
-                        </div>
-                        <div class="account-col-20">
-                            <button type="form-edit" class="account-btn-edit">Edit</button>
-                        </div>
-                    </div>
-
-                    <div class="LaS-item">
-                        <div class="account-col-80">
-                            <label for="LaS-password-lbl">Password</label>
-                            <lable for="LaS-password-display"><b>**********</b></lable>
-                        </div>
-                        <div class="account-col-20">
-                            <button type="form-edit" class="account-btn-edit">Edit</button>
-                        </div>
-                    </div>
-
-                    <div class="LaS-item">
-                        <div class="account-col-80">
-                            <label for="LaS-address-lbl">Address</label>
-                            <lable for="LaS-address-display" style="display: block"><b>Street:
-                                    [[${#request.userPrincipal.principal.street}]]</b></lable>
-                            <lable for="LaS-address-display" style="display: block"><b>City:
-                                    [[${#request.userPrincipal.principal.city}]]</b></lable>
-                            <lable for="LaS-address-display" style="display: block"><b>State:
-                                    [[${#request.userPrincipal.principal.state}]]</b></lable>
-                            <lable for="LaS-address-display"><b>Zip: [[${#request.userPrincipal.principal.zip}]]</b>
-                            </lable>
-                        </div>
-                        <div class="account-col-20">
-                            <button type="form-edit" class="account-btn-edit">Edit</button>
-                        </div>
-                    </div>
+                    </form>
                 </div>
-            </form>
+
+                <!-- Email Item -->
+                <div class="LaS-item">
+                    <!-- Email Display -->
+                    <div class="account-col-80">
+                        <label for="LaS-email-lbl">Email</label>
+                        <lable for="LaS-email-display"><b>[[${#request.userPrincipal.principal.username}]]</b>
+                        </lable>
+                    </div>
+                    <div class="account-col-20">
+                        <button type="form-edit" class="account-btn-edit" id="email-edit-btn"
+                            onclick="onEmailEditButtonClick()">Edit</button>
+                    </div>
+
+                    <!-- Edit Email Form -->
+                    <form class="edit-form" th:action="@{/account/changeEmail}" method="POST">
+                        <div class="account-col-80">
+                            <div class="form-control-hide" id="edit-email">
+                                <p class="hide" id="edit-email-label">Enter the new Email</p>
+                                <input class="edit-email" type="text" name="email" placeholder="johndoe@example.com" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                        </div>
+                        <div class="account-col-20">
+                            <button class="form-control-hide" id="edit-email-button" type="form-edit"
+                                onclick="return checkEmailInputs()">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Phone Edit -->
+                <div class="LaS-item">
+                    <!-- Phone Display -->
+                    <div class="account-col-80">
+                        <label for="LaS-phone-lbl">Phone</label>
+                        <lable for="LaS-phone-display"><b>[[${#request.userPrincipal.principal.phone}]]</b></lable>
+                    </div>
+                    <div class="account-col-20">
+                        <button type="form-edit" class="account-btn-edit" id="phone-edit-btn"
+                            onclick="onPhoneEditButtonClick()">Edit</button>
+                    </div>
+
+                    <!-- Edit Phone Form -->
+                    <form class="edit-form" th:action="@{/account/changePhoneNumber}" method="POST">
+                        <div class="account-col-80">
+                            <div class="form-control-hide" id="edit-phone">
+                                <p class="edit-phone-label">Enter the new phone number</p>
+                                <input class="edit-phone" type="text" name="phone" placeholder="(123)-456-7890"
+                                    maxlength="12" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                        </div>
+                        <div class="account-col-20">
+                            <button class="form-control-hide" id="edit-phone-button" type="form-edit"
+                                onclick="return checkPhoneInputs()">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Password Edit -->
+                <div class="LaS-item">
+                    <!-- Password Display -->
+                    <div class="account-col-80">
+                        <label for="LaS-password-lbl">Password</label>
+                        <lable for="LaS-password-display"><b>**********</b></lable>
+                    </div>
+                    <div class="account-col-20">
+                        <button type="form-edit" class="account-btn-edit" id="password-edit-btn"
+                            onclick="onPasswordEditButtonClick()">Edit</button>
+                    </div>
+
+                    <!-- Edit Password Form -->
+                    <form class="edit-form" th:action="@{/account/changePassword}" method="POST">
+                        <div class="account-col-80">
+                            <div class="form-control-hide" id="edit-password">
+                                <p class="hide" id="edit-password-label">Enter the new Password</p>
+                                <input class="edit-password" type="password" name="password"
+                                    placeholder="Enter your new password" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                            <div class="form-control-hide" id="edit-repeat-password">
+                                <input class="edit-repeat-password" type="password"
+                                    placeholder="Re-enter your new password" />
+                                <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+                            </div>
+                        </div>
+                        <div class="account-col-20">
+                            <button class="form-control-hide" id="edit-password-button" type="form-edit"
+                                onclick="return checkPasswordInputs()">Save</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Address Edit -->
+                <div class="LaS-item">
+                    <div class="account-col-80">
+                        <label for="LaS-address-lbl">Address</label>
+                        <lable for="LaS-address-display" style="display: block">
+                            <b>[[${#request.userPrincipal.principal.street}]]</b>
+                            <b>[[${#request.userPrincipal.principal.apt}]]</b>
+                        </lable>
+                        <lable for="LaS-address-display" style="display: block">
+                            <b>[[${#request.userPrincipal.principal.city}]],
+                                [[${#request.userPrincipal.principal.state}]]</b>
+                        </lable>
+                        <lable for="LaS-address-display">
+                            <b>[[${#request.userPrincipal.principal.zip}]]</b>
+                        </lable>
+                    </div>
+                    <div class="account-col-20">
+                        <button type="form-edit" class="account-btn-edit" id="address-edit-btn"
+                            onclick="onAddressEditButtonClick()">Edit</button>
+                    </div>
+
+                    <!-- Address Edit -->
+                    <form class="edit-form" th:action="@{/account/changeAddress}" method="POST">
+                        <div class="account-col-80">
+                            <p class="hide" id="edit-address-label">Enter the new Address</p>
+                            <input class="hide" type="text" id="edit-address-street" name="address-street"
+                                placeholder="1 Madeup Ln" />
+                            <input class="hide" type="text" id="edit-address-apt" name="address-apt"
+                                placeholder="Apt." />
+                            <input class="hide" type="text" id="edit-address-city" name="address-city"
+                                placeholder="New York City" />
+                            <input class="hide" type="text" id="edit-address-state" name="address-state"
+                                placeholder="New York" />
+                            <input class="hide" type="text" id="edit-address-zip" name="address-zip"
+                                placeholder="10001" />
+                        </div>
+                        <div class="account-col-20">
+                            <button class="hide" id="edit-address-btn" type="form-edit">Save</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
 
-        <div id="orders" class="tabContent">
+        <!-- Orders Tab -->
+        <div id="orders" class="tabContent" th:style="${activeTab == 2} ? 'display: block;' : 'display: none;'">
             <form action="" method="get">
+                <div class="empty-orderlist" th:if="${orderList.empty}">
+                    <img src="img/empty.png">
+                    <span th:text="'You have not placed any orders yet.'"></span>
+                </div>
                 <div class="account-row">
-
                     <!--Orders item Template-->
                     <div th:if="${orderList}">
-	                    <div class="order-item" th:each="orderList : ${orderList}">
-	                        <div class="account-row">
-	                        	<span class="order-number">Order Number # [[${orderList.orderId}]]</span>
-	                        	<div class="account-col-wrapper">
-		                            <div class="account-col-60">
-		                                <div class="order-product-container" th:each="orderItemList : ${orderList.orderItemList}">
-		                                    <div class="order-product-img-container">
-		                                        <img th:src="${orderItemList.book.image}" alt="">
-		                                    </div>
-		                                    <div class="order-product-title-container">
-		                                        <label>[[${orderItemList.book.alias}]]</label>
-		                                        <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-		                                            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-		                                            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
-		                                            commodo consequat.
-		                                        </p>
-		                                    </div>
-		                                </div>
-		                            </div>
-		                            <div class="account-col-20">
-		                                <div class="order-item-pricing">
-		                                    <label>Total</label>
-		                                    <p>$[[${orderList.orderTotal}]]</p>
-		                                    <label>Order Placed</label>
-		                                    <p>[[${orderList.orderDate}]]</p>
-		                                    <label>Order Delivered</label>
-		                                    <p>[[${orderList.shippingDate}]]</p>
-		                                </div>
-		                            </div>
-		                            <div class="account-col-20">
-		                                <button type="form-review">Write a Review</button>
-		                                <button type="form-buy-again">Buy it Again</button>
-		                            </div>
-		                        </div>
-	                        </div>
-	                    </div>
+                        <div class="order-item" th:each="orderList : ${orderList}">
+                            <div class="account-row">
+                                <span class="order-number">Order Number # [[${orderList.orderId}]]</span>
+                                <div class="account-col-wrapper">
+                                    <div class="account-col-60">
+                                        <div class="order-product-container"
+                                            th:each="orderItemList : ${orderList.orderItemList}">
+                                            <div class="order-product-img-container">
+                                                <img th:src="${orderItemList.book.image}" alt="">
+                                            </div>
+                                            <div class="order-product-title-container">
+                                                <label>[[${orderItemList.book.alias}]]</label>
+                                                <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+                                                    eiusmod
+                                                    tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                                                    veniam,
+                                                    quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
+                                                    commodo consequat.
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="account-col-20">
+                                        <div class="order-item-pricing">
+                                            <label>Total</label>
+                                            <p>$[[${orderList.orderTotal}]]</p>
+                                            <label>Order Placed</label>
+                                            <p>[[${orderList.orderDate}]]</p>
+                                            <label>Order Delivered</label>
+                                            <p>[[${orderList.shippingDate}]]</p>
+                                        </div>
+                                    </div>
+                                    <div class="account-col-20">
+                                        <button type="form-review">Write a Review</button>
+                                        <button type="form-buy-again">Buy it Again</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!--End-->
 
@@ -208,7 +338,8 @@
             </form>
         </div>
 
-        <div id="payment-options" class="tabContent">
+        <div id="payment-options" class="tabContent"
+            th:style="${activeTab == 3} ? 'display: block;' : 'display: none;'">
             <div class="account-row">
                 <h1>Wallet</h1>
             </div>
@@ -217,7 +348,7 @@
                 <div class="account-col-20">
                     <div class="payment-tabs">
                         <div id="payment-option-button-container" th:each="card, cardStat : ${card}">
-                        	<img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
+                            <img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
                             <button class="form-paymentTablinks"
                                 th:onClick="openPaymentForm(event, 'payment-option-[[${cardStat.count}]]')">[[${card.paymentOptionName}]]</button>
                         </div>
@@ -231,59 +362,76 @@
 
                 <div class="account-col-80">
                     <!--Payment Option Template-->
-                    <div th:each="card, cardStat : ${card}">
-                        <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
-                            <div class="card-container">
-                                <div class="front">
-                                    <div class="cardImage">
-                                        <img src="img/chip.png" />
-                                        <!-- American Express Identification Numbers -->
-                                        <img th:if="${#strings.substring(card.cardNumber, 0, 2)} == '34' 
-                                        	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'"
-                                            src="img/american-express.png" />
-                                        <!-- Visa Identification Numbers -->
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
-                                            src="img/visa.png" />
-                                        <!-- Mastercard Identification Numbers -->
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'"
-                                            src="img/mastercard.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'"
-                                            src="img/mastercard.png" />
-                                        <!-- Discover Identification Numbers -->
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'"
-                                            src="img/discover.png" />
-                                        <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
-                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'"
-                                            src="img/discover.png" />
-                                        <img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
-                                    </div>
-                                    <div class="card-number-box">****-****-****-[[${#strings.substring(card.cardNumber,
-                                        12)}]]</div>
-                                    <div class="flexbox">
-                                        <div class="box">
-                                            <div class="card-holder">Card Holder</div>
-                                            <div class="card-holder-name">[[${card.cardHolderName}]]</div>
+                    <div class="template-card">
+                        <div th:each="card, cardStat : ${card}">
+                            <div th:id="'payment-option-' + ${cardStat.count}" class="paymentTabContent">
+                                <div class="card-container">
+                                    <div class="front">
+                                        <div class="cardImage">
+                                            <img src="img/chip.png" />
+                                            <!-- American Express Identification Numbers -->
+                                            <img th:if="${#strings.substring(card.cardNumber, 0, 2)} == '34' 
+	                                        	OR ${#strings.substring(card.cardNumber, 0, 2)} == '37'"
+                                                src="img/american-express.png" />
+                                            <!-- Visa Identification Numbers -->
+                                            <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 1)} == '4'"
+                                                src="img/visa.png" />
+                                            <!-- Mastercard Identification Numbers -->
+                                            <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 4)} > '2220' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 4)} < '2721'"
+                                                src="img/mastercard.png" />
+                                            <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '50' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '56'"
+                                                src="img/mastercard.png" />
+                                            <!-- Discover Identification Numbers -->
+                                            <img id="issuer"
+                                                th:if="${#strings.substring(card.cardNumber, 0, 4)} == '6011'"
+                                                src="img/discover.png" />
+                                            <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 2)} > '63' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 2)} < '66'"
+                                                src="img/discover.png" />
+                                            <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '622125' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '622926'"
+                                                src="img/discover.png" />
+                                            <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '623999' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '627000'"
+                                                src="img/discover.png" />
+                                            <img id="issuer" th:if="${#strings.substring(card.cardNumber, 0, 6)} > '628199' 
+	                                        	AND ${#strings.substring(card.cardNumber, 0, 6)} < '628900'"
+                                                src="img/discover.png" />
+                                            <img id="bookmark" th:if="${card.defaultCard}" src="img/bookmarkicon.jpg" />
                                         </div>
-                                        <div class="box">
-                                            <span>Expiration Date</span>
-                                            <div class="expiration">
-                                                <span class="exp-year">[[${card.cardExpYear}]]</span>
-                                                <span>/</span>
-                                                <span class="exp-month">[[${card.cardExpMonth}]]</span>
+                                        <div class="card-number-box">
+                                            ****-****-****-[[${#strings.substring(card.cardNumber,
+                                            12)}]]</div>
+                                        <div class="flexbox">
+                                            <div class="box">
+                                                <div class="card-holder">Card Holder</div>
+                                                <div class="card-holder-name">[[${card.cardHolderName}]]</div>
+                                            </div>
+                                            <div class="box">
+                                                <span>Expiration Date</span>
+                                                <div class="expiration">
+                                                    <span class="exp-year">[[${card.cardExpYear}]]</span>
+                                                    <span>/</span>
+                                                    <span class="exp-month">[[${card.cardExpMonth}]]</span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                                <div class="buttons-for-edit-card">
+                                    <form th:action="@{/account/setDefaultCard}" th:method="post">
+                                        <input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
+                                        <button type="submit" class="form-paymentTablinks">Set Default</button>
+                                    </form>
+                                    <form>
+                                        <button type="submit" class="form-paymentTablinks">Edit</button>
+                                    </form>
+                                    <form th:action="@{/account/removeCard}" th:method="post">
+                                        <input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
+                                        <button type="submit" class="form-paymentTablinks">Remove</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -356,7 +504,8 @@
                                     </div>
                                     <div class="account-col-50">
                                         <label for="account-payment-cc-cvv">CVV</label>
-                                        <input type="text" id="account-payment-cc-cvv" name="cardCvv" placeholder="489" maxlength="3">
+                                        <input type="text" id="account-payment-cc-cvv" name="cardCvv" placeholder="489"
+                                            maxlength="3">
                                     </div>
                                 </div>
                             </div>
@@ -369,40 +518,49 @@
             </div>
         </div>
 
-        <div id="wishlist" class="tabContent">
+        <div id="wishlist" class="tabContent" th:style="${activeTab == 4} ? 'display: block;' : 'display: none;'">
+            <div class="empty-wishlist" th:if="${wishList == null} OR ${wishList.items.empty}">
+                <img src="img/empty-wishlist.png">
+                <span th:text="'Your wish list is empty.'"></span>
+            </div>
             <div class="account-row">
 
                 <!--Whishlist Item Template-->
                 <div th:if="${wishList}">
-	                <div class="wishlist-item" th:each="wishListItem : ${wishList.items}">
-	                    <div class="account-row">
-	                        <div class="account-col-80">
-	                            <div class="wishlist-product-container">
-	                                <div class="wishlist-img-container">
-	                                    <img th:src="${wishListItem.book.image}" alt="">
-	                                </div>
-	                                <div class="wishlist-title-container">
-	                                    <label>[[${wishListItem.book.alias}]]</label>
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-	                                        sed do eiusmod tempor incididunt ut labore et dolore magna
-	                                        aliqua. Ut enim ad minim veniam, quis nostrud exercitation
-	                                        ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-	                                </div>
-	                            </div>
-	                        </div>
-	                        <div class="account-col-20">
-	                            <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
-	                            </label>
-	                            <hr>
-	                            <button type="form-buy-now">Buy Now</button>
-	                            <button type="form-add-to-cart">Add to Cart</button>
-	                            <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
-	                                data-toggle="tooltip">
-	                                <button type="form-remove">Remove</button>
-	                            </a>
-	                        </div>
-	                    </div>
-	                </div>
+                    <div class="wishlist-item" th:each="wishListItem : ${wishList.items}">
+                        <div class="account-row">
+                            <div class="account-col-80">
+                                <div class="wishlist-product-container">
+                                    <div class="wishlist-img-container">
+                                        <img th:src="${wishListItem.book.image}" alt="">
+                                    </div>
+                                    <div class="wishlist-title-container">
+                                        <label>[[${wishListItem.book.alias}]]</label>
+                                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit,
+                                            sed do eiusmod tempor incididunt ut labore et dolore magna
+                                            aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                            ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="account-col-20">
+                                <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
+                                </label>
+                                <hr>
+                                <button type="form-buy-now">Buy Now</button>
+                                <form th:action="@{/cart/addToCart}" th:object="${wishListItem.book}" method="post">
+                                    <input type="hidden" th:value="${wishListItem.book.isbn13}" name="isbn13" />
+                                    <input type="hidden" value="1" name="qty">
+                                    <input type="hidden" value="true" name="sentFromAccountWishList">
+                                    <button type="form-add-to-cart">Add to Cart</button>
+                                </form>
+                                <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
+                                    data-toggle="tooltip">
+                                    <button type="form-remove">Remove</button>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <!--End-->
 

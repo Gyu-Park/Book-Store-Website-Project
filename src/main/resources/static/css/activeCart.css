@@ -54,13 +54,12 @@
   width: 100%;
   border-radius: 0.2em;
   cursor: pointer;
+  color: #fffaf3;
+  font-weight: bold;
 }
 
-.subtotal-container-btn a {
-  color: #fffaf3;
+.subtotal-container a {
   text-decoration: none;
-  font-weight: bold;
-  font-size: 1em;
 }
 
 .subtotal-container-btn,
@@ -70,6 +69,16 @@
 }
 
 .subtotal-container-btn:hover {
+  background-color: #b09979;
+}
+
+.cart-col-20 button,
+.cart-col-20 button:after,
+.cart-col-20 button:before {
+  transition: all 0.5s;
+}
+
+.cart-col-20 button:hover {
   background-color: #b09979;
 }
 
@@ -143,10 +152,34 @@ button[type="form-remove"] {
   cursor: pointer;
 }
 
+#item-qty {
+	width: 76%;
+}
+
 img {
   border: 1px solid #778899;
   width: 100px;
   height: 140px;
+}
+
+.empty-cart {
+	display: grid;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	text-align: center;
+}
+
+.empty-cart img {
+	margin: auto;
+	margin-bottom: 50px;
+	border: none;
+	max-height: 100px;
+}
+
+.empty-cart span {
+	margin: auto;
+	font-weight: bold;
+	font-size: 18px;
 }
 
 /* WishList Items Coursel and Item Card Styles */
@@ -224,4 +257,25 @@ img {
 
 .carousel-txt {
   text-align: center;
+}
+
+.empty-wishlist {
+	display: grid;
+	text-align: center;
+	margin: auto;
+}
+
+.empty-wishlist img {
+	margin: auto;
+	margin-top: 40px;
+	margin-bottom: 30px;
+	border: none;
+	max-height: 100px;
+	width: 100px;
+}
+
+.empty-wishlist span {
+	margin-bottom: 50px;
+	font-weight: bold;
+	font-size: 18px;
 }

@@ -98,6 +98,10 @@
                         <div class="active-items-list">
 
                             <!--Cart Item Template-->
+                            <div class="empty-cart" th:if="${shoppingCart.items.empty}">
+                            	<img src="img/empty-cart.png" >
+                            	<span th:text="'Your shopping cart is empty.'"></span>
+                            </div>
                             <div class="cart-item" th:each="cartItem : ${shoppingCart.items}">
                                 <div class="active-cart-row">
                                     <div class="cart-col-60">
@@ -149,15 +153,18 @@
                     </div>
                 </div>
 
-                    <div class="wishlist-container">
-                            <div class="wishlist-header">
-                                <h2>Wish List</h2>
-                            </div>
+                    <div class="wishlist-container" sec:authorize="isAuthenticated()">
+                        <div class="wishlist-header">
+                            <h2>Wish List</h2>
+                        </div>
                         <hr>
-
                         <div class="wishlist-row">
+                        	<div class="empty-wishlist" th:if="${wishlist == null} OR ${wishlist.empty}">
+				            	<img src="img/empty-wishlist.png" >
+				            	<span th:text="'Your wish list is empty.'"></span>
+				            </div>
                             <!--Item Courousel and Template-->
-                            <div class="carousel-container">
+                            <div class="carousel-container" th:unless="${wishlist == null} OR ${wishlist.empty}">
                             <div class="carousel-inner">
                                 <div class="carousel-track">
                 
@@ -189,10 +196,10 @@
             <div class="active-cart-col-25">
                 <div class="subtotal-container">
                     <h3>Subtotal <span class="cart-subtotal"><b> $[[${shoppingCart.totalPrice}]]</b></span></h3>
-                    <button type="button" class="subtotal-container-btn"><a href="/books">Continue
-                            Shopping</a></button>
-                    <button type="submit" class="subtotal-container-btn"><a href="/checkout">Continue to
-                            Checkout</a></button>
+                    <a href="/books"><button type="button" class="subtotal-container-btn">Continue
+                            Shopping</button></a>
+                    <a href="/checkout"><button type="submit" class="subtotal-container-btn">Continue to
+                            Checkout</button></a>
                 </div>
             </div>
         </div>

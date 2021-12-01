@@ -87,10 +87,7 @@ button.tablinks {
   background-color: #b09979;
 }
 
-#tablinks-LoginSec-Active,
-#tablinks-Orders-Active,
-#tablinks-PaymentOpt-Active,
-#tablinks-WishList-Active {
+#active {
   color: #ecd5b3;
   background-color: #516272;
   font-weight: bold;
@@ -145,6 +142,96 @@ button[type="form-edit"] {
   width: 100%;
   border: none;
   border-radius: 0.2em;
+}
+
+.account-content-tab-container .edit-form {
+  display: flex;
+  flex-wrap: wrap;
+  flex: 100%;
+}
+
+.edit-form .edit-password,
+.edit-form .edit-repeat-password,
+.edit-form .edit-name-first,
+.edit-form .edit-name-last,
+.edit-form .edit-phone,
+.edit-form .edit-email {
+  margin-top: 10px;
+  margin-bottom: 3px;
+  width: 50%;
+  padding-right: 0px;
+}
+
+.edit-form .edit-repeat-password {
+  margin-top: 5px;
+}
+
+.edit-form #edit-phone-button,
+.edit-form #edit-password-button {
+  padding: 10px;
+}
+
+.form-control-hide,
+.hide {
+  display: none;
+}
+.form-control-show,
+.show {
+  display: block;
+}
+
+/*Login Security Password Validation Styles*/
+.LaS-item form i {
+  position: absolute;
+  margin-left: -25px;
+  margin-top: 19px;
+  visibility: hidden;
+}
+
+#edit-repeat-password i {
+  margin-top: 10px;
+}
+
+.LaS-item form small {
+  visibility: hidden;
+  font-size: 10px;
+}
+
+.form-control-show.success input,
+.form-control-hide.success input {
+  border: 2px solid #ecd5b3;
+  transition: 0.3s;
+}
+
+.form-control-show.error input,
+.form-control-hide.error input,
+.form-control-show.error input:focus,
+.form-control-hide.error input:focus {
+  border: 2px solid #e74c3c;
+  transition: 0.3s;
+}
+
+.form-control-show.success i.fa-check-circle,
+.form-control-hide.success i.fa-check-circle {
+  color: #ecd5b3;
+  visibility: visible;
+}
+
+.form-control-show.error i.fa-exclamation-circle,
+.form-control-hide.error i.fa-exclamation-circle {
+  color: #e74c3c;
+  visibility: visible;
+}
+
+.form-control-show.error small,
+.form-control-hide.error small {
+  display: block;
+  color: #e74c3c;
+  visibility: visible;
+}
+
+p {
+  margin-bottom: 3px;
 }
 
 /*Orders Content Styles*/
@@ -217,6 +304,26 @@ button[type="form-buy-again"] {
   border-radius: 0.2em;
 }
 
+.empty-orderlist {
+  display: grid;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  height: 300px;
+  width: 1000px;
+}
+
+.empty-orderlist img {
+  margin: auto;
+  border: none;
+  max-height: 140px;
+}
+
+.empty-orderlist span {
+  margin: auto;
+  font-weight: bold;
+  font-size: 20px;
+}
+
 /*Payment Options Content Styles*/
 
 #add-payment-option h3 {
@@ -246,6 +353,27 @@ button[type="form-buy-again"] {
   border-radius: 0.2em;
 }
 
+.buttons-for-edit-card {
+  text-align: center;
+}
+
+.buttons-for-edit-card form {
+  display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+.buttons-for-edit-card button {
+  background-color: #778899;
+  color: #fffaf3;
+  margin-top: 10px;
+  padding: 10px;
+  width: 140px;
+  height: auto;
+  border: none;
+  border-radius: 0.2em;
+}
+
 .payment-tabs #bookmark {
   position: absolute;
   height: 30px;
@@ -255,7 +383,8 @@ button[type="form-buy-again"] {
 }
 
 .paymentTabContent {
-  margin-right: 10px;
+  min-height: 240px;
+  margin-right: 60px;
   padding: 10px 20px 15px 20px;
   overflow: none;
   display: none;
@@ -272,12 +401,13 @@ button[type="form-buy-again"] {
 }
 
 .paymentTabContent .card-container {
-  margin-bottom: -150px;
+  margin-bottom: 50px;
   margin-right: auto;
   margin-left: auto;
   position: relative;
   height: 190px;
   max-width: 398px;
+  right: 20px;
 }
 
 .card-container:nth-child(odd) .front {
@@ -348,10 +478,6 @@ button[type="form-buy-again"] {
   width: 30px;
   margin-top: -90px;
   position: absolute;
-}
-
-.card-container .front .cardImage #issuer {
-	margin-right: -250px;
 }
 
 .front .card-number-box {
@@ -449,7 +575,7 @@ button[type="form-buy-again"] {
 /****************/
 
 .paymentTabContent form {
-  padding-top: 210px;
+  padding-top: 10px;
 }
 
 .new-payment-option-form-container {
@@ -467,7 +593,8 @@ button[type="form-buy-again"] {
   display: block;
 }
 
-input[type="text"] {
+input[type="text"],
+input[type="password"] {
   width: 100%;
   margin-bottom: 10px;
   padding: 8px;
@@ -477,7 +604,8 @@ input[type="text"] {
   border-radius: 0.2em;
 }
 
-input[type="text"]:focus {
+input[type="text"]:focus,
+input[type="password"]:focus {
   border: 2px solid #ecd5b3;
   transition: 0.3s;
 }
@@ -547,4 +675,25 @@ span {
   float: right;
   color: black;
   padding-right: 5px;
+}
+
+.empty-wishlist {
+  display: grid;
+  margin-top: 130px;
+  margin-bottom: 100px;
+  text-align: center;
+}
+
+.empty-wishlist img {
+  margin: auto;
+  margin-bottom: 70px;
+  border: none;
+  max-height: 140px;
+  width: 180px;
+}
+
+.empty-wishlist span {
+  margin: auto;
+  font-weight: bold;
+  font-size: 20px;
 }

@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import com.groupproject.boogle.model.Book;
 import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CartItem;
 import com.groupproject.boogle.model.Guest;
@@ -24,9 +25,10 @@ import com.groupproject.boogle.model.OrderItem;
 import com.groupproject.boogle.model.ShippingAddress;
 import com.groupproject.boogle.model.ShoppingCart;
 import com.groupproject.boogle.model.User;
-import com.groupproject.boogle.repository.CardRepository;
 import com.groupproject.boogle.repository.OrderItemRepository;
 import com.groupproject.boogle.repository.UserRepository;
+import com.groupproject.boogle.service.BookService;
+import com.groupproject.boogle.service.CardService;
 import com.groupproject.boogle.service.EmailService;
 import com.groupproject.boogle.service.GuestService;
 import com.groupproject.boogle.service.OrderService;
@@ -45,7 +47,7 @@ public class CheckoutController {
 	private UserRepository userRepository;
 	
 	@Autowired
-	private CardRepository cardRepository;
+	private CardService cardService;
 	
 	@Autowired
 	private OrderService orderService;
@@ -58,6 +60,9 @@ public class CheckoutController {
 	
 	@Autowired
 	private EmailService emailService;
+	
+	@Autowired
+	private BookService bookService;
 	
 	@GetMapping("/checkout")
 	public String viewCheckoutPage(HttpServletRequest request, Model model) {
@@ -84,8 +89,8 @@ public class CheckoutController {
 			model.addAttribute("user", user);
 			model.addAttribute("userInfo", user.getUserDetailsTable());
 			try {
-				List<Card> card = cardRepository.findAllCardByUser(user);
-				model.addAttribute("card", card.get(0));
+				Card card = cardService.findDefaultCard(user);
+				model.addAttribute("card", card);
 			} catch (NullPointerException e) {
 				// if there's no card, do nothing.
 			}
@@ -110,8 +115,8 @@ public class CheckoutController {
 		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			order.setUser(user);
-			card.setUser(user);
-			order.setCard(card);
+			Card orderCard = cardService.findCardByCardNumber(card.getCardNumberWithoutDecryption());
+			order.setCard(orderCard);
 		} else {
 			guest.setFullName(shippingAddress.getShippingAddressReceiver());
 			guestService.addGuestintoDatabase(guest);
@@ -129,6 +134,7 @@ public class CheckoutController {
 				orderItem.setOrder(order);
 				orderItem.setQuantity(cartItem.getQuantity());
 				cartItem.getBook().setNumber_on_hand(cartItem.getBook().getNumber_on_hand() - cartItem.getQuantity());
+				cartItem.getBook().setSales(cartItem.getBook().getSales() + cartItem.getQuantity());
 				orderItemRepository.save(orderItem);
 				orderItems.add(orderItem);
 				orderItem = new OrderItem();
@@ -152,6 +158,8 @@ public class CheckoutController {
 		}
 		
 		model.addAttribute("shoppingCart", shoppingCart);
+		List<Book> bestSellers = bookService.getBestSellers();
+		model.addAttribute("bestSellers", bestSellers);
 		
 		return "home";
 	}
