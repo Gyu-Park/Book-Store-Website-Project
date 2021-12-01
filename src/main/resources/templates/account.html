@@ -450,19 +450,74 @@
                                         </div>
                                     </div>
                                 </div>
+
                                 <div class="buttons-for-edit-card">
                                     <form th:action="@{/account/setDefaultCard}" th:method="post">
                                         <input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
                                         <button type="submit" class="form-paymentTablinks">Set Default</button>
                                     </form>
-                                    <form>
-                                        <button type="submit" class="form-paymentTablinks">Edit</button>
-                                    </form>
+                                        <button type="card-form-edit" class="form-paymentTablinks" onclick="onCardEditButtonClick()">Edit</button>
                                     <form th:action="@{/account/removeCard}" th:method="post">
                                         <input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
                                         <button type="submit" class="form-paymentTablinks">Remove</button>
                                     </form>
                                 </div>
+
+                                <!-- Existing Card Edit -->
+                                <div class="edit-payment-methode">
+                                    <form class="card-edit-form" method="POST">
+                                        <div class="card-row">
+                                            <div class="form-control-hide" id="card-edit-header">
+                                                <label class="edit-card-header">Edit Card</label>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="card-row">
+                                            <div class="form-control-hide" id="edit-card-name">
+                                                <p>Enter Name</p>
+                                                <input class="edit-card-name" type="text" name="CardName" placeholder="John Doe" />
+                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <small>Error message</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="card-row">
+                                            <div class="form-control-hide" id="edit-card-num">
+                                                <p>Enter Card Number</p>
+                                                <input class="edit-card-num" type="text" name="CardNum" placeholder="1234-1234-1234-1234" />
+                                                <i class="fas fa-check-circle"></i>
+                                                <i class="fas fa-exclamation-circle"></i>
+                                                <small>Error message</small>
+                                            </div>
+                                        </div>     
+                                        
+                                        <div class="card-row">
+                                            <div class="form-control-hide" id="card-edit-expMonth-CVV">
+                                                <div class="account-col-50">
+                                                    <div  id="edit-card-expMonth">
+                                                        <p>Enter Expiration Date</p>
+                                                        <input class="edit-card-expMonth" type="text" name="CardExpMonth" placeholder="05/24" />
+                                                        <i class="fas fa-check-circle"></i>
+                                                        <i class="fas fa-exclamation-circle"></i>
+                                                        <small>Error message</small>
+                                                    </div>
+                                                </div>
+                                                <div class="account-col-50">
+                                                    <div  id="edit-card-cvv">
+                                                        <p>Enter Card CVV</p>
+                                                        <input class="edit-card-cvv" type="text" name="CardCVV" placeholder="123" />
+                                                        <i class="fas fa-check-circle"></i>
+                                                        <i class="fas fa-exclamation-circle"></i>
+                                                        <small>Error message</small>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                </div>
+
                             </div>
                         </div>
                     </div>
