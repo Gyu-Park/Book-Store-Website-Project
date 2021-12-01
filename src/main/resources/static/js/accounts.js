@@ -105,22 +105,26 @@ function onPasswordEditButtonClick(){
 }
 
 function onAddressEditButtonClick() {
-    if (document.getElementById('edit-address-street').className === "hide") {
+    if (document.getElementById('edit-address-street').className === "form-control-hide"
+		|| document.getElementById('edit-address-street').className === "form-control-hide success"
+		|| document.getElementById('edit-address-street').className === "form-control-hide error") {
         document.getElementById('edit-address-label').className = "show";
-        document.getElementById('edit-address-street').className = "show";
-        document.getElementById('edit-address-apt').className = "show";
-        document.getElementById('edit-address-city').className = "show";
-        document.getElementById('edit-address-state').className = "show";
-        document.getElementById('edit-address-zip').className = "show";
+        document.getElementById('edit-address-street').className = "form-control-show";
+        document.getElementById('edit-address-apt').className = "form-control-show";
+        document.getElementById('edit-address-city').className = "form-control-show";
+        document.getElementById('edit-address-state').className = "form-control-show";
+        document.getElementById('edit-address-zip').className = "form-control-show";
         document.getElementById('edit-address-btn').className = "show";
         document.getElementById('address-edit-btn').innerText = "Cancel";
-    } else if (document.getElementById('edit-address-street').className === "show") {
+    } else if (document.getElementById('edit-address-street').className === "form-control-show"
+		|| document.getElementById('edit-address-street').className === "form-control-show success"
+		|| document.getElementById('edit-address-street').className === "form-control-show error") {
         document.getElementById('edit-address-label').className = "hide";
-        document.getElementById('edit-address-street').className = "hide";
-        document.getElementById('edit-address-apt').className = "hide";
-        document.getElementById('edit-address-city').className = "hide";
-        document.getElementById('edit-address-state').className = "hide";
-        document.getElementById('edit-address-zip').className = "hide";
+        document.getElementById('edit-address-street').className = "form-control-hide";
+        document.getElementById('edit-address-apt').className = "form-control-hide";
+        document.getElementById('edit-address-city').className = "form-control-hide";
+        document.getElementById('edit-address-state').className = "form-control-hide";
+        document.getElementById('edit-address-zip').className = "form-control-hide";
         document.getElementById('edit-address-btn').className = "hide";
         document.getElementById('address-edit-btn').innerText = "Edit";
     }
@@ -208,6 +212,57 @@ function checkPasswordInputs() {
         return false;
 	} else{
 		setSuccessFor(password2);
+	}
+    return true;
+}
+
+const street = document.querySelector('.edit-address-street');
+const apt = document.querySelector('.edit-address-apt');
+const city = document.querySelector('.edit-address-city');
+const state = document.querySelector('.edit-address-state');
+const zip = document.querySelector('.edit-address-zip');
+
+function checkAddressInputs() {
+
+	const streetValue = street.value.trim();
+	const aptValue = apt.value.trim();
+	const cityValue = city.value.trim();
+	const stateValue = state.value.trim();
+	const zipValue = zip.value.trim();
+
+	if(streetValue === '') {
+		setErrorFor(street, 'Please enter your street');
+        return false;
+	} else {
+		setSuccessFor(street);
+	}
+	
+	if(aptValue === '') {
+		setErrorFor(apt, 'Please enter your apt');
+        return false;
+	} else{
+		setSuccessFor(apt);
+	}
+	
+	if(cityValue === '') {
+		setErrorFor(city, 'Please enter your city');
+        return false;
+	} else{
+		setSuccessFor(city);
+	}
+	
+	if(stateValue === '') {
+		setErrorFor(state, 'Please enter your state');
+        return false;
+	} else{
+		setSuccessFor(state);
+	}
+	
+	if(zipValue === '') {
+		setErrorFor(zip, 'Please enter your zip');
+        return false;
+	} else{
+		setSuccessFor(zip);
 	}
     return true;
 }
