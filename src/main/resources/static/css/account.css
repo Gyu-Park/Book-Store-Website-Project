@@ -145,36 +145,39 @@ button[type="form-edit"] {
 }
 
 .account-content-tab-container .edit-form {
-	display: flex;
-	flex-wrap: wrap;
-	flex: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  flex: 100%;
 }
 
-.edit-form #edit-phone,
 .edit-form .edit-password,
-.edit-form .edit-repeat-password {
-	margin-top: 10px;
-	margin-bottom: 0;
-	width: 90%;
-	padding-right: 0px;
+.edit-form .edit-repeat-password,
+.edit-form .edit-name-first,
+.edit-form .edit-name-last,
+.edit-form .edit-phone,
+.edit-form .edit-email {
+  margin-top: 10px;
+  margin-bottom: 3px;
+  width: 50%;
+  padding-right: 0px;
 }
 
 .edit-form .edit-repeat-password {
-	margin-top: 0;
+  margin-top: 5px;
 }
 
 .edit-form #edit-phone-button,
 .edit-form #edit-password-button {
-	padding: 10px;
+  padding: 10px;
 }
 
 .form-control-hide,
 .hide {
-  display:none;
+  display: none;
 }
 .form-control-show,
 .show {
-  display:block;
+  display: block;
 }
 
 /*Login Security Password Validation Styles*/
@@ -222,8 +225,13 @@ button[type="form-edit"] {
 
 .form-control-show.error small,
 .form-control-hide.error small {
+  display: block;
   color: #e74c3c;
   visibility: visible;
+}
+
+p {
+  margin-bottom: 3px;
 }
 
 /*Orders Content Styles*/
@@ -297,23 +305,23 @@ button[type="form-buy-again"] {
 }
 
 .empty-orderlist {
-	display: grid;
-	margin-top: 100px;
-	margin-bottom: 100px;
-	height: 300px;
-	width: 1000px;
+  display: grid;
+  margin-top: 100px;
+  margin-bottom: 100px;
+  height: 300px;
+  width: 1000px;
 }
 
 .empty-orderlist img {
-	margin: auto;
-	border: none;
-	max-height: 140px;
+  margin: auto;
+  border: none;
+  max-height: 140px;
 }
 
 .empty-orderlist span {
-	margin: auto;
-	font-weight: bold;
-	font-size: 20px;
+  margin: auto;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 /*Payment Options Content Styles*/
@@ -346,13 +354,13 @@ button[type="form-buy-again"] {
 }
 
 .buttons-for-edit-card {
-	text-align: center;
+  text-align: center;
 }
 
 .buttons-for-edit-card form {
-	display: inline;
-	margin-left: 5px;
-	margin-right: 5px;
+  display: inline;
+  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .buttons-for-edit-card button {
@@ -670,22 +678,22 @@ span {
 }
 
 .empty-wishlist {
-	display: grid;
-	margin-top: 130px;
-	margin-bottom: 100px;
-	text-align: center;
+  display: grid;
+  margin-top: 130px;
+  margin-bottom: 100px;
+  text-align: center;
 }
 
 .empty-wishlist img {
-	margin: auto;
-	margin-bottom: 70px;
-	border: none;
-	max-height: 140px;
-	width: 180px;
+  margin: auto;
+  margin-bottom: 70px;
+  border: none;
+  max-height: 140px;
+  width: 180px;
 }
 
 .empty-wishlist span {
-	margin: auto;
-	font-weight: bold;
-	font-size: 20px;
+  margin: auto;
+  font-weight: bold;
+  font-size: 20px;
 }
