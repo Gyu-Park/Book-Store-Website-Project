@@ -143,7 +143,8 @@
                     <!-- Email Display -->
                     <div class="account-col-80">
                         <label for="LaS-email-lbl">Email</label>
-                        <lable for="LaS-email-display"><b>[[${#request.userPrincipal.principal.username}]]</b>
+                        <lable for="LaS-email-display">
+                        	<b>[[${#request.userPrincipal.principal.username}]]</b>
                         </lable>
                     </div>
                     <div class="account-col-20">
@@ -174,7 +175,9 @@
                     <!-- Phone Display -->
                     <div class="account-col-80">
                         <label for="LaS-phone-lbl">Phone</label>
-                        <lable for="LaS-phone-display"><b>[[${#request.userPrincipal.principal.phone}]]</b></lable>
+                        <lable for="LaS-phone-display">
+                        	<b th:if="${user.userInfo.phone != null}">[[${user.userInfo.phone}]]</b>
+                       	</lable>
                     </div>
                     <div class="account-col-20">
                         <button type="form-edit" class="account-btn-edit" id="phone-edit-btn"
@@ -240,18 +243,19 @@
 
                 <!-- Address Edit -->
                 <div class="LaS-item">
+                	<!-- Address Display -->
                     <div class="account-col-80">
                         <label for="LaS-address-lbl">Address</label>
                         <lable for="LaS-address-display" style="display: block">
-                            <b>[[${#request.userPrincipal.principal.street}]]</b>
-                            <b>[[${#request.userPrincipal.principal.apt}]]</b>
+                            <b th:if="${user.userInfo.street != null}">[[${user.userDetailsTable.street}]]</b>
+                            <b th:if="${user.userInfo.apt != null}">[[${user.userDetailsTable.apt}]]</b>
                         </lable>
                         <lable for="LaS-address-display" style="display: block">
-                            <b>[[${#request.userPrincipal.principal.city}]],
-                                [[${#request.userPrincipal.principal.state}]]</b>
+                            <b th:if="${user.userInfo.city != null}">[[${user.userDetailsTable.city}]], </b>
+                            <b th:if="${user.userInfo.state != null}">[[${user.userDetailsTable.state}]]</b>
                         </lable>
                         <lable for="LaS-address-display">
-                            <b>[[${#request.userPrincipal.principal.zip}]]</b>
+                            <b th:if="${user.userInfo.zip != null}">[[${user.userDetailsTable.zip}]]</b>
                         </lable>
                     </div>
                     <div class="account-col-20">
@@ -259,23 +263,49 @@
                             onclick="onAddressEditButtonClick()">Edit</button>
                     </div>
 
-                    <!-- Address Edit -->
+                    <!-- Edit Address Form -->
                     <form class="edit-form" th:action="@{/account/changeAddress}" method="POST">
                         <div class="account-col-80">
-                            <p class="hide" id="edit-address-label">Enter the new Address</p>
-                            <input class="hide" type="text" id="edit-address-street" name="address-street"
-                                placeholder="1 Madeup Ln" />
-                            <input class="hide" type="text" id="edit-address-apt" name="address-apt"
-                                placeholder="Apt." />
-                            <input class="hide" type="text" id="edit-address-city" name="address-city"
-                                placeholder="New York City" />
-                            <input class="hide" type="text" id="edit-address-state" name="address-state"
-                                placeholder="New York" />
-                            <input class="hide" type="text" id="edit-address-zip" name="address-zip"
-                                placeholder="10001" />
+                        	<div class="form-control-hide" id="edit-address-street">
+	                            <p class="hide" id="edit-address-label">Enter the new Address</p>
+	                            <input class="edit-address-street" type="text" name="address-street"
+	                                placeholder="1 Madeup Ln" />
+	                            <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+	                        </div>
+	                        <div class="form-control-hide" id="edit-address-apt">
+	                            <input class="edit-address-apt" type="text" name="address-apt"
+	                                placeholder="Apt." />
+	                            <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+	                        </div>
+	                        <div class="form-control-hide" id="edit-address-city">
+	                            <input class="edit-address-city" type="text" name="address-city"
+	                                placeholder="New York City" />
+	                            <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+	                        </div>
+	                        <div class="form-control-hide" id="edit-address-state">
+	                            <input class="edit-address-state" type="text" name="address-state"
+	                                placeholder="New York" />
+	                            <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+	                        </div>
+	                        <div class="form-control-hide" id="edit-address-zip">
+	                            <input class="edit-address-zip" type="text" name="address-zip"
+	                                placeholder="10001" />
+	                            <i class="fas fa-check-circle"></i>
+                                <i class="fas fa-exclamation-circle"></i>
+                                <small>Error message</small>
+	                        </div>
                         </div>
                         <div class="account-col-20">
-                            <button class="hide" id="edit-address-btn" type="form-edit">Save</button>
+                            <button class="hide" id="edit-address-btn" type="form-edit"
+                            	onclick="return checkAddressInputs()">Save</button>
                         </div>
                     </form>
                 </div>

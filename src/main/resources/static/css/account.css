@@ -155,7 +155,12 @@ button[type="form-edit"] {
 .edit-form .edit-name-first,
 .edit-form .edit-name-last,
 .edit-form .edit-phone,
-.edit-form .edit-email {
+.edit-form .edit-email,
+.edit-form .edit-address-street,
+.edit-form .edit-address-apt,
+.edit-form .edit-address-city,
+.edit-form .edit-address-state,
+.edit-form .edit-address-zip {
   margin-top: 10px;
   margin-bottom: 3px;
   width: 50%;
