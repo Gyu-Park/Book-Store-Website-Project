@@ -638,6 +638,15 @@ input[type="password"]:focus {
   transition: 0.3s;
 }
 
+
+/* Edit Card Form */
+.card-row {
+  display: flex;
+  flex-direction: row;
+  margin: auto;
+}
+
+
 /*Wish List Content Styles*/
 
 .wishlist-item {

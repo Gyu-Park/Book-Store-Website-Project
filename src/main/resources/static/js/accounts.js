@@ -336,3 +336,18 @@ function blurFalseFunction() {
     document.querySelector('#addCardFront').style.transform = '';
     document.querySelector('#addCardBack').style.transform = '';
 }
+
+/* Card Edit Form Function */
+function onCardEditButtonClick() {
+    if (document.getElementById("card-edit-header").className === "form-control-hide") {
+        document.getElementById("card-edit-header").className = "form-control-show";
+        document.getElementById("edit-card-name").className = "form-control-show";
+        document.getElementById("edit-card-num").className = "form-control-show";
+        document.getElementById("card-edit-expMonth-CVV").className = "form-control-show";
+    } else if (document.getElementById("card-edit-header").className === "form-control-show") {
+        document.getElementById("card-edit-header").className = "form-control-hide";
+        document.getElementById("edit-card-name").className = "form-control-hide";
+        document.getElementById("edit-card-num").className = "form-control-hide";
+        document.getElementById("card-edit-expMonth-CVV").className = "form-control-hide";
+    }
+}
