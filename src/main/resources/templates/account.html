@@ -456,7 +456,7 @@
                                         <input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
                                         <button type="submit" class="form-paymentTablinks">Set Default</button>
                                     </form>
-                                        <button type="card-form-edit" class="form-paymentTablinks" onclick="onCardEditButtonClick()">Edit</button>
+                                        <button type="card-form-edit" class="form-paymentTablinks" th:onclick="'on' + ${cardStat.count} + 'CardEditButtonClick()'">Edit</button>
                                     <form th:action="@{/account/removeCard}" th:method="post">
                                         <input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
                                         <button type="submit" class="form-paymentTablinks">Remove</button>
@@ -465,17 +465,18 @@
 
                                 <!-- Existing Card Edit -->
                                 <div class="edit-payment-methode">
-                                    <form class="card-edit-form" method="POST">
-                                        <div class="card-row">
-                                            <div class="form-control-hide" id="card-edit-header">
+                                    <form class="card-edit-form" th:action="@{/account/editCard}" method="post">
+                                    	<input type="hidden" th:value="${card.paymentOptionId}" name="paymentOptionId">
+                                        <div class="card-row" id="card-row-header">
+                                            <div class="form-control-hide" th:id="'card-edit-header' + ${cardStat.count}">
                                                 <label class="edit-card-header">Edit Card</label>
                                             </div>
                                         </div>
                                         
                                         <div class="card-row">
-                                            <div class="form-control-hide" id="edit-card-name">
-                                                <p>Enter Name</p>
-                                                <input class="edit-card-name" type="text" name="CardName" placeholder="John Doe" />
+                                            <div class="form-control-hide" th:id="'edit-card-name' + ${cardStat.count}">
+                                                <p>Enter Name On Card</p>
+                                                <input th:class="'edit-card-name' + ${cardStat.count}" type="text" name="cardName" placeholder="John Doe" />
                                                 <i class="fas fa-check-circle"></i>
                                                 <i class="fas fa-exclamation-circle"></i>
                                                 <small>Error message</small>
@@ -483,9 +484,9 @@
                                         </div>
 
                                         <div class="card-row">
-                                            <div class="form-control-hide" id="edit-card-num">
+                                            <div class="form-control-hide" th:id="'edit-card-num' + ${cardStat.count}">
                                                 <p>Enter Card Number</p>
-                                                <input class="edit-card-num" type="text" name="CardNum" placeholder="1234-1234-1234-1234" />
+                                                <input th:class="'edit-card-num' + ${cardStat.count}" type="text" name="cardNum" placeholder="1234-1234-1234-1234" />
                                                 <i class="fas fa-check-circle"></i>
                                                 <i class="fas fa-exclamation-circle"></i>
                                                 <small>Error message</small>
@@ -493,28 +494,42 @@
                                         </div>     
                                         
                                         <div class="card-row">
-                                            <div class="form-control-hide" id="card-edit-expMonth-CVV">
-                                                <div class="account-col-50">
-                                                    <div  id="edit-card-expMonth">
-                                                        <p>Enter Expiration Date</p>
-                                                        <input class="edit-card-expMonth" type="text" name="CardExpMonth" placeholder="05/24" />
-                                                        <i class="fas fa-check-circle"></i>
-                                                        <i class="fas fa-exclamation-circle"></i>
-                                                        <small>Error message</small>
-                                                    </div>
+                                            <div class="form-control-hide" th:id="'card-edit-expMonth' + ${cardStat.count}">
+                                                <div id="edit-card-expMonth">
+                                                    <p>Enter Expiration Month</p>
+                                                    <input th:class="'edit-card-expMonth' + ${cardStat.count}" type="text" name="cardExpMonth" placeholder="05" />
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <i class="fas fa-exclamation-circle"></i>
+                                                    <small>Error message</small>
                                                 </div>
-                                                <div class="account-col-50">
-                                                    <div  id="edit-card-cvv">
-                                                        <p>Enter Card CVV</p>
-                                                        <input class="edit-card-cvv" type="text" name="CardCVV" placeholder="123" />
-                                                        <i class="fas fa-check-circle"></i>
-                                                        <i class="fas fa-exclamation-circle"></i>
-                                                        <small>Error message</small>
-                                                    </div>
+                                            </div>
+                                         </div>
+                                         <div class="card-row">
+                                         	<div class="form-control-hide" th:id="'card-edit-expYear' + ${cardStat.count}">
+                                                <div  id="edit-card-expYear">
+                                                    <p>Enter Expiration Year</p>
+                                                    <input th:class="'edit-card-expYear' + ${cardStat.count}" type="text" name="cardExpYear" placeholder="24" />
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <i class="fas fa-exclamation-circle"></i>
+                                                    <small>Error message</small>
+                                                </div>
+                                            </div>
+                                         </div>
+                                         <div class="card-row">
+                                         	<div class="form-control-hide" th:id="'card-edit-Cvv' + ${cardStat.count}">
+                                                <div  id="edit-card-cvv">
+                                                    <p>Enter Card CVV</p>
+                                                    <input th:class="'edit-card-cvv' + ${cardStat.count}" type="text" name="cardCVV" placeholder="123" />
+                                                    <i class="fas fa-check-circle"></i>
+                                                    <i class="fas fa-exclamation-circle"></i>
+                                                    <small>Error message</small>
                                                 </div>
                                             </div>
                                         </div>
-                                        
+                                        <div class="card-row">
+	                                        <button class="form-control-hide" th:id="'edit-card-button' + ${cardStat.count}" type="form-edit"
+	                                			th:onclick="'return check' + ${cardStat.count} +  'EditCardInputs()'">Save</button>
+	                                	</div>
                                     </form>
                                 </div>
 
@@ -594,7 +609,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <input type="submit" value="Add to Payment Options" class="payment-btn">
+                           	<input th:if="${#lists.size(card) < 5 OR #lists.isEmpty(card) == true}" type="submit" value="Add to Payment Options" class="payment-btn">
+                           	<input th:unless="${#lists.size(card) < 5}" type="submit" value="You already have the maximum number of cards" class="payment-btn" disabled>
                         </form>
 
                     </div>

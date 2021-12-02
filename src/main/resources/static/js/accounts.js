@@ -338,16 +338,419 @@ function blurFalseFunction() {
 }
 
 /* Card Edit Form Function */
-function onCardEditButtonClick() {
-    if (document.getElementById("card-edit-header").className === "form-control-hide") {
-        document.getElementById("card-edit-header").className = "form-control-show";
-        document.getElementById("edit-card-name").className = "form-control-show";
-        document.getElementById("edit-card-num").className = "form-control-show";
-        document.getElementById("card-edit-expMonth-CVV").className = "form-control-show";
-    } else if (document.getElementById("card-edit-header").className === "form-control-show") {
-        document.getElementById("card-edit-header").className = "form-control-hide";
-        document.getElementById("edit-card-name").className = "form-control-hide";
-        document.getElementById("edit-card-num").className = "form-control-hide";
-        document.getElementById("card-edit-expMonth-CVV").className = "form-control-hide";
+function on1CardEditButtonClick() {
+    if (document.getElementById("card-edit-header1").className === "form-control-hide") {
+        document.getElementById("card-edit-header1").className = "form-control-show";
+        document.getElementById("edit-card-name1").className = "form-control-show";
+        document.getElementById("edit-card-num1").className = "form-control-show";
+        document.getElementById("card-edit-expMonth1").className = "form-control-show";
+		document.getElementById("card-edit-expYear1").className = "form-control-show";
+		document.getElementById("card-edit-Cvv1").className = "form-control-show";
+		document.getElementById("edit-card-button1").className = "form-control-show";
+    } else if (document.getElementById("card-edit-header1").className === "form-control-show") {
+        document.getElementById("card-edit-header1").className = "form-control-hide";
+        document.getElementById("edit-card-name1").className = "form-control-hide";
+        document.getElementById("edit-card-num1").className = "form-control-hide";
+        document.getElementById("card-edit-expMonth1").className = "form-control-hide";
+		document.getElementById("card-edit-expYear1").className = "form-control-hide";
+		document.getElementById("card-edit-Cvv1").className = "form-control-hide";
+		document.getElementById("edit-card-button1").className = "form-control-hide";
     }
+}
+
+function on2CardEditButtonClick() {
+    if (document.getElementById("card-edit-header2").className === "form-control-hide") {
+        document.getElementById("card-edit-header2").className = "form-control-show";
+        document.getElementById("edit-card-name2").className = "form-control-show";
+        document.getElementById("edit-card-num2").className = "form-control-show";
+        document.getElementById("card-edit-expMonth2").className = "form-control-show";
+		document.getElementById("card-edit-expYear2").className = "form-control-show";
+		document.getElementById("card-edit-Cvv2").className = "form-control-show";
+		document.getElementById("edit-card-button2").className = "form-control-show";
+    } else if (document.getElementById("card-edit-header2").className === "form-control-show") {
+        document.getElementById("card-edit-header2").className = "form-control-hide";
+        document.getElementById("edit-card-name2").className = "form-control-hide";
+        document.getElementById("edit-card-num2").className = "form-control-hide";
+        document.getElementById("card-edit-expMonth2").className = "form-control-hide";
+		document.getElementById("card-edit-expYear2").className = "form-control-hide";
+		document.getElementById("card-edit-Cvv2").className = "form-control-hide";
+		document.getElementById("edit-card-button2").className = "form-control-hide";
+    }
+}
+
+
+function on3CardEditButtonClick() {
+    if (document.getElementById("card-edit-header3").className === "form-control-hide") {
+        document.getElementById("card-edit-header3").className = "form-control-show";
+        document.getElementById("edit-card-name3").className = "form-control-show";
+        document.getElementById("edit-card-num3").className = "form-control-show";
+        document.getElementById("card-edit-expMonth3").className = "form-control-show";
+		document.getElementById("card-edit-expYear3").className = "form-control-show";
+		document.getElementById("card-edit-Cvv3").className = "form-control-show";
+		document.getElementById("edit-card-button3").className = "form-control-show";
+    } else if (document.getElementById("card-edit-header3").className === "form-control-show") {
+        document.getElementById("card-edit-header3").className = "form-control-hide";
+        document.getElementById("edit-card-name3").className = "form-control-hide";
+        document.getElementById("edit-card-num3").className = "form-control-hide";
+        document.getElementById("card-edit-expMonth3").className = "form-control-hide";
+		document.getElementById("card-edit-expYear3").className = "form-control-hide";
+		document.getElementById("card-edit-Cvv3").className = "form-control-hide";
+		document.getElementById("edit-card-button3").className = "form-control-hide";
+    }
+}
+
+function on4CardEditButtonClick() {
+    if (document.getElementById("card-edit-header4").className === "form-control-hide") {
+        document.getElementById("card-edit-header4").className = "form-control-show";
+        document.getElementById("edit-card-name4").className = "form-control-show";
+        document.getElementById("edit-card-num4").className = "form-control-show";
+        document.getElementById("card-edit-expMonth4").className = "form-control-show";
+		document.getElementById("card-edit-expYear4").className = "form-control-show";
+		document.getElementById("card-edit-Cvv4").className = "form-control-show";
+		document.getElementById("edit-card-button4").className = "form-control-show";
+    } else if (document.getElementById("card-edit-header4").className === "form-control-show") {
+        document.getElementById("card-edit-header4").className = "form-control-hide";
+        document.getElementById("edit-card-name4").className = "form-control-hide";
+        document.getElementById("edit-card-num4").className = "form-control-hide";
+        document.getElementById("card-edit-expMonth4").className = "form-control-hide";
+		document.getElementById("card-edit-expYear4").className = "form-control-hide";
+		document.getElementById("card-edit-Cvv4").className = "form-control-hide";
+		document.getElementById("edit-card-button4").className = "form-control-hide";
+    }
+}
+
+function on5CardEditButtonClick() {
+    if (document.getElementById("card-edit-header5").className === "form-control-hide") {
+        document.getElementById("card-edit-header5").className = "form-control-show";
+        document.getElementById("edit-card-name5").className = "form-control-show";
+        document.getElementById("edit-card-num5").className = "form-control-show";
+        document.getElementById("card-edit-expMonth5").className = "form-control-show";
+		document.getElementById("card-edit-expYear5").className = "form-control-show";
+		document.getElementById("card-edit-Cvv5").className = "form-control-show";
+		document.getElementById("edit-card-button5").className = "form-control-show";
+    } else if (document.getElementById("card-edit-header5").className === "form-control-show") {
+        document.getElementById("card-edit-header5").className = "form-control-hide";
+        document.getElementById("edit-card-name5").className = "form-control-hide";
+        document.getElementById("edit-card-num5").className = "form-control-hide";
+        document.getElementById("card-edit-expMonth5").className = "form-control-hide";
+		document.getElementById("card-edit-expYear5").className = "form-control-hide";
+		document.getElementById("card-edit-Cvv5").className = "form-control-hide";
+		document.getElementById("edit-card-button5").className = "form-control-hide";
+    }
+}
+
+
+const cardName1 = document.querySelector('.edit-card-name1');
+const cardNum1 = document.querySelector('.edit-card-num1');
+const expMonth1 = document.querySelector('.edit-card-expMonth1');
+const expYear1 = document.querySelector('.edit-card-expYear1');
+const cvv1 = document.querySelector('.edit-card-cvv1');
+
+function check1EditCardInputs() {
+
+	const cardNameValue = cardName1.value.trim();
+	const cardNumValue = cardNum1.value.trim();
+	const expMontValue = expMonth1.value.trim();
+	const expYearValue = expYear1.value.trim();
+	const cvvValue = cvv1.value.trim();
+
+	if(cardNameValue === '') {
+		setErrorFor(cardName1, 'Please enter your payment option name');
+        return false;
+	} else if (cardNameValue.length > 19) {
+		setErrorFor(cardName1, 'Please enter sixteen digits');
+        return false;
+	} else {
+		setSuccessFor(cardName1);
+	}
+	
+	if(cardNumValue === '') {
+		setErrorFor(cardNum1, 'Please enter your card number');
+        return false;
+	} else{
+		setSuccessFor(cardNum1);
+	}
+	
+	if(expMontValue === '') {
+		setErrorFor(expMonth1, 'Please enter exp month');
+        return false;
+	} else if (expMontValue.length > 2) {
+		setErrorFor(expMonth1, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expMonth1);
+	}
+	
+	if(expYearValue === '') {
+		setErrorFor(expYear1, 'Please enter exp year');
+        return false;
+	} else if (expYearValue.length > 2) {
+		setErrorFor(expYear1, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expYear1);
+	}
+	
+	if(cvvValue === '') {
+		setErrorFor(cvv1, 'Please enter card cvv');
+        return false;
+	} else if (cvvValue.length > 3) {
+		setErrorFor(cvv1, 'Please enter three digits');
+        return false;
+	} else{
+		setSuccessFor(cvv1);
+	}
+    return true;
+}
+
+const cardName2 = document.querySelector('.edit-card-name2');
+const cardNum2 = document.querySelector('.edit-card-num2');
+const expMonth2 = document.querySelector('.edit-card-expMonth2');
+const expYear2 = document.querySelector('.edit-card-expYear2');
+const cvv2 = document.querySelector('.edit-card-cvv2');
+
+function check2EditCardInputs() {
+
+	const cardNameValue = cardName2.value.trim();
+	const cardNumValue = cardNum2.value.trim();
+	const expMontValue = expMonth2.value.trim();
+	const expYearValue = expYear2.value.trim();
+	const cvvValue = cvv2.value.trim();
+
+	if(cardNameValue === '') {
+		setErrorFor(cardName2, 'Please enter your payment option name');
+        return false;
+	} else if (cardNameValue.length > 19) {
+		setErrorFor(cardName2, 'Please enter sixteen digits');
+        return false;
+	} else {
+		setSuccessFor(cardName2);
+	}
+	
+	if(cardNumValue === '') {
+		setErrorFor(cardNum2, 'Please enter your card number');
+        return false;
+	} else{
+		setSuccessFor(cardNum2);
+	}
+	
+	if(expMontValue === '') {
+		setErrorFor(expMonth2, 'Please enter exp month');
+        return false;
+	} else if (expMontValue.length > 2) {
+		setErrorFor(expMonth2, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expMonth2);
+	}
+	
+	if(expYearValue === '') {
+		setErrorFor(expYear2, 'Please enter exp year');
+        return false;
+	} else if (expYearValue.length > 2) {
+		setErrorFor(expYear2, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expYear2);
+	}
+	
+	if(cvvValue === '') {
+		setErrorFor(cvv2, 'Please enter card cvv');
+        return false;
+	} else if (cvvValue.length > 3) {
+		setErrorFor(cvv2, 'Please enter three digits');
+        return false;
+	} else{
+		setSuccessFor(cvv2);
+	}
+    return true;
+}
+
+const cardName3 = document.querySelector('.edit-card-name3');
+const cardNum3 = document.querySelector('.edit-card-num3');
+const expMonth3 = document.querySelector('.edit-card-expMonth3');
+const expYear3 = document.querySelector('.edit-card-expYear3');
+const cvv3 = document.querySelector('.edit-card-cvv3');
+
+function check3EditCardInputs() {
+
+	const cardNameValue = cardName3.value.trim();
+	const cardNumValue = cardNum3.value.trim();
+	const expMontValue = expMonth3.value.trim();
+	const expYearValue = expYear3.value.trim();
+	const cvvValue = cvv3.value.trim();
+
+	if(cardNameValue === '') {
+		setErrorFor(cardName3, 'Please enter your payment option name');
+        return false;
+	} else if (cardNameValue.length > 19) {
+		setErrorFor(cardName3, 'Please enter sixteen digits');
+        return false;
+	} else {
+		setSuccessFor(cardName3);
+	}
+	
+	if(cardNumValue === '') {
+		setErrorFor(cardNum3, 'Please enter your card number');
+        return false;
+	} else{
+		setSuccessFor(cardNum3);
+	}
+	
+	if(expMontValue === '') {
+		setErrorFor(expMonth3, 'Please enter exp month');
+        return false;
+	} else if (expMontValue.length > 2) {
+		setErrorFor(expMonth3, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expMonth3);
+	}
+	
+	if(expYearValue === '') {
+		setErrorFor(expYear3, 'Please enter exp year');
+        return false;
+	} else if (expYearValue.length > 2) {
+		setErrorFor(expYear3, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expYear3);
+	}
+	
+	if(cvvValue === '') {
+		setErrorFor(cvv3, 'Please enter card cvv');
+        return false;
+	} else if (cvvValue.length > 3) {
+		setErrorFor(cvv3, 'Please enter three digits');
+        return false;
+	} else{
+		setSuccessFor(cvv3);
+	}
+    return true;
+}
+
+const cardName4 = document.querySelector('.edit-card-name4');
+const cardNum4 = document.querySelector('.edit-card-num4');
+const expMonth4 = document.querySelector('.edit-card-expMonth4');
+const expYear4 = document.querySelector('.edit-card-expYear4');
+const cvv4 = document.querySelector('.edit-card-cvv4');
+
+function check4EditCardInputs() {
+
+	const cardNameValue = cardName4.value.trim();
+	const cardNumValue = cardNum4.value.trim();
+	const expMontValue = expMonth4.value.trim();
+	const expYearValue = expYear4.value.trim();
+	const cvvValue = cvv4.value.trim();
+
+	if(cardNameValue === '') {
+		setErrorFor(cardName4, 'Please enter your payment option name');
+        return false;
+	} else if (cardNameValue.length > 19) {
+		setErrorFor(cardName4, 'Please enter sixteen digits');
+        return false;
+	} else {
+		setSuccessFor(cardName4);
+	}
+	
+	if(cardNumValue === '') {
+		setErrorFor(cardNum4, 'Please enter your card number');
+        return false;
+	} else{
+		setSuccessFor(cardNum4);
+	}
+	
+	if(expMontValue === '') {
+		setErrorFor(expMonth4, 'Please enter exp month');
+        return false;
+	} else if (expMontValue.length > 2) {
+		setErrorFor(expMonth4, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expMonth4);
+	}
+	
+	if(expYearValue === '') {
+		setErrorFor(expYear4, 'Please enter exp year');
+        return false;
+	} else if (expYearValue.length > 2) {
+		setErrorFor(expYear4, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expYear4);
+	}
+	
+	if(cvvValue === '') {
+		setErrorFor(cvv4, 'Please enter card cvv');
+        return false;
+	} else if (cvvValue.length > 3) {
+		setErrorFor(cvv4, 'Please enter three digits');
+        return false;
+	} else{
+		setSuccessFor(cvv4);
+	}
+    return true;
+}
+
+const cardName5 = document.querySelector('.edit-card-name5');
+const cardNum5 = document.querySelector('.edit-card-num5');
+const expMonth5 = document.querySelector('.edit-card-expMonth5');
+const expYear5 = document.querySelector('.edit-card-expYear5');
+const cvv5 = document.querySelector('.edit-card-cvv5');
+
+function check5EditCardInputs() {
+
+	const cardNameValue = cardName5.value.trim();
+	const cardNumValue = cardNum5.value.trim();
+	const expMontValue = expMonth5.value.trim();
+	const expYearValue = expYear5.value.trim();
+	const cvvValue = cvv5.value.trim();
+
+	if(cardNameValue === '') {
+		setErrorFor(cardName5, 'Please enter your payment option name');
+        return false;
+	} else if (cardNameValue.length > 19) {
+		setErrorFor(cardName5, 'Please enter sixteen digits');
+        return false;
+	} else {
+		setSuccessFor(cardName5);
+	}
+	
+	if(cardNumValue === '') {
+		setErrorFor(cardNum5, 'Please enter your card number');
+        return false;
+	} else{
+		setSuccessFor(cardNum5);
+	}
+	
+	if(expMontValue === '') {
+		setErrorFor(expMonth5, 'Please enter exp month');
+        return false;
+	} else if (expMontValue.length > 2) {
+		setErrorFor(expMonth5, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expMonth5);
+	}
+	
+	if(expYearValue === '') {
+		setErrorFor(expYear5, 'Please enter exp year');
+        return false;
+	} else if (expYearValue.length > 2) {
+		setErrorFor(expYear5, 'Please enter two digits');
+        return false;
+	} else{
+		setSuccessFor(expYear5);
+	}
+	
+	if(cvvValue === '') {
+		setErrorFor(cvv5, 'Please enter card cvv');
+        return false;
+	} else if (cvvValue.length > 3) {
+		setErrorFor(cvv5, 'Please enter three digits');
+        return false;
+	} else{
+		setSuccessFor(cvv5);
+	}
+    return true;
 }
