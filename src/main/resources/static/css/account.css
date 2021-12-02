@@ -24,6 +24,10 @@
   flex: 50%;
 }
 
+.account-col-33 {
+  flex: 33%;
+}
+
 .account-col-20 {
   flex: 20%;
 }
@@ -640,10 +644,57 @@ input[type="password"]:focus {
 
 
 /* Edit Card Form */
-.card-row {
-  display: flex;
-  flex-direction: row;
+.edit-payment-methode {
+	margin-top: 10px;
+}
+
+.edit-payment-methode .card-edit-form {
+  flex: 100%;
   margin: auto;
+  max-width: 300px
+}
+
+#card-edit-header1,
+#card-edit-header2,
+#card-edit-header3,
+#card-edit-header4,
+#card-edit-header5 {
+  flex: 100%;
+  text-align: center;
+}
+
+.card-row {
+  flex: 100%;
+  height: 75px;
+}
+
+#card-row-header {
+	max-height: 10px;
+}
+
+.card-row input {
+  width: 90%;
+  margin-bottom: 3px;
+}
+
+.card-row i {
+  position: absolute;
+  margin-left: -25px;
+  margin-top: 10px;
+  visibility: hidden;
+}
+
+.card-row small {
+  visibility: hidden;
+  font-size: 10px;
+}
+
+#edit-card-button1,
+#edit-card-button2,
+#edit-card-button3,
+#edit-card-button4,
+#edit-card-button5 {
+  width: 97%	
 }
 
 

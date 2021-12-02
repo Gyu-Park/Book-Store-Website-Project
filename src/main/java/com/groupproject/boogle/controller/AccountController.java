@@ -177,6 +177,11 @@ public class AccountController {
 
 	@PostMapping("/account/addCard")
 	public String addCard(Card card, RedirectAttributes redirectAttributes) {
+		if (card == null || card.getCardCvv() == null || card.getCardExpMonth() == null 
+				|| card.getCardExpYear() == null || card.getCardHolderName() == null 
+				|| card.getCardNumber() == null || card.getPaymentOptionName() == null) {
+			return "redirect:/account";
+		}
 		customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		card.setUser(user);
@@ -205,16 +210,34 @@ public class AccountController {
 
 		return "redirect:/account";
 	}
+	
+	@PostMapping("/account/editCard")
+	public String editCard(Card card, Long paymentOptionId, String cardName, String cardNum, Byte cardExpMonth, 
+						Byte cardExpYear, String cardCVV, RedirectAttributes redirectAttributes) {
+		
+		card = cardService.findCardByPaymentOptionId(paymentOptionId);
+		card.setCardHolderName(cardName);
+		card.setCardNumber(cardNum);
+		card.setCardExpMonth(cardExpMonth);
+		card.setCardExpYear(cardExpYear);
+		card.setCardCvv(cardCVV);
+		
+		cardRepository.saveAndFlush(card);
+		
+		redirectAttributes.addFlashAttribute("activeTab", 3);
+		
+		return "redirect:/account";
+	}
 
 	@PostMapping("/account/removeCard")
-	public String removeCard(Card defaultCard, RedirectAttributes redirectAttributes) {
+	public String removeCard(Card card, RedirectAttributes redirectAttributes) {
 		customUserDetails = (CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 		User user = customUserDetails.getUser();
 		List<Card> cardList = cardService.findAllCardByUser(user);
 		Card removeCard = null;
-		for (Card card : cardList) {
-			if (card.getPaymentOptionId().equals(defaultCard.getPaymentOptionId())) {
-				removeCard = card;
+		for (Card card1 : cardList) {
+			if (card.getPaymentOptionId().equals(card.getPaymentOptionId())) {
+				removeCard = card1;
 				break;
 			}
 		}

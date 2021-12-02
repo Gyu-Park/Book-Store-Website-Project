@@ -23,6 +23,10 @@ public class CardService {
 		return cardRepository.findCardByCardNumber(cardNumber);
 	}
 	
+	public Card findCardByPaymentOptionId(Long paymentOptionId) {
+		return cardRepository.getById(paymentOptionId);
+	}
+	
 	public Card findDefaultCard(User user) {
 		return cardRepository.findCardByUserAndDefaultCard(user, true);
 	}
