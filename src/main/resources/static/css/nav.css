@@ -277,9 +277,13 @@ li.button {
   .search-bar button {
     font-size: 1vw;
   }
+
+  li.button {
+    margin-right: 0;
+  }
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 950px) {
   /* Container Styles */
   .nav-container {
     flex-direction: column;
