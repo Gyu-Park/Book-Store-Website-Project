@@ -61,13 +61,13 @@ public class ShoppingCart {
 		this.date = date;
 	}
 
-	public Double getTotalPrice() {
+	public String getTotalPrice() {
 		Double sum = 0.0;
 		for(CartItem item : this.items) {
-			sum = sum + item.getBook().getPrice() * item.getQuantity();
+			sum = sum + item.getBook().getPrice().doubleValue() * item.getQuantity();
 		}
 		
-		return sum;
+		return String.format("%.2f", sum);
 	}
 
 	public int getItemsNumber() {

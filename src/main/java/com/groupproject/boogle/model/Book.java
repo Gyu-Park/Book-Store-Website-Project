@@ -1,5 +1,7 @@
 package com.groupproject.boogle.model;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.util.List;
 import java.util.Objects;
 
@@ -124,8 +126,9 @@ public class Book {
 		this.publication_year = publication_year;
 	}
 
-	public Double getPrice() {
-		return price;
+	public BigDecimal getPrice() {
+		BigDecimal bookPrice = new BigDecimal(price).setScale(2, RoundingMode.HALF_UP);
+		return bookPrice;
 	}
 
 	public void setPrice(Double price) {
