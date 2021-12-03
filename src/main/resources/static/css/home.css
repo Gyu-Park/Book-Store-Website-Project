@@ -44,7 +44,7 @@ body {
   text-align: center;
   font-size: 5em;
   letter-spacing: 0.2em;
-  /* text-shadow: 10px 10px 10px #778899; */
+  text-shadow: -1px -1px 0 #394B5D, 1px -1px 0 #394B5D, -1px 1px 0 #394B5D, 1px 1px 0 #394B5D;
 }
 
 #blink {

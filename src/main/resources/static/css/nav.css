@@ -253,6 +253,16 @@ li.button {
   display: none;
 }
 
+/* Scrollbar Styles */
+.nav-open::-webkit-scrollbar {
+  display: none;
+}
+
+.nav-open {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
 /* Mobile Styles */
 @media all and (max-width: 1250px) {
   header nav li {
@@ -267,9 +277,13 @@ li.button {
   .search-bar button {
     font-size: 1vw;
   }
+
+  li.button {
+    margin-right: 0;
+  }
 }
 
-@media all and (max-width: 900px) {
+@media all and (max-width: 950px) {
   /* Container Styles */
   .nav-container {
     flex-direction: column;

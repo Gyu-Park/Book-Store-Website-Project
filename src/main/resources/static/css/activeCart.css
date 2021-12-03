@@ -5,16 +5,20 @@
   min-height: 100vh;
 }
 
+#active-cart-row-first {
+  flex-wrap: nowrap;
+}
+
 .active-cart-row,
 .wishlist-row {
   display: flex;
   flex-wrap: wrap;
-  margin: 0 -16;
+  align-content: center;
 }
 
 .active-cart-col-70 {
   flex: 70%;
-  max-width: 70%;
+  width: 70%;
 }
 
 .active-cart-col-60 {
@@ -38,10 +42,11 @@
 }
 
 .active-cart-container,
-.subtotal-container {
+.subtotal-container,
+.wishlist-container {
   margin-bottom: 15px;
   padding: 5px 20px 15px 20px;
-  border: 2px solid lightslategray;
+  /* border: 2px solid lightslategray; */
   border-radius: 0.2em;
   box-shadow: rgb(0 0 0 / 19%) 0px 10px 20px, rgb(0 0 0 / 23%) 0px 6px 6px;
 }
@@ -111,7 +116,7 @@ span.cart-subtotal {
 .cart-item {
   display: flex;
   flex-wrap: wrap;
-  min-width: 100%;
+  max-width: 100%;
   padding: 10px 20px 5px 20px;
   margin-bottom: 0.5em;
 }
@@ -127,7 +132,22 @@ span.cart-subtotal {
 
 .cart-item-title-container {
   flex: 80%;
-  padding: 10px 20px 15px 20px;
+  padding: 15px 20px;
+  padding-top: 0;
+}
+
+.cart-item-title-container p {
+  font-size: min(1.1vw, 1em);
+  text-align: justify;
+}
+
+.cart-col-20 p {
+  margin: 0;
+}
+
+.cart-item label {
+  font-weight: bold;
+  font-size: 1em;
 }
 
 button[type="form-update"] {
@@ -156,7 +176,7 @@ button[type="form-remove"] {
 	width: 76%;
 }
 
-img {
+.cart-item img {
   border: 1px solid #778899;
   width: 100px;
   height: 140px;
@@ -182,10 +202,9 @@ img {
 	font-size: 18px;
 }
 
-/* WishList Items Coursel and Item Card Styles */
+/* WishList Items Carousel and Item Card Styles */
 .wishlist-container {
   max-width: 100%;
-  border: 2px solid lightslategray;
   border-radius: 0.2em;
   margin-bottom: 15px;
   padding: 5px 20px 15px 20px;
@@ -278,4 +297,59 @@ img {
 	margin-bottom: 50px;
 	font-weight: bold;
 	font-size: 18px;
+}
+
+/* Mobile Styles */
+@media all and (max-width: 950px) {
+  /* Container Styles */
+  #active-cart-row-first {
+    flex-wrap: wrap;
+    flex-direction: column-reverse;
+    min-width: 340px;
+  }
+
+  .active-cart-col-25 {
+    flex: 100%
+  }
+
+  .active-cart-col-70 {
+    flex: 100%;
+    width: 100%;
+  }
+
+  /* Cart Item Styles */
+  .cart-item-title-container p {
+    font-size: max(1.7vw, 10px);
+  }
+
+}
+
+@media all and (max-width: 725px) {
+  .cart-item-title-container p {
+    display: none;
+  }
+
+  #quantity {
+    order: 3;
+    flex: 100%;
+    text-align: justify;
+  }
+
+  button[type="form-update"] {
+    width: 45%;
+  }
+  
+  button[type="form-remove"] {
+    width: 45%;
+    float: right;
+  }
+
+  .cart-item img {
+    width: 80px;
+    height: 120px;
+  }
+
+  #item-qty {
+    width: 45%;
+  }
 }
