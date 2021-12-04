@@ -67,6 +67,7 @@ public class CartController {
 	@PostMapping("/cart/addToCart")
 	public String addToCart(HttpSession session,
 							Model model,
+							@RequestParam String action,
 							@ModelAttribute("book") Book book,
 							@ModelAttribute("qty") int qty,
 							@ModelAttribute("sentFromAccountWishList") boolean sentFromAccountWishList,
@@ -83,6 +84,10 @@ public class CartController {
 			shoppingCartService.addShoppingCart(book.getIsbn13(), sessionToken, qty);
 		} else {
 			shoppingCartService.addToExistingShoppingCart(book.getIsbn13(), sessionToken, qty);
+		}
+		
+		if(action.equals("buyNow")) {
+			return "redirect:/checkout";
 		}
 		
 		if(sentFromAccountWishList) {

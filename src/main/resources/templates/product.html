@@ -155,9 +155,9 @@
                     <input type="hidden" value="false" name="sentFromAccountWishList">
                     <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
                     <input type="number" id="item-qty" value="1" name="qty" th:attr="max=${book.number_on_hand}" th:disabled="${book.number_on_hand <= 0}" required>
-                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}">Add to Cart</button>
+                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}" name="action" value="addToCart">Add to Cart</button>
+                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}" name="action" value="buyNow">Buy Now</button>
                   </form>
-                  <button type="product-submit">Buy Now</button>
                   <div sec:authorize="isAuthenticated()">
                     <a th:href="@{/addToWishList/{isbn13}(isbn13 = ${book.isbn13})}">
                       <button type="product-submit">Add to Wish List</button>
