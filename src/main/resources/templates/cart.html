@@ -126,11 +126,10 @@
                                                 th:value="${cartItem.quantity}"
                                                 th:attr="max=${cartItem.book.number_on_hand}" />
                                             <button type="form-update">Update qty</button>
-                                            <a th:href="@{/cart/removeItem/{id}(id = ${cartItem.id})}"
-                                                data-toggle="tooltip">
-                                                <button type="form-remove">Remove</button>
-                                            </a>
                                         </form>
+                                        <a th:href="@{/cart/removeItem/{id}(id = ${cartItem.id})}" data-toggle="tooltip">
+                                            <button type="form-remove">Remove</button>
+                                        </a>
                                     </div>
                                     <div class="cart-col-20">
                                         <label>Price</label>
