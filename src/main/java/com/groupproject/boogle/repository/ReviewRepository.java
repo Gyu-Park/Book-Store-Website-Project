@@ -6,11 +6,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import com.groupproject.boogle.model.Book;
-import com.groupproject.boogle.model.OrderItem;
+import com.groupproject.boogle.model.Review;
 
 @Repository
-public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
+public interface ReviewRepository extends JpaRepository<Review, Long> {
 	
-	List<OrderItem>findOrderItemsByBook(Book book);
+	public List<Review> findAllReviewsByBook(Book book);
 
 }

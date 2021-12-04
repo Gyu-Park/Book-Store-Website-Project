@@ -258,6 +258,7 @@ span.close {
   padding-right: 10px;
   font-size: 35px;
   font-weight: bold;
+  cursor: pointer;
 }
 
 .animate {
@@ -287,6 +288,30 @@ span.close {
   display: flex;
   justify-content: center;
   margin: auto;
+  
+  counter-reset: rateme 0;   
+  font-size: 2.0rem;
+  font-weight: 900;
+}
+
+.star-rating-container .star {
+  color: goldenrod;
+  font-size: 2.5rem;
+  padding: 0 1rem; /* space out the stars */
+}
+
+.star::before{
+  content: '\2606';    /* star outline */
+  cursor: pointer;
+}
+
+.star.rated::before{
+/* the style for a selected star */
+  content: '\2605';  /* filled star */
+}
+
+.star.rated {
+  counter-increment: rateme 1;
 }
 
 .star-rating-container i {
@@ -326,6 +351,43 @@ button[type="customer-review-submit"] {
   border: none;
   border-radius: 0.2em;
   cursor: pointer;
+}
+
+.single-review-container {
+	width: 100%;
+}
+
+.single-review-container small {
+	color: blue;
+	font-size: 11px;
+}
+
+.signle-review-description {
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.empty-review-container {
+	width: 100%;
+	text-align: center;
+}
+
+.empty-review-container-secondDiv {
+	display: grid;
+	margin: auto;
+}
+
+.empty-review-container-secondDiv img {
+	margin: 20px auto;
+	border-radius: 0;
+	box-shadow: none;
+	max-width: 120px;
+}
+
+.empty-review-container-secondDiv span {
+	margin-top: 10px;
+	margin-bottom: 30px;
+	font-weight: bold;
 }
 
 /* Button Styles */
