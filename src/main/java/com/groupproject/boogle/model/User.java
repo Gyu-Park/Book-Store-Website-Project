@@ -45,6 +45,9 @@ public class User {
 	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Card> cards;
 	
+	@OneToMany(mappedBy = "user", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<Order> order;
+	
 	/** getters and setters **/
 	public UserInfo getUserDetailsTable() {
 		return userInfo;
@@ -108,6 +111,14 @@ public class User {
 
 	public void setCards(List<Card> cards) {
 		this.cards = cards;
+	}
+
+	public List<Order> getOrder() {
+		return order;
+	}
+
+	public void setOrder(List<Order> order) {
+		this.order = order;
 	}
 
 	@Override
