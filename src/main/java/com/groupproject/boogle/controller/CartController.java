@@ -13,8 +13,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -98,7 +99,7 @@ public class CartController {
 		return "redirect:/product?isbn13="+book.getIsbn13();
 	}
 	
-	@PostMapping("/cart/updateShoppingCart")
+	@RequestMapping(value = "/cart/updateShoppingCart", method = RequestMethod.POST, params = "qty")
 	public String updateCartItem(@RequestParam("item_id") Long id, 
 			@RequestParam("quantity") int quantity) {
 		
@@ -106,8 +107,8 @@ public class CartController {
 		return "redirect:/cart";
 	}
 	
-	@GetMapping("/cart/removeItem/{id}")
-	public String removeItem(@PathVariable("id") Long id, HttpServletRequest request) {
+	@RequestMapping(value = "/cart/updateShoppingCart", method = RequestMethod.POST, params = "remove")
+	public String removeItem(@RequestParam("item_id") Long id, HttpServletRequest request) {
 		String sessionToken = (String) request.getSession(false).getAttribute("sessionToken");
 		shoppingCartService.removeCartItemFromShoppingCart(id, sessionToken);
 		return "redirect:/cart";
