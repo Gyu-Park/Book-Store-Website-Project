@@ -106,7 +106,7 @@
                     <!-- Name Display -->
                     <div class="account-col-80">
                         <label for="LaS-name-lbl">Name</label>
-                        <lable for="LaS-name-display"><b>[[${#request.userPrincipal.principal.fullname}]]</b>
+                        <lable for="LaS-name-display"><p>[[${#request.userPrincipal.principal.fullname}]]</p>
                         </lable>
                     </div>
                     <div class="account-col-20">
@@ -144,7 +144,7 @@
                     <div class="account-col-80">
                         <label for="LaS-email-lbl">Email</label>
                         <lable for="LaS-email-display">
-                        	<b>[[${#request.userPrincipal.principal.username}]]</b>
+                        	<p>[[${#request.userPrincipal.principal.username}]]</p>
                         </lable>
                     </div>
                     <div class="account-col-20">
@@ -176,7 +176,7 @@
                     <div class="account-col-80">
                         <label for="LaS-phone-lbl">Phone</label>
                         <lable for="LaS-phone-display">
-                        	<b th:if="${user.userInfo.phone != null}">[[${user.userInfo.phone}]]</b>
+                        	<p th:if="${user.userInfo.phone != null}">[[${user.userInfo.phone}]]</p>
                        	</lable>
                     </div>
                     <div class="account-col-20">
@@ -208,7 +208,7 @@
                     <!-- Password Display -->
                     <div class="account-col-80">
                         <label for="LaS-password-lbl">Password</label>
-                        <lable for="LaS-password-display"><b>**********</b></lable>
+                        <lable for="LaS-password-display"><p>**********</p></lable>
                     </div>
                     <div class="account-col-20">
                         <button type="form-edit" class="account-btn-edit" id="password-edit-btn"
@@ -247,15 +247,15 @@
                     <div class="account-col-80">
                         <label for="LaS-address-lbl">Address</label>
                         <lable for="LaS-address-display" style="display: block">
-                            <b th:if="${user.userInfo.street != null}">[[${user.userDetailsTable.street}]]</b>
-                            <b th:if="${user.userInfo.apt != null}">[[${user.userDetailsTable.apt}]]</b>
+                            <p th:if="${user.userInfo.street != null}">[[${user.userDetailsTable.street}]]</p>
+                            <p th:if="${user.userInfo.apt != null}">[[${user.userDetailsTable.apt}]]</p>
                         </lable>
                         <lable for="LaS-address-display" style="display: block">
-                            <b th:if="${user.userInfo.city != null}">[[${user.userDetailsTable.city}]], </b>
-                            <b th:if="${user.userInfo.state != null}">[[${user.userDetailsTable.state}]]</b>
+                            <p th:if="${user.userInfo.city != null}">[[${user.userDetailsTable.city}]], </p>
+                            <p th:if="${user.userInfo.state != null}">[[${user.userDetailsTable.state}]]</p>
                         </lable>
                         <lable for="LaS-address-display">
-                            <b th:if="${user.userInfo.zip != null}">[[${user.userDetailsTable.zip}]]</b>
+                            <p th:if="${user.userInfo.zip != null}">[[${user.userDetailsTable.zip}]]</p>
                         </lable>
                     </div>
                     <div class="account-col-20">
