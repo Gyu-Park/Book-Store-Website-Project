@@ -149,7 +149,6 @@ button[type="product-submit"] {
 }
 
 .carousel-card:hover {
-  
 }
 
 .carousel-nav button {
@@ -165,7 +164,7 @@ button[type="product-submit"] {
 }
 
 .carousel-nav button:hover {
-  background-color: linear-gradient(to right, white , #fffaf3);
+  background-color: linear-gradient(to right, white, #fffaf3);
   opacity: 50%;
   color: black;
   font-size: 23px;
@@ -211,6 +210,19 @@ button[type="generate-review"] {
   color: #fffaf3;
   padding: 10px;
   width: 100%;
+  height: auto;
+  border: none;
+  border-radius: 0.2em;
+  cursor: pointer;
+}
+
+button[type="edit-review"],
+button[type="delete-review"] {
+  background-color: #778899;
+  color: #fffaf3;
+  margin-top: 10px;
+  padding: 10px;
+  width: 75%;
   height: auto;
   border: none;
   border-radius: 0.2em;
@@ -288,9 +300,9 @@ span.close {
   display: flex;
   justify-content: center;
   margin: auto;
-  
-  counter-reset: rateme 0;   
-  font-size: 2.0rem;
+
+  counter-reset: rateme 0;
+  font-size: 2rem;
   font-weight: 900;
 }
 
@@ -300,14 +312,14 @@ span.close {
   padding: 0 1rem; /* space out the stars */
 }
 
-.star::before{
-  content: '\2606';    /* star outline */
+.star::before {
+  content: "\2606"; /* star outline */
   cursor: pointer;
 }
 
-.star.rated::before{
-/* the style for a selected star */
-  content: '\2605';  /* filled star */
+.star.rated::before {
+  /* the style for a selected star */
+  content: "\2605"; /* filled star */
 }
 
 .star.rated {
@@ -353,41 +365,42 @@ button[type="customer-review-submit"] {
   cursor: pointer;
 }
 
-.single-review-container {
-	width: 100%;
+.single-review-container,
+.your-review-container {
+  width: 100%;
 }
 
 .single-review-container small {
-	color: blue;
-	font-size: 11px;
+  color: blue;
+  font-size: 11px;
 }
 
 .signle-review-description {
-	margin-top: 10px;
-	margin-bottom: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
 }
 
 .empty-review-container {
-	width: 100%;
-	text-align: center;
+  width: 100%;
+  text-align: center;
 }
 
 .empty-review-container-secondDiv {
-	display: grid;
-	margin: auto;
+  display: grid;
+  margin: auto;
 }
 
 .empty-review-container-secondDiv img {
-	margin: 20px auto;
-	border-radius: 0;
-	box-shadow: none;
-	max-width: 120px;
+  margin: 20px auto;
+  border-radius: 0;
+  box-shadow: none;
+  max-width: 120px;
 }
 
 .empty-review-container-secondDiv span {
-	margin-top: 10px;
-	margin-bottom: 30px;
-	font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  font-weight: bold;
 }
 
 /* Button Styles */

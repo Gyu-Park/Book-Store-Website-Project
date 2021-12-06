@@ -106,26 +106,26 @@
             <div class="checkout-row">
               <div class="product-rating-container" th:if="${avgRating}">
                 <i th:class="${avgRating} > 0 AND ${avgRating} < 0.8 ? 'fas fa-star-half'"></i>
-	            <i th:class="${avgRating} >= 0.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
-	            <i th:class="${avgRating} < 1.3 ? 'far fa-star'"></i>
-	            <i th:class="${avgRating} > 1.2 AND ${avgRating} < 1.8 ? 'fas fa-star-half'"></i>
-	            <i th:class="${avgRating} >= 1.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
-	            <i th:class="${avgRating} < 2.3 ? 'far fa-star'"></i>
-	            <i th:class="${avgRating} > 2.2 AND ${avgRating} < 2.8 ? 'fas fa-star-half'"></i>
-	            <i th:class="${avgRating} >= 2.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
-	            <i th:class="${avgRating} < 3.3 ? 'far fa-star'"></i>
-	            <i th:class="${avgRating} > 3.2 AND ${avgRating} < 3.8 ? 'fas fa-star-half'"></i>
-	            <i th:class="${avgRating} >= 3.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
-	            <i th:class="${avgRating} < 4.3 ? 'far fa-star'"></i>
-	            <i th:class="${avgRating} > 4.2 AND ${avgRating} < 4.8 ? 'fas fa-star-half'"></i>
-	            <i th:class="${avgRating} >= 4.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
-	            <span style="font-size: 14px;">[[${avgRating}]] out of 5</span>
+                <i th:class="${avgRating} >= 0.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
+                <i th:class="${avgRating} < 1.3 ? 'far fa-star'"></i>
+                <i th:class="${avgRating} > 1.2 AND ${avgRating} < 1.8 ? 'fas fa-star-half'"></i>
+                <i th:class="${avgRating} >= 1.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
+                <i th:class="${avgRating} < 2.3 ? 'far fa-star'"></i>
+                <i th:class="${avgRating} > 2.2 AND ${avgRating} < 2.8 ? 'fas fa-star-half'"></i>
+                <i th:class="${avgRating} >= 2.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
+                <i th:class="${avgRating} < 3.3 ? 'far fa-star'"></i>
+                <i th:class="${avgRating} > 3.2 AND ${avgRating} < 3.8 ? 'fas fa-star-half'"></i>
+                <i th:class="${avgRating} >= 3.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
+                <i th:class="${avgRating} < 4.3 ? 'far fa-star'"></i>
+                <i th:class="${avgRating} > 4.2 AND ${avgRating} < 4.8 ? 'fas fa-star-half'"></i>
+                <i th:class="${avgRating} >= 4.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
+                <span style="font-size: 14px;">[[${avgRating}]] out of 5</span>
                 <a href="">Reviews</a>
                 <span class="right-span">Ratings | [[${#lists.size(reviews)}]]</span>
               </div>
               <div class="product-rating-container" th:unless="${avgRating}">
                 <span style="font-size: 14px;">No reviews for this book</span>
-              	<span class="right-span">Ratings | 0</span>
+                <span class="right-span">Ratings | 0</span>
               </div>
             </div>
             <hr>
@@ -168,9 +168,12 @@
                     <input type="hidden" th:field="*{book.isbn13}" />
                     <input type="hidden" value="false" name="sentFromAccountWishList">
                     <label for="item-qty" id="product-BO-item-QTY">Qty: </label>
-                    <input type="number" id="item-qty" value="1" name="qty" th:attr="max=${book.number_on_hand}" th:disabled="${book.number_on_hand <= 0}" required>
-                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}" name="action" value="addToCart">Add to Cart</button>
-                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}" name="action" value="buyNow">Buy Now</button>
+                    <input type="number" id="item-qty" value="1" name="qty" th:attr="max=${book.number_on_hand}"
+                      th:disabled="${book.number_on_hand <= 0}" required>
+                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}" name="action"
+                      value="addToCart">Add to Cart</button>
+                    <button type="product-submit" th:disabled="${book.number_on_hand <= 0}" name="action"
+                      value="buyNow">Buy Now</button>
                   </form>
                   <div sec:authorize="isAuthenticated()">
                     <a th:href="@{/addToWishList/{isbn13}(isbn13 = ${book.isbn13})}">
@@ -238,7 +241,7 @@
     <div id="product-review-modal-form" class="review-modal">
 
       <form class="form-modal-review animate" th:action="@{/product/createReview}" method="post">
-		<input type="hidden" th:field="*{book.isbn13}" />
+        <input type="hidden" th:field="*{book.isbn13}" />
         <div class="review-modal-row">
           <div class="modal-close">
             <span onclick="document.getElementById('product-review-modal-form').style.display='none'" class="close"
@@ -252,7 +255,7 @@
             <h3>Leave a Customer Review</h3>
             <hr>
             <div class="star-rating-container" data-value="3">
-              <input type="hidden" id="rating" name="rating" >
+              <input type="hidden" id="rating" name="rating">
               <span class="star">&nbsp;</span>
               <span class="star">&nbsp;</span>
               <span class="star">&nbsp;</span>
@@ -264,7 +267,8 @@
               <p>Review Title</p>
               <input type="customer-review-title" name="reviewTitle" id="customer-review-title" maxlength="50">
               <p>Write a Description</p>
-              <textarea type="customer-review-description" name="reviewDes" id="customer-review-description" maxlength="250"></textarea>
+              <textarea type="customer-review-description" name="reviewDes" id="customer-review-description"
+                maxlength="250"></textarea>
             </div>
             <hr>
             <div class="customer-review-submit">
@@ -297,9 +301,9 @@
             <i th:class="${avgRating} > 4.2 AND ${avgRating} < 4.8 ? 'fas fa-star-half'"></i>
             <i th:class="${avgRating} >= 4.8 AND ${avgRating} <= 5 ? 'fas fa-star'"></i>
             <span style="font-size: 18px;">[[${avgRating}]] out of 5</span>
-	        <span sec:authorize="isAuthenticated()" class="right-span"><button type="generate-review"
-	            onClick="document.getElementById('product-review-modal-form').style.display='block'">
-	            Write A Review</button></span>
+            <span sec:authorize="isAuthenticated()" class="right-span"><button type="generate-review"
+                onClick="document.getElementById('product-review-modal-form').style.display='block'">
+                Write A Review</button></span>
           </h2>
         </div>
         <div class="produuct-row" th:unless="${avgRating}">
@@ -315,22 +319,66 @@
 
           <!--Review Templates-->
           <div class="product-row">
+
+            <!-- Your Review -->
+            <div class="your-review-container">
+              <div class="product-row">
+
+                <div class="product-col-70">
+                  <div class="product-row">
+                    <h4>
+                      <i id="review-user-icon" class="fas fa-user-circle"></i>
+                      &nbsp; Dimitrios Koloutsos (Your Review)
+                    </h4>
+                  </div>
+
+                  <div class="product-row">
+                    <div class="your-review-star-container">
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                      <i class="far fa-star"></i>
+                    </div>
+                    <!--Review Title-->
+                    <b>&nbsp;&nbsp;&nbsp;This book is awesome!</b>
+                  </div>
+
+                  <div class="product-row">
+                    <div class="your-review-description">
+                      <p>I'd recommend that you read this book. This book is awesome!</p>
+                    </div>
+                  </div>
+
+                </div>
+
+                <div class="product-col-30">
+                  <button type="edit-review" onClick="">Edit Your Review</button>
+                  <button type="delete-review" onClick="">Delete Your Review</button>
+                </div>
+
+              </div>
+              <hr>
+            </div>
+
+            <!-- Single Review -->
             <div class="single-review-container" th:if="${reviews != null}" th:each="review : ${reviews}">
               <div class="product-row">
                 <h4>
-                	<i id="review-user-icon" class="fas fa-user-circle"></i>
-                	&nbsp;[[${review.user.firstname}]] [[${review.user.lastname}]] 
-                	<small th:if="${#lists.contains(listOfUsersWhoOrderedThisItem, review.user.userid)}">&nbsp;Verified Purchase</small>
+                  <i id="review-user-icon" class="fas fa-user-circle"></i>
+                  &nbsp;[[${review.user.firstname}]] [[${review.user.lastname}]]
+                  <small th:if="${#lists.contains(listOfUsersWhoOrderedThisItem, review.user.userid)}">&nbsp;Verified
+                    Purchase</small>
                 </h4>
               </div>
 
               <div class="product-row">
                 <div class="single-review-star-container">
                   <i th:class="${review.rating} > 0 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-	              <i th:class="${review.rating} > 1 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-	              <i th:class="${review.rating} > 2 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-	              <i th:class="${review.rating} > 3 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-	              <i th:class="${review.rating} > 4 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+                  <i th:class="${review.rating} > 1 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+                  <i th:class="${review.rating} > 2 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+                  <i th:class="${review.rating} > 3 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+                  <i th:class="${review.rating} > 4 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
                 </div>
                 <!--Review Title-->
                 <b>&nbsp;&nbsp;&nbsp;[[${review.reviewTitle}]]</b>
@@ -343,9 +391,11 @@
               </div>
 
             </div>
+
+            <!--Empty Reivew -->
             <div class="empty-review-container" th:if="${#lists.isEmpty(reviews)}">
               <div class="empty-review-container-secondDiv">
-                <img src="img/empty-wishlist.png" >
+                <img src="img/empty-wishlist.png">
                 <span>There are no reviews for this book yet.</span>
               </div>
             </div>
