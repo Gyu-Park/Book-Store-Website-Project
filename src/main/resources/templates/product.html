@@ -303,7 +303,11 @@
           </h2>
         </div>
         <div class="produuct-row" th:unless="${avgRating}">
-          <h2>Reviews</h2>
+          <h2>Reviews
+          	<span sec:authorize="isAuthenticated()" class="right-span"><button type="generate-review"
+	            onClick="document.getElementById('product-review-modal-form').style.display='block'">
+	            Write A Review</button></span>
+          </h2>
         </div>
         <hr>
 

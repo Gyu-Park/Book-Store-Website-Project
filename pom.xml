@@ -11,7 +11,7 @@
 	<groupId>com.groupproject</groupId>
 	<artifactId>boogle1</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<packaging>war</packaging>
+	<packaging>jar</packaging>
 	<name>boogle1</name>
 	<description>Semester project for Softwear Engineering Method</description>
 	<properties>
