@@ -367,7 +367,7 @@
                 <h4>
                   <i id="review-user-icon" class="fas fa-user-circle"></i>
                   &nbsp;[[${review.user.firstname}]] [[${review.user.lastname}]]
-                  <small th:if="${#lists.contains(listOfUsersWhoOrderedThisItem, review.user.userid)}">&nbsp;Verified
+                  <small th:if="${listOfUsersWhoOrderedThisItem} != null AND ${#lists.contains(listOfUsersWhoOrderedThisItem, review.user.userid)}">&nbsp;Verified
                     Purchase</small>
                 </h4>
               </div>
