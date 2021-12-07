@@ -114,9 +114,15 @@ public class ProductController {
 				break;
 			}
 		}
-		
-		
 		model.addAttribute("similarItems", similarItems);
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = userRepository.findByEmail(auth.getName());
+		if (user != null) {
+			model.addAttribute("user", user);
+		}
+		
+		
 		return "product";
 	}
 	
@@ -132,7 +138,7 @@ public class ProductController {
 		}
 		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		User user = userRepository.findByEmail(auth.getName());;
+		User user = userRepository.findByEmail(auth.getName());
 		
 		Review review = new Review();
 		review.setBook(book);
