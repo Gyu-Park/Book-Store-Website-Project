@@ -321,32 +321,32 @@
           <div class="product-row">
 
             <!-- Your Review -->
-            <div class="your-review-container">
+            <div class="your-review-container" th:if="${user} != null AND ${review.user.userid} == ${user.userid}" th:each="review : ${reviews}">
               <div class="product-row">
 
                 <div class="product-col-70">
                   <div class="product-row">
                     <h4>
                       <i id="review-user-icon" class="fas fa-user-circle"></i>
-                      &nbsp; Dimitrios Koloutsos (Your Review)
+                      &nbsp; [[${review.user.firstname}]] [[${review.user.lastname}]] (Your Review)
                     </h4>
                   </div>
 
                   <div class="product-row">
                     <div class="your-review-star-container">
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
-                      <i class="far fa-star"></i>
+                      <i th:class="${review.rating} > 0 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                  <i th:class="${review.rating} > 1 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                  <i th:class="${review.rating} > 2 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                  <i th:class="${review.rating} > 3 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                  <i th:class="${review.rating} > 4 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
                     </div>
                     <!--Review Title-->
-                    <b>&nbsp;&nbsp;&nbsp;This book is awesome!</b>
+                    <b>&nbsp;&nbsp;&nbsp;[[${review.reviewTitle}]]</b>
                   </div>
 
                   <div class="product-row">
                     <div class="your-review-description">
-                      <p>I'd recommend that you read this book. This book is awesome!</p>
+                      <p>[[${review.reviewDes}]]</p>
                     </div>
                   </div>
 
@@ -362,42 +362,44 @@
             </div>
 
             <!-- Single Review -->
-            <div class="single-review-container" th:if="${reviews != null}" th:each="review : ${reviews}">
-              <div class="product-row">
-                <h4>
-                  <i id="review-user-icon" class="fas fa-user-circle"></i>
-                  &nbsp;[[${review.user.firstname}]] [[${review.user.lastname}]]
-                  <small th:if="${#lists.contains(listOfUsersWhoOrderedThisItem, review.user.userid)}">&nbsp;Verified
-                    Purchase</small>
-                </h4>
-              </div>
-
-              <div class="product-row">
-                <div class="single-review-star-container">
-                  <i th:class="${review.rating} > 0 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-                  <i th:class="${review.rating} > 1 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-                  <i th:class="${review.rating} > 2 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-                  <i th:class="${review.rating} > 3 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-                  <i th:class="${review.rating} > 4 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
-                </div>
-                <!--Review Title-->
-                <b>&nbsp;&nbsp;&nbsp;[[${review.reviewTitle}]]</b>
-              </div>
-
-              <div class="product-row">
-                <div class="signle-review-description">
-                  <p>[[${review.reviewDes}]]</p>
-                </div>
-              </div>
-
-            </div>
-
-            <!--Empty Reivew -->
-            <div class="empty-review-container" th:if="${#lists.isEmpty(reviews)}">
-              <div class="empty-review-container-secondDiv">
-                <img src="img/empty-wishlist.png">
-                <span>There are no reviews for this book yet.</span>
-              </div>
+            <div class="single-review-container" th:if="${reviews != null}">
+              <div th:if="${user} == null OR ${review.user.userid} != ${user.userid}" th:each="review : ${reviews}">
+	            <div class="product-row">
+	              <h4>
+	                <i id="review-user-icon" class="fas fa-user-circle"></i>
+	                &nbsp;[[${review.user.firstname}]] [[${review.user.lastname}]]
+	                <small th:if="${listOfUsersWhoOrderedThisItem} != null AND ${#lists.contains(listOfUsersWhoOrderedThisItem, review.user.userid)}">&nbsp;Verified
+	                  Purchase</small>
+	              </h4>
+	            </div>
+	
+	            <div class="product-row">
+	              <div class="single-review-star-container">
+	                <i th:class="${review.rating} > 0 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                <i th:class="${review.rating} > 1 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                <i th:class="${review.rating} > 2 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                <i th:class="${review.rating} > 3 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	                <i th:class="${review.rating} > 4 AND ${review.rating} < 5.01 ? 'fas fa-star' : 'far fa-star'"></i>
+	              </div>
+	              <!--Review Title-->
+	              <b>&nbsp;&nbsp;&nbsp;[[${review.reviewTitle}]]</b>
+	            </div>
+	
+	            <div class="product-row">
+	              <div class="signle-review-description">
+	                <p>[[${review.reviewDes}]]</p>
+	              </div>
+	            </div>
+	
+	          </div>
+	
+	          <!--Empty Reivew -->
+	          <div class="empty-review-container" th:if="${#lists.isEmpty(reviews)}">
+	            <div class="empty-review-container-secondDiv">
+	              <img src="img/empty-wishlist.png">
+	              <span>There are no reviews for this book yet.</span>
+	            </div>
+	          </div>
             </div>
           </div>
           <hr>

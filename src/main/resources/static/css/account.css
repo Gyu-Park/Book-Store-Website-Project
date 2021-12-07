@@ -51,7 +51,8 @@
 
 button.tablinks {
   color: #fffaf3;
-  font-size: 1em;
+  font-size: clamp(12px, 1.4vw, 15px);
+  height: 100%;
 }
 
 .tablinks:hover {
@@ -62,13 +63,12 @@ button.tablinks {
   padding: 20px 20px 15px 20px;
   overflow: none;
   display: none;
-  width: 60%;
-  margin-left: auto;
-  margin-right: auto;
+  width: 70vw;
+  margin: auto;
 }
 
 #orders {
-  width: 75%;
+  width: 80%;
 }
 
 #login-and-security {
@@ -134,8 +134,16 @@ label {
   flex: 100%;
   padding: 10px 20px 15px 20px;
   margin-bottom: 1em;
-  border: 2px solid #778899;
   border-radius: 0.2em;
+}
+
+.LaS-item p {
+  font-weight: bold;
+  font-size: clamp(12px, 2vw, 1em);
+}
+
+[for="LaS-address-display"] p {
+  margin: 0;
 }
 
 button[type="form-edit"] {
@@ -239,8 +247,10 @@ button[type="form-edit"] {
   visibility: visible;
 }
 
-p {
+.wishlist-title-container p {
   margin-bottom: 3px;
+  font-size: clamp(12px, 1.3vw, 1em);
+  text-align: justify;
 }
 
 /*Orders Content Styles*/
@@ -294,6 +304,11 @@ p {
 .order-product-title-container {
   flex: 80%;
   padding: 10px 20px 15px 20px;
+}
+
+.order-product-title-container p {
+  font-size: clamp(12px, 1.3vw, 1em);
+  text-align: justify;
 }
 
 img {
@@ -705,8 +720,7 @@ input[type="password"]:focus {
   flex-wrap: wrap;
   flex: 100%;
   padding: 10px 20px 15px 20px;
-  border: 2px solid #778899;
-  border-radius: 5px;
+  border-radius: 0.2em;
   margin-bottom: 1.5em;
 }
 
@@ -761,4 +775,27 @@ span {
   margin: auto;
   font-weight: bold;
   font-size: 20px;
+}
+
+@media all and (max-width: 500px) {
+  .account-content-tab-container {
+    width: 95%;
+  }
+
+  
+  #orders {
+    width: auto;
+  }
+
+  .order-product-title-container p {
+    display: none;
+  }
+  
+  #wishlist {
+    width: auto;
+  }
+
+  .wishlist-title-container p {
+    display: none;
+  }
 }
