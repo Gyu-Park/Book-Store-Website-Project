@@ -166,24 +166,49 @@ public class CheckoutController {
 
 	@GetMapping("paypalPayment")
 	public String paypalPayment (HttpServletRequest request, Model model) {
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
+		
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 		User user = null;
 		Order order = new Order();
 		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			order.setUser(user);
-			order.setOrderDate(orderDate);
 		} else {
-
+			// for guest
 		}
+		
+		List<CartItem> items = shoppingCart.getItems();
+		List<OrderItem> orderItems = new ArrayList<>();
+		OrderItem orderItem = new OrderItem();
+		try {
+			for(CartItem cartItem : items) {
+				orderItem.setBook(cartItem.getBook());
+				orderItem.setOrder(order);
+				orderItem.setQuantity(cartItem.getQuantity());
+				cartItem.getBook().setNumber_on_hand(cartItem.getBook().getNumber_on_hand() - cartItem.getQuantity());
+				cartItem.getBook().setSales(cartItem.getBook().getSales() + cartItem.getQuantity());
+				orderItemRepository.save(orderItem);
+				orderItems.add(orderItem);
+				orderItem = new OrderItem();
+			}
+			
+			shoppingCartService.removeAllCartItemFromShoppingCart(shoppingCart);
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		order.setOrderItemList(orderItems);
+		
+		order.setOrderDate(Calendar.getInstance().getTime());
 		order.setOrderTotal(new BigDecimal(shoppingCart.getTotalPrice()));
+		order.setOrderStatus("created");
+		orderService.createOrder(order);
 
-		model.addAttribute("version", version);
-		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
-		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
 		shoppingCartService.removeAllCartItemFromShoppingCart(shoppingCart);
 		model.addAttribute("shoppingCart", shoppingCart);
+		model.addAttribute("version", version);
 
-		return "/home";
+		return "home";
 	}
 }
