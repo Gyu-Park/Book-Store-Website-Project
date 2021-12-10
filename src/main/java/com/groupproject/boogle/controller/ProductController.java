@@ -78,8 +78,10 @@ public class ProductController {
 			Iterator<OrderItem> iter = orderItems.iterator();
 			List<Long> listOfUsersWhoOrderedThisItem = new ArrayList<Long>();
 			while(iter.hasNext()) {
-				if (iter.next().getOrder().getUser().getUserid() != null)
-				listOfUsersWhoOrderedThisItem.add(iter.next().getOrder().getUser().getUserid());
+				OrderItem orderItem = iter.next();
+				if (orderItem.getOrder().getUser().getUserid() != null) {
+					listOfUsersWhoOrderedThisItem.add(orderItem.getOrder().getUser().getUserid());
+				}
 			}
 			if(listOfUsersWhoOrderedThisItem != null) {
 				model.addAttribute("listOfUsersWhoOrderedThisItem", listOfUsersWhoOrderedThisItem);
