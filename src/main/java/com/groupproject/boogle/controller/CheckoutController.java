@@ -163,5 +163,27 @@ public class CheckoutController {
 		
 		return "home";
 	}
-	
+
+	@GetMapping("paypalPayment")
+	public String paypalPayment (HttpServletRequest request, Model model) {
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+		User user = null;
+		Order order = new Order();
+		if (!auth.getName().equals("anonymousUser")) {
+			user = userRepository.findByEmail(auth.getName());
+			order.setUser(user);
+			order.setOrderDate(orderDate);
+		} else {
+
+		}
+		order.setOrderTotal(new BigDecimal(shoppingCart.getTotalPrice()));
+
+		model.addAttribute("version", version);
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+		ShoppingCart shoppingCart = shoppingCartService.getShoppingCartBySessionToken(sessionToken);
+		shoppingCartService.removeAllCartItemFromShoppingCart(shoppingCart);
+		model.addAttribute("shoppingCart", shoppingCart);
+
+		return "/home";
+	}
 }
