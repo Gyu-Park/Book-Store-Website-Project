@@ -5,28 +5,18 @@ pipeline {
       jdk 'OpenJDK-11' 
     }
     stages {
-        stage('Compile and Clean') {
+        stage('Clean and Install') {
             steps {
 
-                sh "mvn clean compile"
+                sh "mvn clean install"
                 
             }
         }
-       
-
-        stage('deploy') {
-            steps {
-            
-                sh "mvn package"
-                
-            }
-        }
-
 
         stage('Build Docker image'){
             steps {
               
-                sh 'docker build -t kyesung8282/boogle1:${BUILD_NUMBER} .'
+                sh 'docker build -t kyesung8282/boogle1:${version} .'
             }
         }
 
@@ -41,14 +31,14 @@ pipeline {
 
         stage('Docker Push'){
             steps {
-                sh 'docker push kyesung8282/boogle1:${BUILD_NUMBER}'
+                sh 'docker push kyesung8282/boogle1:${version}'
             }
         }
         
         stage('Docker deploy'){
             steps {
                
-                sh 'docker run -itd -p  80:8083 kyesung8282/boogle1:${BUILD_NUMBER}'
+                sh 'docker run -itd -p  80:8083 kyesung8282/boogle1:${version}'
             }
         }
 
