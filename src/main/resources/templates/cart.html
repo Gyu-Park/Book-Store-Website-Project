@@ -252,74 +252,99 @@
             <a href="/books"
               ><button type="button" class="subtotal-container-btn">
                 Continue Shopping
-              </button></a
-            >
+              </button>
+            </a>
             <a href="/checkout"
               ><button type="submit" class="subtotal-container-btn">
                 Continue to Checkout
-              </button></a
-            >
+              </button>
+            </a>
 
-            <div id="smart-button-container">
-              <div style="text-align: center">
-                <div id="paypal-button-container"></div>
+            <form th:action="@{paypalPayment}" method="get" id="paypalForm">
+              <div id="smart-button-container">
+                <div style="text-align: center">
+                  <div id="paypal-button-container"></div>
+                </div>
               </div>
-            </div>
-            <script
-              src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"
-              data-sdk-integration-source="button-factory"
-            ></script>
-            <script>
-              function initPayPalButton() {
-                paypal
-                  .Buttons({
-                    style: {
-                      shape: "rect",
-                      color: "blue",
-                      layout: "vertical",
-                      label: "paypal",
-                    },
+              <script
+                src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD"
+                data-sdk-integration-source="button-factory"
+              ></script>
+              <script th:inline="javascript">
+                /*<![CDATA[*/
 
-                    createOrder: function (data, actions) {
-                      return actions.order.create({
-                        purchase_units: [
-                          {
-                            description: "Cart",
-                            amount: { currency_code: "USD", value: 1 },
-                          },
-                        ],
-                      });
-                    },
+                var subtotal = /*[[${shoppingCart.totalPrice}]]*/ "default";
 
-                    onApprove: function (data, actions) {
-                      return actions.order.capture().then(function (orderData) {
-                        // Full available details
-                        console.log(
-                          "Capture result",
-                          orderData,
-                          JSON.stringify(orderData, null, 2)
-                        );
+                /*]]>*/
+                subtotal = parseFloat(subtotal);
 
-                        // Show a success message within this page, e.g.
-                        const element = document.getElementById(
-                          "paypal-button-container"
-                        );
-                        element.innerHTML = "";
-                        element.innerHTML =
-                          "<h3>Thank you for your payment!</h3>";
+                function initPayPalButton() {
+                  paypal
+                    .Buttons({
+                      style: {
+                        shape: "rect",
+                        color: "silver",
+                        layout: "vertical",
+                        label: "paypal",
+                      },
 
-                        // Or go to another URL:  actions.redirect('thank_you.html');
-                      });
-                    },
+                      createOrder: function (data, actions) {
+                        return actions.order.create({
+                          purchase_units: [
+                            {
+                              amount: {
+                                currency_code: "USD",
+                                value: subtotal,
+                                breakdown: {
+                                  item_total: {
+                                    currency_code: "USD",
+                                    value: subtotal,
+                                  },
+                                  shipping: { currency_code: "USD", value: 0 },
+                                  tax_total: {
+                                    currency_code: "USD",
+                                    value: 0,
+                                  },
+                                },
+                              },
+                            },
+                          ],
+                        });
+                      },
 
-                    onError: function (err) {
-                      console.log(err);
-                    },
-                  })
-                  .render("#paypal-button-container");
-              }
-              initPayPalButton();
-            </script>
+                      onApprove: function (data, actions) {
+                        return actions.order
+                          .capture()
+                          .then(function (orderData) {
+                            // Full available details
+                            console.log(
+                              "Capture result",
+                              orderData,
+                              JSON.stringify(orderData, null, 2)
+                            );
+
+                            // Show a success message within this page, e.g.
+                            const element = document.getElementById(
+                              "paypal-button-container"
+                            );
+                            element.innerHTML = "";
+                            element.innerHTML =
+                              "<h3>Thank you for your payment!</h3>";
+                            const paypalForm =
+                              document.getElementById("paypalForm");
+                            paypalForm.submit();
+                          });
+                      },
+
+                      onError: function (err) {
+                        console.log(err);
+                      },
+                    })
+                    .render("#paypal-button-container");
+                }
+                initPayPalButton();
+              </script>
+            </form>
           </div>
         </div>
       </div>
