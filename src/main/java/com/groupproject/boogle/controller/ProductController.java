@@ -79,7 +79,7 @@ public class ProductController {
 			List<Long> listOfUsersWhoOrderedThisItem = new ArrayList<Long>();
 			while(iter.hasNext()) {
 				OrderItem orderItem = iter.next();
-				if (orderItem.getOrder().getUser().getUserid() != null) {
+				if (orderItem.getOrder().getUser() != null) {
 					listOfUsersWhoOrderedThisItem.add(orderItem.getOrder().getUser().getUserid());
 				}
 			}
