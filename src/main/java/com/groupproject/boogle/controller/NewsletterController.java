@@ -23,6 +23,9 @@ public class NewsletterController {
 	
 	@PostMapping("/newsletter")
 	public String addNewsletter (String email) {
+		if (newsletterService.findNewsletterByemail(email) != null) {
+			return "redirect:/home";
+		}
 		Newsletter newsletter = new Newsletter();
 		newsletter.setEmail(email);
 		newsletterRepository.save(newsletter);
