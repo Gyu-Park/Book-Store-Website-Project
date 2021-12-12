@@ -657,16 +657,15 @@ input[type="password"]:focus {
   transition: 0.3s;
 }
 
-
 /* Edit Card Form */
 .edit-payment-methode {
-	margin-top: 10px;
+  margin-top: 10px;
 }
 
 .edit-payment-methode .card-edit-form {
   flex: 100%;
   margin: auto;
-  max-width: 300px
+  max-width: 300px;
 }
 
 #card-edit-header1,
@@ -684,7 +683,7 @@ input[type="password"]:focus {
 }
 
 #card-row-header {
-	max-height: 10px;
+  max-height: 10px;
 }
 
 .card-row input {
@@ -709,9 +708,8 @@ input[type="password"]:focus {
 #edit-card-button3,
 #edit-card-button4,
 #edit-card-button5 {
-  width: 97%	
+  width: 97%;
 }
-
 
 /*Wish List Content Styles*/
 
@@ -782,7 +780,20 @@ span {
     width: 95%;
   }
 
-  
+  .edit-form .edit-password,
+  .edit-form .edit-repeat-password,
+  .edit-form .edit-name-first,
+  .edit-form .edit-name-last,
+  .edit-form .edit-phone,
+  .edit-form .edit-email,
+  .edit-form .edit-address-street,
+  .edit-form .edit-address-apt,
+  .edit-form .edit-address-city,
+  .edit-form .edit-address-state,
+  .edit-form .edit-address-zip {
+    width: 95%;
+  }
+
   #orders {
     width: auto;
   }
@@ -790,7 +801,7 @@ span {
   .order-product-title-container p {
     display: none;
   }
-  
+
   #wishlist {
     width: auto;
   }
