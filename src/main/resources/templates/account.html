@@ -648,13 +648,12 @@
                                 <label>Price <span class="wishlist-item-price">$[[${wishListItem.book.price}]]</span>
                                 </label>
                                 <hr>
-                                <button type="form-buy-now">Buy Now</button>
                                 <form th:action="@{/cart/addToCart}" th:object="${wishListItem.book}" method="post">
                                     <input type="hidden" th:value="${wishListItem.book.isbn13}" name="isbn13" />
                                     <input type="hidden" value="1" name="qty">
                                     <input type="hidden" value="true" name="sentFromAccountWishList">
-                                    <input type="hidden" value="addToCart" name="action">
-                                    <button type="form-add-to-cart">Add to Cart</button>
+                                    <button type="form-buy-now" value="buyNow" name="action">Buy Now</button>
+                                    <button type="form-add-to-cart" value="addToCart" name="action">Add to Cart</button>
                                 </form>
                                 <a th:href="@{/removeWishListItem/{isbn13}(isbn13 = ${wishListItem.book.isbn13})}"
                                     data-toggle="tooltip">
