@@ -21,3 +21,7 @@ Backend
 ## Database ERD
 
 ![Database](src/main/resources/static/img/Boogle_database_design.jpg)
+
+## CI/CD Pipeline
+
+![CI/CD](src/main/resources/static/img/boogle-cicd.jpg)
