@@ -1,269 +1,417 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <link rel="stylesheet" href="css/activeCart.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/activeCart.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
 
     <script src="js/nav.js" defer></script>
     <script src="js/cart.js" defer></script>
-    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/91c05e75f9.js"
+      crossorigin="anonymous"
+    ></script>
 
     <title>Cart | Boogle.com</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!--Navigation Header-->
     <header>
-
-        <div class="nav-container">
-            <div class="logo">
-                <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
-                <div class="nav-toggle" id="navToggle">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times nav-hidden"></i>
-                </div>
-            </div>
-
-            <!-- add the "current" id to the li element of the active page -->
-            <nav>
-                <div class="left">
-                    <ul>
-                        <li><a th:href="@{/home}">Home</a></li>
-                        <li><a th:href="@{/aboutUs}">About Us</a></li>
-                        <li><a th:href="@{/books}">Books</a></li>
-                    </ul>
-                </div>
-
-                <div class="center">
-                    <form th:action="@{/search}" method="get" class="search-bar">
-                        <input type="search" name="keyword" placeholder="Search...">
-                        <button type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <div class="right">
-                    <ul>
-                        <li id="current" class="button">
-                            <a th:href="@{/cart}">
-                                <i class="fa fa-shopping-cart"></i> Cart
-                                <div class="cart-num">
-                                    <p>[[${shoppingCart.getTotalItemsNumber}]]</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div sec:authorize="!isAuthenticated()" style="display: inline-block">
-                                <a th:href="@{/login}">Sign in</a>
-                            </div>
-                            <div sec:authorize="isAuthenticated()" style="display: inline-block">
-                                <form id="signout" th:action="@{/logout}" method="post"
-                                    style="width: 100px; height: 41">
-                                    <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign
-                                        Out</a>
-                                </form>
-                            </div>
-                        </li>
-                        <li><a th:href="@{/account}">Account</a></li>
-                    </ul>
-                </div>
-            </nav>
-
+      <div class="nav-container">
+        <div class="logo">
+          <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+          <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times nav-hidden"></i>
+          </div>
         </div>
-    </header>
 
+        <!-- add the "current" id to the li element of the active page -->
+        <nav>
+          <div class="left">
+            <ul>
+              <li><a th:href="@{/home}">Home</a></li>
+              <li><a th:href="@{/aboutUs}">About Us</a></li>
+              <li><a th:href="@{/books}">Books</a></li>
+            </ul>
+          </div>
+
+          <div class="center">
+            <form th:action="@{/search}" method="get" class="search-bar">
+              <input type="search" name="keyword" placeholder="Search..." />
+              <button type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="right">
+            <ul>
+              <li id="current" class="button">
+                <a th:href="@{/cart}">
+                  <i class="fa fa-shopping-cart"></i> Cart
+                  <div class="cart-num">
+                    <p>[[${shoppingCart.getTotalItemsNumber}]]</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div
+                  sec:authorize="!isAuthenticated()"
+                  style="display: inline-block"
+                >
+                  <a th:href="@{/login}">Sign in</a>
+                </div>
+                <div
+                  sec:authorize="isAuthenticated()"
+                  style="display: inline-block"
+                >
+                  <form
+                    id="signout"
+                    th:action="@{/logout}"
+                    method="post"
+                    style="width: 100px; height: 41"
+                  >
+                    <a
+                      href="javascript:;"
+                      onclick="document.getElementById('signout').submit();"
+                      >Sign Out</a
+                    >
+                  </form>
+                </div>
+              </li>
+              <li><a th:href="@{/account}">Account</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
 
     <!--Active Cart Body-->
     <div class="active-cart-page-container">
-        <div id="active-cart-row-first" class="active-cart-row">
-            <div class="active-cart-col-70">
-                <div class="active-cart-container">
+      <div id="active-cart-row-first" class="active-cart-row">
+        <div class="active-cart-col-70">
+          <div class="active-cart-container">
+            <div class="active-cart-row">
+              <div class="acticve-cart-header">
+                <h2>Shopping Cart</h2>
+              </div>
+            </div>
+            <hr />
 
-                    <div class="active-cart-row">
-                        <div class="acticve-cart-header">
-                            <h2>Shopping Cart</h2>
-                        </div>
-                    </div>
-                    <hr>
-
-                    <div class="active-cart-row">
-                        <div class="active-items-list">
-
-                            <!--Cart Item Template-->
-                            <div class="empty-cart" th:if="${shoppingCart.items.empty}">
-                            	<img src="img/empty-cart.png" >
-                            	<span th:text="'Your shopping cart is empty.'"></span>
-                            </div>
-                            <div class="cart-item" th:each="cartItem : ${shoppingCart.items}">
-                                <div class="active-cart-row">
-                                    <div class="cart-col-60">
-                                        <div class="cart-product-container">
-                                            <div class="cart-item-img-container">
-                                                <img th:src="${cartItem.book.image}" alt="">
-                                            </div>
-                                            <div class="cart-item-title-container">
-                                                <label>[[${cartItem.book.title}]]</label>
-                                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing
-                                                    elit, sed do eiusmod tempor incididunt ut labore et dolore
-                                                    magna aliqua. Ut enim ad minim veniam, quis nostrud
-                                                    exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                                    consequat.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div id="quantity" class="cart-col-20">
-                                        <form th:action="@{/cart/updateShoppingCart}" method="post">
-                                            <input type="hidden" th:value="${cartItem.id}" name="item_id" />
-                                            <label>Quantity</label> <input type="number" id="item-qty" name="quantity"
-                                                th:value="${cartItem.quantity}"
-                                                th:attr="max=${cartItem.book.number_on_hand}" />
-                                            <button type="form-update" name="qty">Update qty</button>
-	                                        <button type="form-remove" name="remove">Remove</button>
-                                        </form>
-                                    </div>
-                                    <div class="cart-col-20">
-                                        <label>Price</label>
-                                        <p>$[[${cartItem.book.price}]]</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <hr>
-                            <!--End-->
-
-                        </div>
-                    </div>
-
-                    <div class="active-cart-row">
-                        <div class="active-cart-subtotal">
-                            <p>
-                                Subtotal: <span class="cart-subtotal"> <b>$[[${shoppingCart.totalPrice}]]</b></span>
-                            </p>
-                        </div>
-                    </div>
+            <div class="active-cart-row">
+              <div class="active-items-list">
+                <!--Cart Item Template-->
+                <div class="empty-cart" th:if="${shoppingCart.items.empty}">
+                  <img src="img/empty-cart.png" />
+                  <span th:text="'Your shopping cart is empty.'"></span>
                 </div>
-
-                    <div class="wishlist-container" sec:authorize="isAuthenticated()">
-                        <div class="wishlist-header">
-                            <h2>Wish List</h2>
+                <div
+                  class="cart-item"
+                  th:each="cartItem : ${shoppingCart.items}"
+                >
+                  <div class="active-cart-row">
+                    <div class="cart-col-60">
+                      <div class="cart-product-container">
+                        <div class="cart-item-img-container">
+                          <img th:src="${cartItem.book.image}" alt="" />
                         </div>
-                        <hr>
+                        <div class="cart-item-title-container">
+                          <label>[[${cartItem.book.title}]]</label>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing
+                            elit, sed do eiusmod tempor incididunt ut labore et
+                            dolore magna aliqua. Ut enim ad minim veniam, quis
+                            nostrud exercitation ullamco laboris nisi ut aliquip
+                            ex ea commodo consequat.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                    <div id="quantity" class="cart-col-20">
+                      <form
+                        th:action="@{/cart/updateShoppingCart}"
+                        method="post"
+                      >
+                        <input
+                          type="hidden"
+                          th:value="${cartItem.id}"
+                          name="item_id"
+                        />
+                        <label>Quantity</label>
+                        <input
+                          type="number"
+                          id="item-qty"
+                          name="quantity"
+                          th:value="${cartItem.quantity}"
+                          th:attr="max=${cartItem.book.number_on_hand}"
+                        />
+                        <button type="form-update" name="qty">
+                          Update qty
+                        </button>
+                        <button type="form-remove" name="remove">Remove</button>
+                      </form>
+                    </div>
+                    <div class="cart-col-20">
+                      <label>Price</label>
+                      <p>$[[${cartItem.book.price}]]</p>
+                    </div>
+                  </div>
+                </div>
+                <hr />
+                <!--End-->
+              </div>
+            </div>
+
+            <div class="active-cart-row">
+              <div class="active-cart-subtotal">
+                <p>
+                  Subtotal:
+                  <span class="cart-subtotal">
+                    <b>$[[${shoppingCart.totalPrice}]]</b></span
+                  >
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="wishlist-container" sec:authorize="isAuthenticated()">
+            <div class="wishlist-header">
+              <h2>Wish List</h2>
+            </div>
+            <hr />
+            <div class="wishlist-row">
+              <div
+                class="empty-wishlist"
+                th:if="${wishlist == null} OR ${wishlist.empty}"
+              >
+                <img src="img/empty-wishlist.png" />
+                <span th:text="'Your wish list is empty.'"></span>
+              </div>
+              <!--Item Carousel and Template-->
+              <div
+                class="carousel-container"
+                th:unless="${wishlist == null} OR ${wishlist.empty}"
+              >
+                <div class="carousel-inner">
+                  <div class="carousel-track">
+                    <!--Item Card Template-->
+                    <div
+                      class="carousel-card"
+                      th:if="${wishlist}"
+                      th:each="wishlist : ${wishlist}"
+                    >
+                      <a th:href="@{/product?isbn13=}+${wishlist.book.isbn13}">
+                        <div class="wishlsit-row">
+                          <img
+                            class="carousel-img"
+                            th:src="${wishlist.book.image}"
+                          />
+                        </div>
                         <div class="wishlist-row">
-                        	<div class="empty-wishlist" th:if="${wishlist == null} OR ${wishlist.empty}">
-				            	<img src="img/empty-wishlist.png" >
-				            	<span th:text="'Your wish list is empty.'"></span>
-				            </div>
-                            <!--Item Carousel and Template-->
-                            <div class="carousel-container" th:unless="${wishlist == null} OR ${wishlist.empty}">
-                            <div class="carousel-inner">
-                                <div class="carousel-track">
-                
-                                <!--Item Card Template-->
-                                <div class="carousel-card" th:if="${wishlist}" th:each="wishlist : ${wishlist}">
-                                    <a th:href="@{/product?isbn13=}+${wishlist.book.isbn13}">
-                                    <div class="wishlsit-row">
-                                        <img class="carousel-img" th:src="${wishlist.book.image}">
-                                    </div>
-                                    <div class="wishlist-row">
-                                        <h3 class="carousel-txt" th:text="${wishlist.book.alias}">/h3>
-                                    </div>
-                                    </a>
-                                </div>
-                
-                                </div>
-                                <div class="carousel-nav">
-                                <button type="prev" class="prev"><i class="fas fa-chevron-left"></i></button>
-                                <button type="next" class="next"><i class="fas fa-chevron-right"></i></button>
-                                </div>
-                            </div>
-                            </div>
+                          <h3
+                            class="carousel-txt"
+                            th:text="${wishlist.book.alias}"
+                          ></h3>
                         </div>
-                        <hr>
+                      </a>
                     </div>
-
-            </div>
-
-            <div class="active-cart-col-25">
-                <div class="subtotal-container">
-                    <h3>Subtotal <span class="cart-subtotal"><b> $[[${shoppingCart.totalPrice}]]</b></span></h3>
-                    <a href="/books"><button type="button" class="subtotal-container-btn">Continue
-                            Shopping</button></a>
-                    <a href="/checkout"><button type="submit" class="subtotal-container-btn">Continue to
-                            Checkout</button></a>
+                  </div>
+                  <div class="carousel-nav">
+                    <button type="prev" class="prev">
+                      <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button type="next" class="next">
+                      <i class="fas fa-chevron-right"></i>
+                    </button>
+                  </div>
                 </div>
+              </div>
             </div>
+            <hr />
+          </div>
         </div>
+
+        <div class="active-cart-col-25">
+          <div class="subtotal-container">
+            <h3>
+              Subtotal
+              <span class="cart-subtotal"
+                ><b> $[[${shoppingCart.totalPrice}]]</b></span
+              >
+            </h3>
+            <a href="/books"
+              ><button type="button" class="subtotal-container-btn">
+                Continue Shopping
+              </button>
+            </a>
+            <a href="/checkout"
+              ><button type="submit" class="subtotal-container-btn">
+                Continue to Checkout
+              </button>
+            </a>
+
+            <form th:action="@{paypalPayment}" method="get" id="paypalForm">
+              <div id="smart-button-container">
+                <div style="text-align: center">
+                  <div id="paypal-button-container"></div>
+                </div>
+              </div>
+              <script
+                src="https://www.paypal.com/sdk/js?client-id=sb&disable-funding=card,venmo&currency=USD"
+                data-sdk-integration-source="button-factory"
+              ></script>
+              <script th:inline="javascript">
+                /*<![CDATA[*/
+
+                var subtotal = /*[[${shoppingCart.totalPrice}]]*/ "default";
+
+                /*]]>*/
+                subtotal = parseFloat(subtotal);
+
+                function initPayPalButton() {
+                  paypal
+                    .Buttons({
+                      style: {
+                        shape: "rect",
+                        color: "silver",
+                        layout: "vertical",
+                        label: "paypal",
+                      },
+
+                      createOrder: function (data, actions) {
+                        return actions.order.create({
+                          purchase_units: [
+                            {
+                              amount: {
+                                currency_code: "USD",
+                                value: subtotal,
+                                breakdown: {
+                                  item_total: {
+                                    currency_code: "USD",
+                                    value: subtotal,
+                                  },
+                                  shipping: { currency_code: "USD", value: 0 },
+                                  tax_total: {
+                                    currency_code: "USD",
+                                    value: 0,
+                                  },
+                                },
+                              },
+                            },
+                          ],
+                        });
+                      },
+
+                      onApprove: function (data, actions) {
+                        return actions.order
+                          .capture()
+                          .then(function (orderData) {
+                            // Full available details
+                            console.log(
+                              "Capture result",
+                              orderData,
+                              JSON.stringify(orderData, null, 2)
+                            );
+
+                            // Show a success message within this page, e.g.
+                            const element = document.getElementById(
+                              "paypal-button-container"
+                            );
+                            element.innerHTML = "";
+                            element.innerHTML =
+                              "<h3>Thank you for your payment!</h3>";
+                            const paypalForm =
+                              document.getElementById("paypalForm");
+                            paypalForm.submit();
+                          });
+                      },
+
+                      onError: function (err) {
+                        console.log(err);
+                      },
+                    })
+                    .render("#paypal-button-container");
+                }
+                initPayPalButton();
+              </script>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--Footer-->
     <footer>
-        <div class="footer-container">
+      <div class="footer-container">
+        <section>
+          <div class="footer-row">
+            <h6>
+              <a th:href="@{/home}">Home</a>
+            </h6>
+            <h6>
+              <a th:href="@{/aboutUs}">About Us</a>
+            </h6>
+            <h6>
+              <a th:href="@{/books}">Books</a>
+            </h6>
+            <h6>
+              <a th:href="@{/account}">Account</a>
+            </h6>
+          </div>
+        </section>
 
-            <section>
-                <div class="footer-row">
-                    <h6>
-                        <a th:href="@{/home}">Home</a>
-                    </h6>
-                    <h6>
-                        <a th:href="@{/aboutUs}">About Us</a>
-                    </h6>
-                    <h6>
-                        <a th:href="@{/books}">Books</a>
-                    </h6>
-                    <h6>
-                        <a th:href="@{/account}">Account</a>
-                    </h6>
-                </div>
-            </section>
+        <hr />
 
-            <hr>
+        <section>
+          <div class="footer-row">
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+              distinctio earum repellat quaerat voluptatibus placeat nam,
+              commodi optio pariatur est quia magnam eum harum corrupti dicta,
+              aliquam sequi voluptate quas.
+            </p>
+          </div>
+        </section>
 
-            <section>
-                <div class="footer-row">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat
-                        voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta,
-                        aliquam sequi voluptate quas.</p>
-                </div>
-            </section>
+        <section>
+          <div class="footer-row" id="newsletter">
+            <form action="">
+              <p>Join our newsletter</p>
+              <input type="email" placeholder="johndoe@mail.com" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </section>
 
-            <section>
-                <div class="footer-row" id="newsletter">
-                    <form action="">
-                        <p>Join our newsletter</p>
-                        <input type="email" placeholder="johndoe@mail.com" />
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </section>
+        <section class="icons">
+          <a href="">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+            <i class="fab fa-github"></i>
+          </a>
+        </section>
 
-            <section class="icons">
-                <a href="">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
-                    <i class="fab fa-github"></i>
-                </a>
-            </section>
-
-            <div class="credits">
-                <p>Boogle 2021: Software Engineering Methods | [[${version}]]</p>
-            </div>
-
+        <div class="credits">
+          <p>Boogle 2021: Software Engineering Methods | [[${version}]]</p>
         </div>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>
