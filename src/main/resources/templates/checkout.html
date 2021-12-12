@@ -1,279 +1,388 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-    xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-    <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/91c05e75f9.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="js/nav.js" defer></script>
 
-    <link rel="stylesheet" href="css/checkout.css">
-    <link rel="stylesheet" href="css/nav.css">
-    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/checkout.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
 
     <title>Checkout | Boogle.com</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <!--Navigation Header-->
     <header>
-
-        <div class="nav-container">
-            <div class="logo">
-                <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
-                <div class="nav-toggle" id="navToggle">
-                    <i class="fas fa-bars"></i>
-                    <i class="fas fa-times nav-hidden"></i>
-                </div>
-            </div>
-
-            <!-- add the "current" id to the li element of the active page -->
-            <nav>
-                <div class="left">
-                    <ul>
-                        <li><a th:href="@{/home}">Home</a></li>
-                        <li><a th:href="@{/aboutUs}">About Us</a></li>
-                        <li><a th:href="@{/books}">Books</a></li>
-                    </ul>
-                </div>
-
-                <div class="center">
-                    <form th:action="@{/search}" method="get" class="search-bar">
-                        <input type="search" name="keyword" placeholder="Search...">
-                        <button type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <div class="right">
-                    <ul>
-                        <li class="button">
-                            <a th:href="@{/cart}">
-                                <i class="fa fa-shopping-cart"></i> Cart
-                                <div class="cart-num">
-                                    <p>[[${shoppingCart.getTotalItemsNumber}]]</p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <div sec:authorize="!isAuthenticated()" style="display: inline-block">
-                                <a th:href="@{/login}">Sign in</a>
-                            </div>
-                            <div sec:authorize="isAuthenticated()" style="display: inline-block">
-                                <form id="signout" th:action="@{/logout}" method="post"
-                                    style="width: 100px; height: 41">
-                                    <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign
-                                        Out</a>
-                                </form>
-                            </div>
-                        </li>
-                        <li><a th:href="@{/account}">Account</a></li>
-                    </ul>
-                </div>
-            </nav>
-
+      <div class="nav-container">
+        <div class="logo">
+          <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+          <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times nav-hidden"></i>
+          </div>
         </div>
-    </header>
 
+        <!-- add the "current" id to the li element of the active page -->
+        <nav>
+          <div class="left">
+            <ul>
+              <li><a th:href="@{/home}">Home</a></li>
+              <li><a th:href="@{/aboutUs}">About Us</a></li>
+              <li><a th:href="@{/books}">Books</a></li>
+            </ul>
+          </div>
+
+          <div class="center">
+            <form th:action="@{/search}" method="get" class="search-bar">
+              <input type="search" name="keyword" placeholder="Search..." />
+              <button type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="right">
+            <ul>
+              <li class="button">
+                <a th:href="@{/cart}">
+                  <i class="fa fa-shopping-cart"></i> Cart
+                  <div class="cart-num">
+                    <p>[[${shoppingCart.getTotalItemsNumber}]]</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div
+                  sec:authorize="!isAuthenticated()"
+                  style="display: inline-block"
+                >
+                  <a th:href="@{/login}">Sign in</a>
+                </div>
+                <div
+                  sec:authorize="isAuthenticated()"
+                  style="display: inline-block"
+                >
+                  <form
+                    id="signout"
+                    th:action="@{/logout}"
+                    method="post"
+                    style="width: 100px; height: 41"
+                  >
+                    <a
+                      href="javascript:;"
+                      onclick="document.getElementById('signout').submit();"
+                      >Sign Out</a
+                    >
+                  </form>
+                </div>
+              </li>
+              <li><a th:href="@{/account}">Account</a></li>
+            </ul>
+          </div>
+        </nav>
+      </div>
+    </header>
 
     <!--Checkout Body-->
     <div class="checkout-page-container">
-        <div class="checkout-row">
-            <div class="checkout-col-70">
-                <div class="checkout-container">
+      <div class="checkout-row">
+        <div class="checkout-col-70">
+          <div class="checkout-container">
+            <form th:action="@{/placeAnOrder}" method="post">
+              <div class="checkout-row">
+                <div class="checkout-col-50">
+                  <div class="checkout-input-container">
+                    <h3>Shipping Information</h3>
+                    <label for="full-name"
+                      ><i class="fa fa-user"></i> Full Name</label
+                    >
+                    <input
+                      type="text"
+                      th:value="${user?.getFullname}"
+                      name="shippingAddressReceiver"
+                      id="full-name"
+                      placeholder="John Doe"
+                    />
+                    <label for="email"
+                      ><i class="fa fa-envelope"></i> E-Mail</label
+                    >
+                    <input
+                      type="text"
+                      th:value="${user?.getEmail}"
+                      name="email"
+                      id="email"
+                      th:readonly="${user}"
+                      placeholder="johndoe@mail.com"
+                    />
+                    <label for="phone"
+                      ><i class="fa fa-mobile"></i> Phone Number</label
+                    >
+                    <input
+                      type="text"
+                      th:value="${userInfo?.getPhone}"
+                      name="phone"
+                      id="phone"
+                      th:readonly="${user}"
+                      placeholder="111-222-3333"
+                    />
+                    <label for="address"
+                      ><i class="fa fa-address-card-o"></i> Address</label
+                    >
+                    <input
+                      type="text"
+                      th:value="${userInfo?.getStreet}"
+                      name="shippingAddressStreet"
+                      id="address"
+                      placeholder="1 Madeup Ln"
+                    />
+                    <label for="City"><i class="fa fa-city"></i> City</label>
+                    <input
+                      type="text"
+                      th:value="${userInfo?.getCity}"
+                      name="shippingAddressCity"
+                      id="city"
+                      placeholder="New York"
+                    />
 
-                    <form th:action="@{/placeAnOrder}" method="post">
-                        <div class="checkout-row">
-                            <div class="checkout-col-50">
-                                <div class="checkout-input-container">
-                                    <h3>Shipping Information</h3>
-                                    <label for="full-name"><i class="fa fa-user"></i> Full Name</label>
-                                    <input type="text" th:value="${user?.getFullname}" name="shippingAddressReceiver" id="full-name"
-                                        placeholder="John Doe">
-                                    <label for="email"><i class="fa fa-envelope"></i> E-Mail</label>
-                                    <input type="text" th:value="${user?.getEmail}" name="email" id="email" th:readonly="${user}"
-                                        placeholder="johndoe@mail.com">
-                                    <label for="phone"><i class="fa fa-mobile"></i> Phone Number</label>
-                                    <input type="text" th:value="${userInfo?.getPhone}" name="phone" id="phone" th:readonly="${user}"
-                                        placeholder="111-222-3333">
-                                    <label for="address"><i class="fa fa-address-card-o"></i> Address</label>
-                                    <input type="text" th:value="${userInfo?.getStreet}" name="shippingAddressStreet" id="address"
-                                        placeholder="1 Madeup Ln">
-                                    <label for="City"><i class="fa fa-city"></i> City</label>
-                                    <input type="text" th:value="${userInfo?.getCity}" name="shippingAddressCity" id="city" placeholder="New York">
-
-                                    <div class="checkout-row">
-                                        <div class="checkout-col-45">
-                                            <label for="state">State</label>
-                                            <input type="text" th:value="${userInfo?.getState}" name="shippingAddressState" id="state"
-                                                placeholder="NY">
-                                        </div>
-                                        <div class="checkout-col-45">
-                                            <label for="zip-code">Zip Code</label>
-                                            <input type="text" th:value="${userInfo?.getZip}" name="shippingAddressZip" id="zip-code"
-                                                placeholder="10001">
-                                        </div>
-                                        <div class="checkout-col-10">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="checkout-col-50">
-                                <h3>Payment Information</h3>
-                                <label for="fname">Accepted Cards</label>
-                                <div class="cc-icon-container">
-                                    <i class="fa fa-cc-visa"></i>
-                                    <i class="fa fa-cc-amex"></i>
-                                    <i class="fa fa-cc-mastercard"></i>
-                                    <i class="fa fa-cc-discover"></i>
-                                    <i class="fab fa-apple-pay"></i>
-                                </div>
-                                <label for="cc-name">Name on Card</label>
-                                <input type="text" th:value="${card?.getCardHolderName}" name="cardHolderName" id="cc-name"
-                                    placeholder="John Doe">
-                                <label for="cc-num">Credit Card Number</label>
-                                <input type="text" th:value="${card?.getCardNumber}" name="cardNumber" id="cc-num"
-                                    placeholder="1111-2222-3333-4444">
-                                <label for="cc-exp-month">Exp Month</label>
-                                <input type="text" th:value="${card?.getCardExpMonth}" name="cardExpMonth" id="cc-exp-month"
-                                    placeholder="01">
-
-                                <div class="checkout-row">
-                                    <div class="checkout-col-50">
-                                        <label for="cc-exp-year">Exp Year</label>
-                                        <input type="text" th:value="${card?.getCardExpYear}" name="cardExpYear" id="cc-exp-year"
-                                            placeholder="21">
-                                    </div>
-                                    <div class="checkout-col-50">
-                                        <label for="cc-cvv">CVV</label>
-                                        <input type="text" th:value="${card?.getCardCvv}" name="cardCvv" id="cc-cvv" placeholder="489">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <label><input type="checkbox" checked="checked" id="same-address-btn"> Billing Address is the
-                            same as Shipping Address</label>
-                        <input type="submit" value="Place an order" class="checkout-btn">
-                    </form>
-                </div>
-            </div>
-            <div class="checkout-col-30">
-                <div class="checkout-container">
-                    <h4>Cart
-                        <span class="cart-price">
-                            <i class="fa fa-shopping-cart"></i><b>&nbsp;[[${shoppingCart.getTotalItemsNumber}]]</b>
-                        </span>
-                    </h4>
-                    <hr class="cart-division">
-                    <div class="checkout-receipt-item-container">
-                        <!--In cart item template to be crated in JS file when item is added to cart-->
-                        <!--Checkout Receipt Item Template-->
-                        <div class="checkout-row">
-                            <div class="single-receipt-item" th:each="cartItem : ${shoppingCart.items}">
-                                <div class="receipt-col-20">
-                                    <div class="receipt-item-img">
-                                        <img th:src="${cartItem.book.image}" alt="">
-                                    </div>
-                                </div>
-
-                                <div class="receipt-col-60">
-                                    <div class="receipt-item-title">
-                                        <a href="#"> [[${cartItem.book.title}]] </a>
-                                    </div>
-                                </div>
-
-                                <div class="receipt-col-20">
-                                    <div class="receipt-item-price">
-                                        <span class="cart-price"><b>$[[${cartItem.book.price}]]</b></span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <!--End-->
+                    <div class="checkout-row">
+                      <div class="checkout-col-45">
+                        <label for="state">State</label>
+                        <input
+                          type="text"
+                          th:value="${userInfo?.getState}"
+                          name="shippingAddressState"
+                          id="state"
+                          placeholder="NY"
+                        />
+                      </div>
+                      <div class="checkout-col-45">
+                        <label for="zip-code">Zip Code</label>
+                        <input
+                          type="text"
+                          th:value="${userInfo?.getZip}"
+                          name="shippingAddressZip"
+                          id="zip-code"
+                          placeholder="10001"
+                        />
+                      </div>
+                      <div class="checkout-col-10"></div>
                     </div>
-                    <hr class="cart-division">
-                    <p>Subtotal <span class="cart-price"><b>$[[${shoppingCart.totalPrice}]]</b></span></p>
-                    <p>Shipping <span class="cart-price"><b>$item_shipping</b></span></p>
-                    <p>Total <span class="cart-price"><b>$item_total</b></span></p>
+                  </div>
                 </div>
-            </div>
+
+                <div class="checkout-col-50">
+                  <h3>Payment Information</h3>
+                  <label for="fname">Accepted Cards</label>
+                  <div class="cc-icon-container">
+                    <i class="fa fa-cc-visa"></i>
+                    <i class="fa fa-cc-amex"></i>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fab fa-apple-pay"></i>
+                  </div>
+                  <label for="cc-name">Name on Card</label>
+                  <input
+                    type="text"
+                    th:value="${card?.getCardHolderName}"
+                    name="cardHolderName"
+                    id="cc-name"
+                    placeholder="John Doe"
+                  />
+                  <label for="cc-num">Credit Card Number</label>
+                  <input
+                    type="text"
+                    th:value="${card?.getCardNumber}"
+                    name="cardNumber"
+                    id="cc-num"
+                    placeholder="1111-2222-3333-4444"
+                  />
+                  <label for="cc-exp-month">Exp Month</label>
+                  <input
+                    type="text"
+                    th:value="${card?.getCardExpMonth}"
+                    name="cardExpMonth"
+                    id="cc-exp-month"
+                    placeholder="01"
+                  />
+
+                  <div class="checkout-row">
+                    <div class="checkout-col-50">
+                      <label for="cc-exp-year">Exp Year</label>
+                      <input
+                        type="text"
+                        th:value="${card?.getCardExpYear}"
+                        name="cardExpYear"
+                        id="cc-exp-year"
+                        placeholder="21"
+                      />
+                    </div>
+                    <div class="checkout-col-50">
+                      <label for="cc-cvv">CVV</label>
+                      <input
+                        type="text"
+                        th:value="${card?.getCardCvv}"
+                        name="cardCvv"
+                        id="cc-cvv"
+                        placeholder="489"
+                      />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <label
+                ><input
+                  type="checkbox"
+                  checked="checked"
+                  id="same-address-btn"
+                />
+                Billing Address is the same as Shipping Address</label
+              >
+              <input
+                type="submit"
+                value="Place an order"
+                class="checkout-btn"
+              />
+            </form>
+          </div>
         </div>
+        <div class="checkout-col-30">
+          <div class="checkout-container">
+            <h4>
+              Cart
+              <span class="cart-price">
+                <i class="fa fa-shopping-cart"></i
+                ><b>&nbsp;[[${shoppingCart.getTotalItemsNumber}]]</b>
+              </span>
+            </h4>
+            <hr class="cart-division" />
+            <div class="checkout-receipt-item-container">
+              <!--In cart item template to be crated in JS file when item is added to cart-->
+              <!--Checkout Receipt Item Template-->
+              <div class="checkout-row">
+                <div
+                  class="single-receipt-item"
+                  th:each="cartItem : ${shoppingCart.items}"
+                >
+                  <div class="receipt-col-20">
+                    <div class="receipt-item-img">
+                      <img th:src="${cartItem.book.image}" alt="" />
+                    </div>
+                  </div>
+
+                  <div class="receipt-col-60">
+                    <div class="receipt-item-title">
+                      <a href="#"> [[${cartItem.book.title}]] </a>
+                    </div>
+                  </div>
+
+                  <div class="receipt-col-20">
+                    <div class="receipt-item-price">
+                      <span class="cart-price"
+                        ><b>$[[${cartItem.book.price}]]</b></span
+                      >
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--End-->
+            </div>
+            <hr class="cart-division" />
+            <p>
+              Subtotal
+              <span class="cart-price"
+                ><b>$[[${shoppingCart.totalPrice}]]</b></span
+              >
+            </p>
+            <p>
+              Shipping <span class="cart-price"><b>$item_shipping</b></span>
+            </p>
+            <p>
+              Total <span class="cart-price"><b>$item_total</b></span>
+            </p>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!--Footer-->
     <footer>
-        <div class="footer-container">
+      <div class="footer-container">
+        <section>
+          <div class="footer-row">
+            <h6>
+              <a th:href="@{/home}">Home</a>
+            </h6>
+            <h6>
+              <a th:href="@{/aboutUs}">About Us</a>
+            </h6>
+            <h6>
+              <a th:href="@{/books}">Books</a>
+            </h6>
+            <h6>
+              <a th:href="@{/account}">Account</a>
+            </h6>
+          </div>
+        </section>
 
-            <section>
-                <div class="footer-row">
-                    <h6>
-                        <a th:href="@{/home}">Home</a>
-                    </h6>
-                    <h6>
-                        <a th:href="@{/aboutUs}">About Us</a>
-                    </h6>
-                    <h6>
-                        <a th:href="@{/books}">Books</a>
-                    </h6>
-                    <h6>
-                        <a th:href="@{/account}">Account</a>
-                    </h6>
-                </div>
-            </section>
+        <hr />
 
-            <hr>
+        <section>
+          <div class="footer-row">
+            <p>
+              Welcome to Boogle. We are here to fulfill your computer science
+              needs. If you are looking for a computer science textbook, we got
+              it! Please consider joining our newsletter!
+            </p>
+          </div>
+        </section>
 
-            <section>
-                <div class="footer-row">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat
-                        voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta,
-                        aliquam sequi voluptate quas.</p>
-                </div>
-            </section>
+        <section>
+          <div class="footer-row" id="newsletter">
+            <form action="">
+              <p>Join our newsletter</p>
+              <input type="email" placeholder="johndoe@mail.com" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </section>
 
-            <section>
-                <div class="footer-row" id="newsletter">
-                    <form action="">
-                        <p>Join our newsletter</p>
-                        <input type="email" placeholder="johndoe@mail.com" />
-                        <button type="submit">Subscribe</button>
-                    </form>
-                </div>
-            </section>
+        <section class="icons">
+          <a href="">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+            <i class="fab fa-github"></i>
+          </a>
+        </section>
 
-            <section class="icons">
-                <a href="">
-                    <i class="fab fa-facebook-f"></i>
-                </a>
-                <a href="">
-                    <i class="fab fa-twitter"></i>
-                </a>
-                <a href="">
-                    <i class="fab fa-instagram"></i>
-                </a>
-                <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
-                    <i class="fab fa-github"></i>
-                </a>
-            </section>
-
-            <div class="credits">
-                <p>Boogle 2021: Software Engineering Methods | [[${version}]]</p>
-            </div>
-
+        <div class="credits">
+          <p>Boogle 2021: Software Engineering Methods | [[${version}]]</p>
         </div>
+      </div>
     </footer>
 
     <script src="js/checkout.js"></script>
     <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHpoQmEdKTAiBN74aDKdku1KeMH13026U&callback=initAutocomplete&libraries=places"
-        async></script>
-
-</body>
-
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDHpoQmEdKTAiBN74aDKdku1KeMH13026U&callback=initAutocomplete&libraries=places"
+      async
+    ></script>
+  </body>
 </html>

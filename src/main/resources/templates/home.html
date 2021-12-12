@@ -1,177 +1,200 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org"
-  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<html
+  lang="en"
+  xmlns:th="http://www.thymeleaf.org"
+  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
+>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap"
+      rel="stylesheet"
+    />
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet">
+    <script
+      src="https://kit.fontawesome.com/91c05e75f9.js"
+      crossorigin="anonymous"
+    ></script>
+    <link rel="stylesheet" href="css/home.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <title>Home | Boogle.com</title>
+  </head>
 
-  <script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="css/home.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <title>Home | Boogle.com</title>
-</head>
+  <body>
+    <header>
+      <script src="js/nav.js" defer></script>
 
-<body>
-  <header>
-    <script src="js/nav.js" defer></script>
-
-    <div class="nav-container">
-      <div class="logo">
-        <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
-        <div class="nav-toggle" id="navToggle">
-          <i class="fas fa-bars"></i>
-          <i class="fas fa-times nav-hidden"></i>
-        </div>
-      </div>
-
-      <!-- add the "current" id to the li element of the active page -->
-      <nav>
-        <div class="left">
-          <ul>
-            <li id="current"><a th:href="@{/home}">Home</a></li>
-            <li><a th:href="@{/aboutUs}">About Us</a></li>
-            <li><a th:href="@{/books}">Books</a></li>
-          </ul>
+      <div class="nav-container">
+        <div class="logo">
+          <a th:href="@{/home}"><i class="fas fa-book-reader"></i></a>
+          <div class="nav-toggle" id="navToggle">
+            <i class="fas fa-bars"></i>
+            <i class="fas fa-times nav-hidden"></i>
+          </div>
         </div>
 
-        <div class="center">
-          <form th:action="@{/search}" method="get" class="search-bar">
-            <input type="search" name="keyword" placeholder="Search...">
-            <button type="submit">
-              <i class="fas fa-search"></i>
-            </button>
-          </form>
-        </div>
+        <!-- add the "current" id to the li element of the active page -->
+        <nav>
+          <div class="left">
+            <ul>
+              <li id="current"><a th:href="@{/home}">Home</a></li>
+              <li><a th:href="@{/aboutUs}">About Us</a></li>
+              <li><a th:href="@{/books}">Books</a></li>
+            </ul>
+          </div>
 
-        <div class="right">
-          <ul>
-            <li class="button">
-              <a th:href="@{/cart}">
-                <i class="fa fa-shopping-cart"></i> Cart
-                <div class="cart-num">
-                  <p>[[${shoppingCart.getTotalItemsNumber}]]</p>
+          <div class="center">
+            <form th:action="@{/search}" method="get" class="search-bar">
+              <input type="search" name="keyword" placeholder="Search..." />
+              <button type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </form>
+          </div>
+
+          <div class="right">
+            <ul>
+              <li class="button">
+                <a th:href="@{/cart}">
+                  <i class="fa fa-shopping-cart"></i> Cart
+                  <div class="cart-num">
+                    <p>[[${shoppingCart.getTotalItemsNumber}]]</p>
+                  </div>
+                </a>
+              </li>
+              <li>
+                <div
+                  sec:authorize="!isAuthenticated()"
+                  style="display: inline-block"
+                >
+                  <a th:href="@{/login}">Sign in</a>
                 </div>
-              </a>
-            </li>
-            <li>
-              <div sec:authorize="!isAuthenticated()" style="display: inline-block">
-                <a th:href="@{/login}">Sign in</a>
-              </div>
-              <div sec:authorize="isAuthenticated()" style="display: inline-block">
-                <form id="signout" th:action="@{/logout}" method="post" style="width: 100px; height: 41">
-                  <a href="javascript:;" onclick="document.getElementById('signout').submit();">Sign Out</a>
-                </form>
-              </div>
-            </li>
-            <li><a th:href="@{/account}">Account</a></li>
-          </ul>
-        </div>
-      </nav>
-
-    </div>
-  </header>
-
-
-  <diV class="centerArea">
-    <img src="img/bookStore1.jpg" class="slideShow-img">
-    <img src="img/bookStore2.jpg" class="slideShow-img">
-    <img src="img/bookStore3.jpg" class="slideShow-img">
-    <img src="img/bookStore4.jpg" class="slideShow-img">
-    <img src="img/bookStore5.jpg" class="slideShow-img">
-    <img src="img/bookStore6.jpg" class="slideShow-img">
-    <div class="boogleAndSearch-bar">
-      <h1 id="boogleText">Boogle<span id="blink">_</span></h1>
-      <form th:action="@{search}" method="get" class="centerSearch-bar">
-        <input type="search" name="keyword" placeholder="Search...">
-        <button type="submit">
-          <i class="fas fa-search"></i>
-        </button>
-      </form>
-    </div>
-  </diV>
-
-  <div class="bestSellerArea">
-    <h2>Best Sellers in Boogle</h2>
-    <div class="bestSeller__wrapper">
-      <a class="bestSellerGrid" th:href="@{/product?isbn13=}+${bestSellers.isbn13}" th:each="bestSellers,stat : ${bestSellers}">
-        <img th:src="${bestSellers.image}">
-        <h3>#[[${stat.count}]] [[${bestSellers.alias}]]</h3>
-        <p>by [[${bestSellers.author_et_alia}]]</p>
-      </a>
-    </div>
-  </div>
-
-  <footer>
-    <div class="footer-container">
-
-      <section>
-        <div class="footer-row">
-          <h6>
-            <a th:href="@{/home}">Home</a>
-          </h6>
-          <h6>
-            <a th:href="@{/aboutUs}">About Us</a>
-          </h6>
-          <h6>
-            <a th:href="@{/books}">Books</a>
-          </h6>
-          <h6>
-            <a th:href="@{/account}">Account</a>
-          </h6>
-        </div>
-      </section>
-
-      <hr>
-
-      <section>
-        <div class="footer-row">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-            distinctio earum repellat quaerat voluptatibus placeat nam,
-            commodi optio pariatur est quia magnam eum harum corrupti
-            dicta, aliquam sequi voluptate quas.</p>
-        </div>
-      </section>
-
-      <section>
-        <div class="footer-row" id="newsletter">
-          <form th:action="@{/newsletter}" method="post">
-            <p>Join our newsletter</p>
-            <input type="email" name="email" placeholder="johndoe@mail.com" />
-            <button type="submit">Subscribe</button>
-          </form>
-        </div>
-      </section>
-
-      <section class="icons">
-        <a href="">
-          <i class="fab fa-facebook-f"></i>
-        </a>
-        <a href="">
-          <i class="fab fa-twitter"></i>
-        </a>
-        <a href="">
-          <i class="fab fa-instagram"></i>
-        </a>
-        <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
-          <i class="fab fa-github"></i>
-        </a>
-      </section>
-
-      <div class="credits">
-        <p>Boogle 2021: Software Engineering Methods | [[${version}]]</p>
+                <div
+                  sec:authorize="isAuthenticated()"
+                  style="display: inline-block"
+                >
+                  <form
+                    id="signout"
+                    th:action="@{/logout}"
+                    method="post"
+                    style="width: 100px; height: 41"
+                  >
+                    <a
+                      href="javascript:;"
+                      onclick="document.getElementById('signout').submit();"
+                      >Sign Out</a
+                    >
+                  </form>
+                </div>
+              </li>
+              <li><a th:href="@{/account}">Account</a></li>
+            </ul>
+          </div>
+        </nav>
       </div>
+    </header>
 
+    <div class="centerArea">
+      <img src="img/bookStore1.jpg" class="slideShow-img" />
+      <img src="img/bookStore2.jpg" class="slideShow-img" />
+      <img src="img/bookStore3.jpg" class="slideShow-img" />
+      <img src="img/bookStore4.jpg" class="slideShow-img" />
+      <img src="img/bookStore5.jpg" class="slideShow-img" />
+      <img src="img/bookStore6.jpg" class="slideShow-img" />
+      <div class="boogleAndSearch-bar">
+        <h1 id="boogleText">Boogle<span id="blink">_</span></h1>
+        <form th:action="@{search}" method="get" class="centerSearch-bar">
+          <input type="search" name="keyword" placeholder="Search..." />
+          <button type="submit">
+            <i class="fas fa-search"></i>
+          </button>
+        </form>
+      </div>
     </div>
-  </footer>
 
-  <script src="js/home.js"></script>
-</body>
+    <div class="bestSellerArea">
+      <h2>Best Sellers in Boogle</h2>
+      <div class="bestSeller__wrapper">
+        <a
+          class="bestSellerGrid"
+          th:href="@{/product?isbn13=}+${bestSellers.isbn13}"
+          th:each="bestSellers,stat : ${bestSellers}"
+        >
+          <img th:src="${bestSellers.image}" />
+          <h3>#[[${stat.count}]] [[${bestSellers.alias}]]</h3>
+          <p>by [[${bestSellers.author_et_alia}]]</p>
+        </a>
+      </div>
+    </div>
 
+    <footer>
+      <div class="footer-container">
+        <section>
+          <div class="footer-row">
+            <h6>
+              <a th:href="@{/home}">Home</a>
+            </h6>
+            <h6>
+              <a th:href="@{/aboutUs}">About Us</a>
+            </h6>
+            <h6>
+              <a th:href="@{/books}">Books</a>
+            </h6>
+            <h6>
+              <a th:href="@{/account}">Account</a>
+            </h6>
+          </div>
+        </section>
+
+        <hr />
+
+        <section>
+          <div class="footer-row">
+            <p>
+              Welcome to Boogle. We are here to fulfill your computer science
+              needs. If you are looking for a computer science textbook, we got
+              it! Please consider joining our newsletter!
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <div class="footer-row" id="newsletter">
+            <form th:action="@{/newsletter}" method="post">
+              <p>Join our newsletter</p>
+              <input type="email" name="email" placeholder="johndoe@mail.com" />
+              <button type="submit">Subscribe</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="icons">
+          <a href="">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+            <i class="fab fa-github"></i>
+          </a>
+        </section>
+
+        <div class="credits">
+          <p>Boogle 2021: Software Engineering Methods | [[${version}]]</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/home.js"></script>
+  </body>
 </html>
