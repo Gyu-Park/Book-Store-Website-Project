@@ -317,6 +317,53 @@
       </form>
     </div>
 
+    <!-- Edit your Review Modal Form -->
+    <div id="edit-review-modal-form" class="review-modal">
+
+      <form class="form-modal-review animate" th:if="${user} != null AND ${review.user.userid} == ${user.userid}"
+        th:each="review : ${reviews}" method="post">
+        <input type="hidden" th:field="*{book.isbn13}" />
+        <div class="review-modal-row">
+          <div class="modal-close">
+            <span onclick="document.getElementById('edit-review-modal-form').style.display='none'" class="close"
+              title="Close Review Form">&times;</span>
+          </div>
+        </div>
+
+        <div class="review-modal-row">
+
+          <div class="review-modal-content">
+            <h3>Edit your previous review</h3>
+            <p>Make sure to select a star rating and review your responses!</p>
+            <hr>
+            <div class="star-rating-container" data-value="3">
+              <input type="hidden" id="rating" name="rating">
+              <span class="star">&nbsp;</span>
+              <span class="star">&nbsp;</span>
+              <span class="star">&nbsp;</span>
+              <span class="star">&nbsp;</span>
+              <span class="star">&nbsp;</span>
+            </div>
+            <hr>
+            <div class="customer-review-description">
+              <p>Edit Your Review Title</p>
+              <input type="customer-review-title" name="reviewTitle" id="customer-review-title" maxlength="50"
+                th:value="${review.reviewTitle}">
+              <p>Edit Your Description</p>
+              <textarea type="customer-review-description" name="reviewDes" id="customer-review-description"
+                maxlength="250">[[${review.reviewDes}]]</textarea>
+            </div>
+            <hr>
+            <div class="customer-review-submit">
+              <button type="customer-review-submit">Submit Your Revised Review</button>
+            </div>
+
+          </div>
+        </div>
+
+      </form>
+    </div>
+
     <!--Reviews-->
     <div class="product-row">
       <div class="review-container">
@@ -395,7 +442,9 @@
                 </div>
 
                 <div class="product-col-30">
-                  <button type="edit-review" onClick="">Edit Your Review</button>
+                  <button type="edit-review"
+                    onClick="document.getElementById('edit-review-modal-form').style.display='block'">Edit Your
+                    Review</button>
                   <button type="delete-review" onClick="">Delete Your Review</button>
                 </div>
 
