@@ -141,9 +141,9 @@
 
       <section>
         <div class="footer-row" id="newsletter">
-          <form action="">
+          <form th:action="/newsletter" method="post">
             <p>Join our newsletter</p>
-            <input type="email" placeholder="johndoe@mail.com" />
+            <input type="email" name="email" placeholder="johndoe@mail.com" />
             <button type="submit">Subscribe</button>
           </form>
         </div>
