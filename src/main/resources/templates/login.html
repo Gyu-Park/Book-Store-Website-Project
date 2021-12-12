@@ -97,7 +97,7 @@
                 <label for="login-email">E-Mail</label>
                 <input type="text" id="login-emial" name="email" placeholder="Enter your email" required>
 
-                <label for="login-password">Password<span class="psw"><a href="#">Forgot Password?</a></span></label>
+                <label for="login-password">Password<span class="psw"><a th:href="@{/forgotPassword}">Forgot Password?</a></span></label>
                 <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
                 <small id="loginFailure" th:if="${param.error}" th:text="'Wrong username or password'"></small>
 
