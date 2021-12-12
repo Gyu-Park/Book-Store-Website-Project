@@ -113,14 +113,10 @@
           th:class="${verified == 2} ? 'content-container pass-reset-show' : 'content-container'"
         >
           <form th:action="@{/forgot_password_2}" method="post">
-            <input type="hidden" th:value="${email}" name="email" />
-            <h1>Enter verification code sent to ${email}.</h1>
-            <p class="error"></p>
-            <input
-              type="text"
-              name="token"
-              placeholder="Enter verification code"
-            />
+          	<input type="hidden" th:value="${email}" name="email" />
+            <h1>Enter verification code sent to [[${email}]].</h1>
+            <p class="error" th:if="${error}" th:text="${error}"></p>
+            <input type="text" name="token" placeholder="Enter verification code" />
             <button type="form-submit">Submit</button>
           </form>
         </section>

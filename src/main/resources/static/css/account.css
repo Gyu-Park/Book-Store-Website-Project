@@ -328,6 +328,11 @@ button[type="form-buy-again"] {
   border-radius: 0.2em;
 }
 
+.account-col-20 a {
+	width: 100%;
+	height: 100%;
+}
+
 .empty-orderlist {
   display: grid;
   margin-top: 100px;
@@ -346,6 +351,10 @@ button[type="form-buy-again"] {
   margin: auto;
   font-weight: bold;
   font-size: 20px;
+}
+
+#writeReview {
+	width: 30%;
 }
 
 /*Payment Options Content Styles*/
@@ -808,5 +817,10 @@ span {
 
   .wishlist-title-container p {
     display: none;
+  }
+  
+  #writeReview {
+  	width: 100%;
+  	font-size: 11px;
   }
 }
