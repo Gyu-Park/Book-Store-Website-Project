@@ -48,6 +48,7 @@ input[type="email"] {
   border: none;
   outline: none;
   border-bottom: 2px solid #778899;
+  margin-top: auto;
 }
 
 input[type="text"]:focus,
@@ -76,10 +77,10 @@ button[type="form-submit"]:hover {
 
 /* Error Styles */
 .error {
+  visibility: visible;
   color: #e74c3c;
   font-size: 11px;
   margin: 0;
-  margin-bottom: auto;
 }
 
 .pass-reset-show {
