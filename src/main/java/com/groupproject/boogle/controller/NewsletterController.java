@@ -25,13 +25,13 @@ public class NewsletterController {
 	public String addNewsletter (String email) {
 		if (newsletterService.findNewsletterByemail(email) != null) {
 			return "redirect:/home";
+		} else {
+			Newsletter newsletter = new Newsletter();
+			newsletter.setEmail(email);
+			newsletterRepository.save(newsletter);
+			newsletter = newsletterService.findNewsletterByemail(email);
+			emailService.constructNewsletterEmail(newsletter);
 		}
-		Newsletter newsletter = new Newsletter();
-		newsletter.setEmail(email);
-		newsletterRepository.save(newsletter);
-		newsletter = newsletterService.findNewsletterByemail(email);
-		emailService.constructNewsletterEmail(newsletter);
-		
 		return "redirect:/home";
 	}
 
