@@ -274,7 +274,7 @@
 
     <!--Reviews Conteiner-->
     <!--Write a Review Modal From-->
-    <div id="product-review-modal-form" class="review-modal">
+    <div id="product-review-modal-form" class="review-modal" th:style="${fromAccount == true} ? 'display: block' : 'display: none'">
 
       <form class="form-modal-review animate" th:action="@{/product/createReview}" method="post">
         <input type="hidden" th:field="*{book.isbn13}" />
@@ -528,9 +528,9 @@
 
       <section>
         <div class="footer-row">
-          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum repellat quaerat
-            voluptatibus placeat nam, commodi optio pariatur est quia magnam eum harum corrupti dicta,
-            aliquam sequi voluptate quas.</p>
+          <p>Welcome to Boogle. We are here to fulfill your computer science
+              needs. If you are looking for a computer science textbook, we got
+              it! Please consider joining our newsletter!</p>
         </div>
       </section>
 

@@ -108,22 +108,32 @@
           </form>
         </section>
 
-        <section id="verification" th:class="${verified == 2} ? 'content-container pass-reset-show' : 'content-container'">
+        <section
+          id="verification"
+          th:class="${verified == 2} ? 'content-container pass-reset-show' : 'content-container'"
+        >
           <form th:action="@{/forgot_password_2}" method="post">
           	<input type="hidden" th:value="${email}" name="email" />
-            <h1>Enter verification code sent to ${email}.</h1>
-            <p class="error"></p>
+            <h1>Enter verification code sent to [[${email}]].</h1>
+            <p class="error" th:if="${error}" th:text="${error}"></p>
             <input type="text" name="token" placeholder="Enter verification code" />
             <button type="form-submit">Submit</button>
           </form>
         </section>
 
-        <section id="new-pass" th:class="${verified == 3} ? 'content-container pass-reset-show' : 'content-container'">
+        <section
+          id="new-pass"
+          th:class="${verified == 3} ? 'content-container pass-reset-show' : 'content-container'"
+        >
           <form th:action="@{/forgot_password_3}" method="post">
             <input type="hidden" th:value="${email}" name="email" />
             <h1>Enter new password.</h1>
             <p class="error"></p>
-            <input type="password" name="password" placeholder="Enter new password" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter new password"
+            />
             <input type="password" placeholder="Re-enter new password" />
             <button type="form-submit">Submit</button>
           </form>
@@ -155,10 +165,9 @@
         <section>
           <div class="footer-row">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
-              distinctio earum repellat quaerat voluptatibus placeat nam,
-              commodi optio pariatur est quia magnam eum harum corrupti dicta,
-              aliquam sequi voluptate quas.
+              Welcome to Boogle. We are here to fulfill your computer science
+              needs. If you are looking for a computer science textbook, we got
+              it! Please consider joining our newsletter!
             </p>
           </div>
         </section>

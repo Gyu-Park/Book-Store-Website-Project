@@ -1,8 +1,11 @@
 package com.groupproject.boogle.controller;
 
+import java.util.Iterator;
 import java.util.List;
+import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -20,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.groupproject.boogle.model.Card;
 import com.groupproject.boogle.model.CustomUserDetails;
 import com.groupproject.boogle.model.Order;
+import com.groupproject.boogle.model.OrderItem;
 import com.groupproject.boogle.model.User;
 import com.groupproject.boogle.model.WishList;
 import com.groupproject.boogle.repository.CardRepository;
@@ -151,6 +155,37 @@ public class AccountController {
 
 		return "redirect:/account";
 	}
+	
+	/* Order Tab Section */
+	@GetMapping("/account/buyItAgain")
+	public String buyItAgain(Long orderId, HttpServletRequest request, Model model) {
+		Order order = orderService.findOrderById(orderId);
+		List<OrderItem> orderItemList = order.getOrderItemList();
+		
+		String sessionToken = (String) request.getSession(true).getAttribute("sessionToken");
+		HttpSession session = request.getSession(true);
+		
+		Iterator<OrderItem> iter =  orderItemList.iterator();
+		while(iter.hasNext()) {
+			OrderItem orderItem = iter.next();
+			if(sessionToken == null) {
+				sessionToken = UUID.randomUUID().toString();
+				session.setAttribute("sessionToken", sessionToken);
+				shoppingCartService.addShoppingCart(orderItem.getBook().getIsbn13(), sessionToken, orderItem.getQuantity());
+			} else {
+				shoppingCartService.addToExistingShoppingCart(orderItem.getBook().getIsbn13(), sessionToken, orderItem.getQuantity());
+			}
+		}
+		
+		return "redirect:/cart";
+	}
+	
+	@GetMapping("/account/writeReview/{isbn13}")
+	public String buyItAgain(@PathVariable("isbn13") String isbn13, RedirectAttributes redirectAttributes) {
+		redirectAttributes.addFlashAttribute("fromAccount", true);
+		return "redirect:/product?isbn13="+isbn13;
+	}
+	
 
 	/* Wish List Tab Section */
 
