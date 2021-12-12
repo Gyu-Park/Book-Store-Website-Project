@@ -86,8 +86,8 @@ public class LoginAndRegistrationController {
 			model.addAttribute("verified", 2);
 			return "passReset";
 		} else {
-			redirectAttributes.addAttribute("error", "There's no user for this email");
-			return "redirect:/forgotPassword";
+			model.addAttribute("error", "There's no user for this email");
+			return "passReset";
 		}
 	}
 	
@@ -104,9 +104,10 @@ public class LoginAndRegistrationController {
 			model.addAttribute("email", email);
 			return "passReset";
 		} else {
-			redirectAttributes.addAttribute("error", "Verification code is not correct.");
-			redirectAttributes.addAttribute("verified", 2);
-			return "redirect:/forgotPassword";
+			model.addAttribute("error", "Verification code is not correct.");
+			model.addAttribute("email", email);
+			model.addAttribute("verified", 2);
+			return "passReset";
 		}
 	}
 	

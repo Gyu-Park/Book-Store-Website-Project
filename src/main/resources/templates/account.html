@@ -314,7 +314,6 @@
 
         <!-- Orders Tab -->
         <div id="orders" class="tabContent" th:style="${activeTab == 2} ? 'display: block;' : 'display: none;'">
-            <form action="" method="get">
                 <div class="empty-orderlist" th:if="${orderList.empty}">
                     <img src="img/empty.png">
                     <span th:text="'You have not placed any orders yet.'"></span>
@@ -341,6 +340,9 @@
                                                     quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea
                                                     commodo consequat.
                                                 </p>
+                                                <a th:href="@{/account/writeReview/{isbn13}(isbn13 = ${orderItemList.book.isbn13})}">
+	                                                <button type="form-review" id="writeReview">Write a Review</button>
+	                                            </a>
                                             </div>
                                         </div>
                                     </div>
@@ -355,17 +357,17 @@
                                         </div>
                                     </div>
                                     <div class="account-col-20">
-                                        <button type="form-review">Write a Review</button>
-                                        <button type="form-buy-again">Buy it Again</button>
+										<form th:action="@{/account/buyItAgain}" method="get">
+                                        	<input type="hidden" name="orderId" th:value="${orderList.orderId}" />
+                                        	<button type="form-buy-again">Buy it Again</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                     <!--End-->
-
                 </div>
-            </form>
         </div>
 
         <div id="payment-options" class="tabContent"
