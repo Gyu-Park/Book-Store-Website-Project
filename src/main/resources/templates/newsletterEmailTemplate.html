@@ -6,10 +6,154 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+	<script src="https://kit.fontawesome.com/91c05e75f9.js" crossorigin="anonymous"></script>
+
+	<style>
+		body {
+			background: lightslategray;
+			font-family: "Source Code Pro", monospace;
+		}
+
+		.newsletter-container {
+			display: block;
+			width: 70%;
+			margin: auto;
+		}
+
+		.banner {
+			position: relative;
+			width: 100%;
+			color: white;
+			text-align: center;
+		}
+
+		.banner h1 {
+			display: block;
+			width: 100%;
+			text-shadow: -1px -1px 0 #394B5D, 1px -1px 0 #394B5D, -1px 1px 0 #394B5D, 1px 1px 0 #394B5D;
+			font-size: 4em;
+			text-align: center;
+			position: absolute;
+			top: 100px;
+			left: 50%;
+			transform: translate(-50%, -100%);
+		}
+
+		.banner img {
+			width: 100%;
+			height: 200px;
+			object-fit: cover;
+			opacity: 80%;
+			border-radius: 3%;
+		}
+
+		.greeting {
+			margin: 10px 10px 20px 10px;
+		}
+
+		.greeting-text {
+			padding: 10px 10px 0px 10px;
+			font-size: larger;
+			color: white;
+		}
+
+		.action-btn {
+			border: 1px solid black;
+			border-radius: 5px;
+			background-color: white;
+			color: black;
+			text-decoration: none;
+			cursor: pointer;
+			padding: 10px;
+			margin: 10px;
+		}
+
+		.icons {
+			display: flex;
+			justify-content: space-between;
+			width: 20%;
+			margin: 2em auto;
+		}
+
+		.icons a {
+			color: #fffaf3;
+			font-size: 1.5em;
+		}
+
+		.icons a,
+		.icons a:after,
+		.icons a:before {
+			transition: all 0.5s;
+		}
+
+		.icons a:hover {
+			color: #ecd5b3;
+		}
+
+		.footer-text {
+			padding: 20px 20px 0px 20px;
+			font-size: large;
+			color: white;
+		}
+
+		@media screen and (max-width: 640px) {
+			.newsletter-container {
+				width: 100%;
+			}
+
+			.banner h1 {
+				font-size: 2em;
+			}
+
+			.icons {
+				width: 50%;
+			}
+		}
+	</style>
 </head>
 
 <body>
+	<div class="newsletter-container">
 
+		<div class="banner">
+			<img src="../static/img/bookStore1.jpg" alt="bookStore1" />
+			<h1><i class="fas fa-book-reader"></i>&nbsp;BOOGLE</h1>
+		</div>
+		<hr>
+
+		<div class="greeting">
+			<p class="greeting-text">Thank you for subscribing to our monthly newsletter. We will be
+				sending out a news letter
+				every month with new
+				products, featured products and products that are on sale.
+			</p>
+			<a class="action-btn" href="http://ec2-3-137-184-44.us-east-2.compute.amazonaws.com">Visit Our Store</a>
+		</div>
+		<hr>
+
+		<div class="footer">
+			<p class="footer-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt
+				distinctio earum repellat quaerat voluptatibus placeat nam,
+				commodi optio pariatur est quia magnam eum harum corrupti
+				dicta, aliquam sequi voluptate quas.</p>
+
+			<section class="icons">
+				<a href="">
+					<i class="fab fa-facebook-f"></i>
+				</a>
+				<a href="">
+					<i class="fab fa-twitter"></i>
+				</a>
+				<a href="">
+					<i class="fab fa-instagram"></i>
+				</a>
+				<a href="https://github.com/Gyu-Park/Book-Store-Website-Project">
+					<i class="fab fa-github"></i>
+				</a>
+			</section>
+		</div>
+
+	</div>
 </body>
 
 </html>
