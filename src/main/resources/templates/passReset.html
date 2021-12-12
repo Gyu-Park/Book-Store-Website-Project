@@ -8,9 +8,9 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../static/css/passReset.css" />
-    <link rel="stylesheet" href="../static/css/nav.css" />
-    <link rel="stylesheet" href="../static/css/footer.css" />
+    <link rel="stylesheet" href="css/passReset.css" />
+    <link rel="stylesheet" href="css/nav.css" />
+    <link rel="stylesheet" href="css/footer.css" />
     <script
       src="https://kit.fontawesome.com/91c05e75f9.js"
       crossorigin="anonymous"
@@ -94,34 +94,36 @@
     <div class="pass-reset-container">
       <div class="pass-reset-content">
         <section
-          id="email pass-reset-show"
-          class="content-container pass-reset-show"
+          id="email"
+          th:class="${verified} ? 'content-container' : 'content-container pass-reset-show'"
         >
-          <form action="">
+          <form th:action="@{/forgot_password_1}" method="post">
             <h1>
               A verification code will be sent to the email of the account for a
               password reset.
             </h1>
-            <p class="error"></p>
-            <input type="email" placeholder="Enter your email" />
+            <p class="error" th:if="${error}" th:text="${error}"></p>
+            <input type="email" name="email" placeholder="Enter your email" />
             <button type="form-submit">Send code</button>
           </form>
         </section>
 
-        <section id="verification" class="content-container">
-          <form action="">
+        <section id="verification" th:class="${verified == 2} ? 'content-container pass-reset-show' : 'content-container'">
+          <form th:action="@{/forgot_password_2}" method="post">
+          	<input type="hidden" th:value="${email}" name="email" />
             <h1>Enter verification code sent to ${email}.</h1>
             <p class="error"></p>
-            <input type="text" placeholder="Enter verification code" />
+            <input type="text" name="token" placeholder="Enter verification code" />
             <button type="form-submit">Submit</button>
           </form>
         </section>
 
-        <section id="new-pass" class="content-container">
-          <form action="">
+        <section id="new-pass" th:class="${verified == 3} ? 'content-container pass-reset-show' : 'content-container'">
+          <form th:action="@{/forgot_password_3}" method="post">
+            <input type="hidden" th:value="${email}" name="email" />
             <h1>Enter new password.</h1>
             <p class="error"></p>
-            <input type="password" placeholder="Enter new password" />
+            <input type="password" name="password" placeholder="Enter new password" />
             <input type="password" placeholder="Re-enter new password" />
             <button type="form-submit">Submit</button>
           </form>

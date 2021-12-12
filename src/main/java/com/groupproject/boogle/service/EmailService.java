@@ -1,13 +1,12 @@
 package com.groupproject.boogle.service;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.time.LocalDate;
 
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.mail.javamail.MimeMessagePreparator;
@@ -86,10 +85,8 @@ public class EmailService {
 			public void prepare(MimeMessage mimeMessage) throws Exception {
 				MimeMessageHelper email = new MimeMessageHelper(mimeMessage);
 				email.setTo(newsletter.getEmail());
-				DateFormat formatter = new SimpleDateFormat("MM/dd/yyyy");
-				Date today = new Date();
-				Date todayWithoutTime = formatter.parse(formatter.format(today));
-				email.setSubject("Boogle's Newsletter " + todayWithoutTime);
+				LocalDate currentDate = LocalDate.now();
+				email.setSubject("Boogle's Newsletter " + currentDate);
 				email.setText(text, true);
 				email.setFrom(new InternetAddress("boogle.2021.s.e.m.norwalkcc@gmail.com"));
 				
@@ -97,6 +94,17 @@ public class EmailService {
 		};
 		
 		mailSender.send(messagePreparator);
+	}
+	
+	public void constructForgotPasswordEmail (String emailAddress, String token) {
+
+		SimpleMailMessage message = new SimpleMailMessage(); 
+        message.setFrom("boogle.2021.s.e.m.norwalkcc@gmail.com");
+        message.setTo(emailAddress); 
+        message.setSubject("Boogle - Verification code to reset your password");
+        message.setText("Verification code: " + token);
+        mailSender.send(message);
+		
 	}
 
 }

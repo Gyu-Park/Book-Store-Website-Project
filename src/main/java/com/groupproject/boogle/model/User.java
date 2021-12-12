@@ -38,6 +38,9 @@ public class User {
 	@Column
 	private String lastname;
 	
+	@Column
+	private String resetPasswordToken;
+	
 	@OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
     @PrimaryKeyJoinColumn
     private UserInfo userInfo;
@@ -97,6 +100,14 @@ public class User {
 		return firstname + " " + lastname;
 	}
 
+	public String getResetPasswordToken() {
+		return resetPasswordToken;
+	}
+
+	public void setResetPasswordToken(String resetPasswordToken) {
+		this.resetPasswordToken = resetPasswordToken;
+	}
+
 	public UserInfo getUserInfo() {
 		return userInfo;
 	}
@@ -123,7 +134,7 @@ public class User {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(email, firstname, lastname, password, userid);
+		return Objects.hash(cards, email, firstname, lastname, order, password, resetPasswordToken, userInfo, userid);
 	}
 
 	@Override
@@ -135,9 +146,11 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return Objects.equals(email, other.email) && Objects.equals(firstname, other.firstname)
-				&& Objects.equals(lastname, other.lastname) && Objects.equals(password, other.password)
-				&& Objects.equals(userid, other.userid);
+		return Objects.equals(cards, other.cards) && Objects.equals(email, other.email)
+				&& Objects.equals(firstname, other.firstname) && Objects.equals(lastname, other.lastname)
+				&& Objects.equals(order, other.order) && Objects.equals(password, other.password)
+				&& Objects.equals(resetPasswordToken, other.resetPasswordToken)
+				&& Objects.equals(userInfo, other.userInfo) && Objects.equals(userid, other.userid);
 	}
 
 	@Override
