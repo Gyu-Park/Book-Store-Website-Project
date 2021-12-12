@@ -68,6 +68,44 @@ span.right-span {
   margin-left: 10px;
 }
 
+/* Product Options */
+.options-container {
+  display: block;
+  min-width: 100%;
+}
+
+.single-option {
+  display: block;
+  width: 100%;
+  margin: none;
+  padding: none;
+}
+
+.option-types {
+  display: block;
+  width: 100%;
+  align-items: left;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.option-types li {
+  display: inline;
+  min-width: 100px;
+  float: left;
+  margin: 0px 10px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5%;
+}
+
+.option-types li,
+a {
+  color: black;
+  text-decoration: none;
+}
+
 /*Product Buy Options*/
 .product-avalibility {
   color: green;
