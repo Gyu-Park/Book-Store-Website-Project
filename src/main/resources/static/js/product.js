@@ -51,5 +51,40 @@ function setRating(ev){
         }
     });
     document.querySelector('.star-rating-container').setAttribute('data-value', num);
+	document.querySelector('.edit-star-rating-container').setAttribute('data-value', num);
 	document.querySelector('#rating').value = num;
+	document.querySelector('#editRating').value = num;
+}
+
+/*Edit Review*/
+document.addEventListener('DOMContentLoaded', function(){
+    let stars = document.querySelectorAll('.star-edit');
+    stars.forEach(function(star){
+        star.addEventListener('click', setRatingEdit);
+    });
+    
+    let rating = parseInt(document.querySelector('.edit-star-rating-container').getAttribute('data-value'));
+    let target = stars[rating - 1];
+    target.dispatchEvent(new MouseEvent('click'));
+});
+
+function setRatingEdit(ev){
+    let span = ev.currentTarget;
+    let stars = document.querySelectorAll('.star-edit');
+    let match = false;
+    let num = 0;
+    stars.forEach(function(star, index){
+        if(match){
+            star.classList.remove('rated');
+        }else{
+            star.classList.add('rated');
+        }
+        //are we currently looking at the span that was clicked
+        if(star === span){
+            match = true;
+            num = index + 1;
+        }
+    });
+	document.querySelector('.edit-star-rating-container').setAttribute('data-value', num);
+	document.querySelector('#editRating').value = num;
 }

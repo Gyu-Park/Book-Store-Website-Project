@@ -331,7 +331,8 @@ span.close {
   margin: 5 auto 0 auto;
 }
 
-.star-rating-container {
+.star-rating-container,
+.edit-star-rating-container {
   display: flex;
   justify-content: center;
   margin: auto;
@@ -341,27 +342,32 @@ span.close {
   font-weight: 900;
 }
 
-.star-rating-container .star {
+.star-rating-container .star,
+.edit-star-rating-container .star-edit {
   color: goldenrod;
   font-size: 2.5rem;
   padding: 0 1rem; /* space out the stars */
 }
 
-.star::before {
+.star::before,
+.star-edit::before {
   content: "\2606"; /* star outline */
   cursor: pointer;
 }
 
-.star.rated::before {
+.star.rated::before,
+.star-edit.rated::before {
   /* the style for a selected star */
   content: "\2605"; /* filled star */
 }
 
-.star.rated {
+.star.rated,
+.star-edit.rated {
   counter-increment: rateme 1;
 }
 
-.star-rating-container i {
+.star-rating-container i,
+.edit-star-rating-container i {
   padding: 0px 10px 0px 10px;
   font-size: 25px;
 }

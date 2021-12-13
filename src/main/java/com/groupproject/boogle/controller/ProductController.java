@@ -155,4 +155,29 @@ public class ProductController {
 		return "redirect:/product?isbn13="+book.getIsbn13();
 	}
 	
+	@PostMapping("/product/edtReview")
+	public String editReview(HttpServletRequest request, Model model, @PathParam("isbn13") String isbn13, 
+								@ModelAttribute("reviewId") Long reviewId,
+								@ModelAttribute("book") Book book, @ModelAttribute("reviewTitle") String reviewTitle,
+								@ModelAttribute("reviewDes") String reviewDes, @ModelAttribute("rating") byte rating) {
+		
+		if(reviewTitle.equals("")) {
+			return "redirect:/product?isbn13="+book.getIsbn13();
+		} else if(reviewTitle.equals("") && reviewDes.equals("")) {
+			return "redirect:/product?isbn13="+book.getIsbn13();
+		} else if(rating < 0 && rating > 5) {
+			return "redirect:/product?isbn13="+book.getIsbn13();
+		}
+		
+		Review review = reviewRepository.getById(reviewId);
+		review.setBook(book);
+		review.setRating(rating);
+		review.setReviewDes(reviewDes);
+		review.setReviewTitle(reviewTitle);
+		
+		reviewRepository.saveAndFlush(review);
+		
+		return "redirect:/product?isbn13="+book.getIsbn13();
+	}
+	
 }
