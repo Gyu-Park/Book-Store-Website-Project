@@ -1,4 +1,5 @@
 ## Online Bookstore Project (Software Engineering Method)
+Public DNS: http://ec2-3-137-184-44.us-east-2.compute.amazonaws.com
 
 ## Group Members
 - Frontend <br />
