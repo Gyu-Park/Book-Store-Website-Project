@@ -116,7 +116,7 @@ public class CheckoutController {
 			user = userRepository.findByEmail(auth.getName());
 			order.setUser(user);
 			Card orderCard = cardService.findCardByCardNumber(card.getCardNumberWithoutDecryption());
-			order.setCard(orderCard);
+			order.setCardNumber(orderCard.getCardNumber());
 		} else {
 			guest.setFullName(shippingAddress.getShippingAddressReceiver());
 			guestService.addGuestintoDatabase(guest);
