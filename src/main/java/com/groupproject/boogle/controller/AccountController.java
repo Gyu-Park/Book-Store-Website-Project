@@ -271,7 +271,7 @@ public class AccountController {
 		List<Card> cardList = cardService.findAllCardByUser(user);
 		Card removeCard = null;
 		for (Card card1 : cardList) {
-			if (card.getPaymentOptionId().equals(card.getPaymentOptionId())) {
+			if (card1.getPaymentOptionId().equals(card.getPaymentOptionId())) {
 				removeCard = card1;
 				break;
 			}
