@@ -162,7 +162,7 @@ public class ProductController {
 		return "redirect:/product?isbn13="+book.getIsbn13();
 	}
 	
-	@PostMapping("/product/edtReview")
+	@PostMapping("/product/editReview")
 	public String editReview(HttpServletRequest request, Model model, @PathParam("isbn13") String isbn13, 
 								@ModelAttribute("reviewId") Long reviewId,
 								@ModelAttribute("book") Book book, @ModelAttribute("reviewTitle") String reviewTitle,
