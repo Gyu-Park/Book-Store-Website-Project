@@ -32,7 +32,7 @@ pipeline {
         stage('Docker Push'){
             steps {
 
-                sh 'docker push kyesung8282/boogle1:${version}'
+                sh 'docker pull kyesung8282/boogle1:${version}'
             }
         }
         
