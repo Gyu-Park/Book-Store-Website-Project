@@ -446,7 +446,11 @@
                   <button type="edit-review"
                     onClick="document.getElementById('edit-review-modal-form').style.display='block'">Edit Your
                     Review</button>
-                  <button type="delete-review" onClick="">Delete Your Review</button>
+                  <form th:action="@{/product/deleteReview}" method="get">
+                    <input type="hidden" th:field="*{book.isbn13}" />
+                    <input type="hidden" th:value="${review.reviewId}" name="reviewId" />
+                    <button type="delete-review" onClick="">Delete Your Review</button>
+                  </form>
                 </div>
 
               </div>
