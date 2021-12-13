@@ -51,9 +51,7 @@ function setRating(ev){
         }
     });
     document.querySelector('.star-rating-container').setAttribute('data-value', num);
-	document.querySelector('.edit-star-rating-container').setAttribute('data-value', num);
 	document.querySelector('#rating').value = num;
-	document.querySelector('#editRating').value = num;
 }
 
 /*Edit Review*/

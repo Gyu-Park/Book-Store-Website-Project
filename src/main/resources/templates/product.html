@@ -321,7 +321,7 @@
     <div id="edit-review-modal-form" class="review-modal">
 
       <form class="form-modal-review animate" th:if="${user} != null AND ${review.user.userid} == ${user.userid}"
-        th:each="review : ${reviews}" th:action="@{/product/edtReview}" method="post">
+        th:each="review : ${reviews}" th:action="@{/product/editReview}" method="post">
         <input type="hidden" th:field="*{book.isbn13}" />
         <input type="hidden" th:value="${review.reviewId}" name="reviewId" />
         <div class="review-modal-row">
