@@ -1,9 +1,11 @@
 ## Online Bookstore Project (Software Engineering Method)
 
 ## Group Members
-- Raymond Lin
-- Dimitrios Koloutsos
-- Gyuseok Park
+- Frontend <br />
+&nbsp;&nbsp;&nbsp;Raymond Lin <br />
+&nbsp;&nbsp;&nbsp;Dimitrios Koloutsos <br />
+- Backend <br />
+&nbsp;&nbsp;&nbsp;Gyuseok Park <br />
 
 ## Tech Stacks
 Frontend
