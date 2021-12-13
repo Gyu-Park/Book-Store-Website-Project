@@ -129,6 +129,13 @@ public class ProductController {
 		return "product";
 	}
 	
+	@GetMapping("/product/deleteReview")
+	public String deleteReview(HttpServletRequest request, Model model, 
+							   @ModelAttribute("reviewId") Long reviewId, @ModelAttribute("book") Book book) {
+		reviewRepository.deleteById(reviewId);
+		return "redirect:/product?isbn13="+book.getIsbn13();
+	}
+	
 	@PostMapping("/product/createReview")
 	public String createReview(HttpServletRequest request, Model model, @PathParam("isbn13") String isbn13, 
 								@ModelAttribute("book") Book book, @ModelAttribute("reviewTitle") String reviewTitle,
