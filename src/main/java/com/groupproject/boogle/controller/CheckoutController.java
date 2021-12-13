@@ -115,8 +115,7 @@ public class CheckoutController {
 		if (!auth.getName().equals("anonymousUser")) {
 			user = userRepository.findByEmail(auth.getName());
 			order.setUser(user);
-			Card orderCard = cardService.findCardByCardNumber(card.getCardNumberWithoutDecryption());
-			order.setCardNumber(orderCard.getCardNumber());
+			order.setCardNumber(card.getCardNumber());
 		} else {
 			guest.setFullName(shippingAddress.getShippingAddressReceiver());
 			guestService.addGuestintoDatabase(guest);
