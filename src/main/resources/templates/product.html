@@ -274,7 +274,7 @@
 
     <!--Reviews Conteiner-->
     <!--Write a Review Modal From-->
-    <div id="product-review-modal-form" class="review-modal" th:style="${fromAccount == true} ? 'display: block' : 'display: none'">
+    <div id="product-review-modal-form" class="review-modal">
 
       <form class="form-modal-review animate" th:action="@{/product/createReview}" method="post">
         <input type="hidden" th:field="*{book.isbn13}" />
@@ -321,8 +321,9 @@
     <div id="edit-review-modal-form" class="review-modal">
 
       <form class="form-modal-review animate" th:if="${user} != null AND ${review.user.userid} == ${user.userid}"
-        th:each="review : ${reviews}" method="post">
+        th:each="review : ${reviews}" th:action="@{/product/edtReview}" method="post">
         <input type="hidden" th:field="*{book.isbn13}" />
+        <input type="hidden" th:value="${review.reviewId}" name="reviewId" />
         <div class="review-modal-row">
           <div class="modal-close">
             <span onclick="document.getElementById('edit-review-modal-form').style.display='none'" class="close"
@@ -336,13 +337,13 @@
             <h3>Edit your previous review</h3>
             <p>Make sure to select a star rating and review your responses!</p>
             <hr>
-            <div class="star-rating-container" data-value="3">
-              <input type="hidden" id="rating" name="rating">
-              <span class="star">&nbsp;</span>
-              <span class="star">&nbsp;</span>
-              <span class="star">&nbsp;</span>
-              <span class="star">&nbsp;</span>
-              <span class="star">&nbsp;</span>
+            <div class="edit-star-rating-container" data-value="3">
+              <input type="hidden" id="editRating" name="rating">
+              <span class="star-edit">&nbsp;</span>
+              <span class="star-edit">&nbsp;</span>
+              <span class="star-edit">&nbsp;</span>
+              <span class="star-edit">&nbsp;</span>
+              <span class="star-edit">&nbsp;</span>
             </div>
             <hr>
             <div class="customer-review-description">
