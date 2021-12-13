@@ -27,5 +27,6 @@ Backend
 
 ## CI/CD Pipeline
 Free tier EC2 instance is halted when cleaning and installing our web app. <br />
-It seems like it's because of a lack of RAM in the Free tier EC2 instance.
+It seems like it's because of a lack of RAM in the Free tier EC2 instance, <br />
+so Jenkins's current job is to pull an image from a docker repository and to run it.
 ![CI/CD](src/main/resources/static/img/boogle-cicd.jpg)
