@@ -299,18 +299,13 @@
               <!--End-->
             </div>
             <hr class="cart-division" />
-            <p>
-              Subtotal
-              <span class="cart-price"
-                ><b>$[[${shoppingCart.totalPrice}]]</b></span
-              >
-            </p>
-            <p>
-              Shipping <span class="cart-price"><b>$item_shipping</b></span>
-            </p>
-            <p>
-              Total <span class="cart-price"><b>$item_total</b></span>
-            </p>
+            <p>Subtotal <span class="cart-price"><b>$[[${shoppingCart.totalPrice}]]</b></span></p>
+            <!-- If we had more time to continue our project then we would creating a shipping service 
+                that can calculate shipping prices based on location and promotions. The shipping price 
+                would then we passed onto an equation to add subtotal and any future cuopon functionality to 
+                create the total charge. -->
+            <p>Shipping <span class="cart-price"><b>Free Shipping</b></span></p>
+            <p>Total <span class="cart-price"><b>$[[${shoppingCart.totalPrice}]]</b></span></p>
           </div>
         </div>
       </div>
