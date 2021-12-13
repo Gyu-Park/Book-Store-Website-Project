@@ -18,6 +18,8 @@ import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.groupproject.boogle.aesEncryption.AES;
+
 @Entity(name = "orders")
 public class Order {
 
@@ -35,16 +37,14 @@ public class Order {
 	
 	private BigDecimal orderTotal;
 	
+	private String cardNumber;
+	
 	@OneToMany(mappedBy = "order", cascade=CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<OrderItem> orderItemList;
 	
 	@ManyToOne
 	@JoinColumn(name = "user_id")
 	private User user;
-	
-	@OneToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "payment_option_id")
-	private Card card;
 	
 	@OneToOne(cascade = CascadeType.ALL)
 	private ShippingAddress shippingAddress;
@@ -93,6 +93,19 @@ public class Order {
 		this.orderTotal = oderTotal;
 	}
 
+	public String getCardNumber() {
+		return AES.decrypt(this.cardNumber, AES.secretKeyBoogle);
+	}
+	
+	public String getCardNumberWithoutDecryption() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		String encryptedCardNumber = AES.encrypt(cardNumber.replaceAll("\\D", ""), AES.secretKeyBoogle);
+		this.cardNumber = encryptedCardNumber;
+	}
+
 	public List<OrderItem> getOrderItemList() {
 		return orderItemList;
 	}
@@ -107,14 +120,6 @@ public class Order {
 
 	public void setUser(User user) {
 		this.user = user;
-	}
-
-	public Card getCard() {
-		return card;
-	}
-
-	public void setCard(Card card) {
-		this.card = card;
 	}
 
 	public ShippingAddress getShippingAddress() {
@@ -135,8 +140,8 @@ public class Order {
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(card, orderItemList, guest, orderDate, orderId, orderStatus, orderTotal, shippingAddress,
-				shippingDate, user);
+		return Objects.hash(cardNumber, guest, orderDate, orderId, orderItemList, orderStatus, orderTotal,
+				shippingAddress, shippingDate, user);
 	}
 
 	@Override
@@ -148,9 +153,9 @@ public class Order {
 		if (getClass() != obj.getClass())
 			return false;
 		Order other = (Order) obj;
-		return Objects.equals(card, other.card) && Objects.equals(orderItemList, other.orderItemList)
-				&& Objects.equals(guest, other.guest) && Objects.equals(orderDate, other.orderDate)
-				&& Objects.equals(orderId, other.orderId) && Objects.equals(orderStatus, other.orderStatus)
+		return Objects.equals(cardNumber, other.cardNumber) && Objects.equals(guest, other.guest)
+				&& Objects.equals(orderDate, other.orderDate) && Objects.equals(orderId, other.orderId)
+				&& Objects.equals(orderItemList, other.orderItemList) && Objects.equals(orderStatus, other.orderStatus)
 				&& Objects.equals(orderTotal, other.orderTotal)
 				&& Objects.equals(shippingAddress, other.shippingAddress)
 				&& Objects.equals(shippingDate, other.shippingDate) && Objects.equals(user, other.user);
@@ -159,9 +164,9 @@ public class Order {
 	@Override
 	public String toString() {
 		return "Order [orderId=" + orderId + ", orderDate=" + orderDate + ", shippingDate=" + shippingDate
-				+ ", orderStatus=" + orderStatus + ", orderTotal=" + orderTotal + ", orderItemList=" + orderItemList
-				+ ", user=" + user + ", card=" + card + ", shippingAddress=" + shippingAddress + ", guest=" + guest
-				+ "]";
+				+ ", orderStatus=" + orderStatus + ", orderTotal=" + orderTotal + ", cardNumber=" + cardNumber
+				+ ", orderItemList=" + orderItemList + ", user=" + user + ", shippingAddress=" + shippingAddress
+				+ ", guest=" + guest + "]";
 	}
 
 }
