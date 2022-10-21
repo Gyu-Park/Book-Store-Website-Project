@@ -1,5 +1,6 @@
 ## Online Bookstore Project (Software Engineering Method)
-Public DNS: http://ec2-3-137-184-44.us-east-2.compute.amazonaws.com
+Public DNS: http://ec2-3-137-184-44.us-east-2.compute.amazonaws.com 
+(Not working right now because AWS free tier was expired)
 
 ## Group Members
 - Frontend <br />
