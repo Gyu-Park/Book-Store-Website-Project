@@ -31,3 +31,40 @@ Free tier EC2 instance is halted when cleaning and installing our web app. <br /
 It seems like it's because of a lack of RAM in the Free tier EC2 instance, <br />
 so Jenkins's current job is to pull an image from a docker repository and to run it.
 ![CI/CD](src/main/resources/static/img/boogle-cicd.jpg)
+
+## screenshots
+![home](src/main/resources/static/img/screenshots/home-page1.png)
+
+![home](src/main/resources/static/img/screenshots/home-page2.png)
+
+![books](src/main/resources/static/img/screenshots/books-page.png)
+
+![cart](src/main/resources/static/img/screenshots/cart-page.png)
+
+![login](src/main/resources/static/img/screenshots/login-page.png)
+
+![signup](src/main/resources/static/img/screenshots/signup-page.png)
+
+![payment](src/main/resources/static/img/screenshots/payment-page.png)
+
+![paypal](src/main/resources/static/img/screenshots/paypal.png)
+
+![forgetpassword](src/main/resources/static/img/screenshots/forgetpassword-page.png)
+
+![account](src/main/resources/static/img/screenshots/account-page1.png)
+
+![account](src/main/resources/static/img/screenshots/account-page2.png)
+
+![account](src/main/resources/static/img/screenshots/account-page3.png)
+
+![account](src/main/resources/static/img/screenshots/account-page4.png)
+
+![mobile-home](src/main/resources/static/img/screenshots/mobile-home.png)
+
+![mobile-login](src/main/resources/static/img/screenshots/mobile-login.png)
+
+![mobile-books](src/main/resources/static/img/screenshots/mobile-books.png)
+
+![mobile-account](src/main/resources/static/img/screenshots/mobile-account.png)
+
+![mobile-cart](src/main/resources/static/img/screenshots/mobile-cart.png)
